@@ -1,0 +1,164 @@
+import '../../helpers/fixtures.dart';
+import '../../helpers/test_helpers.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:rain/core/services/asset_cache_service.dart';
+import 'package:rain/core/services/forecast_notification_time.dart';
+import 'package:rain/core/services/notification_service.dart';
+import 'package:rain/core/settings/app_settings_state.dart';
+import 'package:rain/data/models/db.dart';
+
+/// Tracks [cancelScheduled] while exercising real reschedule logic.
+class _CancelTrackingNotificationService extends NotificationService {
+  _CancelTrackingNotificationService() : super(AssetCacheService());
+
+  int cancelScheduledCalls = 0;
+
+  @override
+  Future<void> cancelScheduled() async {
+    cancelScheduledCalls++;
+  }
+}
+
+void main() {
+  setUpAll(() async {
+    TestWidgetsFlutterBinding.ensureInitialized();
+    await initTestEnvironment();
+  });
+
+  group('NotificationService', () {
+    late _CancelTrackingNotificationService service;
+
+    setUp(() {
+      service = _CancelTrackingNotificationService();
+    });
+
+    test(
+      'rescheduleForWeather skips when notifications are disabled',
+      () async {
+        await service.rescheduleForWeather(
+          cache: sampleMainWeatherCache(),
+          settings: Settings()..notifications = false,
+          appSettings: const AppSettingsState(),
+          cityLabel: 'Moscow',
+        );
+
+        expect(service.cancelScheduledCalls, 0);
+      },
+    );
+
+    test('uses stable schedule-epoch notification ids', () {
+      const epoch = 1_715_000_000_000;
+      final slot = WeatherNotificationSlot(
+        title: 'Moscow: 20°',
+        body: 'Clear · 13:00',
+        time: DateTime(2026, 6, 5, 13),
+        icon: 'assets/icons/weather/0.png',
+        scheduleEpochMillis: epoch,
+      );
+
+      final id = NotificationService.notificationIdFor(slot);
+
+      expect(id, greaterThan(NotificationService.persistentNotificationId));
+      expect(NotificationService.notificationIdFor(slot), id);
+
+      final updated = WeatherNotificationSlot(
+        title: 'Moscow: 21°',
+        body: 'Cloudy · 13:00',
+        time: slot.time,
+        icon: slot.icon,
+        scheduleEpochMillis: epoch,
+      );
+      expect(NotificationService.notificationIdFor(updated), id);
+    });
+
+    test('uses distinct ids for the same hour on different days', () {
+      const timezone = 'Europe/Moscow';
+      const offset = 10800;
+      final day1Epoch = forecastScheduleEpochMillis(
+        DateTime(2026, 6, 5, 13),
+        timezone,
+        utcOffsetSeconds: offset,
+      );
+      final day2Epoch = forecastScheduleEpochMillis(
+        DateTime(2026, 6, 6, 13),
+        timezone,
+        utcOffsetSeconds: offset,
+      );
+
+      final id1 = NotificationService.notificationIdFor(
+        WeatherNotificationSlot(
+          title: 'a',
+          body: 'b',
+          time: DateTime(2026, 6, 5, 13),
+          icon: 'icon',
+          scheduleEpochMillis: day1Epoch,
+        ),
+      );
+      final id2 = NotificationService.notificationIdFor(
+        WeatherNotificationSlot(
+          title: 'a',
+          body: 'b',
+          time: DateTime(2026, 6, 6, 13),
+          icon: 'icon',
+          scheduleEpochMillis: day2Epoch,
+        ),
+      );
+
+      expect(id1, isNot(id2));
+    });
+
+    test(
+      'rescheduleForWeather does not cancel when cache lacks notification data',
+      () async {
+        await service.rescheduleForWeather(
+          cache: MainWeatherCache(),
+          settings: Settings()..notifications = true,
+          appSettings: const AppSettingsState(),
+          cityLabel: 'Moscow',
+        );
+
+        expect(service.cancelScheduledCalls, 0);
+      },
+    );
+
+    test(
+      'rescheduleForWeather cancels when valid cache has no matching slots',
+      () async {
+        await service.rescheduleForWeather(
+          cache: sampleFutureMainWeatherCache(),
+          settings: Settings()
+            ..notifications = true
+            ..notificationWeekdaysMask = 0,
+          appSettings: const AppSettingsState(
+            timeStart: '00:00',
+            timeEnd: '23:59',
+          ),
+          cityLabel: 'Moscow',
+        );
+
+        expect(service.cancelScheduledCalls, 1);
+      },
+    );
+
+    test('buildPersistentNotificationContent uses current hour', () {
+      final cache = sampleMainWeatherCache();
+      final content = buildPersistentNotificationContent(
+        cache: cache,
+        settings: Settings()..degrees = 'celsius',
+        cityLabel: 'Moscow',
+      );
+
+      expect(content, isNotNull);
+      expect(content!.title, contains('Moscow'));
+      expect(content.body, isNotEmpty);
+    });
+
+    test('updatePersistentNotification is a no-op when disabled', () async {
+      await service.updatePersistentNotification(
+        cache: sampleMainWeatherCache(),
+        settings: Settings()..persistentNotification = false,
+        cityLabel: 'Moscow',
+      );
+    });
+  });
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="little_margin">8dp</dimen>
+    <dimen name="small_margin">@dimen/little_margin</dimen>
+    <dimen name="content_text_size">14sp</dimen>
+
+    <dimen name="widget_grid_1">40dp</dimen>
+    <dimen name="widget_grid_2">110dp</dimen>
+    <dimen name="widget_grid_3">180dp</dimen>
+    <dimen name="widget_grid_4">250dp</dimen>
+
+    <dimen name="widget_small_weather_icon_size">36dp</dimen>
+    <dimen name="widget_content_text_size">@dimen/content_text_size</dimen>
+    <dimen name="widget_degree_compact_text_size">22sp</dimen>
+    <dimen name="widget_degree_compact_preview_text_size">40sp</dimen>
+    <dimen name="widget_material_you_default_size">182dp</dimen>
+    <dimen name="widget_current_icon_size">72dp</dimen>
+    <dimen name="widget_current_icon_margin">34dp</dimen>
+    <dimen name="widget_current_icon_margin_bottom">40dp</dimen>
+    <dimen name="widget_current_icon_elevation">8dp</dimen>
+    <dimen name="widget_current_temp_text_size">64dp</dimen>
+    <dimen name="widget_current_temp_margin_top">20dp</dimen>
+    <dimen name="widget_current_temp_padding_end">4dp</dimen>
+
+    <dimen name="widget_content_padding">12dp</dimen>
+    <dimen name="widget_icon_compact_size">36dp</dimen>
+    <dimen name="widget_icon_compact_preview_size">56dp</dimen>
+    <dimen name="widget_forecast_bar_height">56dp</dimen>
+
+    <dimen name="widget_clock_bar_time_text_size">38dp</dimen>
+    <dimen name="widget_clock_bar_icon_size">36dp</dimen>
+    <dimen name="widget_clock_bar_clock_margin_start">4dp</dimen>
+    <dimen name="widget_clock_bar_date_margin_start">8dp</dimen>
+
+</resources>

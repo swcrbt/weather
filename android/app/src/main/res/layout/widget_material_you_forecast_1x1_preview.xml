@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@android:id/background"
+    android:layout_width="110dp"
+    android:layout_height="110dp"
+    android:background="@drawable/widget_m3_background"
+    android:theme="@style/Theme.Android.AppWidgetContainer"
+    style="@android:style/Widget">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <ImageView
+            android:id="@+id/widget_material_you_forecast_currentIcon"
+            android:layout_width="@dimen/widget_icon_compact_preview_size"
+            android:layout_height="@dimen/widget_icon_compact_preview_size"
+            android:importantForAccessibility="no"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cloud"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/widget_material_you_forecast_currentTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="20°"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="@dimen/widget_degree_compact_preview_text_size"
+            android:textStyle="bold"
+            tools:ignore="RtlHardcoded"
+            tools:text="20°" />
+
+    </LinearLayout>
+
+</RelativeLayout>
