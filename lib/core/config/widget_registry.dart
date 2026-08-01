@@ -41,4 +41,11 @@ const List<WidgetDefinition> rainWidgetRegistry = [
         'com.yoshi.rain.widget.providers.WidgetClockDayHorizontalProvider',
     labelKey: 'widgetMaterialYouClock',
   ),
+  WidgetDefinition(
+    id: 'weather_detail',
+    androidName: 'WidgetWeatherDetailProvider',
+    qualifiedAndroidName:
+        'com.yoshi.rain.widget.providers.WidgetWeatherDetailProvider',
+    labelKey: 'widgetWeatherDetail',
+  ),
 ];
