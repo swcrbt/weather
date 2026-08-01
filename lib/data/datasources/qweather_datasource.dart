@@ -8,22 +8,25 @@ import 'package:rain/core/utils/debug_log.dart';
 /// 和风天气数据源实现（JWT 认证版本）
 /// 支持：实时天气、预报、空气质量、分钟级降水
 class QWeatherDataSource {
+  /// 凭据 ID（从和风天气控制台获取）
+  static const String _credentialId = 'KNB28DQJ4P';
+  
+  /// 私钥文件路径
+  static const String _privateKeyPath = 'assets/keys/private_key.pem';
+
   QWeatherDataSource({
     Dio? dio,
-    required this.credentialId,
-    required String privateKeyPath,
   }) : _dio = dio ?? Dio()
     ..options.baseUrl = 'https://devapi.qweather.com/v7/' {
     // 加载私钥并创建 JWT 管理器
-    final privateKey = File(privateKeyPath).readAsStringSync();
+    final privateKey = File(_privateKeyPath).readAsStringSync();
     _jwtAuth = JWTAuthManager(
-      credentialId: credentialId,
+      credentialId: _credentialId,
       privateKeyPem: privateKey,
     );
   }
 
   final Dio _dio;
-  final String credentialId;
   late final JWTAuthManager _jwtAuth;
 
   /// 获取认证后的 Dio 实例
