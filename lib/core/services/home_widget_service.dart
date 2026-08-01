@@ -75,6 +75,7 @@ class HomeWidgetService {
   }
 
   /// Builds the JSON payload for the current hour from main weather cache.
+  /// 增强版本：支持 AQI、降水预警、5天预报
   Future<Map<String, dynamic>?> _buildWidgetBundle(
     Isar isar,
     Settings settings,
@@ -127,8 +128,9 @@ class HomeWidgetService {
 
     final temp = cache.temperature2M?[hour];
 
-    return {
-      'current': {
+    // 构建基础数据
+    final bundle = <String, dynamic>{
+      'current': <String, dynamic>{
         'location': locationName,
         'temperature': temp == null
             ? '--°'
@@ -136,6 +138,80 @@ class HomeWidgetService {
         'icon': currentIcon,
       },
     };
+
+    // 添加 AQI 数据（如果有）
+    final aqiValue = settings.aqiStandard == 'european' 
+        ? cache.europeanAqi?.firstOrNull 
+        : cache.usAqi?.firstOrNull;
+    if (aqiValue != null) {
+      bundle['aqi'] = <String, dynamic>{
+        'value': aqiValue.round(),
+        'level': _resolveAqiLevel(aqiValue.round()),
+      };
+    }
+
+    // 添加5天预报数据
+    final forecast = <Map<String, dynamic>>[];
+    for (int i = 0; i < 5 && i < (cache.timeDaily?.length ?? 0); i++) {
+      final dayIndex = day + i;
+      if (dayIndex >= (cache.timeDaily?.length ?? 0)) break;
+      
+      final dayTempMax = cache.temperature2MMax?[dayIndex];
+      final dayTempMin = cache.temperature2MMin?[dayIndex];
+      final dayWeatherCode = cache.weathercodeDaily?[dayIndex];
+      
+      if (dayWeatherCode != null) {
+        final dayTime = cache.timeDaily![dayIndex].toIso8601String();
+        final dayIcon = await _assets.getLocalImagePath(
+          statusWeather.getImageNotification(
+            dayWeatherCode,
+            dayTime,
+            sunrise ?? '06:00',
+            sunset ?? '18:00',
+          ),
+          assetRoot: statusWeather.assetRoot,
+        );
+        
+        forecast.add({
+          'label': i == 0 ? '今天' : _getWeekdayLabel(dayIndex),
+          'icon': dayIcon,
+          'tempMax': dayTempMax?.round().toString() ?? '--',
+          'tempMin': dayTempMin?.round().toString() ?? '--',
+        });
+      }
+    }
+    
+    if (forecast.isNotEmpty) {
+      bundle['forecast'] = forecast;
+    }
+
+    // 添加更新时间
+    bundle['updateTime'] = _formatUpdateTime(DateTime.now());
+
+    return bundle;
+  }
+
+  /// 解析 AQI 等级
+  String _resolveAqiLevel(int aqi) {
+    if (aqi <= 50) return '优';
+    if (aqi <= 100) return '良';
+    if (aqi <= 150) return '轻度污染';
+    if (aqi <= 200) return '中度污染';
+    if (aqi <= 300) return '重度污染';
+    return '严重污染';
+  }
+
+  /// 获取星期标签
+  String _getWeekdayLabel(int dayOffset) {
+    final weekdays = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+    final now = DateTime.now();
+    final targetDay = now.add(Duration(days: dayOffset));
+    return weekdays[targetDay.weekday - 1];
+  }
+
+  /// 格式化更新时间
+  String _formatUpdateTime(DateTime time) {
+    return '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}更新';
   }
 
   /// Background entry point: refreshes stale cache and updates widgets from disk.
