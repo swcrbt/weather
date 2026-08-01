@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:home_widget/home_widget.dart';
 import 'package:isar_community/isar.dart';
 import 'package:rain/core/utils/debug_log.dart';
+import 'package:rain/core/utils/lunar_calendar.dart';
 import 'package:rain/core/config/widget_registry.dart';
 import 'package:rain/core/services/asset_cache_service.dart';
 import 'package:rain/core/services/widget_background_service.dart';
@@ -183,6 +184,17 @@ class HomeWidgetService {
     
     if (forecast.isNotEmpty) {
       bundle['forecast'] = forecast;
+    }
+
+    // 添加农历日期
+    bundle['lunar'] = LunarCalendar.getCurrentLunarDate();
+
+    // 添加降水预警（如果有降水概率数据）
+    if (cache.precipitationProbability != null && cache.precipitationProbability!.isNotEmpty) {
+      final currentPrecipProb = cache.precipitationProbability![hour];
+      if (currentPrecipProb != null && currentPrecipProb > 0) {
+        bundle['precipitationAlert'] = '降水概率 ${currentPrecipProb}%';
+      }
     }
 
     // 添加更新时间
