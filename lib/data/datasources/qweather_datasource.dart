@@ -7,6 +7,9 @@ import 'package:rain/core/utils/debug_log.dart';
 
 /// 和风天气数据源实现（JWT 认证版本）
 /// 使用 OpenSSL 命令行生成 EdDSA 签名
+/// 
+/// 注意：此数据源需要配置和风天气 JWT 凭据才能使用。
+/// 如果没有配置，会自动降级为使用 Open-Meteo 数据源。
 class QWeatherDataSource {
   /// 凭据 ID（kid）
   static const String _credentialId = 'KNB28DQJ4P';
@@ -28,7 +31,16 @@ class QWeatherDataSource {
   final Dio _dio;
 
   /// 生成 JWT Token（使用 OpenSSL 命令行）
+  /// 
+  /// 如果私钥文件不存在，则返回空字符串（表示无法认证）
   Future<String> _generateJWT() async {
+    // 检查私钥文件是否存在
+    final privateKeyFile = File(_privateKeyPath);
+    if (!privateKeyFile.existsSync()) {
+      debugLogError('QWeatherDataSource._generateJWT', '私钥文件不存在: $_privateKeyPath');
+      return '';
+    }
+    
     final now = DateTime.now();
     final iat = now.millisecondsSinceEpoch ~/ 1000 - 30;  // 当前时间前30秒
     final exp = iat + 900;  // 15分钟后过期
