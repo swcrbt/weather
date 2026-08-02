@@ -34,7 +34,7 @@ Future<TestIsarContext> openTestIsar() async {
 
   await initTestEnvironment();
   final directory = Directory.systemTemp.createTempSync('rain_test_isar_');
-  final isar = await openRainIsar(directory: directory.path);
+  final isar = await openWeatherIsar(directory: directory.path);
   _sharedContext = TestIsarContext(isar: isar, directory: directory);
   return _sharedContext!;
 }

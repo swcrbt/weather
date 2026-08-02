@@ -6,13 +6,13 @@ import 'package:rain/core/database/isar_schemas.dart';
 import 'package:rain/data/models/db.dart';
 
 void main() {
-  group('openRainIsar', () {
+  group('openWeatherIsar', () {
     late Directory directory;
     late Isar isar;
 
     setUp(() async {
       directory = Directory.systemTemp.createTempSync('rain_isar_schema_');
-      isar = await openRainIsar(directory: directory.path);
+      isar = await openWeatherIsar(directory: directory.path);
     });
 
     tearDown(() async {

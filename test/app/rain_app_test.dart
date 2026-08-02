@@ -17,7 +17,7 @@ void main() {
     ctx = await createTestBootstrap();
   });
 
-  group('RainApp.updateAppState', () {
+  group('WeatherApp.updateAppState', () {
     testWidgets('updates app settings through provider', (tester) async {
       await tester.pumpWidget(
         ProviderScope(
@@ -42,7 +42,7 @@ void main() {
               return MaterialApp(
                 home: Builder(
                   builder: (context) => ElevatedButton(
-                    onPressed: () => RainApp.updateAppState(
+                    onPressed: () => WeatherApp.updateAppState(
                       ref,
                       newRoundDegree: true,
                       newLargeElement: true,
@@ -69,7 +69,7 @@ void main() {
     });
   });
 
-  group('RainApp.build', () {
+  group('WeatherApp.build', () {
     testWidgets('applies dark theme from settings', (tester) async {
       ctx.bootstrap.settings.theme = 'dark';
       final router = createTestRouter(ctx.bootstrap);
@@ -93,7 +93,7 @@ void main() {
               createFakeWeatherRemoteDatasource(),
             ),
           ],
-          child: RainApp(bootstrap: ctx.bootstrap),
+          child: WeatherApp(bootstrap: ctx.bootstrap),
         ),
       );
       await tester.pump();
