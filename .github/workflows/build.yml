@@ -10,6 +10,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
     steps:
     - uses: actions/checkout@v4
@@ -68,29 +70,61 @@ jobs:
     # 获取依赖
     - name: Get dependencies
       run: flutter pub get
+
+    # 接受 Android SDK 许可证并安装项目所需 NDK
+    - name: Setup Android SDK licenses and NDK
+      run: |
+        export ANDROID_HOME="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
+        export ANDROID_SDK_ROOT="$ANDROID_HOME"
+        echo "ANDROID_HOME=$ANDROID_HOME" >> "$GITHUB_ENV"
+        echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT" >> "$GITHUB_ENV"
+
+        SDKMANAGER=""
+        for candidate in \
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
+          "$ANDROID_HOME/cmdline-tools/bin/sdkmanager" \
+          "$(command -v sdkmanager || true)"; do
+          if [ -n "$candidate" ] && [ -x "$candidate" ]; then
+            SDKMANAGER="$candidate"
+            break
+          fi
+        done
+
+        if [ -z "$SDKMANAGER" ]; then
+          echo "未找到 sdkmanager，尝试通过 android-actions/setup-android 路径"
+          ls -la "$ANDROID_HOME" || true
+          ls -la "$ANDROID_HOME/cmdline-tools" || true
+          exit 1
+        fi
+
+        echo "使用 sdkmanager: $SDKMANAGER"
+        yes | "$SDKMANAGER" --licenses >/tmp/sdk-licenses.log 2>&1 || true
+        "$SDKMANAGER" --install "ndk;30.0.14904198"
     
-    # 运行测试（跳过已知的失败测试）
+    # 运行测试（不阻塞 APK 构建；失败会在摘要中可见）
     - name: Run tests
-      run: flutter test --exclude-tags=skip || true
+      run: flutter test
       continue-on-error: true
     
-    # 构建 APK（即使测试失败也继续构建）
+    # 构建 GMS flavor release APK
     - name: Build APK
-      run: flutter build apk --release
+      run: flutter build apk --release --flavor gms
     
     # 上传 APK
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: release-apk
-        path: build/app/outputs/flutter-apk/app-release.apk
+        path: |
+          build/app/outputs/flutter-apk/app-gms-release.apk
+          build/app/outputs/flutter-apk/app-*-gms-release.apk
     
     # 创建 Release (仅在 push 到 main 时)
     - name: Create Release
       if: github.ref == 'refs/heads/main'
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "build/app/outputs/flutter-apk/app-release.apk"
+        artifacts: "build/app/outputs/flutter-apk/app-gms-release.apk"
         token: ${{ secrets.GITHUB_TOKEN }}
         tag: "v${{ github.run_number }}"
         name: "Release ${{ github.run_number }}"
@@ -102,3 +136,4 @@ jobs:
           - 包含所有增强功能
         draft: false
         prerelease: false
+        allowUpdates: true
