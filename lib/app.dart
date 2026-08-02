@@ -12,8 +12,8 @@ import 'package:rain/core/utils/device_info.dart';
 import 'package:rain/core/utils/snackbar_overlay.dart';
 
 /// Root widget: routing, theming, localization, and global overlays.
-class RainApp extends ConsumerWidget {
-  const RainApp({super.key, required this.bootstrap});
+class WeatherApp extends ConsumerWidget {
+  const WeatherApp({super.key, required this.bootstrap});
 
   final AppBootstrap bootstrap;
 
@@ -82,7 +82,7 @@ class RainApp extends ConsumerWidget {
                 GlobalCupertinoLocalizations.delegate,
               ],
               debugShowCheckedModeBanner: false,
-              title: 'Rain',
+              title: 'Weather',
               builder: (context, child) =>
                   Stack(children: [?child, const SnackBarOverlayWidget()]),
             ),

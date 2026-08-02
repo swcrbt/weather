@@ -240,7 +240,7 @@ class TranslationsFrFr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Niveau de polluant le plus élevé';
 	@override String get aqi_help_advice_label => 'Recommandation';
 	@override String get aqi_help_source => 'Source : Open-Meteo Air Quality API — concentrations au sol (~10 m), grille ~11 km.';
-	@override String get widget_battery_hint => 'Pour des mises à jour fiables du widget, désactivez l\'optimisation de la batterie pour Rain dans les paramètres de l\'application';
+	@override String get widget_battery_hint => 'Pour des mises à jour fiables du widget, désactivez l\'optimisation de la batterie pour Weather dans les paramètres de l\'application';
 	@override String get persistent_notification => 'Notification persistante';
 	@override String get last_updated => 'Mis à jour';
 	@override String get app_font => 'Police';
@@ -563,7 +563,7 @@ extension on TranslationsFrFr {
 			'aqi_help_dominant' => 'Niveau de polluant le plus élevé',
 			'aqi_help_advice_label' => 'Recommandation',
 			'aqi_help_source' => 'Source : Open-Meteo Air Quality API — concentrations au sol (~10 m), grille ~11 km.',
-			'widget_battery_hint' => 'Pour des mises à jour fiables du widget, désactivez l\'optimisation de la batterie pour Rain dans les paramètres de l\'application',
+			'widget_battery_hint' => 'Pour des mises à jour fiables du widget, désactivez l\'optimisation de la batterie pour Weather dans les paramètres de l\'application',
 			'persistent_notification' => 'Notification persistante',
 			'last_updated' => 'Mis à jour',
 			'app_font' => 'Police',

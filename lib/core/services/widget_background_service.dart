@@ -118,7 +118,7 @@ Future<bool> runWidgetBackgroundRefresh(
 
     isar = Isar.getInstance();
     if (isar == null || !isar.isOpen) {
-      isar = await openRainIsar();
+      isar = await openWeatherIsar();
       ownsIsar = true;
     }
 

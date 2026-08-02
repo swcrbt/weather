@@ -150,7 +150,7 @@ class DescMetricsCatalog {
         value: statusData.getPrecipitation(input.rainSum),
         imageAsset: img('water.png'),
         labelKey: 'rain',
-        helpText: message.helpRain(),
+        helpText: message.helpWeather(),
       ),
       metric(
         value: statusData.getPrecipitation(input.precipitationSum),
@@ -210,7 +210,7 @@ class DescMetricsCatalog {
         value: statusData.getPrecipitation(input.rain),
         imageAsset: img('water.png'),
         labelKey: 'rain',
-        helpText: message.helpRain(),
+        helpText: message.helpWeather(),
       ),
       metric(
         value: _percent(input.precipitationProbability),

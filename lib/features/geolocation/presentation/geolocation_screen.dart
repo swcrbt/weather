@@ -107,9 +107,9 @@ class _SelectGeolocationState extends ConsumerState<SelectGeolocation> {
                 fillMap(point.latitude, point.longitude),
           ),
           children: [
-            buildRainMapDarkModeFilter(
+            buildWeatherMapDarkModeFilter(
               isDark: isDark,
-              child: buildRainMapTileLayer(),
+              child: buildWeatherMapTileLayer(),
             ),
             RichAttributionWidget(
               animationConfig: const ScaleRAWA(),

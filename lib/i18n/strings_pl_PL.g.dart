@@ -240,7 +240,7 @@ class TranslationsPlPl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Najwyższy poziom zanieczyszczenia';
 	@override String get aqi_help_advice_label => 'Zalecenie';
 	@override String get aqi_help_source => 'Źródło: Open-Meteo Air Quality API — stężenia przy ziemi (~10 m), siatka ~11 km.';
-	@override String get widget_battery_hint => 'Aby widżety aktualizowały się niezawodnie, wyłącz optymalizację baterii dla Rain w ustawieniach aplikacji';
+	@override String get widget_battery_hint => 'Aby widżety aktualizowały się niezawodnie, wyłącz optymalizację baterii dla Weather w ustawieniach aplikacji';
 	@override String get persistent_notification => 'Stałe powiadomienie';
 	@override String get last_updated => 'Zaktualizowano';
 	@override String get app_font => 'Czcionka';
@@ -563,7 +563,7 @@ extension on TranslationsPlPl {
 			'aqi_help_dominant' => 'Najwyższy poziom zanieczyszczenia',
 			'aqi_help_advice_label' => 'Zalecenie',
 			'aqi_help_source' => 'Źródło: Open-Meteo Air Quality API — stężenia przy ziemi (~10 m), siatka ~11 km.',
-			'widget_battery_hint' => 'Aby widżety aktualizowały się niezawodnie, wyłącz optymalizację baterii dla Rain w ustawieniach aplikacji',
+			'widget_battery_hint' => 'Aby widżety aktualizowały się niezawodnie, wyłącz optymalizację baterii dla Weather w ustawieniach aplikacji',
 			'persistent_notification' => 'Stałe powiadomienie',
 			'last_updated' => 'Zaktualizowano',
 			'app_font' => 'Czcionka',

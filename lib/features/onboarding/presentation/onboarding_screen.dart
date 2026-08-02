@@ -28,7 +28,7 @@ class OnboardingConstants {
   /// Returns localized slides for the onboarding carousel.
   static List<OnboardingData> getData() => [
     OnboardingData(
-      image: '${imagesPath}Rain.png',
+      image: '${imagesPath}Weather.png',
       title: 'name'.tr,
       description: 'description'.tr,
     ),

@@ -1,4 +1,4 @@
-package com.yoshi.rain
+package com.swcrbt.weather
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -22,7 +22,7 @@ class MainActivity : FlutterActivity() {
         }
     }
 
-    /** Opens Rain app info so the user can adjust battery usage manually. */
+    /** Opens app info so the user can adjust battery usage manually. */
     private fun openBatterySettings(): Boolean {
         val appDetailsIntent =
             Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
@@ -47,6 +47,6 @@ class MainActivity : FlutterActivity() {
     }
 
     companion object {
-        private const val BACKGROUND_CHANNEL = "com.yoshi.rain/background"
+        private const val BACKGROUND_CHANNEL = "com.swcrbt.weather/background"
     }
 }

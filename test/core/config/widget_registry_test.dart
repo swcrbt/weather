@@ -12,7 +12,7 @@ void main() {
       for (final widget in rainWidgetRegistry) {
         expect(widget.labelKey, isNotEmpty);
         expect(widget.androidName, isNotEmpty);
-        expect(widget.qualifiedAndroidName, contains('com.yoshi.rain'));
+        expect(widget.qualifiedAndroidName, contains('com.swcrbt.weather'));
       }
     });
   });

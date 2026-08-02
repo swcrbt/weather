@@ -157,13 +157,13 @@ class AppConstants {
       'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
   static const String openStreetMapCopyrightUrl =
       'https://openstreetmap.org/copyright';
-  static const String mapUserAgentPackageName = 'com.yoshi.rain';
+  static const String mapUserAgentPackageName = 'com.swcrbt.weather';
 
   /// Nominatim reverse geocoding (OpenStreetMap); requires a descriptive User-Agent.
   static const String nominatimReverseUrl =
       'https://nominatim.openstreetmap.org/reverse';
   static const String nominatimUserAgent =
-      'Rain Weather App (com.yoshi.rain; https://github.com/darkmoonight/Rain)';
+      'Weather App (com.swcrbt.weather)';
 
   // --- Map dark-mode color matrix ---
 

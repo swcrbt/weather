@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 
-const _channel = MethodChannel('com.yoshi.rain/background');
+const _channel = MethodChannel('com.swcrbt.weather/background');
 
-/// Opens Rain app info in system settings so the user can adjust battery usage.
+/// Opens Weather app info in system settings so the user can adjust battery usage.
 Future<bool> openBatterySettings() async {
   if (!Platform.isAndroid) return false;
   try {

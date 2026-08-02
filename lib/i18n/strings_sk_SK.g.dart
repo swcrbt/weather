@@ -240,7 +240,7 @@ class TranslationsSkSk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Najvyššia hladina znečisťovadla';
 	@override String get aqi_help_advice_label => 'Odporúčanie';
 	@override String get aqi_help_source => 'Zdroj: Open-Meteo Air Quality API — koncentrácie pri zemi (~10 m), mriežka ~11 km.';
-	@override String get widget_battery_hint => 'Pre spoľahlivé aktualizácie widgetu vypnite optimalizáciu batérie pre Rain v nastaveniach aplikácie';
+	@override String get widget_battery_hint => 'Pre spoľahlivé aktualizácie widgetu vypnite optimalizáciu batérie pre Weather v nastaveniach aplikácie';
 	@override String get persistent_notification => 'Trvalé upozornenie';
 	@override String get last_updated => 'Aktualizované';
 	@override String get app_font => 'Písmo';
@@ -563,7 +563,7 @@ extension on TranslationsSkSk {
 			'aqi_help_dominant' => 'Najvyššia hladina znečisťovadla',
 			'aqi_help_advice_label' => 'Odporúčanie',
 			'aqi_help_source' => 'Zdroj: Open-Meteo Air Quality API — koncentrácie pri zemi (~10 m), mriežka ~11 km.',
-			'widget_battery_hint' => 'Pre spoľahlivé aktualizácie widgetu vypnite optimalizáciu batérie pre Rain v nastaveniach aplikácie',
+			'widget_battery_hint' => 'Pre spoľahlivé aktualizácie widgetu vypnite optimalizáciu batérie pre Weather v nastaveniach aplikácie',
 			'persistent_notification' => 'Trvalé upozornenie',
 			'last_updated' => 'Aktualizované',
 			'app_font' => 'Písmo',

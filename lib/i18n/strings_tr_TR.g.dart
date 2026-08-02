@@ -240,7 +240,7 @@ class TranslationsTrTr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'En yüksek kirletici düzeyi';
 	@override String get aqi_help_advice_label => 'Öneri';
 	@override String get aqi_help_source => 'Kaynak: Open-Meteo Air Quality API — yer düzeyi konsantrasyonları (~10 m), ~11 km ızgara.';
-	@override String get widget_battery_hint => 'Güvenilir widget güncellemeleri için uygulama ayarlarında Rain için pil optimizasyonunu kapatın';
+	@override String get widget_battery_hint => 'Güvenilir widget güncellemeleri için uygulama ayarlarında Weather için pil optimizasyonunu kapatın';
 	@override String get persistent_notification => 'Kalıcı bildirim';
 	@override String get last_updated => 'Güncellendi';
 	@override String get app_font => 'Yazı tipi';
@@ -563,7 +563,7 @@ extension on TranslationsTrTr {
 			'aqi_help_dominant' => 'En yüksek kirletici düzeyi',
 			'aqi_help_advice_label' => 'Öneri',
 			'aqi_help_source' => 'Kaynak: Open-Meteo Air Quality API — yer düzeyi konsantrasyonları (~10 m), ~11 km ızgara.',
-			'widget_battery_hint' => 'Güvenilir widget güncellemeleri için uygulama ayarlarında Rain için pil optimizasyonunu kapatın',
+			'widget_battery_hint' => 'Güvenilir widget güncellemeleri için uygulama ayarlarında Weather için pil optimizasyonunu kapatın',
 			'persistent_notification' => 'Kalıcı bildirim',
 			'last_updated' => 'Güncellendi',
 			'app_font' => 'Yazı tipi',

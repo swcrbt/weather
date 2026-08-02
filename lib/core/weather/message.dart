@@ -38,7 +38,7 @@ class Message {
       _help('metricHelpPrecipitationProbability');
 
   /// Long-press help for rain amount.
-  String helpRain() => _help('metricHelpRain');
+  String helpWeather() => _help('metricHelpWeather');
 
   /// Long-press help for total precipitation.
   String helpPrecipitation() => _help('metricHelpPrecipitation');

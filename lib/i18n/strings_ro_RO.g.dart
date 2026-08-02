@@ -240,7 +240,7 @@ class TranslationsRoRo extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Cel mai ridicat nivel de poluant';
 	@override String get aqi_help_advice_label => 'Recomandare';
 	@override String get aqi_help_source => 'Sursă: Open-Meteo Air Quality API — concentrații la sol (~10 m), grilă ~11 km.';
-	@override String get widget_battery_hint => 'Pentru actualizări fiabile ale widgetului, dezactivați optimizarea bateriei pentru Rain în setările aplicației';
+	@override String get widget_battery_hint => 'Pentru actualizări fiabile ale widgetului, dezactivați optimizarea bateriei pentru Weather în setările aplicației';
 	@override String get persistent_notification => 'Notificare persistentă';
 	@override String get last_updated => 'Actualizat';
 	@override String get app_font => 'Fonturi';
@@ -563,7 +563,7 @@ extension on TranslationsRoRo {
 			'aqi_help_dominant' => 'Cel mai ridicat nivel de poluant',
 			'aqi_help_advice_label' => 'Recomandare',
 			'aqi_help_source' => 'Sursă: Open-Meteo Air Quality API — concentrații la sol (~10 m), grilă ~11 km.',
-			'widget_battery_hint' => 'Pentru actualizări fiabile ale widgetului, dezactivați optimizarea bateriei pentru Rain în setările aplicației',
+			'widget_battery_hint' => 'Pentru actualizări fiabile ale widgetului, dezactivați optimizarea bateriei pentru Weather în setările aplicației',
 			'persistent_notification' => 'Notificare persistentă',
 			'last_updated' => 'Actualizat',
 			'app_font' => 'Fonturi',

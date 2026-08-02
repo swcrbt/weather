@@ -1,4 +1,4 @@
-package com.yoshi.rain.widget
+package com.swcrbt.weather.widget
 
 import android.content.Context
 import android.content.res.Configuration

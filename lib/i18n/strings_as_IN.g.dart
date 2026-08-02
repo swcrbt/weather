@@ -240,7 +240,7 @@ class TranslationsAsIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'সৰ্বোচ্চ দূষকৰ স্তৰ';
 	@override String get aqi_help_advice_label => 'পৰামৰ্শ';
 	@override String get aqi_help_source => 'উৎস: Open-Meteo Air Quality API — ভূ-স্তৰৰ ঘনত্ব (~10 মি), ~11 কিমি গ্ৰিড।';
-	@override String get widget_battery_hint => 'নিৰ্ভৰযোগ্য ৱিজেট আপডেইটৰ বাবে Rain ৰ বাবে এপৰ ছেটিংছত বেটাৰী অনুকূলন অফ কৰক';
+	@override String get widget_battery_hint => 'নিৰ্ভৰযোগ্য ৱিজেট আপডেইটৰ বাবে Weather ৰ বাবে এপৰ ছেটিংছত বেটাৰী অনুকূলন অফ কৰক';
 	@override String get persistent_notification => 'স্থায়ী জাননী';
 	@override String get last_updated => 'আপডেট কৰা হৈছে';
 	@override String get app_font => 'ফন্ট';
@@ -563,7 +563,7 @@ extension on TranslationsAsIn {
 			'aqi_help_dominant' => 'সৰ্বোচ্চ দূষকৰ স্তৰ',
 			'aqi_help_advice_label' => 'পৰামৰ্শ',
 			'aqi_help_source' => 'উৎস: Open-Meteo Air Quality API — ভূ-স্তৰৰ ঘনত্ব (~10 মি), ~11 কিমি গ্ৰিড।',
-			'widget_battery_hint' => 'নিৰ্ভৰযোগ্য ৱিজেট আপডেইটৰ বাবে Rain ৰ বাবে এপৰ ছেটিংছত বেটাৰী অনুকূলন অফ কৰক',
+			'widget_battery_hint' => 'নিৰ্ভৰযোগ্য ৱিজেট আপডেইটৰ বাবে Weather ৰ বাবে এপৰ ছেটিংছত বেটাৰী অনুকূলন অফ কৰক',
 			'persistent_notification' => 'স্থায়ী জাননী',
 			'last_updated' => 'আপডেট কৰা হৈছে',
 			'app_font' => 'ফন্ট',

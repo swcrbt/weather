@@ -240,7 +240,7 @@ class TranslationsGuIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'સૌથી વધુ પ્રદૂષક સ્તર';
 	@override String get aqi_help_advice_label => 'ભલામણ';
 	@override String get aqi_help_source => 'સ્રોત: Open-Meteo Air Quality API — જમીન સપાટીની સાંદ્રતા (~10 મી), ~11 કિમી ગ્રિડ.';
-	@override String get widget_battery_hint => 'વિશ્વસનીય વિજેટ અપડેટ માટે એપ સેટિંગ્સમાં Rain માટે બેટરી ઑપ્ટિમાઇઝેશન બંધ કરો';
+	@override String get widget_battery_hint => 'વિશ્વસનીય વિજેટ અપડેટ માટે એપ સેટિંગ્સમાં Weather માટે બેટરી ઑપ્ટિમાઇઝેશન બંધ કરો';
 	@override String get persistent_notification => 'સ્થાયી સૂચના';
 	@override String get last_updated => 'અપડેટ થયું';
 	@override String get app_font => 'ફોન્ટ';
@@ -563,7 +563,7 @@ extension on TranslationsGuIn {
 			'aqi_help_dominant' => 'સૌથી વધુ પ્રદૂષક સ્તર',
 			'aqi_help_advice_label' => 'ભલામણ',
 			'aqi_help_source' => 'સ્રોત: Open-Meteo Air Quality API — જમીન સપાટીની સાંદ્રતા (~10 મી), ~11 કિમી ગ્રિડ.',
-			'widget_battery_hint' => 'વિશ્વસનીય વિજેટ અપડેટ માટે એપ સેટિંગ્સમાં Rain માટે બેટરી ઑપ્ટિમાઇઝેશન બંધ કરો',
+			'widget_battery_hint' => 'વિશ્વસનીય વિજેટ અપડેટ માટે એપ સેટિંગ્સમાં Weather માટે બેટરી ઑપ્ટિમાઇઝેશન બંધ કરો',
 			'persistent_notification' => 'સ્થાયી સૂચના',
 			'last_updated' => 'અપડેટ થયું',
 			'app_font' => 'ફોન્ટ',

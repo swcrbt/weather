@@ -240,7 +240,7 @@ class TranslationsKaGe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'დამაბინძურებლის უმაღლესი დონე';
 	@override String get aqi_help_advice_label => 'რეკომენდაცია';
 	@override String get aqi_help_source => 'წყარო: Open-Meteo Air Quality API — კონცენტრაციები მიწის დონეზე (~10 მ), ~11 კმ ბადე.';
-	@override String get widget_battery_hint => 'ვიჯეტის საიმედო განახლებისთვის გამორთეთ Rain-ის ბატარეის ოპტიმიზაცია აპის პარამეტრებში';
+	@override String get widget_battery_hint => 'ვიჯეტის საიმედო განახლებისთვის გამორთეთ Weather-ის ბატარეის ოპტიმიზაცია აპის პარამეტრებში';
 	@override String get persistent_notification => 'მუდმივი შეტყობინება';
 	@override String get last_updated => 'განახლებულია';
 	@override String get app_font => 'შრიფტი';
@@ -563,7 +563,7 @@ extension on TranslationsKaGe {
 			'aqi_help_dominant' => 'დამაბინძურებლის უმაღლესი დონე',
 			'aqi_help_advice_label' => 'რეკომენდაცია',
 			'aqi_help_source' => 'წყარო: Open-Meteo Air Quality API — კონცენტრაციები მიწის დონეზე (~10 მ), ~11 კმ ბადე.',
-			'widget_battery_hint' => 'ვიჯეტის საიმედო განახლებისთვის გამორთეთ Rain-ის ბატარეის ოპტიმიზაცია აპის პარამეტრებში',
+			'widget_battery_hint' => 'ვიჯეტის საიმედო განახლებისთვის გამორთეთ Weather-ის ბატარეის ოპტიმიზაცია აპის პარამეტრებში',
 			'persistent_notification' => 'მუდმივი შეტყობინება',
 			'last_updated' => 'განახლებულია',
 			'app_font' => 'შრიფტი',

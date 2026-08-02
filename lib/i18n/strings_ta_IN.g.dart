@@ -240,7 +240,7 @@ class TranslationsTaIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'அதிகபட்ச மாசு அளவு';
 	@override String get aqi_help_advice_label => 'பரிந்துரை';
 	@override String get aqi_help_source => 'மூலம்: Open-Meteo Air Quality API — தரை மட்ட செறிவு (~10 மீ), ~11 கிமீ கட்டம்.';
-	@override String get widget_battery_hint => 'நம்பகமான விட்ஜெட் புதுப்பிப்புகளுக்கு, ஆப் settings-ல் Rain-க்கான battery கட்டுப்பாட்டை அணைக்கவும்';
+	@override String get widget_battery_hint => 'நம்பகமான விட்ஜெட் புதுப்பிப்புகளுக்கு, ஆப் settings-ல் Weather-க்கான battery கட்டுப்பாட்டை அணைக்கவும்';
 	@override String get persistent_notification => 'நிரந்தர அறிவிப்பு';
 	@override String get last_updated => 'புதுப்பிக்கப்பட்டது';
 	@override String get app_font => 'எழுத்துரு';
@@ -563,7 +563,7 @@ extension on TranslationsTaIn {
 			'aqi_help_dominant' => 'அதிகபட்ச மாசு அளவு',
 			'aqi_help_advice_label' => 'பரிந்துரை',
 			'aqi_help_source' => 'மூலம்: Open-Meteo Air Quality API — தரை மட்ட செறிவு (~10 மீ), ~11 கிமீ கட்டம்.',
-			'widget_battery_hint' => 'நம்பகமான விட்ஜெட் புதுப்பிப்புகளுக்கு, ஆப் settings-ல் Rain-க்கான battery கட்டுப்பாட்டை அணைக்கவும்',
+			'widget_battery_hint' => 'நம்பகமான விட்ஜெட் புதுப்பிப்புகளுக்கு, ஆப் settings-ல் Weather-க்கான battery கட்டுப்பாட்டை அணைக்கவும்',
 			'persistent_notification' => 'நிரந்தர அறிவிப்பு',
 			'last_updated' => 'புதுப்பிக்கப்பட்டது',
 			'app_font' => 'எழுத்துரு',

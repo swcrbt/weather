@@ -16,8 +16,8 @@ Future<FileCacheStore> openMapTilesCacheStore() async {
   );
 }
 
-/// Builds the standard OpenStreetMap [TileLayer] for Rain map screens.
-TileLayer buildRainMapTileLayer({CacheStore? cacheStore}) => TileLayer(
+/// Builds the standard OpenStreetMap [TileLayer] for Weather map screens.
+TileLayer buildWeatherMapTileLayer({CacheStore? cacheStore}) => TileLayer(
   urlTemplate: AppConstants.mapTileUrlTemplate,
   userAgentPackageName: AppConstants.mapUserAgentPackageName,
   tileProvider: cacheStore == null
@@ -29,7 +29,7 @@ TileLayer buildRainMapTileLayer({CacheStore? cacheStore}) => TileLayer(
 );
 
 /// Wraps [child] with the shared dark-mode color filter when [isDark] is true.
-Widget buildRainMapDarkModeFilter({
+Widget buildWeatherMapDarkModeFilter({
   required bool isDark,
   required Widget child,
 }) {

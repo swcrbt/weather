@@ -240,7 +240,7 @@ class TranslationsEsEs extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Mayor nivel de contaminante';
 	@override String get aqi_help_advice_label => 'Recomendación';
 	@override String get aqi_help_source => 'Fuente: Open-Meteo Air Quality API — concentraciones a nivel del suelo (~10 m), cuadrícula ~11 km.';
-	@override String get widget_battery_hint => 'Para actualizaciones fiables del widget, desactiva la optimización de batería de Rain en los ajustes de la aplicación';
+	@override String get widget_battery_hint => 'Para actualizaciones fiables del widget, desactiva la optimización de batería de Weather en los ajustes de la aplicación';
 	@override String get persistent_notification => 'Notificación persistente';
 	@override String get last_updated => 'Actualizado';
 	@override String get app_font => 'Fuente';
@@ -563,7 +563,7 @@ extension on TranslationsEsEs {
 			'aqi_help_dominant' => 'Mayor nivel de contaminante',
 			'aqi_help_advice_label' => 'Recomendación',
 			'aqi_help_source' => 'Fuente: Open-Meteo Air Quality API — concentraciones a nivel del suelo (~10 m), cuadrícula ~11 km.',
-			'widget_battery_hint' => 'Para actualizaciones fiables del widget, desactiva la optimización de batería de Rain en los ajustes de la aplicación',
+			'widget_battery_hint' => 'Para actualizaciones fiables del widget, desactiva la optimización de batería de Weather en los ajustes de la aplicación',
 			'persistent_notification' => 'Notificación persistente',
 			'last_updated' => 'Actualizado',
 			'app_font' => 'Fuente',

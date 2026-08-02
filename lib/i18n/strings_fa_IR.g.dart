@@ -240,7 +240,7 @@ class TranslationsFaIr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'بالاترین سطح آلاینده';
 	@override String get aqi_help_advice_label => 'توصیه';
 	@override String get aqi_help_source => 'منبع: Open-Meteo Air Quality API — غلظت در سطح زمین (~۱۰ م)، شبکهٔ ~۱۱ کیلومتر.';
-	@override String get widget_battery_hint => 'برای به‌روزرسانی پایدار ویجت، بهینه‌سازی باتری Rain را در تنظیمات برنامه غیرفعال کنید';
+	@override String get widget_battery_hint => 'برای به‌روزرسانی پایدار ویجت، بهینه‌سازی باتری Weather را در تنظیمات برنامه غیرفعال کنید';
 	@override String get persistent_notification => 'اعلان دائمی';
 	@override String get last_updated => 'به‌روزرسانی';
 	@override String get app_font => 'قلم';
@@ -563,7 +563,7 @@ extension on TranslationsFaIr {
 			'aqi_help_dominant' => 'بالاترین سطح آلاینده',
 			'aqi_help_advice_label' => 'توصیه',
 			'aqi_help_source' => 'منبع: Open-Meteo Air Quality API — غلظت در سطح زمین (~۱۰ م)، شبکهٔ ~۱۱ کیلومتر.',
-			'widget_battery_hint' => 'برای به‌روزرسانی پایدار ویجت، بهینه‌سازی باتری Rain را در تنظیمات برنامه غیرفعال کنید',
+			'widget_battery_hint' => 'برای به‌روزرسانی پایدار ویجت، بهینه‌سازی باتری Weather را در تنظیمات برنامه غیرفعال کنید',
 			'persistent_notification' => 'اعلان دائمی',
 			'last_updated' => 'به‌روزرسانی',
 			'app_font' => 'قلم',

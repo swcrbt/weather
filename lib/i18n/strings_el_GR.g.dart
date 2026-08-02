@@ -240,7 +240,7 @@ class TranslationsElGr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Υψηλότερο επίπεδο ρύπου';
 	@override String get aqi_help_advice_label => 'Σύσταση';
 	@override String get aqi_help_source => 'Πηγή: Open-Meteo Air Quality API — συγκεντρώσεις στο έδαφος (~10 μ), πλέγμα ~11 χλμ.';
-	@override String get widget_battery_hint => 'Για αξιόπιστες ενημερώσεις widget, απενεργοποιήστε τη βελτιστοποίηση μπαταρίας για το Rain στις ρυθμίσεις της εφαρμογής';
+	@override String get widget_battery_hint => 'Για αξιόπιστες ενημερώσεις widget, απενεργοποιήστε τη βελτιστοποίηση μπαταρίας για το Weather στις ρυθμίσεις της εφαρμογής';
 	@override String get persistent_notification => 'Μόνιμη ειδοποίηση';
 	@override String get last_updated => 'Ενημερώθηκε';
 	@override String get app_font => 'Γραμματοσειρά';
@@ -563,7 +563,7 @@ extension on TranslationsElGr {
 			'aqi_help_dominant' => 'Υψηλότερο επίπεδο ρύπου',
 			'aqi_help_advice_label' => 'Σύσταση',
 			'aqi_help_source' => 'Πηγή: Open-Meteo Air Quality API — συγκεντρώσεις στο έδαφος (~10 μ), πλέγμα ~11 χλμ.',
-			'widget_battery_hint' => 'Για αξιόπιστες ενημερώσεις widget, απενεργοποιήστε τη βελτιστοποίηση μπαταρίας για το Rain στις ρυθμίσεις της εφαρμογής',
+			'widget_battery_hint' => 'Για αξιόπιστες ενημερώσεις widget, απενεργοποιήστε τη βελτιστοποίηση μπαταρίας για το Weather στις ρυθμίσεις της εφαρμογής',
 			'persistent_notification' => 'Μόνιμη ειδοποίηση',
 			'last_updated' => 'Ενημερώθηκε',
 			'app_font' => 'Γραμματοσειρά',

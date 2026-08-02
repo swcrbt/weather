@@ -240,7 +240,7 @@ class TranslationsCsCz extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Nejvyšší hladina znečišťovadla';
 	@override String get aqi_help_advice_label => 'Doporučení';
 	@override String get aqi_help_source => 'Zdroj: Open-Meteo Air Quality API — koncentrace u země (~10 m), mřížka ~11 km.';
-	@override String get widget_battery_hint => 'Pro spolehlivé aktualizace widgetu vypněte optimalizaci baterie pro Rain v nastavení aplikace';
+	@override String get widget_battery_hint => 'Pro spolehlivé aktualizace widgetu vypněte optimalizaci baterie pro Weather v nastavení aplikace';
 	@override String get persistent_notification => 'Trvalé oznámení';
 	@override String get last_updated => 'Aktualizováno';
 	@override String get app_font => 'Písmo';
@@ -563,7 +563,7 @@ extension on TranslationsCsCz {
 			'aqi_help_dominant' => 'Nejvyšší hladina znečišťovadla',
 			'aqi_help_advice_label' => 'Doporučení',
 			'aqi_help_source' => 'Zdroj: Open-Meteo Air Quality API — koncentrace u země (~10 m), mřížka ~11 km.',
-			'widget_battery_hint' => 'Pro spolehlivé aktualizace widgetu vypněte optimalizaci baterie pro Rain v nastavení aplikace',
+			'widget_battery_hint' => 'Pro spolehlivé aktualizace widgetu vypněte optimalizaci baterie pro Weather v nastavení aplikace',
 			'persistent_notification' => 'Trvalé oznámení',
 			'last_updated' => 'Aktualizováno',
 			'app_font' => 'Písmo',

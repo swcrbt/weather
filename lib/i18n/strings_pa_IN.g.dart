@@ -240,7 +240,7 @@ class TranslationsPaIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'ਸਭ ਤੋਂ ਵੱਧ ਪ੍ਰਦੂਸ਼ਕ ਪੱਧਰ';
 	@override String get aqi_help_advice_label => 'ਸਿਫ਼ਾਰਿਸ਼';
 	@override String get aqi_help_source => 'ਸਰੋਤ: Open-Meteo Air Quality API — ਜ਼ਮੀਨੀ ਪੱਧਰ ਦੀ ਸਾਂਦ੍ਰਤਾ (~10 ਮੀ), ~11 ਕਿਮੀ ਗ੍ਰਿਡ।';
-	@override String get widget_battery_hint => 'ਭਰੋਸੇਮੰਦ ਵਿਜੇਟ ਅਪਡੇਟ ਲਈ ਐਪ ਸੈਟਿੰਗਾਂ ਵਿੱਚ Rain ਲਈ ਬੈਟਰੀ ਸੀਮਾ ਬੰਦ ਕਰੋ';
+	@override String get widget_battery_hint => 'ਭਰੋਸੇਮੰਦ ਵਿਜੇਟ ਅਪਡੇਟ ਲਈ ਐਪ ਸੈਟਿੰਗਾਂ ਵਿੱਚ Weather ਲਈ ਬੈਟਰੀ ਸੀਮਾ ਬੰਦ ਕਰੋ';
 	@override String get persistent_notification => 'ਸਥਾਈ ਸੂਚਨਾ';
 	@override String get last_updated => 'ਅਪਡੇਟ ਕੀਤਾ';
 	@override String get app_font => 'ਫੌਂਟ';
@@ -563,7 +563,7 @@ extension on TranslationsPaIn {
 			'aqi_help_dominant' => 'ਸਭ ਤੋਂ ਵੱਧ ਪ੍ਰਦੂਸ਼ਕ ਪੱਧਰ',
 			'aqi_help_advice_label' => 'ਸਿਫ਼ਾਰਿਸ਼',
 			'aqi_help_source' => 'ਸਰੋਤ: Open-Meteo Air Quality API — ਜ਼ਮੀਨੀ ਪੱਧਰ ਦੀ ਸਾਂਦ੍ਰਤਾ (~10 ਮੀ), ~11 ਕਿਮੀ ਗ੍ਰਿਡ।',
-			'widget_battery_hint' => 'ਭਰੋਸੇਮੰਦ ਵਿਜੇਟ ਅਪਡੇਟ ਲਈ ਐਪ ਸੈਟਿੰਗਾਂ ਵਿੱਚ Rain ਲਈ ਬੈਟਰੀ ਸੀਮਾ ਬੰਦ ਕਰੋ',
+			'widget_battery_hint' => 'ਭਰੋਸੇਮੰਦ ਵਿਜੇਟ ਅਪਡੇਟ ਲਈ ਐਪ ਸੈਟਿੰਗਾਂ ਵਿੱਚ Weather ਲਈ ਬੈਟਰੀ ਸੀਮਾ ਬੰਦ ਕਰੋ',
 			'persistent_notification' => 'ਸਥਾਈ ਸੂਚਨਾ',
 			'last_updated' => 'ਅਪਡੇਟ ਕੀਤਾ',
 			'app_font' => 'ਫੌਂਟ',

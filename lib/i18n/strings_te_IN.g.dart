@@ -240,7 +240,7 @@ class TranslationsTeIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'అత్యధిక కాలుష్య స్థాయి';
 	@override String get aqi_help_advice_label => 'సిఫార్సు';
 	@override String get aqi_help_source => 'మూలం: Open-Meteo Air Quality API — నేల స్థాయి సాంద్రత (~10 మీ), ~11 కిమీ గ్రిడ్.';
-	@override String get widget_battery_hint => 'నమ్మకమైన విడ్జెట్ నవీకరణల కోసం యాప్ సెట్టింగ్‌లలో Rain కోసం బ్యాటరీ పరిమితిని నిలిపివేయండి';
+	@override String get widget_battery_hint => 'నమ్మకమైన విడ్జెట్ నవీకరణల కోసం యాప్ సెట్టింగ్‌లలో Weather కోసం బ్యాటరీ పరిమితిని నిలిపివేయండి';
 	@override String get persistent_notification => 'శాశ్వత నోటిఫికేషన్';
 	@override String get last_updated => 'నవీకరించబడింది';
 	@override String get app_font => 'ఫాంట్';
@@ -563,7 +563,7 @@ extension on TranslationsTeIn {
 			'aqi_help_dominant' => 'అత్యధిక కాలుష్య స్థాయి',
 			'aqi_help_advice_label' => 'సిఫార్సు',
 			'aqi_help_source' => 'మూలం: Open-Meteo Air Quality API — నేల స్థాయి సాంద్రత (~10 మీ), ~11 కిమీ గ్రిడ్.',
-			'widget_battery_hint' => 'నమ్మకమైన విడ్జెట్ నవీకరణల కోసం యాప్ సెట్టింగ్‌లలో Rain కోసం బ్యాటరీ పరిమితిని నిలిపివేయండి',
+			'widget_battery_hint' => 'నమ్మకమైన విడ్జెట్ నవీకరణల కోసం యాప్ సెట్టింగ్‌లలో Weather కోసం బ్యాటరీ పరిమితిని నిలిపివేయండి',
 			'persistent_notification' => 'శాశ్వత నోటిఫికేషన్',
 			'last_updated' => 'నవీకరించబడింది',
 			'app_font' => 'ఫాంట్',

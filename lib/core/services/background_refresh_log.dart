@@ -23,9 +23,9 @@ Future<void> recordBackgroundRefreshResult({
   }
 
   if (success) {
-    debugPrint('RainBackground: refresh succeeded at $now');
+    debugPrint('WeatherBackground: refresh succeeded at $now');
   } else {
-    debugPrint('RainBackground: refresh failed at $now — $error');
+    debugPrint('WeatherBackground: refresh failed at $now — $error');
   }
 }
 

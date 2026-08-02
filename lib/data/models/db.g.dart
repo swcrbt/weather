@@ -13718,14 +13718,14 @@ extension MainWeatherCacheQueryWhereDistinct
     });
   }
 
-  QueryBuilder<MainWeatherCache, MainWeatherCache, QDistinct> distinctByRain() {
+  QueryBuilder<MainWeatherCache, MainWeatherCache, QDistinct> distinctByWeather() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'rain');
     });
   }
 
   QueryBuilder<MainWeatherCache, MainWeatherCache, QDistinct>
-  distinctByRainSum() {
+  distinctByWeatherSum() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'rainSum');
     });
@@ -24548,13 +24548,13 @@ extension WeatherCardQueryWhereDistinct
     });
   }
 
-  QueryBuilder<WeatherCard, WeatherCard, QDistinct> distinctByRain() {
+  QueryBuilder<WeatherCard, WeatherCard, QDistinct> distinctByWeather() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'rain');
     });
   }
 
-  QueryBuilder<WeatherCard, WeatherCard, QDistinct> distinctByRainSum() {
+  QueryBuilder<WeatherCard, WeatherCard, QDistinct> distinctByWeatherSum() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'rainSum');
     });

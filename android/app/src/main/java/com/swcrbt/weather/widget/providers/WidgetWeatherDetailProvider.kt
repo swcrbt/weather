@@ -1,16 +1,16 @@
-package com.yoshi.rain.widget.providers
+package com.swcrbt.weather.widget.providers
 
 import android.content.Context
 import android.widget.RemoteViews
-import com.yoshi.rain.R
-import com.yoshi.rain.widget.RainHomeWidgetProvider
-import com.yoshi.rain.widget.WidgetBundle
+import com.swcrbt.weather.R
+import com.swcrbt.weather.widget.WeatherHomeWidgetProvider
+import com.swcrbt.weather.widget.WidgetBundle
 
 /**
  * 5x2 尺寸天气详情小部件提供者
  * 显示：时间、农历、温度、AQI、降水预警、5天预报
  */
-class WidgetWeatherDetailProvider : RainHomeWidgetProvider() {
+class WidgetWeatherDetailProvider : WeatherHomeWidgetProvider() {
 
     override fun buildViews(context: Context, bundle: WidgetBundle): RemoteViews {
         val views = RemoteViews(context.packageName, R.layout.widget_weather_detail)

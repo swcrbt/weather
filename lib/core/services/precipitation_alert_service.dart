@@ -33,40 +33,40 @@ class PrecipitationAlertService {
       }
 
       // 查找第一个有降水的时间点
-      int firstRainIndex = -1;
-      double firstRainAmount = 0.0;
+      int firstWeatherIndex = -1;
+      double firstWeatherAmount = 0.0;
       
       for (int i = 0; i < minutely.length; i++) {
         final minute = minutely[i] as Map<String, dynamic>;
         final precip = double.tryParse(minute['precip'].toString()) ?? 0.0;
         
         if (precip > 0) {
-          firstRainIndex = i;
-          firstRainAmount = precip;
+          firstWeatherIndex = i;
+          firstWeatherAmount = precip;
           break;
         }
       }
 
       // 如果没有降水
-      if (firstRainIndex == -1) {
+      if (firstWeatherIndex == -1) {
         return null;
       }
 
       // 计算距离降水开始的时间（分钟）
-      final minutesUntilRain = firstRainIndex * 5; // 每5分钟一个数据点
+      final minutesUntilWeather = firstWeatherIndex * 5; // 每5分钟一个数据点
       
       // 判断降水强度
-      String intensity = _getIntensityDescription(firstRainAmount);
+      String intensity = _getIntensityDescription(firstWeatherAmount);
       
       // 生成预警信息
-      if (minutesUntilRain == 0) {
+      if (minutesUntilWeather == 0) {
         return '正在下$intensity';
-      } else if (minutesUntilRain <= 30) {
-        return '$minutesUntilRain分钟后开始下$intensity';
-      } else if (minutesUntilRain <= 60) {
-        return '${minutesUntilRain ~/ 60}小时${minutesUntilRain % 60}分钟后开始下$intensity';
+      } else if (minutesUntilWeather <= 30) {
+        return '$minutesUntilWeather分钟后开始下$intensity';
+      } else if (minutesUntilWeather <= 60) {
+        return '${minutesUntilWeather ~/ 60}小时${minutesUntilWeather % 60}分钟后开始下$intensity';
       } else {
-        return '${minutesUntilRain ~/ 60}小时后开始下$intensity';
+        return '${minutesUntilWeather ~/ 60}小时后开始下$intensity';
       }
 
     } catch (e) {

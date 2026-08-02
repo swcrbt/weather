@@ -240,7 +240,7 @@ class TranslationsPtBr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Maior nível de poluente';
 	@override String get aqi_help_advice_label => 'Recomendação';
 	@override String get aqi_help_source => 'Fonte: Open-Meteo Air Quality API — concentrações ao nível do solo (~10 m), grade ~11 km.';
-	@override String get widget_battery_hint => 'Para atualizações confiáveis do widget, desative a otimização de bateria do Rain nas configurações do app';
+	@override String get widget_battery_hint => 'Para atualizações confiáveis do widget, desative a otimização de bateria do Weather nas configurações do app';
 	@override String get persistent_notification => 'Notificação persistente';
 	@override String get last_updated => 'Atualizado';
 	@override String get app_font => 'Fonte';
@@ -563,7 +563,7 @@ extension on TranslationsPtBr {
 			'aqi_help_dominant' => 'Maior nível de poluente',
 			'aqi_help_advice_label' => 'Recomendação',
 			'aqi_help_source' => 'Fonte: Open-Meteo Air Quality API — concentrações ao nível do solo (~10 m), grade ~11 km.',
-			'widget_battery_hint' => 'Para atualizações confiáveis do widget, desative a otimização de bateria do Rain nas configurações do app',
+			'widget_battery_hint' => 'Para atualizações confiáveis do widget, desative a otimização de bateria do Weather nas configurações do app',
 			'persistent_notification' => 'Notificação persistente',
 			'last_updated' => 'Atualizado',
 			'app_font' => 'Fonte',

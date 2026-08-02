@@ -240,7 +240,7 @@ class TranslationsGaIe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Leibhéal is airde truailleáin';
 	@override String get aqi_help_advice_label => 'Moladh';
 	@override String get aqi_help_source => 'Foinse: Open-Meteo Air Quality API — tiúchan ag leibhéal na talún (~10 m), greille ~11 km.';
-	@override String get widget_battery_hint => 'Le haghaidh nuashonruithe iontaofa giuirléid, díchumasaigh optamú ceallraí do Rain sna socruithe aipe';
+	@override String get widget_battery_hint => 'Le haghaidh nuashonruithe iontaofa giuirléid, díchumasaigh optamú ceallraí do Weather sna socruithe aipe';
 	@override String get persistent_notification => 'Fógra buan';
 	@override String get last_updated => 'Nuashonraithe';
 	@override String get app_font => 'Cló';
@@ -563,7 +563,7 @@ extension on TranslationsGaIe {
 			'aqi_help_dominant' => 'Leibhéal is airde truailleáin',
 			'aqi_help_advice_label' => 'Moladh',
 			'aqi_help_source' => 'Foinse: Open-Meteo Air Quality API — tiúchan ag leibhéal na talún (~10 m), greille ~11 km.',
-			'widget_battery_hint' => 'Le haghaidh nuashonruithe iontaofa giuirléid, díchumasaigh optamú ceallraí do Rain sna socruithe aipe',
+			'widget_battery_hint' => 'Le haghaidh nuashonruithe iontaofa giuirléid, díchumasaigh optamú ceallraí do Weather sna socruithe aipe',
 			'persistent_notification' => 'Fógra buan',
 			'last_updated' => 'Nuashonraithe',
 			'app_font' => 'Cló',

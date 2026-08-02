@@ -240,7 +240,7 @@ class TranslationsOrIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'ସର୍ବୋଚ୍ଚ ପ୍ରଦୂଷକ ସ୍ତର';
 	@override String get aqi_help_advice_label => 'ସୁପାରିଶ';
 	@override String get aqi_help_source => 'ଉତ୍ସ: Open-Meteo Air Quality API — ଭୂମି ସ୍ତରର ଘନତା (~10 ମି), ~11 କିମି ଗ୍ରିଡ୍।';
-	@override String get widget_battery_hint => 'ନିର୍ଭରଯୋଗ୍ୟ ୱିଜେଟ୍ ଅପଡେଟ୍ ପାଇଁ ଆପ୍ ସେଟିଂସ୍‌ରେ Rain ପାଇଁ ବ୍ୟାଟେରୀ ଅପ୍ଟିମାଇଜେସନ୍ ବନ୍ଦ କରନ୍ତୁ';
+	@override String get widget_battery_hint => 'ନିର୍ଭରଯୋଗ୍ୟ ୱିଜେଟ୍ ଅପଡେଟ୍ ପାଇଁ ଆପ୍ ସେଟିଂସ୍‌ରେ Weather ପାଇଁ ବ୍ୟାଟେରୀ ଅପ୍ଟିମାଇଜେସନ୍ ବନ୍ଦ କରନ୍ତୁ';
 	@override String get persistent_notification => 'ସ୍ଥାୟୀ ବିଜ୍ଞପ୍ତି';
 	@override String get last_updated => 'ଅପଡେଟ୍ ହୋଇଛି';
 	@override String get app_font => 'ଫଣ୍ଟ';
@@ -563,7 +563,7 @@ extension on TranslationsOrIn {
 			'aqi_help_dominant' => 'ସର୍ବୋଚ୍ଚ ପ୍ରଦୂଷକ ସ୍ତର',
 			'aqi_help_advice_label' => 'ସୁପାରିଶ',
 			'aqi_help_source' => 'ଉତ୍ସ: Open-Meteo Air Quality API — ଭୂମି ସ୍ତରର ଘନତା (~10 ମି), ~11 କିମି ଗ୍ରିଡ୍।',
-			'widget_battery_hint' => 'ନିର୍ଭରଯୋଗ୍ୟ ୱିଜେଟ୍ ଅପଡେଟ୍ ପାଇଁ ଆପ୍ ସେଟିଂସ୍‌ରେ Rain ପାଇଁ ବ୍ୟାଟେରୀ ଅପ୍ଟିମାଇଜେସନ୍ ବନ୍ଦ କରନ୍ତୁ',
+			'widget_battery_hint' => 'ନିର୍ଭରଯୋଗ୍ୟ ୱିଜେଟ୍ ଅପଡେଟ୍ ପାଇଁ ଆପ୍ ସେଟିଂସ୍‌ରେ Weather ପାଇଁ ବ୍ୟାଟେରୀ ଅପ୍ଟିମାଇଜେସନ୍ ବନ୍ଦ କରନ୍ତୁ',
 			'persistent_notification' => 'ସ୍ଥାୟୀ ବିଜ୍ଞପ୍ତି',
 			'last_updated' => 'ଅପଡେଟ୍ ହୋଇଛି',
 			'app_font' => 'ଫଣ୍ଟ',

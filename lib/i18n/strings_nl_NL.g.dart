@@ -240,7 +240,7 @@ class TranslationsNlNl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Hoogste vervuilingsniveau';
 	@override String get aqi_help_advice_label => 'Aanbeveling';
 	@override String get aqi_help_source => 'Bron: Open-Meteo Air Quality API — concentraties op grondniveau (~10 m), raster ~11 km.';
-	@override String get widget_battery_hint => 'Schakel voor betrouwbare widget-updates batterijoptimalisatie voor Rain uit in de app-instellingen';
+	@override String get widget_battery_hint => 'Schakel voor betrouwbare widget-updates batterijoptimalisatie voor Weather uit in de app-instellingen';
 	@override String get persistent_notification => 'Vaste melding';
 	@override String get last_updated => 'Bijgewerkt';
 	@override String get app_font => 'Lettertype';
@@ -563,7 +563,7 @@ extension on TranslationsNlNl {
 			'aqi_help_dominant' => 'Hoogste vervuilingsniveau',
 			'aqi_help_advice_label' => 'Aanbeveling',
 			'aqi_help_source' => 'Bron: Open-Meteo Air Quality API — concentraties op grondniveau (~10 m), raster ~11 km.',
-			'widget_battery_hint' => 'Schakel voor betrouwbare widget-updates batterijoptimalisatie voor Rain uit in de app-instellingen',
+			'widget_battery_hint' => 'Schakel voor betrouwbare widget-updates batterijoptimalisatie voor Weather uit in de app-instellingen',
 			'persistent_notification' => 'Vaste melding',
 			'last_updated' => 'Bijgewerkt',
 			'app_font' => 'Lettertype',

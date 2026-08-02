@@ -240,7 +240,7 @@ class TranslationsUrPk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'سب سے زیادہ آلودگی کی سطح';
 	@override String get aqi_help_advice_label => 'سفارش';
 	@override String get aqi_help_source => 'ماخذ: Open-Meteo Air Quality API — زمینی سطح کی ارتکاز (~10 میٹر)، ~11 کلومیٹر گرڈ۔';
-	@override String get widget_battery_hint => 'قابلِ اعتماد ویجٹ اپ ڈیٹس کے لیے ایپ کی ترتیبات میں Rain کی بیٹری پابندی بند کریں';
+	@override String get widget_battery_hint => 'قابلِ اعتماد ویجٹ اپ ڈیٹس کے لیے ایپ کی ترتیبات میں Weather کی بیٹری پابندی بند کریں';
 	@override String get persistent_notification => 'مستقل اطلاع';
 	@override String get last_updated => 'اپ ڈیٹ';
 	@override String get app_font => 'فونٹ';
@@ -563,7 +563,7 @@ extension on TranslationsUrPk {
 			'aqi_help_dominant' => 'سب سے زیادہ آلودگی کی سطح',
 			'aqi_help_advice_label' => 'سفارش',
 			'aqi_help_source' => 'ماخذ: Open-Meteo Air Quality API — زمینی سطح کی ارتکاز (~10 میٹر)، ~11 کلومیٹر گرڈ۔',
-			'widget_battery_hint' => 'قابلِ اعتماد ویجٹ اپ ڈیٹس کے لیے ایپ کی ترتیبات میں Rain کی بیٹری پابندی بند کریں',
+			'widget_battery_hint' => 'قابلِ اعتماد ویجٹ اپ ڈیٹس کے لیے ایپ کی ترتیبات میں Weather کی بیٹری پابندی بند کریں',
 			'persistent_notification' => 'مستقل اطلاع',
 			'last_updated' => 'اپ ڈیٹ',
 			'app_font' => 'فونٹ',

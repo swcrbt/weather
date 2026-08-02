@@ -1,4 +1,4 @@
-package com.yoshi.rain.widget
+package com.swcrbt.weather.widget
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -15,7 +15,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
-import com.yoshi.rain.R
+import com.swcrbt.weather.R
 
 object WidgetIconHelper {
     private const val TAG = "WidgetIconHelper"

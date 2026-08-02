@@ -15,37 +15,37 @@ class WidgetDefinition {
   final String labelKey;
 }
 
-/// All Rain home-screen widgets registered in the app.
+/// All Weather home-screen widgets registered in the app.
 ///
-/// Keep in sync with [RainHomeWidgetProvider] provider classes and
+/// Keep in sync with [WeatherHomeWidgetProvider] provider classes and
 /// `AndroidManifest.xml` receivers.
 const List<WidgetDefinition> rainWidgetRegistry = [
   WidgetDefinition(
     id: 'material_you_forecast_1x1',
     androidName: 'WidgetMaterialYouForecast1x1Provider',
     qualifiedAndroidName:
-        'com.yoshi.rain.widget.providers.WidgetMaterialYouForecast1x1Provider',
+        'com.swcrbt.weather.widget.providers.WidgetMaterialYouForecast1x1Provider',
     labelKey: 'widgetMaterialYouCompact',
   ),
   WidgetDefinition(
     id: 'material_you_current',
     androidName: 'WidgetMaterialYouCurrentProvider',
     qualifiedAndroidName:
-        'com.yoshi.rain.widget.providers.WidgetMaterialYouCurrentProvider',
+        'com.swcrbt.weather.widget.providers.WidgetMaterialYouCurrentProvider',
     labelKey: 'widgetMaterialYouCurrent',
   ),
   WidgetDefinition(
     id: 'clock',
     androidName: 'WidgetClockDayHorizontalProvider',
     qualifiedAndroidName:
-        'com.yoshi.rain.widget.providers.WidgetClockDayHorizontalProvider',
+        'com.swcrbt.weather.widget.providers.WidgetClockDayHorizontalProvider',
     labelKey: 'widgetMaterialYouClock',
   ),
   WidgetDefinition(
     id: 'weather_detail',
     androidName: 'WidgetWeatherDetailProvider',
     qualifiedAndroidName:
-        'com.yoshi.rain.widget.providers.WidgetWeatherDetailProvider',
+        'com.swcrbt.weather.widget.providers.WidgetWeatherDetailProvider',
     labelKey: 'widgetWeatherDetail',
   ),
 ];

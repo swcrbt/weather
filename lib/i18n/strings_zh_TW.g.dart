@@ -240,7 +240,7 @@ class TranslationsZhTw extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => '最高污染物濃度';
 	@override String get aqi_help_advice_label => '建議';
 	@override String get aqi_help_source => '來源：Open-Meteo Air Quality API — 近地面濃度（約 10 公尺），約 11 公里網格。';
-	@override String get widget_battery_hint => '為確保小工具可靠更新，請在應用程式設定中關閉 Rain 的電池最佳化';
+	@override String get widget_battery_hint => '為確保小工具可靠更新，請在應用程式設定中關閉 Weather 的電池最佳化';
 	@override String get persistent_notification => '常駐通知';
 	@override String get last_updated => '已更新';
 	@override String get app_font => '字體';
@@ -563,7 +563,7 @@ extension on TranslationsZhTw {
 			'aqi_help_dominant' => '最高污染物濃度',
 			'aqi_help_advice_label' => '建議',
 			'aqi_help_source' => '來源：Open-Meteo Air Quality API — 近地面濃度（約 10 公尺），約 11 公里網格。',
-			'widget_battery_hint' => '為確保小工具可靠更新，請在應用程式設定中關閉 Rain 的電池最佳化',
+			'widget_battery_hint' => '為確保小工具可靠更新，請在應用程式設定中關閉 Weather 的電池最佳化',
 			'persistent_notification' => '常駐通知',
 			'last_updated' => '已更新',
 			'app_font' => '字體',

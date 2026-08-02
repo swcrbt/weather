@@ -240,7 +240,7 @@ class TranslationsKoKr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => '가장 높은 오염물질 수준';
 	@override String get aqi_help_advice_label => '권장 사항';
 	@override String get aqi_help_source => '출처: Open-Meteo Air Quality API — 지상 농도(~10 m), ~11 km 격자.';
-	@override String get widget_battery_hint => '위젯을 안정적으로 업데이트하려면 앱 설정에서 Rain의 배터리 최적화를 끄세요';
+	@override String get widget_battery_hint => '위젯을 안정적으로 업데이트하려면 앱 설정에서 Weather의 배터리 최적화를 끄세요';
 	@override String get persistent_notification => '상시 알림';
 	@override String get last_updated => '업데이트';
 	@override String get app_font => '글꼴';
@@ -563,7 +563,7 @@ extension on TranslationsKoKr {
 			'aqi_help_dominant' => '가장 높은 오염물질 수준',
 			'aqi_help_advice_label' => '권장 사항',
 			'aqi_help_source' => '출처: Open-Meteo Air Quality API — 지상 농도(~10 m), ~11 km 격자.',
-			'widget_battery_hint' => '위젯을 안정적으로 업데이트하려면 앱 설정에서 Rain의 배터리 최적화를 끄세요',
+			'widget_battery_hint' => '위젯을 안정적으로 업데이트하려면 앱 설정에서 Weather의 배터리 최적화를 끄세요',
 			'persistent_notification' => '상시 알림',
 			'last_updated' => '업데이트',
 			'app_font' => '글꼴',

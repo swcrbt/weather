@@ -240,7 +240,7 @@ class TranslationsDaDk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Højeste forureningsniveau';
 	@override String get aqi_help_advice_label => 'Anbefaling';
 	@override String get aqi_help_source => 'Kilde: Open-Meteo Air Quality API — koncentrationer ved jorden (~10 m), ~11 km gitter.';
-	@override String get widget_battery_hint => 'For pålidelige widget-opdateringer skal du deaktivere batterioptimering for Rain i appindstillingerne';
+	@override String get widget_battery_hint => 'For pålidelige widget-opdateringer skal du deaktivere batterioptimering for Weather i appindstillingerne';
 	@override String get persistent_notification => 'Vedvarende notifikation';
 	@override String get last_updated => 'Opdateret';
 	@override String get app_font => 'Skrifttype';
@@ -563,7 +563,7 @@ extension on TranslationsDaDk {
 			'aqi_help_dominant' => 'Højeste forureningsniveau',
 			'aqi_help_advice_label' => 'Anbefaling',
 			'aqi_help_source' => 'Kilde: Open-Meteo Air Quality API — koncentrationer ved jorden (~10 m), ~11 km gitter.',
-			'widget_battery_hint' => 'For pålidelige widget-opdateringer skal du deaktivere batterioptimering for Rain i appindstillingerne',
+			'widget_battery_hint' => 'For pålidelige widget-opdateringer skal du deaktivere batterioptimering for Weather i appindstillingerne',
 			'persistent_notification' => 'Vedvarende notifikation',
 			'last_updated' => 'Opdateret',
 			'app_font' => 'Skrifttype',

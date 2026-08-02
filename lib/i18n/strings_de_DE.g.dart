@@ -240,7 +240,7 @@ class TranslationsDeDe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Höchster Schadstoffwert';
 	@override String get aqi_help_advice_label => 'Empfehlung';
 	@override String get aqi_help_source => 'Quelle: Open-Meteo Air Quality API — Bodenkonzentrationen (~10 m), ~11 km Raster.';
-	@override String get widget_battery_hint => 'Für zuverlässige Widget-Aktualisierungen deaktivieren Sie die Akku-Optimierung für Rain in den App-Einstellungen';
+	@override String get widget_battery_hint => 'Für zuverlässige Widget-Aktualisierungen deaktivieren Sie die Akku-Optimierung für Weather in den App-Einstellungen';
 	@override String get persistent_notification => 'Dauerhafte Benachrichtigung';
 	@override String get last_updated => 'Aktualisiert';
 	@override String get app_font => 'Schriftart';
@@ -563,7 +563,7 @@ extension on TranslationsDeDe {
 			'aqi_help_dominant' => 'Höchster Schadstoffwert',
 			'aqi_help_advice_label' => 'Empfehlung',
 			'aqi_help_source' => 'Quelle: Open-Meteo Air Quality API — Bodenkonzentrationen (~10 m), ~11 km Raster.',
-			'widget_battery_hint' => 'Für zuverlässige Widget-Aktualisierungen deaktivieren Sie die Akku-Optimierung für Rain in den App-Einstellungen',
+			'widget_battery_hint' => 'Für zuverlässige Widget-Aktualisierungen deaktivieren Sie die Akku-Optimierung für Weather in den App-Einstellungen',
 			'persistent_notification' => 'Dauerhafte Benachrichtigung',
 			'last_updated' => 'Aktualisiert',
 			'app_font' => 'Schriftart',

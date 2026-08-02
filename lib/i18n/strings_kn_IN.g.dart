@@ -240,7 +240,7 @@ class TranslationsKnIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'ಅತ್ಯಧಿಕ ಮಾಲಿನ್ಯ ಮಟ್ಟ';
 	@override String get aqi_help_advice_label => 'ಶಿಫಾರಸು';
 	@override String get aqi_help_source => 'ಮೂಲ: Open-Meteo Air Quality API — ನೆಲ ಮಟ್ಟದ ಸಾಂದ್ರತೆ (~10 ಮೀ), ~11 ಕಿಮೀ ಗ್ರಿಡ್.';
-	@override String get widget_battery_hint => 'ವಿಶ್ವಾಸಾರ್ಹ ವಿಜೆಟ್ ನವೀಕರಣಗಳಿಗಾಗಿ ಆ್ಯಪ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ Rain ಗಾಗಿ ಬ್ಯಾಟರಿ ನಿರ್ಬಂಧವನ್ನು ಆಫ್ ಮಾಡಿ';
+	@override String get widget_battery_hint => 'ವಿಶ್ವಾಸಾರ್ಹ ವಿಜೆಟ್ ನವೀಕರಣಗಳಿಗಾಗಿ ಆ್ಯಪ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ Weather ಗಾಗಿ ಬ್ಯಾಟರಿ ನಿರ್ಬಂಧವನ್ನು ಆಫ್ ಮಾಡಿ';
 	@override String get persistent_notification => 'ಸ್ಥಿರ ಅಧಿಸೂಚನೆ';
 	@override String get last_updated => 'ನವೀಕರಿಸಲಾಗಿದೆ';
 	@override String get app_font => 'ಫಾಂಟ್';
@@ -563,7 +563,7 @@ extension on TranslationsKnIn {
 			'aqi_help_dominant' => 'ಅತ್ಯಧಿಕ ಮಾಲಿನ್ಯ ಮಟ್ಟ',
 			'aqi_help_advice_label' => 'ಶಿಫಾರಸು',
 			'aqi_help_source' => 'ಮೂಲ: Open-Meteo Air Quality API — ನೆಲ ಮಟ್ಟದ ಸಾಂದ್ರತೆ (~10 ಮೀ), ~11 ಕಿಮೀ ಗ್ರಿಡ್.',
-			'widget_battery_hint' => 'ವಿಶ್ವಾಸಾರ್ಹ ವಿಜೆಟ್ ನವೀಕರಣಗಳಿಗಾಗಿ ಆ್ಯಪ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ Rain ಗಾಗಿ ಬ್ಯಾಟರಿ ನಿರ್ಬಂಧವನ್ನು ಆಫ್ ಮಾಡಿ',
+			'widget_battery_hint' => 'ವಿಶ್ವಾಸಾರ್ಹ ವಿಜೆಟ್ ನವೀಕರಣಗಳಿಗಾಗಿ ಆ್ಯಪ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ Weather ಗಾಗಿ ಬ್ಯಾಟರಿ ನಿರ್ಬಂಧವನ್ನು ಆಫ್ ಮಾಡಿ',
 			'persistent_notification' => 'ಸ್ಥಿರ ಅಧಿಸೂಚನೆ',
 			'last_updated' => 'ನವೀಕರಿಸಲಾಗಿದೆ',
 			'app_font' => 'ಫಾಂಟ್',

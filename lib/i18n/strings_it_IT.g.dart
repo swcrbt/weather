@@ -240,7 +240,7 @@ class TranslationsItIt extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Livello inquinante più alto';
 	@override String get aqi_help_advice_label => 'Raccomandazione';
 	@override String get aqi_help_source => 'Fonte: Open-Meteo Air Quality API — concentrazioni a livello del suolo (~10 m), griglia ~11 km.';
-	@override String get widget_battery_hint => 'Per aggiornamenti affidabili del widget, disattiva l\'ottimizzazione batteria per Rain nelle impostazioni dell\'app';
+	@override String get widget_battery_hint => 'Per aggiornamenti affidabili del widget, disattiva l\'ottimizzazione batteria per Weather nelle impostazioni dell\'app';
 	@override String get persistent_notification => 'Notifica persistente';
 	@override String get last_updated => 'Aggiornato';
 	@override String get app_font => 'Carattere';
@@ -563,7 +563,7 @@ extension on TranslationsItIt {
 			'aqi_help_dominant' => 'Livello inquinante più alto',
 			'aqi_help_advice_label' => 'Raccomandazione',
 			'aqi_help_source' => 'Fonte: Open-Meteo Air Quality API — concentrazioni a livello del suolo (~10 m), griglia ~11 km.',
-			'widget_battery_hint' => 'Per aggiornamenti affidabili del widget, disattiva l\'ottimizzazione batteria per Rain nelle impostazioni dell\'app',
+			'widget_battery_hint' => 'Per aggiornamenti affidabili del widget, disattiva l\'ottimizzazione batteria per Weather nelle impostazioni dell\'app',
 			'persistent_notification' => 'Notifica persistente',
 			'last_updated' => 'Aggiornato',
 			'app_font' => 'Carattere',

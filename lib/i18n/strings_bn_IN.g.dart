@@ -240,7 +240,7 @@ class TranslationsBnIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'সর্বোচ্চ দূষকের মাত্রা';
 	@override String get aqi_help_advice_label => 'সুপারিশ';
 	@override String get aqi_help_source => 'উৎস: Open-Meteo Air Quality API — ভূ-পৃষ্ঠের ঘনত্ব (~10 মি), ~11 কিমি গ্রিড।';
-	@override String get widget_battery_hint => 'নির্ভরযোগ্য উইজেট আপডেটের জন্য অ্যাপ সেটিংসে Rain-এর ব্যাটারি অপ্টিমাইজেশন বন্ধ করুন';
+	@override String get widget_battery_hint => 'নির্ভরযোগ্য উইজেট আপডেটের জন্য অ্যাপ সেটিংসে Weather-এর ব্যাটারি অপ্টিমাইজেশন বন্ধ করুন';
 	@override String get persistent_notification => 'স্থায়ী বিজ্ঞপ্তি';
 	@override String get last_updated => 'আপডেট হয়েছে';
 	@override String get app_font => 'ফন্ট';
@@ -563,7 +563,7 @@ extension on TranslationsBnIn {
 			'aqi_help_dominant' => 'সর্বোচ্চ দূষকের মাত্রা',
 			'aqi_help_advice_label' => 'সুপারিশ',
 			'aqi_help_source' => 'উৎস: Open-Meteo Air Quality API — ভূ-পৃষ্ঠের ঘনত্ব (~10 মি), ~11 কিমি গ্রিড।',
-			'widget_battery_hint' => 'নির্ভরযোগ্য উইজেট আপডেটের জন্য অ্যাপ সেটিংসে Rain-এর ব্যাটারি অপ্টিমাইজেশন বন্ধ করুন',
+			'widget_battery_hint' => 'নির্ভরযোগ্য উইজেট আপডেটের জন্য অ্যাপ সেটিংসে Weather-এর ব্যাটারি অপ্টিমাইজেশন বন্ধ করুন',
 			'persistent_notification' => 'স্থায়ী বিজ্ঞপ্তি',
 			'last_updated' => 'আপডেট হয়েছে',
 			'app_font' => 'ফন্ট',

@@ -211,7 +211,7 @@ class _LicenseAppHeader extends ConsumerWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'Rain',
+                          'Weather',
                           style: Theme.of(context).textTheme.titleLarge
                               ?.copyWith(
                                 fontWeight: FontWeight.w600,

@@ -240,7 +240,7 @@ class TranslationsArSa extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'أعلى مستوى للملوث';
 	@override String get aqi_help_advice_label => 'توصية';
 	@override String get aqi_help_source => 'المصدر: Open-Meteo Air Quality API — تركيزات على مستوى الأرض (~10 م)، شبكة ~11 كم.';
-	@override String get widget_battery_hint => 'لتحديثات موثوقة للأداة، عطّل تحسين البطارية لتطبيق Rain في إعدادات التطبيق';
+	@override String get widget_battery_hint => 'لتحديثات موثوقة للأداة، عطّل تحسين البطارية لتطبيق Weather في إعدادات التطبيق';
 	@override String get persistent_notification => 'إشعار دائم';
 	@override String get last_updated => 'تم التحديث';
 	@override String get app_font => 'الخط';
@@ -563,7 +563,7 @@ extension on TranslationsArSa {
 			'aqi_help_dominant' => 'أعلى مستوى للملوث',
 			'aqi_help_advice_label' => 'توصية',
 			'aqi_help_source' => 'المصدر: Open-Meteo Air Quality API — تركيزات على مستوى الأرض (~10 م)، شبكة ~11 كم.',
-			'widget_battery_hint' => 'لتحديثات موثوقة للأداة، عطّل تحسين البطارية لتطبيق Rain في إعدادات التطبيق',
+			'widget_battery_hint' => 'لتحديثات موثوقة للأداة، عطّل تحسين البطارية لتطبيق Weather في إعدادات التطبيق',
 			'persistent_notification' => 'إشعار دائم',
 			'last_updated' => 'تم التحديث',
 			'app_font' => 'الخط',

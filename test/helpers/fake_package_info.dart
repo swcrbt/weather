@@ -6,7 +6,7 @@ void installFakePackageInfo({
   String version = '1.0.0',
   String buildNumber = '1',
   String appName = 'Rain',
-  String packageName = 'com.yoshi.rain',
+  String packageName = 'com.swcrbt.weather',
 }) {
   const channel = MethodChannel('dev.fluttercommunity.plus/package_info');
   TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger

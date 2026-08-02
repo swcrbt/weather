@@ -240,7 +240,7 @@ class TranslationsMrIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'सर्वोच्च प्रदूषक पातळी';
 	@override String get aqi_help_advice_label => 'शिफारस';
 	@override String get aqi_help_source => 'स्रोत: Open-Meteo Air Quality API — जमिनीसपाटीची संकेंद्रता (~10 मी), ~11 किमी ग्रिड.';
-	@override String get widget_battery_hint => 'विश्वासार्ह विजेट अपडेटसाठी ॲप सेटिंग्जमध्ये Rain साठी बॅटरी निर्बंध बंद करा';
+	@override String get widget_battery_hint => 'विश्वासार्ह विजेट अपडेटसाठी ॲप सेटिंग्जमध्ये Weather साठी बॅटरी निर्बंध बंद करा';
 	@override String get persistent_notification => 'स्थायी सूचना';
 	@override String get last_updated => 'अद्यतनित';
 	@override String get app_font => 'फॉन्ट';
@@ -563,7 +563,7 @@ extension on TranslationsMrIn {
 			'aqi_help_dominant' => 'सर्वोच्च प्रदूषक पातळी',
 			'aqi_help_advice_label' => 'शिफारस',
 			'aqi_help_source' => 'स्रोत: Open-Meteo Air Quality API — जमिनीसपाटीची संकेंद्रता (~10 मी), ~11 किमी ग्रिड.',
-			'widget_battery_hint' => 'विश्वासार्ह विजेट अपडेटसाठी ॲप सेटिंग्जमध्ये Rain साठी बॅटरी निर्बंध बंद करा',
+			'widget_battery_hint' => 'विश्वासार्ह विजेट अपडेटसाठी ॲप सेटिंग्जमध्ये Weather साठी बॅटरी निर्बंध बंद करा',
 			'persistent_notification' => 'स्थायी सूचना',
 			'last_updated' => 'अद्यतनित',
 			'app_font' => 'फॉन्ट',

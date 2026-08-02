@@ -23,7 +23,7 @@ class AppFont {
   static const String ubuntu = 'ubuntu';
   static const String system = 'system';
 
-  /// Default font id (current Rain look).
+  /// Default font id (current Weather look).
   static const String defaultId = ubuntu;
 
   static const String _labelPrefix = 'font';

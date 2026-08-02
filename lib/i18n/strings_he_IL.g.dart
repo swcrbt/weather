@@ -240,7 +240,7 @@ class TranslationsHeIl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'רמת המזהם הגבוהה ביותר';
 	@override String get aqi_help_advice_label => 'המלצה';
 	@override String get aqi_help_source => 'מקור: Open-Meteo Air Quality API — ריכוזים בגובה הקרקע (~10 מ\'), רשת ~11 ק"מ.';
-	@override String get widget_battery_hint => 'לעדכוני ווידג\'ט אמינים, השבת אופטימיזציית סוללה עבור Rain בהגדרות האפליקציה';
+	@override String get widget_battery_hint => 'לעדכוני ווידג\'ט אמינים, השבת אופטימיזציית סוללה עבור Weather בהגדרות האפליקציה';
 	@override String get persistent_notification => 'התראה קבועה';
 	@override String get last_updated => 'עודכן';
 	@override String get app_font => 'גופן';
@@ -563,7 +563,7 @@ extension on TranslationsHeIl {
 			'aqi_help_dominant' => 'רמת המזהם הגבוהה ביותר',
 			'aqi_help_advice_label' => 'המלצה',
 			'aqi_help_source' => 'מקור: Open-Meteo Air Quality API — ריכוזים בגובה הקרקע (~10 מ\'), רשת ~11 ק"מ.',
-			'widget_battery_hint' => 'לעדכוני ווידג\'ט אמינים, השבת אופטימיזציית סוללה עבור Rain בהגדרות האפליקציה',
+			'widget_battery_hint' => 'לעדכוני ווידג\'ט אמינים, השבת אופטימיזציית סוללה עבור Weather בהגדרות האפליקציה',
 			'persistent_notification' => 'התראה קבועה',
 			'last_updated' => 'עודכן',
 			'app_font' => 'גופן',

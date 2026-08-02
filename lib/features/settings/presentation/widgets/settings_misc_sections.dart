@@ -109,7 +109,7 @@ class _SettingsMiscSectionsState
             SettingsTile(
               leading: const Icon(LineAwesomeIcons.telegram),
               title: 'telegram',
-              onTap: () => openUrl('https://t.me/darkmoonightX'),
+              onTap: () => openUrl('https://t.me/swcrbt'),
             ),
           ],
         ),

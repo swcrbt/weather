@@ -1,112 +1,269 @@
+# 🌦️ 天气应用
+
 <div align='center'>
-    <img src='/readme/icon.png' width='150'/>
-    <h1>🌦️ Rain</h1>
-    <p><strong>A beautiful, feature-rich weather application built with Flutter</strong></p>
+    <h1>🌦️ 天气</h1>
+    <p><strong>支持多数据源、桌面小部件、农历显示的 Flutter 天气应用</strong></p>
 </div>
 
 <p align='center'>
-    <a href='README.md'>English</a> • <a href='README_RU.md'>Русский</a>
-</p>
-
-<p align='center'>
-    <a href='https://github.com/darkmoonight/Rain/stargazers'><img alt='Stars' src='https://img.shields.io/github/stars/darkmoonight/Rain?color=ABACD3'/></a>
-    <a href='https://github.com/darkmoonight/Rain/forks'><img alt='Forks' src='https://img.shields.io/github/forks/darkmoonight/Rain?color=ABACD3'/></a>
-    <a href='https://github.com/darkmoonight/Rain/releases/latest'><img alt='Downloads' src='https://img.shields.io/github/downloads/darkmoonight/Rain/total?color=ABACD3&logo=github&logoColor=white'/></a>
-    <a href='https://play.google.com/store/apps/details?id=com.yoshi.rain'><img alt='Play Store Installs' src='https://img.shields.io/endpoint?color=ABACD3&logo=google-play&logoColor=white&url=https%3A%2F%2Fplay.cuzi.workers.dev%2Fplay%3Fi%3Dcom.yoshi.rain%26l%3DInstalls%26m%3D%24installs'/></a>
-    <a href='https://github.com/darkmoonight/Rain/releases'><img alt='GitHub release' src='https://img.shields.io/github/v/release/darkmoonight/Rain?color=ABACD3&logo=flutter&logoColor=white'/></a>
-    <a href='https://github.com/darkmoonight/Rain/blob/main/LICENSE'><img alt='License' src='https://img.shields.io/github/license/darkmoonight/Rain?color=ABACD3&logo=open-source-initiative&logoColor=white'/></a>
-</p>
-
-<p align='center'>
-    Accurate forecasts, air quality, interactive maps, and a polished Material You UI — in 38 languages.
+    <a href='#功能特性'>功能特性</a> • 
+    <a href='#技术架构'>技术架构</a> • 
+    <a href='#快速开始'>快速开始</a> • 
+    <a href='#配置说明'>配置说明</a> • 
+    <a href='#api文档'>API文档</a>
 </p>
 
 ---
 
-## ✨ Features
+## ✨ 功能特性
 
-- **Weather** — current conditions, hourly and 12-day forecasts, detailed metrics, offline cache, per-location timezones
-- **Air quality** — European or US AQI, pollutant breakdown, cached with weather data ([Open-Meteo AQ](https://open-meteo.com/en/docs/air-quality-api))
-- **Map** — OpenStreetMap with weather markers for saved cities, GPS support
-- **Cities** — unlimited watchlist, search, drag-to-reorder, pull-to-refresh
-- **Notifications** — scheduled forecasts; optional persistent status tile on Android
-- **Widgets (Android)** — three Material You sizes, customizable colors, background refresh
-- **Design** — Material You, AMOLED theme, light/dark/system, configurable font and units
-- **Localization** — 38 languages, metric/imperial, 12h/24h time
+### 🌤️ 核心天气功能
+- **实时天气** — 当前温度、湿度、风速、气压、能见度
+- **逐小时预报** — 未来72小时逐小时天气预报
+- **逐日预报** — 未来14天逐日天气预报
+- **空气质量** — AQI指数、PM2.5、PM10、污染物详情
+- **降水雷达** — 实时降水雷达地图
+- **分钟级降水** — 未来2小时分钟级降水预报
+
+### 🏠 桌面小部件（Android）
+- **5x2 天气详情小部件** — 显示时间、农历、温度、AQI、5天预报
+- **Material You 设计** — 支持动态颜色
+- **自动刷新** — 后台定时更新数据
+- **点击交互** — 点击打开应用
+
+### 🌏 多数据源支持
+- **Open-Meteo** — 全球天气数据（默认）
+- **和风天气** — 国内天气数据（JWT认证）
+- **智能切换** — 根据位置自动选择最优数据源
+
+### 📅 特色功能
+- **农历显示** — 小部件显示农历日期
+- **降水预警** — 分钟级降水预警通知
+- **多语言** — 支持38种语言
+- **主题定制** — Material You、AMOLOED、自定义颜色
 
 ---
 
-## 📸 Screenshots
+## 🏗️ 技术架构
 
-<img src='/readme/1.png' width='200'/> <img src='/readme/2.png' width='200'/> <img src='/readme/3.png' width='200'/> <img src='/readme/4.png' width='200'/> <img src='/readme/5.png' width='200'/> <img src='/readme/6.png' width='200'/> <img src='/readme/7.png' width='200'/> <img src='/readme/8.png' width='200'/>
+### 项目结构
 
----
-
-## 📥 Download
-
-[![Play Store](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.yoshi.rain)
-[![IzzyOnDroid](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/com.yoshi.rain&style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAA4VBMVEXn9cuv7wDB9iGp4x2k5gKh3B6k3SyAxAGd4ASo6gCv5SCW2gHA7UTB6V+EwiOw3lK36zC+422d1yO78SWs3kfR7JhQiw2751G7+QCz8gCKzgGq3zay5DSm2jrF9jZLfwmNyiC77zXO7oaYzjW37CLj9Lze8LLA43uz3mK19ACR1QBcnRO78R6ExBek1kbE8FLI6nSPu0jH5YJxtQ2b1RiAmz53uwF7pitZkAeX1w7I72TY8KTO8HXD7La+0pKizWBzhExqjytpmR+UzSTA5Ctzy3uv1nOv3gyF3UuCsDRHcEx7M2pHAAAAS3RSTlP//////////////////////////////////////////////////////////////////////////////////////////////////wDLGfCsAAAB9ElEQVRIx72W53biMBCFhY0L7g0bTAktQEwgdMhuerbO+z/Q2sBiY0uKcvacnX8a3Y/R8YyuQPDJQP8KoExcro6ZC6C4TQXQx/oLABV3cfozgBgL/AWY9ScAsR7oBCD2AmSAoD8A+J3cWYECdBEaVm2z+U1hAuDx4fr6a08PGuuf6cmys5QvMEz0c12zhPWaAYBq9emp9/DlTrMUXsBOaw5Yjl5elrG+u9tYAxbAtjeL+Z3Wdl83Ovfr3BQyYAZBoLXbHDfQ2hykTSEAAIu+2LRcl4tD6UCm67jPCvD4/ON5YRhGpzOdrlar74fT5IcvOxDD0Xg0nvU7hjGVttv+0vYyAgyQdNgeey3Hce5DSZqN9GZmvzh8UO0F3thsiY4gqGoUtuL2AeaKpom5brVMryEKvCyXZVX0urd0wOxy4qwh8jxfLlcqZafpYoH0MzQGnNI/6CulOASFc/NWlZ17ADEG3oWjvn5TEvjbfJuyrnFaSfdyrK/f1Gp1tTAHF750aqgUJUCsr5UizFUv3EeQwmOFekmVmABDCiNVlqNwOwEqcM75vp+s/asrKpAmdxM/Gbnfuz0j8OYnPw2v9AqZ5Nt+f7hikwkw2T3Fc2l2jzdcst3DpwGCnvQ+EPUEu8c/STSAqMfZPeX5IQK0J+a//zn5MP4Am7ISN/4mSV8AAAAASUVORK5CYII=)](https://apt.izzysoft.de/packages/com.yoshi.rain)
-
-APK and other builds: [Releases](https://github.com/darkmoonight/Rain/releases/latest)
-
----
-
-## 🛠️ Build
-
-**Requirements:** Flutter 3.44+, Dart 3.12+ (see `pubspec.yaml`)
-
-```bash
-git clone https://github.com/darkmoonight/Rain.git && cd Rain
-flutter pub get
-dart run slang
-dart run build_runner build --delete-conflicting-outputs
-flutter run                    # Android default flavor: gms
-flutter run --flavor floss     # FOSS build without Play Services
+```
+lib/
+├── core/
+│   ├── auth/              # JWT 认证
+│   ├── config/            # 配置管理
+│   ├── services/          # 核心服务
+│   ├── utils/             # 工具类
+│   └── weather/           # 天气相关工具
+├── data/
+│   ├── datasources/       # 数据源（Open-Meteo、和风天气）
+│   ├── models/            # 数据模型
+│   └── repositories/      # 数据仓库
+├── features/
+│   ├── cities/            # 城市管理
+│   ├── forecast/          # 预报功能
+│   ├── radar/             # 降水雷达
+│   ├── settings/          # 设置
+│   └── weather/           # 天气展示
+└── i18n/                  # 国际化
 ```
 
-Release APK scripts (`gms` / `floss`), reproducible FOSS builds, and flavor details — see [`scripts/`](scripts/) and [CONTRIBUTING.md](./CONTRIBUTING.md).
+### 技术栈
 
-**Stack:** Flutter, Riverpod, Go Router, Isar, Open-Meteo, flutter_map, home_widget, Workmanager.
-
-**Tests:** 496 tests — run `flutter test` and `flutter analyze`. Details in [CONTRIBUTING.md](./CONTRIBUTING.md).
-
----
-
-## 🌐 Data Sources
-
-Free APIs, no key required:
-
-- [Open-Meteo Weather](https://open-meteo.com/en/docs) · [Air Quality](https://open-meteo.com/en/docs/air-quality-api) · [Geocoding](https://open-meteo.com/en/docs/geocoding-api)
-- [OpenStreetMap](https://www.openstreetmap.org/) map tiles
+- **框架**: Flutter 3.x
+- **状态管理**: Riverpod
+- **数据库**: Isar
+- **HTTP**: Dio
+- **地图**: flutter_map
+- **认证**: JWT (EdDSA)
+- **本地化**: slang
 
 ---
 
-## 🤝 Contributing
+## 🚀 快速开始
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md). Bug reports and feature requests: use the [issue templates](.github/ISSUE_TEMPLATE/).
+### 环境要求
+
+- Flutter SDK >= 3.0.0
+- Dart SDK >= 3.0.0
+- Android SDK >= 21
+- iOS >= 12.0
+
+### 安装依赖
+
+```bash
+flutter pub get
+```
+
+### 配置和风天气（可选）
+
+1. 注册和风天气开发者账号：https://dev.qweather.com/
+2. 创建项目并获取凭据 ID 和项目 ID
+3. 在控制台添加 JWT 公钥
+4. 更新 `lib/data/datasources/qweather_datasource.dart` 中的配置：
+
+```dart
+static const String _credentialId = 'YOUR_CREDENTIAL_ID';
+static const String _projectId = 'YOUR_PROJECT_ID';
+```
+
+### 运行应用
+
+```bash
+# 开发模式
+flutter run
+
+# 发布模式
+flutter build apk --release
+flutter build ios --release
+```
 
 ---
 
-## 💰 Support
+## ⚙️ 配置说明
 
-[![ЮMoney](https://img.shields.io/badge/ЮMoney-violet?style=for-the-badge)](https://yoomoney.ru/to/4100117672775961)
+### 和风天气 JWT 认证
+
+#### 1. 生成 Ed25519 密钥对
+
+```bash
+# 生成私钥
+openssl genpkey -algorithm Ed25519 -out assets/keys/private_key.pem
+
+# 生成公钥
+openssl pkey -in assets/keys/private_key.pem -pubout -out assets/keys/public_key.pem
+```
+
+#### 2. 配置凭据
+
+在 `lib/data/datasources/qweather_datasource.dart` 中配置：
+
+```dart
+// 凭据 ID（kid）
+static const String _credentialId = 'YOUR_CREDENTIAL_ID';
+
+// 项目 ID（sub）
+static const String _projectId = 'YOUR_PROJECT_ID';
+
+// API Host
+static const String _apiHost = 'your-host.qweatherapi.com';
+```
+
+#### 3. 安全注意事项
+
+- **私钥** (`private_key.pem`) 已添加到 `.gitignore`，请勿提交到 Git
+- **公钥** 需要上传到和风天气控制台
+- 如果私钥泄露，请立即重新生成密钥对
 
 ---
 
-## 📃 License
+## 📚 API 文档
 
-[MIT License](./LICENSE)
+### 和风天气数据源
+
+#### 获取实时天气
+
+```dart
+final qweather = QWeatherDataSource();
+final weather = await qweather.getCurrentWeather('101010100');
+```
+
+#### 获取7天预报
+
+```dart
+final forecast = await qweather.get7DayForecast('101010100');
+```
+
+#### 获取分钟级降水
+
+```dart
+final precipitation = await qweather.getMinutePrecipitation(39.9042, 116.4074);
+```
+
+#### 获取空气质量
+
+```dart
+final aqi = await qweather.getAirQuality('101010100');
+```
+
+### 小部件服务
+
+#### 更新小部件数据
+
+```dart
+final service = HomeWidgetService(assetCacheService);
+await service.updateFromIsar(isarInstance);
+```
+
+### 农历工具
+
+```dart
+// 获取当前农历日期
+final lunarDate = LunarCalendar.getCurrentLunarDate();
+
+// 获取指定日期的农历
+final lunarDate = LunarCalendar.getLunarDateSimple(DateTime(2024, 1, 1));
+
+// 获取生肖
+final zodiac = LunarCalendar.getZodiac(2024);
+
+// 获取干支纪年
+final ganZhi = LunarCalendar.getGanZhi(2024);
+```
+
+### 降水预警服务
+
+```dart
+// 分析降水预警
+final alert = PrecipitationAlertService.analyzePrecipitationAlert(data);
+
+// 获取降水趋势
+final trend = PrecipitationAlertService.getPrecipitationTrend(minutelyData);
+
+// 生成图表数据
+final chartData = PrecipitationAlertService.generateChartData(minutelyData);
+```
 
 ---
 
-## 👨‍💻 Contributors
+## 📝 更新日志
 
-<a href='https://github.com/darkmoonight/Rain/graphs/contributors'>
-    <img src='https://contrib.rocks/image?repo=darkmoonight/Rain'/>
-</a>
+### v1.0.0
+
+- ✅ 添加和风天气数据源支持（JWT认证）
+- ✅ 实现5x2桌面小部件（时间、农历、AQI、5天预报）
+- ✅ 添加14天预报和72小时预报
+- ✅ 实现降水雷达地图
+- ✅ 添加分钟级降水预警
+- ✅ 添加农历显示功能
+- ✅ 增强小部件数据服务
 
 ---
 
-<p align='center'>
-    Made with ❤️ using Flutter
-</p>
+## 🤝 贡献指南
+
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 创建 Pull Request
+
+---
+
+## 📄 许可证
+
+本项目基于 MIT 许可证开源 - 详见 [LICENSE](LICENSE) 文件
+
+---
+
+## 🙏 致谢
+
+- [和风天气](https://www.qweather.com/) - 国内天气数据
+- [Open-Meteo](https://open-meteo.com/) - 全球天气数据
+
+---
+
+<div align='center'>
+    <p>Made with ❤️ using Flutter</p>
+</div>

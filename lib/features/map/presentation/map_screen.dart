@@ -204,7 +204,7 @@ class _MapPageState extends ConsumerState<MapPage>
 
   /// Builds the cached OpenStreetMap [TileLayer] for the weather map.
   Widget _buildMapTileLayer(CacheStore cacheStore) =>
-      buildRainMapTileLayer(cacheStore: cacheStore);
+      buildWeatherMapTileLayer(cacheStore: cacheStore);
 
   /// Builds the sliding [WeatherCardTile] overlay for the selected marker.
   Widget _buildWeatherCard() => _isCardVisible && _selectedWeatherCard != null
@@ -334,7 +334,7 @@ class _MapPageState extends ConsumerState<MapPage>
                   ),
                 ),
                 children: [
-                  buildRainMapDarkModeFilter(
+                  buildWeatherMapDarkModeFilter(
                     isDark: Theme.of(context).brightness == Brightness.dark,
                     child: _buildMapTileLayer(cacheStore),
                   ),

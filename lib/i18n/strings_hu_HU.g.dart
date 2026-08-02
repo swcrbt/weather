@@ -240,7 +240,7 @@ class TranslationsHuHu extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Legmagasabb szennyezőanyag-szint';
 	@override String get aqi_help_advice_label => 'Ajánlás';
 	@override String get aqi_help_source => 'Forrás: Open-Meteo Air Quality API — földszinti koncentrációk (~10 m), ~11 km-es rács.';
-	@override String get widget_battery_hint => 'Megbízható widget-frissítéshez kapcsolja ki a Rain akkumulátor-optimalizálását az alkalmazás beállításaiban';
+	@override String get widget_battery_hint => 'Megbízható widget-frissítéshez kapcsolja ki a Weather akkumulátor-optimalizálását az alkalmazás beállításaiban';
 	@override String get persistent_notification => 'Állandó értesítés';
 	@override String get last_updated => 'Frissítve';
 	@override String get app_font => 'Betűtípus';
@@ -563,7 +563,7 @@ extension on TranslationsHuHu {
 			'aqi_help_dominant' => 'Legmagasabb szennyezőanyag-szint',
 			'aqi_help_advice_label' => 'Ajánlás',
 			'aqi_help_source' => 'Forrás: Open-Meteo Air Quality API — földszinti koncentrációk (~10 m), ~11 km-es rács.',
-			'widget_battery_hint' => 'Megbízható widget-frissítéshez kapcsolja ki a Rain akkumulátor-optimalizálását az alkalmazás beállításaiban',
+			'widget_battery_hint' => 'Megbízható widget-frissítéshez kapcsolja ki a Weather akkumulátor-optimalizálását az alkalmazás beállításaiban',
 			'persistent_notification' => 'Állandó értesítés',
 			'last_updated' => 'Frissítve',
 			'app_font' => 'Betűtípus',

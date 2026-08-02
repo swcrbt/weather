@@ -271,16 +271,16 @@ class NotificationService {
     };
   }
 
-  static const forecastChannelId = 'RainForecastSilent';
-  static const forecastChannelName = 'Rain Forecast';
+  static const forecastChannelId = 'WeatherForecastSilent';
+  static const forecastChannelName = 'Weather Forecast';
   static const forecastChannelDescription =
       'Weather forecast alerts without sound';
-  static const forecastSoundChannelId = 'RainForecastSound';
-  static const forecastSoundChannelName = 'Rain Forecast (sound)';
+  static const forecastSoundChannelId = 'WeatherForecastSound';
+  static const forecastSoundChannelName = 'Weather Forecast (sound)';
   static const forecastSoundChannelDescription =
       'Weather forecast alerts with sound';
-  static const persistentChannelId = 'RainPersistent';
-  static const persistentChannelName = 'Rain Current';
+  static const persistentChannelId = 'WeatherPersistent';
+  static const persistentChannelName = 'Weather Current';
   static const persistentChannelDescription =
       'Current weather in the status bar';
 

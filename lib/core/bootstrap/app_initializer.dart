@@ -45,7 +45,7 @@ class AppInitializer {
 
   /// Opens Isar, seeds default settings, and applies the stored locale.
   static Future<AppBootstrap> _initializeIsar() async {
-    final isar = await openRainIsar();
+    final isar = await openWeatherIsar();
 
     var settings = await isar.settings.where().findFirst() ?? Settings();
     var locationCache =

@@ -41,7 +41,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = 'com.yoshi.rain'
+        applicationId = 'com.swcrbt.weather'
         minSdkVersion = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

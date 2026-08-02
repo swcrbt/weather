@@ -1,4 +1,4 @@
-package com.yoshi.rain.widget
+package com.swcrbt.weather.widget
 
 import android.content.Context
 import android.os.Handler
@@ -22,7 +22,7 @@ object WidgetThemeRefreshCoordinator {
     }
 
     private fun refreshNow(appContext: Context) {
-        RainHomeWidgetProvider.refreshAll(appContext, WidgetPalette.systemConfiguration())
+        WeatherHomeWidgetProvider.refreshAll(appContext, WidgetPalette.systemConfiguration())
     }
 
     private fun scheduleFollowUp(appContext: Context) {

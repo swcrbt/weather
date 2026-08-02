@@ -4,14 +4,14 @@ import 'package:rain/app.dart';
 import 'package:rain/core/bootstrap/app_initializer.dart';
 import 'package:rain/core/di/provider_refs.dart';
 
-/// Entry point: bootstraps dependencies and runs [RainApp].
+/// Entry point: bootstraps dependencies and runs [WeatherApp].
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final bootstrap = await AppInitializer.initialize();
   runApp(
     ProviderScope(
       overrides: [bootstrapProvider.overrideWithValue(bootstrap)],
-      child: RainApp(bootstrap: bootstrap),
+      child: WeatherApp(bootstrap: bootstrap),
     ),
   );
 }

@@ -25,9 +25,9 @@ AndroidFlutterLocalNotificationsPlugin? get androidNotificationsPlugin {
 }
 
 /// Legacy forecast channel ids before silent/sound split was enforced.
-const _legacyForecastChannelIds = ['Rain', 'RainSound'];
+const _legacyForecastChannelIds = ['Weather', 'WeatherSound'];
 
-/// Removes obsolete Android channels so users are not stuck with sound-enabled [Rain].
+/// Removes obsolete Android channels so users are not stuck with sound-enabled [Weather].
 ///
 /// Called on every plugin init (fresh installs) and during channel schema migration
 /// (upgrades) before recreating forecast channels.
@@ -50,7 +50,7 @@ Future<void> initializeNotificationsPlugin() async {
     const initializationSettings = InitializationSettings(
       android: AndroidInitializationSettings('ic_notification'),
       iOS: DarwinInitializationSettings(),
-      linux: LinuxInitializationSettings(defaultActionName: 'Rain'),
+      linux: LinuxInitializationSettings(defaultActionName: 'Weather'),
     );
     await flutterLocalNotificationsPlugin.initialize(
       settings: initializationSettings,
@@ -146,7 +146,7 @@ void logBackgroundError(
   Object error, [
   StackTrace? stackTrace,
 ]) {
-  debugPrint('RainBackground[$context]: $error');
+  debugPrint('WeatherBackground[$context]: $error');
   if (kDebugMode && stackTrace != null) {
     debugPrint(stackTrace.toString());
   }
