@@ -42,8 +42,8 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
-# Security - Private keys
-assets/keys/private_key.pem
+# Security - Keys (both private and public)
+assets/keys/
 *.pem
 
 # Android Studio will place build artifacts here
