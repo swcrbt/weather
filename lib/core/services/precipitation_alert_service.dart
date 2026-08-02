@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:math';
 
 /// 降水预警服务
@@ -63,7 +62,7 @@ class PrecipitationAlertService {
       if (minutesUntilRain == 0) {
         return '正在下$intensity';
       } else if (minutesUntilRain <= 30) {
-        return '${minutesUntilRain}分钟后开始下$intensity';
+        return '$minutesUntilRain分钟后开始下$intensity';
       } else if (minutesUntilRain <= 60) {
         return '${minutesUntilRain ~/ 60}小时${minutesUntilRain % 60}分钟后开始下$intensity';
       } else {

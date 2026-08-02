@@ -45,14 +45,6 @@ class LunarCalendar {
 
     // 简化的农历计算
     // 这里使用近似算法，实际应用建议使用完整的农历表
-    final lunarYear = date.year;
-    final isLeapYear = _isLeapYear(lunarYear);
-    
-    // 计算农历年份（简化）
-    final yearDiff = lunarYear - 1900;
-    final yearStem = _heavenlyStems[(yearDiff + 6) % 10];  // 1900年是庚子年
-    final yearBranch = _earthlyBranches[(yearDiff + 0) % 12];
-    final yearGanZhi = '$yearStem$yearBranch';
     
     // 计算农历月份（简化，基于节气）
     // 实际上农历月份根据节气确定，这里使用近似值
@@ -109,11 +101,6 @@ class LunarCalendar {
     final stem = _heavenlyStems[(yearDiff + 6) % 10];
     final branch = _earthlyBranches[(yearDiff + 0) % 12];
     return '$stem$branch';
-  }
-
-  /// 判断是否为闰年
-  static bool _isLeapYear(int year) {
-    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
   }
 
   /// 获取当前农历日期（简化版）

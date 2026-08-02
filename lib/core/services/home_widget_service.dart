@@ -193,7 +193,7 @@ class HomeWidgetService {
     if (cache.precipitationProbability != null && cache.precipitationProbability!.isNotEmpty) {
       final currentPrecipProb = cache.precipitationProbability![hour];
       if (currentPrecipProb != null && currentPrecipProb > 0) {
-        bundle['precipitationAlert'] = '降水概率 ${currentPrecipProb}%';
+        bundle['precipitationAlert'] = '降水概率 $currentPrecipProb%';
       }
     }
 

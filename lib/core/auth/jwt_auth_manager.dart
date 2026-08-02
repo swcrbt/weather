@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 
 /// JWT 认证管理器
@@ -31,9 +32,12 @@ class JWTAuthManager {
       },
     );
 
+    // 将 PEM 格式的私钥转换为 bytes
+    final privateKeyBytes = Uint8List.fromList(utf8.encode(privateKeyPem));
+
     // 使用 Ed25519 私钥签名
     final token = jwt.sign(
-      EdDSAPrivateKey(privateKeyPem),
+      EdDSAPrivateKey(privateKeyBytes),
       algorithm: JWTAlgorithm.EdDSA,
     );
 
