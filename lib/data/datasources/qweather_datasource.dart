@@ -10,18 +10,33 @@ import 'package:rain/core/utils/debug_log.dart';
 /// 
 /// 注意：此数据源需要配置和风天气 JWT 凭据才能使用。
 /// 如果没有配置，会自动降级为使用 Open-Meteo 数据源。
+/// 
+/// 必需配置（通过环境变量或代码中的默认值）：
+/// - QWEATHER_CREDENTIAL_ID: 凭据 ID（kid）
+/// - QWEATHER_PROJECT_ID: 项目 ID（sub）
+/// - QWEATHER_API_HOST: API Host
+/// - assets/keys/private_key.pem: 私钥文件
 class QWeatherDataSource {
   /// 凭据 ID（kid）
-  static const String _credentialId = 'KNB28DQJ4P';
+  /// 从环境变量读取，或使用默认值
+  static String get _credentialId {
+    return Platform.environment['QWEATHER_CREDENTIAL_ID'] ?? 'YOUR_CREDENTIAL_ID';
+  }
   
   /// 项目 ID（sub）
-  static const String _projectId = '34KXEK29E5';
+  /// 从环境变量读取，或使用默认值
+  static String get _projectId {
+    return Platform.environment['QWEATHER_PROJECT_ID'] ?? 'YOUR_PROJECT_ID';
+  }
+  
+  /// API Host
+  /// 从环境变量读取，或使用默认值
+  static String get _apiHost {
+    return Platform.environment['QWEATHER_API_HOST'] ?? 'your-host.qweatherapi.com';
+  }
   
   /// 私钥文件路径
   static const String _privateKeyPath = 'assets/keys/private_key.pem';
-  
-  /// API Host
-  static const String _apiHost = 'mp52qdxmd9.re.qweatherapi.com';
 
   QWeatherDataSource({
     Dio? dio,

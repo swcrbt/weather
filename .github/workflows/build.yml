@@ -28,6 +28,43 @@ jobs:
         flutter-version: '3.44.2'
         channel: 'stable'
     
+    # 创建密钥文件（从 GitHub Secrets 读取）
+    - name: Setup QWeather Credentials
+      run: |
+        mkdir -p assets/keys
+        
+        # 配置私钥
+        if [ -n "${{ secrets.QWEATHER_PRIVATE_KEY }}" ]; then
+          echo "${{ secrets.QWEATHER_PRIVATE_KEY }}" > assets/keys/private_key.pem
+          echo "✅ 和风天气私钥已配置"
+        else
+          echo "⚠️ 未配置和风天气私钥"
+        fi
+        
+        # 配置凭据 ID
+        if [ -n "${{ secrets.QWEATHER_CREDENTIAL_ID }}" ]; then
+          echo "QWEATHER_CREDENTIAL_ID=${{ secrets.QWEATHER_CREDENTIAL_ID }}" >> $GITHUB_ENV
+          echo "✅ 和风天气凭据 ID 已配置"
+        else
+          echo "⚠️ 未配置和风天气凭据 ID"
+        fi
+        
+        # 配置项目 ID
+        if [ -n "${{ secrets.QWEATHER_PROJECT_ID }}" ]; then
+          echo "QWEATHER_PROJECT_ID=${{ secrets.QWEATHER_PROJECT_ID }}" >> $GITHUB_ENV
+          echo "✅ 和风天气项目 ID 已配置"
+        else
+          echo "⚠️ 未配置和风天气项目 ID"
+        fi
+        
+        # 配置 API Host
+        if [ -n "${{ secrets.QWEATHER_API_HOST }}" ]; then
+          echo "QWEATHER_API_HOST=${{ secrets.QWEATHER_API_HOST }}" >> $GITHUB_ENV
+          echo "✅ 和风天气 API Host 已配置"
+        else
+          echo "⚠️ 未配置和风天气 API Host"
+        fi
+    
     # 获取依赖
     - name: Get dependencies
       run: flutter pub get
