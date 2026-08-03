@@ -12,6 +12,7 @@ import com.swcrbt.weather.R
 import com.swcrbt.weather.widget.providers.WidgetClockDayHorizontalProvider
 import com.swcrbt.weather.widget.providers.WidgetMaterialYouCurrentProvider
 import com.swcrbt.weather.widget.providers.WidgetMaterialYouForecast1x1Provider
+import com.swcrbt.weather.widget.providers.WidgetWeatherDetailProvider
 import es.antonborri.home_widget.HomeWidgetPlugin
 import es.antonborri.home_widget.HomeWidgetProvider
 
@@ -27,6 +28,7 @@ abstract class WeatherHomeWidgetProvider : HomeWidgetProvider() {
                 WidgetMaterialYouForecast1x1Provider::class.java,
                 WidgetMaterialYouCurrentProvider::class.java,
                 WidgetClockDayHorizontalProvider::class.java,
+                WidgetWeatherDetailProvider::class.java,
             )
 
         fun refreshAll(context: Context, configuration: Configuration? = null) {

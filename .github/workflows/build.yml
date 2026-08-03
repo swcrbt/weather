@@ -105,10 +105,17 @@ jobs:
     - name: Run tests
       run: flutter test
       continue-on-error: true
+
+    # 生成代码（slang / build_runner）
+    - name: Generate code
+      run: |
+        dart run slang || true
+        dart run build_runner build --delete-conflicting-outputs || true
     
     # 构建 GMS flavor release APK
     - name: Build APK
-      run: flutter build apk --release --flavor gms
+      run: flutter build apk --release --flavor gms --verbose
+      timeout-minutes: 45
     
     # 上传 APK
     - name: Upload APK

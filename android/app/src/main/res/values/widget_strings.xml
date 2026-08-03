@@ -4,4 +4,6 @@
     <string name="widget_material_you_forecast_1x1">Material You – Compact</string>
     <string name="widget_material_you_current">Material You – Current</string>
     <string name="widget_clock">Material You – Clock</string>
+    <string name="widget_weather_detail">Weather – Detail 5x2</string>
+    <string name="refresh">刷新</string>
 </resources>

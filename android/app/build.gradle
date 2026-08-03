@@ -11,7 +11,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace = 'com.yoshi.rain'
+    namespace = 'com.swcrbt.weather'
     compileSdk {
         version = release(37) {
             minorApiLevel = 0

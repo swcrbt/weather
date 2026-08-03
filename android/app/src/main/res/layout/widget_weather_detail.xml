@@ -34,6 +34,7 @@
             tools:text="番禺区 广东省广州市亚运大道1199号" />
 
         <LinearLayout
+            android:id="@+id/widget_aqi_background"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
