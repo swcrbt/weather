@@ -6,21 +6,21 @@
     android:layout_height="match_parent"
     android:background="@drawable/widget_glass_background"
     android:orientation="vertical"
-    android:paddingStart="12dp"
-    android:paddingTop="8dp"
-    android:paddingEnd="12dp"
-    android:paddingBottom="8dp"
+    android:paddingStart="10dp"
+    android:paddingTop="4dp"
+    android:paddingEnd="10dp"
+    android:paddingBottom="4dp"
     android:theme="@style/Theme.Android.AppWidgetContainer">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="26dp"
+        android:layout_height="20dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
             android:importantForAccessibility="no"
             android:src="@drawable/ic_location" />
 
@@ -28,31 +28,31 @@
             android:id="@+id/widget_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="4dp"
             android:layout_weight="1"
             android:ellipsize="end"
             android:includeFontPadding="false"
             android:maxLines="1"
-            android:textColor="@android:color/white"
-            android:textSize="13sp"
             android:text="@string/widget_ellipsis"
+            android:textColor="@android:color/white"
+            android:textSize="11sp"
             tools:text="番禺区 广东省广州市" />
 
         <LinearLayout
             android:id="@+id/widget_aqi_background"
             android:layout_width="wrap_content"
-            android:layout_height="26dp"
+            android:layout_height="20dp"
             android:background="@drawable/aqi_good_background"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingStart="7dp"
-            android:paddingEnd="7dp"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
             android:visibility="gone">
 
             <ImageView
                 android:id="@+id/widget_aqi_icon"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_smile" />
 
@@ -60,158 +60,152 @@
                 android:id="@+id/widget_aqi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="3dp"
                 android:includeFontPadding="false"
                 android:textColor="@android:color/black"
-                android:textSize="12sp"
+                android:textSize="10sp"
                 android:textStyle="bold"
                 tools:text="18 优" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/widget_update_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textColor="#AFFFFFFF"
+            android:textSize="9sp"
+            tools:text="21:10" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="40dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextClock
             android:id="@+id/widget_time"
             style="@style/widget_text_clock"
-            android:layout_width="132dp"
+            android:layout_width="96dp"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:format12Hour="h:mm"
             android:format24Hour="HH:mm"
             android:includeFontPadding="false"
             android:textColor="@android:color/white"
-            android:textSize="46sp"
+            android:textSize="34sp"
             tools:text="21:15" />
 
         <LinearLayout
             android:id="@+id/widget_date_block"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/widget_lunar"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:textColor="#BFFFFFFF"
-                android:textSize="15sp"
-                tools:text="六月十九" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/widget_lunar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:textColor="#BFFFFFFF"
+                    android:textSize="10sp"
+                    tools:text="六月十九" />
+
+                <TextView
+                    android:id="@+id/widget_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:textColor="#BFFFFFFF"
+                    android:textSize="10sp"
+                    tools:text="周六 · 8/1" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/widget_date"
-                android:layout_width="wrap_content"
+                android:id="@+id/widget_precipitation_alert"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:ellipsize="end"
                 android:includeFontPadding="false"
                 android:maxLines="1"
-                android:textColor="#BFFFFFFF"
-                android:textSize="13sp"
-                tools:text="周六 · 8/1" />
+                android:textColor="#E6FFFFFF"
+                android:textSize="10sp"
+                android:visibility="invisible"
+                tools:text="22:00 · 降水 70%"
+                tools:visibility="visible" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/widget_temperature"
-            android:layout_width="62dp"
+            android:layout_width="48dp"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:gravity="end"
             android:includeFontPadding="false"
-            android:textColor="@android:color/white"
-            android:textSize="38sp"
             android:text="--°"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
             tools:text="27°" />
 
         <LinearLayout
-            android:layout_width="44dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_width="34dp"
+            android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/widget_weather_icon"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:importantForAccessibility="no"
                 android:scaleType="centerInside"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/widget_condition_description"
-                android:layout_width="44dp"
+                android:layout_width="34dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:gravity="center"
                 android:includeFontPadding="false"
                 android:maxLines="1"
                 android:textColor="#CCFFFFFF"
-                android:textSize="10sp"
+                android:textSize="8sp"
                 tools:text="多云" />
         </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/widget_refresh"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/refresh"
+            android:padding="8dp"
+            android:src="@drawable/ic_refresh" />
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp">
-
-        <TextView
-            android:id="@+id/widget_precipitation_alert"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/widget_update_row"
-            android:ellipsize="end"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:textColor="#E6FFFFFF"
-            android:textSize="13sp"
-            android:visibility="invisible"
-            tools:text="22:00 · 降水概率 70%"
-            tools:visibility="visible" />
-
-        <LinearLayout
-            android:id="@+id/widget_update_row"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/widget_update_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:includeFontPadding="false"
-                android:textColor="#AFFFFFFF"
-                android:textSize="11sp"
-                tools:text="21:10 · 已更新" />
-
-            <ImageButton
-                android:id="@+id/widget_refresh"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="2dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/refresh"
-                android:padding="9dp"
-                android:src="@drawable/ic_refresh" />
-        </LinearLayout>
-    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/widget_forecast_container"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="42dp"
         android:baselineAligned="false"
         android:orientation="horizontal">
 
