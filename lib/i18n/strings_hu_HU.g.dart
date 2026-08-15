@@ -101,6 +101,7 @@ class TranslationsHuHu extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: előrejelzés (1×1)';
 	@override String get widget_material_you_current => 'Material You: aktuális időjárás';
 	@override String get widget_material_you_clock => 'Material You: óra és nap';
+	@override String get widget_weather_detail => 'Időjárás részletei (5×2)';
 	@override String get precipitation => 'Csapadék';
 	@override String get delete => 'Törlés';
 	@override String get deleted_cache_store => 'Gyorsítótár törlése folyamatban';
@@ -424,6 +425,7 @@ extension on TranslationsHuHu {
 			'widget_material_you_compact' => 'Material You: előrejelzés (1×1)',
 			'widget_material_you_current' => 'Material You: aktuális időjárás',
 			'widget_material_you_clock' => 'Material You: óra és nap',
+			'widget_weather_detail' => 'Időjárás részletei (5×2)',
 			'precipitation' => 'Csapadék',
 			'delete' => 'Törlés',
 			'deleted_cache_store' => 'Gyorsítótár törlése folyamatban',

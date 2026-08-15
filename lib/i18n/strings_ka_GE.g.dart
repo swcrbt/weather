@@ -101,6 +101,7 @@ class TranslationsKaGe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: პროგნოზი (1×1)';
 	@override String get widget_material_you_current => 'Material You: მიმდინარე ამინდი';
 	@override String get widget_material_you_clock => 'Material You: საათი და დღე';
+	@override String get widget_weather_detail => 'ამინდის დეტალები (5×2)';
 	@override String get precipitation => 'ნალექი';
 	@override String get delete => 'ამოღება';
 	@override String get deleted_cache_store => 'ქეშის გასუფთავება მიმდინარეობს';
@@ -424,6 +425,7 @@ extension on TranslationsKaGe {
 			'widget_material_you_compact' => 'Material You: პროგნოზი (1×1)',
 			'widget_material_you_current' => 'Material You: მიმდინარე ამინდი',
 			'widget_material_you_clock' => 'Material You: საათი და დღე',
+			'widget_weather_detail' => 'ამინდის დეტალები (5×2)',
 			'precipitation' => 'ნალექი',
 			'delete' => 'ამოღება',
 			'deleted_cache_store' => 'ქეშის გასუფთავება მიმდინარეობს',

@@ -61,6 +61,7 @@
   "widgetMaterialYouCompact": "Material You: прогноз (1×1)",
   "widgetMaterialYouCurrent": "Material You: текущая погода",
   "widgetMaterialYouClock": "Material You: часы и день",
+  "widgetWeatherDetail": "Подробности о погоде (5×2)",
   "precipitation": "Осадки",
   "delete": "Удалить",
   "deletedCacheStore": "Очистка кэша",

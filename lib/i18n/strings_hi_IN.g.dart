@@ -101,6 +101,7 @@ class TranslationsHiIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: पूर्वानुमान (1×1)';
 	@override String get widget_material_you_current => 'Material You: वर्तमान मौसम';
 	@override String get widget_material_you_clock => 'Material You: घड़ी और दिन';
+	@override String get widget_weather_detail => 'मौसम विवरण (5×2)';
 	@override String get precipitation => 'वर्षा';
 	@override String get delete => 'हटाएँ';
 	@override String get deleted_cache_store => 'कैश साफ़ हो रहा है';
@@ -424,6 +425,7 @@ extension on TranslationsHiIn {
 			'widget_material_you_compact' => 'Material You: पूर्वानुमान (1×1)',
 			'widget_material_you_current' => 'Material You: वर्तमान मौसम',
 			'widget_material_you_clock' => 'Material You: घड़ी और दिन',
+			'widget_weather_detail' => 'मौसम विवरण (5×2)',
 			'precipitation' => 'वर्षा',
 			'delete' => 'हटाएँ',
 			'deleted_cache_store' => 'कैश साफ़ हो रहा है',

@@ -227,6 +227,9 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	/// en-US: 'Material You clock & day'
 	String get widget_material_you_clock => 'Material You clock & day';
 
+	/// en-US: 'Weather details (5×2)'
+	String get widget_weather_detail => 'Weather details (5×2)';
+
 	/// en-US: 'Precipitation'
 	String get precipitation => 'Precipitation';
 
@@ -1051,6 +1054,7 @@ extension on Translations {
 			'widget_material_you_compact' => 'Material You forecast (1×1)',
 			'widget_material_you_current' => 'Material You current weather',
 			'widget_material_you_clock' => 'Material You clock & day',
+			'widget_weather_detail' => 'Weather details (5×2)',
 			'precipitation' => 'Precipitation',
 			'delete' => 'Delete',
 			'deleted_cache_store' => 'Clearing the cache',

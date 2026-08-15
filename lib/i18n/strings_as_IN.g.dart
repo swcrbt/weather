@@ -101,6 +101,7 @@ class TranslationsAsIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: পূৰ্বাভাস (1×1)';
 	@override String get widget_material_you_current => 'Material You: বৰ্তমানৰ বতৰ';
 	@override String get widget_material_you_clock => 'Material You: ঘড়ী আৰু দিন';
+	@override String get widget_weather_detail => 'বতৰৰ বিৱৰণ (5×2)';
 	@override String get precipitation => 'বৰষুণ';
 	@override String get delete => 'মচক';
 	@override String get deleted_cache_store => 'কেশ্ব পৰিষ্কাৰ কৰি আছে';
@@ -424,6 +425,7 @@ extension on TranslationsAsIn {
 			'widget_material_you_compact' => 'Material You: পূৰ্বাভাস (1×1)',
 			'widget_material_you_current' => 'Material You: বৰ্তমানৰ বতৰ',
 			'widget_material_you_clock' => 'Material You: ঘড়ী আৰু দিন',
+			'widget_weather_detail' => 'বতৰৰ বিৱৰণ (5×2)',
 			'precipitation' => 'বৰষুণ',
 			'delete' => 'মচক',
 			'deleted_cache_store' => 'কেশ্ব পৰিষ্কাৰ কৰি আছে',

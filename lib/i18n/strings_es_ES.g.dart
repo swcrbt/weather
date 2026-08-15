@@ -101,6 +101,7 @@ class TranslationsEsEs extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: previsión (1×1)';
 	@override String get widget_material_you_current => 'Material You: tiempo actual';
 	@override String get widget_material_you_clock => 'Material You: reloj y día';
+	@override String get widget_weather_detail => 'Detalles del tiempo (5×2)';
 	@override String get precipitation => 'Precipitación';
 	@override String get delete => 'Eliminar';
 	@override String get deleted_cache_store => 'Borrando caché';
@@ -424,6 +425,7 @@ extension on TranslationsEsEs {
 			'widget_material_you_compact' => 'Material You: previsión (1×1)',
 			'widget_material_you_current' => 'Material You: tiempo actual',
 			'widget_material_you_clock' => 'Material You: reloj y día',
+			'widget_weather_detail' => 'Detalles del tiempo (5×2)',
 			'precipitation' => 'Precipitación',
 			'delete' => 'Eliminar',
 			'deleted_cache_store' => 'Borrando caché',

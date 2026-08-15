@@ -101,6 +101,7 @@ class TranslationsSkSk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: predpoveď (1×1)';
 	@override String get widget_material_you_current => 'Material You: aktuálne počasie';
 	@override String get widget_material_you_clock => 'Material You: hodiny a deň';
+	@override String get widget_weather_detail => 'Podrobnosti o počasí (5×2)';
 	@override String get precipitation => 'Zrážky';
 	@override String get delete => 'Odstrániť';
 	@override String get deleted_cache_store => 'Vymazávanie vyrovnávacej pamäte';
@@ -424,6 +425,7 @@ extension on TranslationsSkSk {
 			'widget_material_you_compact' => 'Material You: predpoveď (1×1)',
 			'widget_material_you_current' => 'Material You: aktuálne počasie',
 			'widget_material_you_clock' => 'Material You: hodiny a deň',
+			'widget_weather_detail' => 'Podrobnosti o počasí (5×2)',
 			'precipitation' => 'Zrážky',
 			'delete' => 'Odstrániť',
 			'deleted_cache_store' => 'Vymazávanie vyrovnávacej pamäte',

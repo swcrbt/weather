@@ -61,6 +61,7 @@
   "widgetMaterialYouCompact": "Material You: előrejelzés (1×1)",
   "widgetMaterialYouCurrent": "Material You: aktuális időjárás",
   "widgetMaterialYouClock": "Material You: óra és nap",
+  "widgetWeatherDetail": "Időjárás részletei (5×2)",
   "precipitation": "Csapadék",
   "delete": "Törlés",
   "deletedCacheStore": "Gyorsítótár törlése folyamatban",

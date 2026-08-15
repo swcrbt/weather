@@ -101,6 +101,7 @@ class TranslationsZhCn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You：预报 (1×1)';
 	@override String get widget_material_you_current => 'Material You：当前天气';
 	@override String get widget_material_you_clock => 'Material You：时钟和日期';
+	@override String get widget_weather_detail => '天气详情（5×2）';
 	@override String get precipitation => '降水量';
 	@override String get delete => '删除';
 	@override String get deleted_cache_store => '正在清除缓存';
@@ -424,6 +425,7 @@ extension on TranslationsZhCn {
 			'widget_material_you_compact' => 'Material You：预报 (1×1)',
 			'widget_material_you_current' => 'Material You：当前天气',
 			'widget_material_you_clock' => 'Material You：时钟和日期',
+			'widget_weather_detail' => '天气详情（5×2）',
 			'precipitation' => '降水量',
 			'delete' => '删除',
 			'deleted_cache_store' => '正在清除缓存',

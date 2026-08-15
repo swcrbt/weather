@@ -101,6 +101,7 @@ class TranslationsRoRo extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: prognoză (1×1)';
 	@override String get widget_material_you_current => 'Material You: vremea actuală';
 	@override String get widget_material_you_clock => 'Material You: ceas și zi';
+	@override String get widget_weather_detail => 'Detalii meteo (5×2)';
 	@override String get precipitation => 'Precipitații';
 	@override String get delete => 'Șterge';
 	@override String get deleted_cache_store => 'Ștergerea cache-ului';
@@ -424,6 +425,7 @@ extension on TranslationsRoRo {
 			'widget_material_you_compact' => 'Material You: prognoză (1×1)',
 			'widget_material_you_current' => 'Material You: vremea actuală',
 			'widget_material_you_clock' => 'Material You: ceas și zi',
+			'widget_weather_detail' => 'Detalii meteo (5×2)',
 			'precipitation' => 'Precipitații',
 			'delete' => 'Șterge',
 			'deleted_cache_store' => 'Ștergerea cache-ului',

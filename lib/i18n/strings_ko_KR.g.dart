@@ -101,6 +101,7 @@ class TranslationsKoKr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: 예보 (1×1)';
 	@override String get widget_material_you_current => 'Material You: 현재 날씨';
 	@override String get widget_material_you_clock => 'Material You: 시계 및 요일';
+	@override String get widget_weather_detail => '날씨 상세 (5×2)';
 	@override String get precipitation => '강수량';
 	@override String get delete => '삭제';
 	@override String get deleted_cache_store => '캐시 삭제 중';
@@ -424,6 +425,7 @@ extension on TranslationsKoKr {
 			'widget_material_you_compact' => 'Material You: 예보 (1×1)',
 			'widget_material_you_current' => 'Material You: 현재 날씨',
 			'widget_material_you_clock' => 'Material You: 시계 및 요일',
+			'widget_weather_detail' => '날씨 상세 (5×2)',
 			'precipitation' => '강수량',
 			'delete' => '삭제',
 			'deleted_cache_store' => '캐시 삭제 중',

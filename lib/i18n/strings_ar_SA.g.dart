@@ -101,6 +101,7 @@ class TranslationsArSa extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: توقعات (1×1)';
 	@override String get widget_material_you_current => 'Material You: الطقس الحالي';
 	@override String get widget_material_you_clock => 'Material You: الساعة واليوم';
+	@override String get widget_weather_detail => 'تفاصيل الطقس (5×2)';
 	@override String get precipitation => 'الهطول';
 	@override String get delete => 'حذف';
 	@override String get deleted_cache_store => 'مسح التخزين المؤقت';
@@ -424,6 +425,7 @@ extension on TranslationsArSa {
 			'widget_material_you_compact' => 'Material You: توقعات (1×1)',
 			'widget_material_you_current' => 'Material You: الطقس الحالي',
 			'widget_material_you_clock' => 'Material You: الساعة واليوم',
+			'widget_weather_detail' => 'تفاصيل الطقس (5×2)',
 			'precipitation' => 'الهطول',
 			'delete' => 'حذف',
 			'deleted_cache_store' => 'مسح التخزين المؤقت',

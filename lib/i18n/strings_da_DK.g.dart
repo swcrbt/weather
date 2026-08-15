@@ -101,6 +101,7 @@ class TranslationsDaDk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: vejrudsigt (1×1)';
 	@override String get widget_material_you_current => 'Material You: aktuelt vejr';
 	@override String get widget_material_you_clock => 'Material You: ur og dag';
+	@override String get widget_weather_detail => 'Vejrdetaljer (5×2)';
 	@override String get precipitation => 'Nedbør';
 	@override String get delete => 'Slet';
 	@override String get deleted_cache_store => 'Rydder cache';
@@ -424,6 +425,7 @@ extension on TranslationsDaDk {
 			'widget_material_you_compact' => 'Material You: vejrudsigt (1×1)',
 			'widget_material_you_current' => 'Material You: aktuelt vejr',
 			'widget_material_you_clock' => 'Material You: ur og dag',
+			'widget_weather_detail' => 'Vejrdetaljer (5×2)',
 			'precipitation' => 'Nedbør',
 			'delete' => 'Slet',
 			'deleted_cache_store' => 'Rydder cache',

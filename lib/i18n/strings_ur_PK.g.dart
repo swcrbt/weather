@@ -101,6 +101,7 @@ class TranslationsUrPk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: پیشن گوئی (1×1)';
 	@override String get widget_material_you_current => 'Material You: موجودہ موسم';
 	@override String get widget_material_you_clock => 'Material You: گھڑی اور دن';
+	@override String get widget_weather_detail => 'موسم کی تفصیلات (5×2)';
 	@override String get precipitation => 'برسات';
 	@override String get delete => 'حذف کریں';
 	@override String get deleted_cache_store => 'کیچ صاف کی جارہی ہے';
@@ -424,6 +425,7 @@ extension on TranslationsUrPk {
 			'widget_material_you_compact' => 'Material You: پیشن گوئی (1×1)',
 			'widget_material_you_current' => 'Material You: موجودہ موسم',
 			'widget_material_you_clock' => 'Material You: گھڑی اور دن',
+			'widget_weather_detail' => 'موسم کی تفصیلات (5×2)',
 			'precipitation' => 'برسات',
 			'delete' => 'حذف کریں',
 			'deleted_cache_store' => 'کیچ صاف کی جارہی ہے',

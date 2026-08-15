@@ -61,6 +61,7 @@
   "widgetMaterialYouCompact": "Material You: vejrudsigt (1×1)",
   "widgetMaterialYouCurrent": "Material You: aktuelt vejr",
   "widgetMaterialYouClock": "Material You: ur og dag",
+  "widgetWeatherDetail": "Vejrdetaljer (5×2)",
   "precipitation": "Nedbør",
   "delete": "Slet",
   "deletedCacheStore": "Rydder cache",

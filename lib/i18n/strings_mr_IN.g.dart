@@ -101,6 +101,7 @@ class TranslationsMrIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: अंदाज (1×1)';
 	@override String get widget_material_you_current => 'Material You: सध्याचे हवामान';
 	@override String get widget_material_you_clock => 'Material You: घडyाळ आणि दिवस';
+	@override String get widget_weather_detail => 'हवामान तपशील (5×2)';
 	@override String get precipitation => 'पर्जन्य';
 	@override String get delete => 'हटवा';
 	@override String get deleted_cache_store => 'कॅशे साफ करत आहे';
@@ -424,6 +425,7 @@ extension on TranslationsMrIn {
 			'widget_material_you_compact' => 'Material You: अंदाज (1×1)',
 			'widget_material_you_current' => 'Material You: सध्याचे हवामान',
 			'widget_material_you_clock' => 'Material You: घडyाळ आणि दिवस',
+			'widget_weather_detail' => 'हवामान तपशील (5×2)',
 			'precipitation' => 'पर्जन्य',
 			'delete' => 'हटवा',
 			'deleted_cache_store' => 'कॅशे साफ करत आहे',

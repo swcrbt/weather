@@ -101,6 +101,7 @@ class TranslationsDeDe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: Vorhersage (1×1)';
 	@override String get widget_material_you_current => 'Material You: aktuelles Wetter';
 	@override String get widget_material_you_clock => 'Material You: Uhr und Tag';
+	@override String get widget_weather_detail => 'Wetterdetails (5×2)';
 	@override String get precipitation => 'Niederschlag';
 	@override String get delete => 'Löschen';
 	@override String get deleted_cache_store => 'Cache wird geleert';
@@ -424,6 +425,7 @@ extension on TranslationsDeDe {
 			'widget_material_you_compact' => 'Material You: Vorhersage (1×1)',
 			'widget_material_you_current' => 'Material You: aktuelles Wetter',
 			'widget_material_you_clock' => 'Material You: Uhr und Tag',
+			'widget_weather_detail' => 'Wetterdetails (5×2)',
 			'precipitation' => 'Niederschlag',
 			'delete' => 'Löschen',
 			'deleted_cache_store' => 'Cache wird geleert',

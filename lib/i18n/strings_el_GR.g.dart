@@ -101,6 +101,7 @@ class TranslationsElGr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: πρόγνωση (1×1)';
 	@override String get widget_material_you_current => 'Material You: τρέχων καιρός';
 	@override String get widget_material_you_clock => 'Material You: ρολόι και ημέρα';
+	@override String get widget_weather_detail => 'Λεπτομέρειες καιρού (5×2)';
 	@override String get precipitation => 'Κατακρήμνιση';
 	@override String get delete => 'Διαγραφή';
 	@override String get deleted_cache_store => 'Εκκαθάριση προσωρινής μνήμης';
@@ -424,6 +425,7 @@ extension on TranslationsElGr {
 			'widget_material_you_compact' => 'Material You: πρόγνωση (1×1)',
 			'widget_material_you_current' => 'Material You: τρέχων καιρός',
 			'widget_material_you_clock' => 'Material You: ρολόι και ημέρα',
+			'widget_weather_detail' => 'Λεπτομέρειες καιρού (5×2)',
 			'precipitation' => 'Κατακρήμνιση',
 			'delete' => 'Διαγραφή',
 			'deleted_cache_store' => 'Εκκαθάριση προσωρινής μνήμης',

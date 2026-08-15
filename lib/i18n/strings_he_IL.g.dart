@@ -101,6 +101,7 @@ class TranslationsHeIl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: תחזית (1×1)';
 	@override String get widget_material_you_current => 'Material You: מזג אוויר נוכחי';
 	@override String get widget_material_you_clock => 'Material You: שעון ויום';
+	@override String get widget_weather_detail => 'פרטי מזג האוויר (5×2)';
 	@override String get precipitation => 'משקעים';
 	@override String get delete => 'מחק';
 	@override String get deleted_cache_store => 'ניקוי מטמון';
@@ -424,6 +425,7 @@ extension on TranslationsHeIl {
 			'widget_material_you_compact' => 'Material You: תחזית (1×1)',
 			'widget_material_you_current' => 'Material You: מזג אוויר נוכחי',
 			'widget_material_you_clock' => 'Material You: שעון ויום',
+			'widget_weather_detail' => 'פרטי מזג האוויר (5×2)',
 			'precipitation' => 'משקעים',
 			'delete' => 'מחק',
 			'deleted_cache_store' => 'ניקוי מטמון',

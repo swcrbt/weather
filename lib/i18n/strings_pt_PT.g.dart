@@ -101,6 +101,7 @@ class TranslationsPtPt extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: previsão (1×1)';
 	@override String get widget_material_you_current => 'Material You: tempo atual';
 	@override String get widget_material_you_clock => 'Material You: relógio e dia';
+	@override String get widget_weather_detail => 'Detalhes do tempo (5×2)';
 	@override String get precipitation => 'Precipitação';
 	@override String get delete => 'Eliminar';
 	@override String get deleted_cache_store => 'A limpar a cache';
@@ -424,6 +425,7 @@ extension on TranslationsPtPt {
 			'widget_material_you_compact' => 'Material You: previsão (1×1)',
 			'widget_material_you_current' => 'Material You: tempo atual',
 			'widget_material_you_clock' => 'Material You: relógio e dia',
+			'widget_weather_detail' => 'Detalhes do tempo (5×2)',
 			'precipitation' => 'Precipitação',
 			'delete' => 'Eliminar',
 			'deleted_cache_store' => 'A limpar a cache',

@@ -101,6 +101,7 @@ class TranslationsKnIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: ಮುನ್ಸೂಚನೆ (1×1)';
 	@override String get widget_material_you_current => 'Material You: ಪ್ರಸ್ತುತ ಹವಾಮಾನ';
 	@override String get widget_material_you_clock => 'Material You: ಗಡಿಯಾರ ಮತ್ತು ದಿನ';
+	@override String get widget_weather_detail => 'ಹವಾಮಾನ ವಿವರಗಳು (5×2)';
 	@override String get precipitation => 'ಮಳೆ';
 	@override String get delete => 'ಅಳಿಸಿ';
 	@override String get deleted_cache_store => 'ಕ್ಯಾಶ್ ತೆರವುಗೊಳಿಸಲಾಗುತ್ತಿದೆ';
@@ -424,6 +425,7 @@ extension on TranslationsKnIn {
 			'widget_material_you_compact' => 'Material You: ಮುನ್ಸೂಚನೆ (1×1)',
 			'widget_material_you_current' => 'Material You: ಪ್ರಸ್ತುತ ಹವಾಮಾನ',
 			'widget_material_you_clock' => 'Material You: ಗಡಿಯಾರ ಮತ್ತು ದಿನ',
+			'widget_weather_detail' => 'ಹವಾಮಾನ ವಿವರಗಳು (5×2)',
 			'precipitation' => 'ಮಳೆ',
 			'delete' => 'ಅಳಿಸಿ',
 			'deleted_cache_store' => 'ಕ್ಯಾಶ್ ತೆರವುಗೊಳಿಸಲಾಗುತ್ತಿದೆ',

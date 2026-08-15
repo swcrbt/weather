@@ -101,6 +101,7 @@ class TranslationsRuRu extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: прогноз (1×1)';
 	@override String get widget_material_you_current => 'Material You: текущая погода';
 	@override String get widget_material_you_clock => 'Material You: часы и день';
+	@override String get widget_weather_detail => 'Подробности о погоде (5×2)';
 	@override String get precipitation => 'Осадки';
 	@override String get delete => 'Удалить';
 	@override String get deleted_cache_store => 'Очистка кэша';
@@ -424,6 +425,7 @@ extension on TranslationsRuRu {
 			'widget_material_you_compact' => 'Material You: прогноз (1×1)',
 			'widget_material_you_current' => 'Material You: текущая погода',
 			'widget_material_you_clock' => 'Material You: часы и день',
+			'widget_weather_detail' => 'Подробности о погоде (5×2)',
 			'precipitation' => 'Осадки',
 			'delete' => 'Удалить',
 			'deleted_cache_store' => 'Очистка кэша',

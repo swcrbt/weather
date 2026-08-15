@@ -101,6 +101,7 @@ class TranslationsBnIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: পূর্বাভাস (1×1)';
 	@override String get widget_material_you_current => 'Material You: বর্তমান আবহাওয়া';
 	@override String get widget_material_you_clock => 'Material You: ঘড়ি ও দিন';
+	@override String get widget_weather_detail => 'আবহাওয়ার বিস্তারিত (5×2)';
 	@override String get precipitation => 'বৃষ্টিপাত';
 	@override String get delete => 'মুছে ফেলুন';
 	@override String get deleted_cache_store => 'ক্যাশ পরিষ্কার করা হচ্ছে';
@@ -424,6 +425,7 @@ extension on TranslationsBnIn {
 			'widget_material_you_compact' => 'Material You: পূর্বাভাস (1×1)',
 			'widget_material_you_current' => 'Material You: বর্তমান আবহাওয়া',
 			'widget_material_you_clock' => 'Material You: ঘড়ি ও দিন',
+			'widget_weather_detail' => 'আবহাওয়ার বিস্তারিত (5×2)',
 			'precipitation' => 'বৃষ্টিপাত',
 			'delete' => 'মুছে ফেলুন',
 			'deleted_cache_store' => 'ক্যাশ পরিষ্কার করা হচ্ছে',

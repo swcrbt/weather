@@ -101,6 +101,7 @@ class TranslationsJaJp extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: 予報 (1×1)';
 	@override String get widget_material_you_current => 'Material You: 現在の天気';
 	@override String get widget_material_you_clock => 'Material You: 時計と曜日';
+	@override String get widget_weather_detail => '天気の詳細 (5×2)';
 	@override String get precipitation => '降水量';
 	@override String get delete => '削除';
 	@override String get deleted_cache_store => 'キャッシュを削除中';
@@ -424,6 +425,7 @@ extension on TranslationsJaJp {
 			'widget_material_you_compact' => 'Material You: 予報 (1×1)',
 			'widget_material_you_current' => 'Material You: 現在の天気',
 			'widget_material_you_clock' => 'Material You: 時計と曜日',
+			'widget_weather_detail' => '天気の詳細 (5×2)',
 			'precipitation' => '降水量',
 			'delete' => '削除',
 			'deleted_cache_store' => 'キャッシュを削除中',

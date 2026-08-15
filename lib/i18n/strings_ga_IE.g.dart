@@ -101,6 +101,7 @@ class TranslationsGaIe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: réamhaisnéis (1×1)';
 	@override String get widget_material_you_current => 'Material You: aimsir reatha';
 	@override String get widget_material_you_clock => 'Material You: clog agus lá';
+	@override String get widget_weather_detail => 'Sonraí aimsire (5×2)';
 	@override String get precipitation => 'Tuirlingt';
 	@override String get delete => 'Scrios';
 	@override String get deleted_cache_store => 'Ag glanadh an taisce';
@@ -424,6 +425,7 @@ extension on TranslationsGaIe {
 			'widget_material_you_compact' => 'Material You: réamhaisnéis (1×1)',
 			'widget_material_you_current' => 'Material You: aimsir reatha',
 			'widget_material_you_clock' => 'Material You: clog agus lá',
+			'widget_weather_detail' => 'Sonraí aimsire (5×2)',
 			'precipitation' => 'Tuirlingt',
 			'delete' => 'Scrios',
 			'deleted_cache_store' => 'Ag glanadh an taisce',

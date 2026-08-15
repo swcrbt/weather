@@ -101,6 +101,7 @@ class TranslationsTaIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: முன்னறிவிப்பு (1×1)';
 	@override String get widget_material_you_current => 'Material You: தற்போதைய வானிலை';
 	@override String get widget_material_you_clock => 'Material You: கlock மற்றும் நாள்';
+	@override String get widget_weather_detail => 'வானிலை விவரங்கள் (5×2)';
 	@override String get precipitation => 'மழைப்பொழிவு';
 	@override String get delete => 'நீக்கு';
 	@override String get deleted_cache_store => 'கேச் அழிக்கிறது';
@@ -424,6 +425,7 @@ extension on TranslationsTaIn {
 			'widget_material_you_compact' => 'Material You: முன்னறிவிப்பு (1×1)',
 			'widget_material_you_current' => 'Material You: தற்போதைய வானிலை',
 			'widget_material_you_clock' => 'Material You: கlock மற்றும் நாள்',
+			'widget_weather_detail' => 'வானிலை விவரங்கள் (5×2)',
 			'precipitation' => 'மழைப்பொழிவு',
 			'delete' => 'நீக்கு',
 			'deleted_cache_store' => 'கேச் அழிக்கிறது',

@@ -101,6 +101,7 @@ class TranslationsPtBr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: previsão (1×1)';
 	@override String get widget_material_you_current => 'Material You: clima atual';
 	@override String get widget_material_you_clock => 'Material You: relógio e dia';
+	@override String get widget_weather_detail => 'Detalhes do clima (5×2)';
 	@override String get precipitation => 'Precipitação';
 	@override String get delete => 'Deletar';
 	@override String get deleted_cache_store => 'Limpando cache';
@@ -424,6 +425,7 @@ extension on TranslationsPtBr {
 			'widget_material_you_compact' => 'Material You: previsão (1×1)',
 			'widget_material_you_current' => 'Material You: clima atual',
 			'widget_material_you_clock' => 'Material You: relógio e dia',
+			'widget_weather_detail' => 'Detalhes do clima (5×2)',
 			'precipitation' => 'Precipitação',
 			'delete' => 'Deletar',
 			'deleted_cache_store' => 'Limpando cache',

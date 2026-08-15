@@ -101,6 +101,7 @@ class TranslationsGuIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: આગાહી (1×1)';
 	@override String get widget_material_you_current => 'Material You: વર્તમાન હવામાન';
 	@override String get widget_material_you_clock => 'Material You: ઘડિયાળ અને દિવસ';
+	@override String get widget_weather_detail => 'હવામાનની વિગતો (5×2)';
 	@override String get precipitation => 'વરસાદ';
 	@override String get delete => 'કાઢી નાખો';
 	@override String get deleted_cache_store => 'કેશ સાફ કરી રહ્યા છીએ';
@@ -424,6 +425,7 @@ extension on TranslationsGuIn {
 			'widget_material_you_compact' => 'Material You: આગાહી (1×1)',
 			'widget_material_you_current' => 'Material You: વર્તમાન હવામાન',
 			'widget_material_you_clock' => 'Material You: ઘડિયાળ અને દિવસ',
+			'widget_weather_detail' => 'હવામાનની વિગતો (5×2)',
 			'precipitation' => 'વરસાદ',
 			'delete' => 'કાઢી નાખો',
 			'deleted_cache_store' => 'કેશ સાફ કરી રહ્યા છીએ',

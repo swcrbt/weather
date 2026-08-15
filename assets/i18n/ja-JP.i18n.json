@@ -61,6 +61,7 @@
   "widgetMaterialYouCompact": "Material You: 予報 (1×1)",
   "widgetMaterialYouCurrent": "Material You: 現在の天気",
   "widgetMaterialYouClock": "Material You: 時計と曜日",
+  "widgetWeatherDetail": "天気の詳細 (5×2)",
   "precipitation": "降水量",
   "delete": "削除",
   "deletedCacheStore": "キャッシュを削除中",

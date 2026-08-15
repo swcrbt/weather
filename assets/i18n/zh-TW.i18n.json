@@ -61,6 +61,7 @@
   "widgetMaterialYouCompact": "Material You：預報 (1×1)",
   "widgetMaterialYouCurrent": "Material You：目前天氣",
   "widgetMaterialYouClock": "Material You：時鐘和日期",
+  "widgetWeatherDetail": "天氣詳情（5×2）",
   "precipitation": "降水量",
   "delete": "刪除",
   "deletedCacheStore": "正在清除快取",

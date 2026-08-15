@@ -101,6 +101,7 @@ class TranslationsMlIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: പ്രവചനം (1×1)';
 	@override String get widget_material_you_current => 'Material You: നിലവിലെ കാലാവസ്ഥ';
 	@override String get widget_material_you_clock => 'Material You: ക്ലോക്കും ദിവസവും';
+	@override String get widget_weather_detail => 'കാലാവസ്ഥ വിശദാംശങ്ങൾ (5×2)';
 	@override String get precipitation => 'മഴ';
 	@override String get delete => 'ഇല്ലാതാക്കുക';
 	@override String get deleted_cache_store => 'കാഷെ മായ്ക്കുന്നു';
@@ -424,6 +425,7 @@ extension on TranslationsMlIn {
 			'widget_material_you_compact' => 'Material You: പ്രവചനം (1×1)',
 			'widget_material_you_current' => 'Material You: നിലവിലെ കാലാവസ്ഥ',
 			'widget_material_you_clock' => 'Material You: ക്ലോക്കും ദിവസവും',
+			'widget_weather_detail' => 'കാലാവസ്ഥ വിശദാംശങ്ങൾ (5×2)',
 			'precipitation' => 'മഴ',
 			'delete' => 'ഇല്ലാതാക്കുക',
 			'deleted_cache_store' => 'കാഷെ മായ്ക്കുന്നു',

@@ -101,6 +101,7 @@ class TranslationsTeIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: అంచనా (1×1)';
 	@override String get widget_material_you_current => 'Material You: ప్రస్తుత వాతావరణం';
 	@override String get widget_material_you_clock => 'Material You: గడియారం మరియు రోజు';
+	@override String get widget_weather_detail => 'వాతావరణ వివరాలు (5×2)';
 	@override String get precipitation => 'వర్షపాతం';
 	@override String get delete => 'తొలగించు';
 	@override String get deleted_cache_store => 'కాష్ క్లియర్ చేస్తోంది';
@@ -424,6 +425,7 @@ extension on TranslationsTeIn {
 			'widget_material_you_compact' => 'Material You: అంచనా (1×1)',
 			'widget_material_you_current' => 'Material You: ప్రస్తుత వాతావరణం',
 			'widget_material_you_clock' => 'Material You: గడియారం మరియు రోజు',
+			'widget_weather_detail' => 'వాతావరణ వివరాలు (5×2)',
 			'precipitation' => 'వర్షపాతం',
 			'delete' => 'తొలగించు',
 			'deleted_cache_store' => 'కాష్ క్లియర్ చేస్తోంది',

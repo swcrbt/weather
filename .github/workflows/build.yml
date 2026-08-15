@@ -67,6 +67,38 @@ jobs:
           echo "⚠️ 未配置和风天气 API Host"
         fi
     
+    # 配置固定 Android release 签名
+    - name: Setup Android signing
+      env:
+        ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+        ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+      run: |
+        set -euo pipefail
+
+        for name in \
+          ANDROID_KEYSTORE_BASE64 \
+          ANDROID_KEYSTORE_PASSWORD \
+          ANDROID_KEY_ALIAS \
+          ANDROID_KEY_PASSWORD; do
+          if [ -z "${!name:-}" ]; then
+            echo "::error::缺少 GitHub Secret: $name"
+            exit 1
+          fi
+        done
+
+        printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android/app/weather-release.p12
+        chmod 600 android/app/weather-release.p12
+        cat > android/key.properties <<EOF
+        storePassword=$ANDROID_KEYSTORE_PASSWORD
+        keyPassword=$ANDROID_KEY_PASSWORD
+        keyAlias=$ANDROID_KEY_ALIAS
+        storeFile=weather-release.p12
+        storeType=PKCS12
+        EOF
+        chmod 600 android/key.properties
+
     # 获取依赖
     - name: Get dependencies
       run: flutter pub get

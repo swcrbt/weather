@@ -101,6 +101,7 @@ class TranslationsNlNl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: voorspelling (1×1)';
 	@override String get widget_material_you_current => 'Material You: huidig weer';
 	@override String get widget_material_you_clock => 'Material You: klok en dag';
+	@override String get widget_weather_detail => 'Weerdetails (5×2)';
 	@override String get precipitation => 'Neerslag';
 	@override String get delete => 'Verwijder';
 	@override String get deleted_cache_store => 'Cache wissen';
@@ -424,6 +425,7 @@ extension on TranslationsNlNl {
 			'widget_material_you_compact' => 'Material You: voorspelling (1×1)',
 			'widget_material_you_current' => 'Material You: huidig weer',
 			'widget_material_you_clock' => 'Material You: klok en dag',
+			'widget_weather_detail' => 'Weerdetails (5×2)',
 			'precipitation' => 'Neerslag',
 			'delete' => 'Verwijder',
 			'deleted_cache_store' => 'Cache wissen',

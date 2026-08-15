@@ -101,6 +101,7 @@ class TranslationsPaIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: ਪੂਰਵਾਨੁਮਾਨ (1×1)';
 	@override String get widget_material_you_current => 'Material You: ਮੌਜੂਦਾ ਮੌਸਮ';
 	@override String get widget_material_you_clock => 'Material You: ਘੜੀ ਅਤੇ ਦਿਨ';
+	@override String get widget_weather_detail => 'ਮੌਸਮ ਵੇਰਵੇ (5×2)';
 	@override String get precipitation => 'ਬਰਸਾਤ';
 	@override String get delete => 'ਮਿਟਾਓ';
 	@override String get deleted_cache_store => 'ਕੈਸ਼ ਸਾਫ਼ ਕਰ ਰਿਹਾ ਹੈ';
@@ -424,6 +425,7 @@ extension on TranslationsPaIn {
 			'widget_material_you_compact' => 'Material You: ਪੂਰਵਾਨੁਮਾਨ (1×1)',
 			'widget_material_you_current' => 'Material You: ਮੌਜੂਦਾ ਮੌਸਮ',
 			'widget_material_you_clock' => 'Material You: ਘੜੀ ਅਤੇ ਦਿਨ',
+			'widget_weather_detail' => 'ਮੌਸਮ ਵੇਰਵੇ (5×2)',
 			'precipitation' => 'ਬਰਸਾਤ',
 			'delete' => 'ਮਿਟਾਓ',
 			'deleted_cache_store' => 'ਕੈਸ਼ ਸਾਫ਼ ਕਰ ਰਿਹਾ ਹੈ',

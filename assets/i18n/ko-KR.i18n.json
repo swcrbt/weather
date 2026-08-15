@@ -61,6 +61,7 @@
   "widgetMaterialYouCompact": "Material You: 예보 (1×1)",
   "widgetMaterialYouCurrent": "Material You: 현재 날씨",
   "widgetMaterialYouClock": "Material You: 시계 및 요일",
+  "widgetWeatherDetail": "날씨 상세 (5×2)",
   "precipitation": "강수량",
   "delete": "삭제",
   "deletedCacheStore": "캐시 삭제 중",

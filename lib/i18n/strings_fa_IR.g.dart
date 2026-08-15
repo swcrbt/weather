@@ -101,6 +101,7 @@ class TranslationsFaIr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: پیش‌بینی (1×1)';
 	@override String get widget_material_you_current => 'Material You: آب‌وهوای فعلی';
 	@override String get widget_material_you_clock => 'Material You: ساعت و روز';
+	@override String get widget_weather_detail => 'جزئیات آب‌وهوا (5×2)';
 	@override String get precipitation => 'ته‌نشینی';
 	@override String get delete => 'حذف';
 	@override String get deleted_cache_store => 'در حال پاک کردن حافظه نهان';
@@ -424,6 +425,7 @@ extension on TranslationsFaIr {
 			'widget_material_you_compact' => 'Material You: پیش‌بینی (1×1)',
 			'widget_material_you_current' => 'Material You: آب‌وهوای فعلی',
 			'widget_material_you_clock' => 'Material You: ساعت و روز',
+			'widget_weather_detail' => 'جزئیات آب‌وهوا (5×2)',
 			'precipitation' => 'ته‌نشینی',
 			'delete' => 'حذف',
 			'deleted_cache_store' => 'در حال پاک کردن حافظه نهان',

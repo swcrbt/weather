@@ -101,6 +101,7 @@ class TranslationsZhTw extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You：預報 (1×1)';
 	@override String get widget_material_you_current => 'Material You：目前天氣';
 	@override String get widget_material_you_clock => 'Material You：時鐘和日期';
+	@override String get widget_weather_detail => '天氣詳情（5×2）';
 	@override String get precipitation => '降水量';
 	@override String get delete => '刪除';
 	@override String get deleted_cache_store => '正在清除快取';
@@ -424,6 +425,7 @@ extension on TranslationsZhTw {
 			'widget_material_you_compact' => 'Material You：預報 (1×1)',
 			'widget_material_you_current' => 'Material You：目前天氣',
 			'widget_material_you_clock' => 'Material You：時鐘和日期',
+			'widget_weather_detail' => '天氣詳情（5×2）',
 			'precipitation' => '降水量',
 			'delete' => '刪除',
 			'deleted_cache_store' => '正在清除快取',

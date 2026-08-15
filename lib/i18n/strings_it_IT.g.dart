@@ -101,6 +101,7 @@ class TranslationsItIt extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: previsioni (1×1)';
 	@override String get widget_material_you_current => 'Material You: meteo attuale';
 	@override String get widget_material_you_clock => 'Material You: orologio e giorno';
+	@override String get widget_weather_detail => 'Dettagli meteo (5×2)';
 	@override String get precipitation => 'Precipitazione';
 	@override String get delete => 'Elimina';
 	@override String get deleted_cache_store => 'Cancellazione della cache';
@@ -424,6 +425,7 @@ extension on TranslationsItIt {
 			'widget_material_you_compact' => 'Material You: previsioni (1×1)',
 			'widget_material_you_current' => 'Material You: meteo attuale',
 			'widget_material_you_clock' => 'Material You: orologio e giorno',
+			'widget_weather_detail' => 'Dettagli meteo (5×2)',
 			'precipitation' => 'Precipitazione',
 			'delete' => 'Elimina',
 			'deleted_cache_store' => 'Cancellazione della cache',

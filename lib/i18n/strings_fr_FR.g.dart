@@ -101,6 +101,7 @@ class TranslationsFrFr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You : prévisions (1×1)';
 	@override String get widget_material_you_current => 'Material You : météo actuelle';
 	@override String get widget_material_you_clock => 'Material You : horloge et jour';
+	@override String get widget_weather_detail => 'Détails météo (5×2)';
 	@override String get precipitation => 'Précipitation';
 	@override String get delete => 'Supprimer';
 	@override String get deleted_cache_store => 'Effacement du cache';
@@ -424,6 +425,7 @@ extension on TranslationsFrFr {
 			'widget_material_you_compact' => 'Material You : prévisions (1×1)',
 			'widget_material_you_current' => 'Material You : météo actuelle',
 			'widget_material_you_clock' => 'Material You : horloge et jour',
+			'widget_weather_detail' => 'Détails météo (5×2)',
 			'precipitation' => 'Précipitation',
 			'delete' => 'Supprimer',
 			'deleted_cache_store' => 'Effacement du cache',

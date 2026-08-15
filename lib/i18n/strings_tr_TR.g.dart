@@ -101,6 +101,7 @@ class TranslationsTrTr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: tahmin (1×1)';
 	@override String get widget_material_you_current => 'Material You: güncel hava';
 	@override String get widget_material_you_clock => 'Material You: saat ve gün';
+	@override String get widget_weather_detail => 'Hava durumu ayrıntıları (5×2)';
 	@override String get precipitation => 'Yağış';
 	@override String get delete => 'Sil';
 	@override String get deleted_cache_store => 'Önbellek temizleniyor';
@@ -424,6 +425,7 @@ extension on TranslationsTrTr {
 			'widget_material_you_compact' => 'Material You: tahmin (1×1)',
 			'widget_material_you_current' => 'Material You: güncel hava',
 			'widget_material_you_clock' => 'Material You: saat ve gün',
+			'widget_weather_detail' => 'Hava durumu ayrıntıları (5×2)',
 			'precipitation' => 'Yağış',
 			'delete' => 'Sil',
 			'deleted_cache_store' => 'Önbellek temizleniyor',

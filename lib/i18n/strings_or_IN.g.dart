@@ -101,6 +101,7 @@ class TranslationsOrIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: ପୂର୍ବାନୁମାନ (1×1)';
 	@override String get widget_material_you_current => 'Material You: ବର୍ତ୍ତମାନର ପାଣିପାଗ';
 	@override String get widget_material_you_clock => 'Material You: ଘଣ୍ଟା ଏବଂ ଦିନ';
+	@override String get widget_weather_detail => 'ପାଣିପାଗ ବିବରଣୀ (5×2)';
 	@override String get precipitation => 'ବୃଷ୍ଟିପାତ';
 	@override String get delete => 'ଡିଲିଟ୍ କରନ୍ତୁ';
 	@override String get deleted_cache_store => 'କ୍ୟାଶ୍ ସଫା କରୁଛି';
@@ -424,6 +425,7 @@ extension on TranslationsOrIn {
 			'widget_material_you_compact' => 'Material You: ପୂର୍ବାନୁମାନ (1×1)',
 			'widget_material_you_current' => 'Material You: ବର୍ତ୍ତମାନର ପାଣିପାଗ',
 			'widget_material_you_clock' => 'Material You: ଘଣ୍ଟା ଏବଂ ଦିନ',
+			'widget_weather_detail' => 'ପାଣିପାଗ ବିବରଣୀ (5×2)',
 			'precipitation' => 'ବୃଷ୍ଟିପାତ',
 			'delete' => 'ଡିଲିଟ୍ କରନ୍ତୁ',
 			'deleted_cache_store' => 'କ୍ୟାଶ୍ ସଫା କରୁଛି',

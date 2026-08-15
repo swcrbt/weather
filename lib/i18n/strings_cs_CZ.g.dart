@@ -101,6 +101,7 @@ class TranslationsCsCz extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: předpověď (1×1)';
 	@override String get widget_material_you_current => 'Material You: aktuální počasí';
 	@override String get widget_material_you_clock => 'Material You: hodiny a den';
+	@override String get widget_weather_detail => 'Podrobnosti o počasí (5×2)';
 	@override String get precipitation => 'Srážky';
 	@override String get delete => 'Odstranit';
 	@override String get deleted_cache_store => 'Čištění mezipaměti';
@@ -424,6 +425,7 @@ extension on TranslationsCsCz {
 			'widget_material_you_compact' => 'Material You: předpověď (1×1)',
 			'widget_material_you_current' => 'Material You: aktuální počasí',
 			'widget_material_you_clock' => 'Material You: hodiny a den',
+			'widget_weather_detail' => 'Podrobnosti o počasí (5×2)',
 			'precipitation' => 'Srážky',
 			'delete' => 'Odstranit',
 			'deleted_cache_store' => 'Čištění mezipaměti',

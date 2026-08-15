@@ -101,6 +101,7 @@ class TranslationsPlPl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get widget_material_you_compact => 'Material You: prognoza (1×1)';
 	@override String get widget_material_you_current => 'Material You: aktualna pogoda';
 	@override String get widget_material_you_clock => 'Material You: zegar i dzień';
+	@override String get widget_weather_detail => 'Szczegóły pogody (5×2)';
 	@override String get precipitation => 'Opad atmosferyczny';
 	@override String get delete => 'Usuń';
 	@override String get deleted_cache_store => 'Czyszczenie pamięci podręcznej';
@@ -424,6 +425,7 @@ extension on TranslationsPlPl {
 			'widget_material_you_compact' => 'Material You: prognoza (1×1)',
 			'widget_material_you_current' => 'Material You: aktualna pogoda',
 			'widget_material_you_clock' => 'Material You: zegar i dzień',
+			'widget_weather_detail' => 'Szczegóły pogody (5×2)',
 			'precipitation' => 'Opad atmosferyczny',
 			'delete' => 'Usuń',
 			'deleted_cache_store' => 'Czyszczenie pamięci podręcznej',
