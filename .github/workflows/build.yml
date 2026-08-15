@@ -158,6 +158,22 @@ jobs:
           build/app/outputs/flutter-apk/app-gms-release.apk
           build/app/outputs/flutter-apk/app-*-gms-release.apk
     
+    # 读取 pubspec.yaml 中的展示版本（忽略 Android build number）
+    - name: Read app version
+      id: app_version
+      if: github.ref == 'refs/heads/main'
+      shell: bash
+      run: |
+        set -euo pipefail
+
+        raw_version="$(awk '$1 == "version:" { print $2; exit }' pubspec.yaml)"
+        version_name="${raw_version%%+*}"
+        if [[ ! "$version_name" =~ ^[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]]; then
+          echo "::error::pubspec.yaml 中的版本号无效: ${raw_version:-<empty>}"
+          exit 1
+        fi
+        echo "name=$version_name" >> "$GITHUB_OUTPUT"
+
     # 创建 Release (仅在 push 到 main 时)
     - name: Create Release
       if: github.ref == 'refs/heads/main'
@@ -165,8 +181,8 @@ jobs:
       with:
         artifacts: "build/app/outputs/flutter-apk/app-gms-release.apk"
         token: ${{ secrets.GITHUB_TOKEN }}
-        tag: "v${{ github.run_number }}"
-        name: "Release ${{ github.run_number }}"
+        tag: "v${{ steps.app_version.outputs.name }}"
+        name: "Release ${{ steps.app_version.outputs.name }}"
         body: |
           自动构建的 APK 文件
           
