@@ -2,15 +2,17 @@ import 'dart:convert';
 
 import 'package:home_widget/home_widget.dart';
 import 'package:isar_community/isar.dart';
-import 'package:rain/core/utils/debug_log.dart';
-import 'package:rain/core/utils/lunar_calendar.dart';
 import 'package:rain/core/config/widget_registry.dart';
+import 'package:rain/core/i18n/locale_format_helper.dart';
 import 'package:rain/core/services/asset_cache_service.dart';
 import 'package:rain/core/services/widget_background_service.dart';
-import 'package:rain/core/weather/unit_converter.dart';
+import 'package:rain/core/utils/debug_log.dart';
+import 'package:rain/core/weather/aqi_helper.dart';
 import 'package:rain/core/weather/status_weather.dart';
 import 'package:rain/core/weather/time_index_helper.dart';
+import 'package:rain/core/weather/unit_converter.dart';
 import 'package:rain/data/models/db.dart';
+import 'package:rain/i18n/tr.dart';
 
 /// Pushes current weather and styling into native home screen widgets.
 class HomeWidgetService {
@@ -76,18 +78,21 @@ class HomeWidgetService {
   }
 
   /// Builds the JSON payload for the current hour from main weather cache.
-  /// 增强版本：支持 AQI、降水预警、5天预报
   Future<Map<String, dynamic>?> _buildWidgetBundle(
     Isar isar,
     Settings settings,
   ) async {
     final cache = await isar.mainWeatherCaches.where().findFirst();
+    final hourlyTimes = cache?.time;
+    final weatherCodes = cache?.weathercode;
+    final temperatures = cache?.temperature2M;
     if (cache == null ||
-        cache.time == null ||
-        cache.time!.isEmpty ||
-        cache.timezone == null ||
-        cache.weathercode == null ||
-        cache.temperature2M == null) {
+        hourlyTimes == null ||
+        hourlyTimes.isEmpty ||
+        weatherCodes == null ||
+        weatherCodes.isEmpty ||
+        temperatures == null ||
+        temperatures.isEmpty) {
       return null;
     }
 
@@ -95,136 +100,236 @@ class HomeWidgetService {
       cache,
       settingsClockSkewSeconds: settings.clockSkewSeconds,
     );
+    final dailyTimes = cache.timeDaily ?? const <DateTime>[];
     final indices = TimeIndexHelper.currentIndices(
-      hourly: cache.time!,
-      daily: cache.timeDaily ?? const [],
+      hourly: hourlyTimes,
+      daily: dailyTimes,
       clock: clock,
     );
-    final hour = indices.hour.clamp(0, cache.weathercode!.length - 1);
-    final day = cache.timeDaily == null || cache.timeDaily!.isEmpty
+    final hour = indices.hour.clamp(
+      0,
+      [
+            hourlyTimes.length,
+            weatherCodes.length,
+            temperatures.length,
+          ].reduce((a, b) => a < b ? a : b) -
+          1,
+    );
+    final day = dailyTimes.isEmpty
         ? 0
-        : indices.day.clamp(0, cache.timeDaily!.length - 1);
+        : indices.day.clamp(0, dailyTimes.length - 1);
+    final wallNow = TimeIndexHelper.wallClockNow(clock);
+    final languageCode = LocaleSettings.currentLocale.languageCode;
 
     final location = await isar.locationCaches.where().findFirst();
-    final locationName = location?.displayLabel ?? '';
-
-    final sunrise = cache.sunrise != null && day < cache.sunrise!.length
-        ? cache.sunrise![day]
-        : null;
-    final sunset = cache.sunset != null && day < cache.sunset!.length
-        ? cache.sunset![day]
-        : null;
-
     final statusWeather = StatusWeather.forTheme(settings.weatherIconTheme);
-
     final currentIcon = await _assets.getLocalImagePath(
       statusWeather.getImageNotification(
-        cache.weathercode![hour],
-        cache.time![hour],
-        sunrise ?? '06:00',
-        sunset ?? '18:00',
+        weatherCodes[hour],
+        hourlyTimes[hour],
+        _dailyValue(cache.sunrise, day) ?? '06:00',
+        _dailyValue(cache.sunset, day) ?? '18:00',
       ),
       assetRoot: statusWeather.assetRoot,
     );
 
-    final temp = cache.temperature2M?[hour];
-
-    // 构建基础数据
     final bundle = <String, dynamic>{
       'current': <String, dynamic>{
-        'location': locationName,
-        'temperature': temp == null
-            ? '--°'
-            : _widgetTemperature(temp, settings),
+        'location': location?.displayLabel ?? '',
+        'temperature': _widgetTemperature(temperatures[hour], settings),
+        'condition': statusWeather.getText(weatherCodes[hour]),
         'icon': currentIcon,
       },
+      'date': _formatWidgetDate(wallNow, languageCode),
+      'calendarDate': _calendarDate(wallNow),
+      'timeZoneId': cache.timezone,
+      'dateEpochMillis': DateTime.utc(
+        wallNow.year,
+        wallNow.month,
+        wallNow.day,
+        12,
+      ).millisecondsSinceEpoch,
+      'updateTime': _formatUpdateTime(
+        timestamp: cache.timestamp,
+        clock: clock,
+        settings: settings,
+        languageCode: languageCode,
+      ),
     };
 
-    // 添加 AQI 数据（如果有）
-    final aqiValue = settings.aqiStandard == 'european' 
-        ? cache.europeanAqi?.firstOrNull 
-        : cache.usAqi?.firstOrNull;
-    if (aqiValue != null) {
+    final aqi = _aqiAt(cache, hour, settings.aqiStandard);
+    if (aqi != null) {
       bundle['aqi'] = <String, dynamic>{
-        'value': aqiValue.round(),
-        'level': _resolveAqiLevel(aqiValue.round()),
+        'value': aqi.round(),
+        'level': AqiHelper.severityLabel(settings.aqiStandard, aqi),
+        'severity': AqiHelper.severityIndex(settings.aqiStandard, aqi),
       };
     }
 
-    // 添加5天预报数据
-    final forecast = <Map<String, dynamic>>[];
-    for (int i = 0; i < 5 && i < (cache.timeDaily?.length ?? 0); i++) {
-      final dayIndex = day + i;
-      if (dayIndex >= (cache.timeDaily?.length ?? 0)) break;
-      
-      final dayTempMax = cache.temperature2MMax?[dayIndex];
-      final dayTempMin = cache.temperature2MMin?[dayIndex];
-      final dayWeatherCode = cache.weathercodeDaily?[dayIndex];
-      
-      if (dayWeatherCode != null) {
-        final dayTime = cache.timeDaily![dayIndex].toIso8601String();
-        final dayIcon = await _assets.getLocalImagePath(
-          statusWeather.getImageNotification(
-            dayWeatherCode,
-            dayTime,
-            sunrise ?? '06:00',
-            sunset ?? '18:00',
-          ),
-          assetRoot: statusWeather.assetRoot,
-        );
-        
-        forecast.add({
-          'label': i == 0 ? '今天' : _getWeekdayLabel(dayIndex),
-          'icon': dayIcon,
-          'tempMax': dayTempMax?.round().toString() ?? '--',
-          'tempMin': dayTempMin?.round().toString() ?? '--',
-        });
-      }
-    }
-    
-    if (forecast.isNotEmpty) {
-      bundle['forecast'] = forecast;
+    final precipitationAlert = _precipitationAlert(
+      cache: cache,
+      currentHour: hour,
+      wallNow: wallNow,
+      settings: settings,
+      languageCode: languageCode,
+    );
+    if (precipitationAlert != null) {
+      bundle['precipitationAlert'] = precipitationAlert;
     }
 
-    // 添加农历日期
-    bundle['lunar'] = LunarCalendar.getCurrentLunarDate();
-
-    // 添加降水预警（如果有降水概率数据）
-    if (cache.precipitationProbability != null && cache.precipitationProbability!.isNotEmpty) {
-      final currentPrecipProb = cache.precipitationProbability![hour];
-      if (currentPrecipProb != null && currentPrecipProb > 0) {
-        bundle['precipitationAlert'] = '降水概率 $currentPrecipProb%';
-      }
-    }
-
-    // 添加更新时间
-    bundle['updateTime'] = _formatUpdateTime(DateTime.now());
+    final forecast = await _buildForecast(
+      cache: cache,
+      startDay: day,
+      statusWeather: statusWeather,
+      settings: settings,
+      languageCode: languageCode,
+      wallNow: wallNow,
+    );
+    if (forecast.isNotEmpty) bundle['forecast'] = forecast;
 
     return bundle;
   }
 
-  /// 解析 AQI 等级
-  String _resolveAqiLevel(int aqi) {
-    if (aqi <= 50) return '优';
-    if (aqi <= 100) return '良';
-    if (aqi <= 150) return '轻度污染';
-    if (aqi <= 200) return '中度污染';
-    if (aqi <= 300) return '重度污染';
-    return '严重污染';
+  Future<List<Map<String, dynamic>>> _buildForecast({
+    required MainWeatherCache cache,
+    required int startDay,
+    required StatusWeather statusWeather,
+    required Settings settings,
+    required String languageCode,
+    required DateTime wallNow,
+  }) async {
+    final dates = cache.timeDaily;
+    final codes = cache.weathercodeDaily;
+    if (dates == null || dates.isEmpty || codes == null || codes.isEmpty) {
+      return const [];
+    }
+
+    final forecast = <Map<String, dynamic>>[];
+    for (var offset = 0; offset < 5; offset++) {
+      final index = startDay + offset;
+      if (index >= dates.length || index >= codes.length) break;
+      final code = codes[index];
+      if (code == null) continue;
+
+      final icon = await _assets.getLocalImagePath(
+        statusWeather.getImageNotification(
+          code,
+          '${_isoCalendarDate(dates[index])}T12:00',
+          _dailyValue(cache.sunrise, index) ?? '06:00',
+          _dailyValue(cache.sunset, index) ?? '18:00',
+        ),
+        assetRoot: statusWeather.assetRoot,
+      );
+      final min = _dailyValue(cache.temperature2MMin, index);
+      final max = _dailyValue(cache.temperature2MMax, index);
+
+      forecast.add({
+        'label': _forecastLabel(
+          date: dates[index],
+          wallNow: wallNow,
+          languageCode: languageCode,
+        ),
+        'date': _calendarDate(dates[index]),
+        'icon': icon,
+        'tempMin': min == null ? '--°' : _widgetTemperature(min, settings),
+        'tempMax': max == null ? '--°' : _widgetTemperature(max, settings),
+      });
+    }
+    return forecast;
   }
 
-  /// 获取星期标签
-  String _getWeekdayLabel(int dayOffset) {
-    final weekdays = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-    final now = DateTime.now();
-    final targetDay = now.add(Duration(days: dayOffset));
-    return weekdays[targetDay.weekday - 1];
+  String _forecastLabel({
+    required DateTime date,
+    required DateTime wallNow,
+    required String languageCode,
+  }) {
+    if (TimeIndexHelper.isSameCalendarDay(date, wallNow)) return 'today'.tr;
+    return LocaleFormatHelper.weekdayAbbrev(date, languageCode);
   }
 
-  /// 格式化更新时间
-  String _formatUpdateTime(DateTime time) {
-    return '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}更新';
+  double? _aqiAt(MainWeatherCache cache, int hour, String standard) {
+    final values = standard == AqiHelper.american
+        ? cache.usAqi
+        : cache.europeanAqi;
+    if (values == null || hour >= values.length) return null;
+    return values[hour];
   }
+
+  String? _precipitationAlert({
+    required MainWeatherCache cache,
+    required int currentHour,
+    required DateTime wallNow,
+    required Settings settings,
+    required String languageCode,
+  }) {
+    final probabilities = cache.precipitationProbability;
+    final times = cache.time;
+    if (probabilities == null || times == null || probabilities.isEmpty) {
+      return null;
+    }
+
+    final currentProbability = currentHour < probabilities.length
+        ? probabilities[currentHour]
+        : null;
+    if (currentProbability != null && currentProbability > 0) {
+      return '${'precipitationProbability'.tr} $currentProbability%';
+    }
+
+    final last = [
+      times.length,
+      probabilities.length,
+    ].reduce((a, b) => a < b ? a : b);
+    for (var index = currentHour + 1; index < last; index++) {
+      final probability = probabilities[index];
+      if (probability == null || probability < 30) continue;
+      final slot = TimeIndexHelper.parseForecastDateTime(times[index]);
+      final label = TimeIndexHelper.formatForecastSlotLabel(
+        notificationTime: slot,
+        wallNow: wallNow,
+        settings: settings,
+        languageCode: languageCode,
+      );
+      return '$label · ${'precipitationProbability'.tr} $probability%';
+    }
+    return null;
+  }
+
+  String _formatWidgetDate(DateTime date, String languageCode) =>
+      '${LocaleFormatHelper.weekdayAbbrev(date, languageCode)} · '
+      '${_calendarDate(date)}';
+
+  String _formatUpdateTime({
+    required DateTime? timestamp,
+    required LocationClock clock,
+    required Settings settings,
+    required String languageCode,
+  }) {
+    if (timestamp == null) return '—';
+    final correctedUtc = timestamp.toUtc().add(
+      Duration(seconds: clock.clockSkewSeconds),
+    );
+    final locationTime = clock.utcOffsetSeconds != null
+        ? correctedUtc.add(Duration(seconds: clock.utcOffsetSeconds!))
+        : correctedUtc.toLocal();
+    final time = TimeIndexHelper.formatWallClock(
+      locationTime,
+      settings,
+      languageCode,
+    );
+    return '$time · ${'lastUpdated'.tr}';
+  }
+
+  T? _dailyValue<T>(List<T>? values, int index) {
+    if (values == null || index < 0 || index >= values.length) return null;
+    return values[index];
+  }
+
+  String _calendarDate(DateTime date) => '${date.month}/${date.day}';
+
+  String _isoCalendarDate(DateTime date) =>
+      '${date.year.toString().padLeft(4, '0')}-'
+      '${date.month.toString().padLeft(2, '0')}-'
+      '${date.day.toString().padLeft(2, '0')}';
 
   /// Background entry point: refreshes stale cache and updates widgets from disk.
   static Future<bool> updateFromDisk() => runWidgetBackgroundRefresh(

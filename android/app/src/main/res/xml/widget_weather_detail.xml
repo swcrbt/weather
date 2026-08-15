@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:minWidth="320dp"
-    android:minHeight="120dp"
+    android:minHeight="186dp"
+    android:minResizeWidth="320dp"
+    android:minResizeHeight="186dp"
     android:updatePeriodMillis="1800000"
     android:initialLayout="@layout/widget_weather_detail"
-    android:resizeMode="horizontal|vertical"
-    android:widgetCategory="home_screen|keyguard"
     android:previewLayout="@layout/widget_weather_detail"
-    android:configure="com.swcrbt.weather.MainActivity">
-</appwidget-provider>
+    android:resizeMode="horizontal"
+    android:targetCellWidth="5"
+    android:targetCellHeight="2"
+    android:widgetCategory="home_screen|keyguard"
+    tools:ignore="UnusedAttribute" />

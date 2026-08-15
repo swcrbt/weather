@@ -78,6 +78,12 @@ void main() {
     expect(actions.afterSaveForEnumPicker(degreesPicker), isNotNull);
     expect(actions.backgroundAfterSaveForEnumPicker(degreesPicker), isTrue);
     expect(actions.afterSaveForEnumPicker(settingDataEnumPickers[2]), isNull);
+
+    final aqiPicker = settingDataEnumPickers.firstWhere(
+      (picker) => picker.titleKey == 'aqiStandard',
+    );
+    expect(actions.afterSaveForEnumPicker(aqiPicker), isNotNull);
+    expect(actions.backgroundAfterSaveForEnumPicker(aqiPicker), isFalse);
   });
 
   testWidgets('saveLocationToggle does not setState after host is disposed', (

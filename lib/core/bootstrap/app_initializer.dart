@@ -32,6 +32,9 @@ class AppInitializer {
     if (Platform.isAndroid) {
       await _setOptimalDisplayMode();
       Workmanager().initialize(callbackDispatcher);
+      await HomeWidget.registerInteractivityCallback(
+        widgetInteractivityCallback,
+      );
       await ensureWidgetBackgroundTaskScheduled();
       registerWidgetBootUpdateTask();
       Future.microtask(HomeWidgetService.updateFromDisk);
@@ -96,6 +99,13 @@ class AppInitializer {
         : active;
     await FlutterDisplayMode.setPreferredMode(mostOptimalMode);
   }
+}
+
+/// HomeWidget interaction entry point used by the native refresh button.
+@pragma('vm:entry-point')
+Future<void> widgetInteractivityCallback(Uri? uri) async {
+  if (uri?.host != 'refresh') return;
+  await HomeWidgetService.updateFromDisk();
 }
 
 /// Workmanager entry point that refreshes home widgets from disk.

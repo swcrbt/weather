@@ -3,9 +3,9 @@ import 'package:rain/core/config/widget_registry.dart';
 
 void main() {
   group('rainWidgetRegistry', () {
-    test('contains three unique widget definitions', () {
-      expect(rainWidgetRegistry, hasLength(3));
-      expect(rainWidgetRegistry.map((w) => w.id).toSet(), hasLength(3));
+    test('contains four unique widget definitions', () {
+      expect(rainWidgetRegistry, hasLength(4));
+      expect(rainWidgetRegistry.map((w) => w.id).toSet(), hasLength(4));
     });
 
     test('every widget has a slang label key and Android class name', () {

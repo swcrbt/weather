@@ -67,6 +67,7 @@ const settingDataEnumPickers = [
     items: [AqiHelper.european, AqiHelper.american],
     read: _readAqiStandard,
     write: _writeAqiStandard,
+    refreshWidgets: true,
   ),
   SettingEnumPickerDefinition(
     titleKey: 'timeformat',
