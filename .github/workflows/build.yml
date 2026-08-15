@@ -15,6 +15,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     
     # 设置 Java
     - name: Set up JDK 17
@@ -174,21 +176,62 @@ jobs:
         fi
         echo "name=$version_name" >> "$GITHUB_OUTPUT"
 
-    # 创建 Release (仅在 push 到 main 时)
-    - name: Create Release
+    # 检查该应用版本是否已经发布，避免覆盖已有标签和 APK
+    - name: Check release tag
+      id: release_tag
       if: github.ref == 'refs/heads/main'
+      shell: bash
+      env:
+        RELEASE_TAG: "v${{ steps.app_version.outputs.name }}"
+      run: |
+        set -euo pipefail
+
+        if git ls-remote --exit-code --tags origin "refs/tags/$RELEASE_TAG" >/dev/null 2>&1; then
+          echo "exists=true" >> "$GITHUB_OUTPUT"
+          echo "$RELEASE_TAG 已发布，跳过重复发布"
+        else
+          echo "exists=false" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Generate release notes
+      if: github.ref == 'refs/heads/main' && steps.release_tag.outputs.exists == 'false'
+      shell: bash
+      env:
+        RELEASE_TAG: "v${{ steps.app_version.outputs.name }}"
+        REPOSITORY_URL: "${{ github.server_url }}/${{ github.repository }}"
+      run: |
+        set -euo pipefail
+
+        previous_tag="$(
+          git tag --merged HEAD --sort=-version:refname |
+            grep -m 1 -E '^v[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$' || true
+        )"
+
+        {
+          echo "自动构建的 APK 文件"
+          echo
+          echo "## 更新内容"
+          echo
+          if [ -n "$previous_tag" ]; then
+            git log --no-merges --pretty='- %s (`%h`)' "$previous_tag..HEAD"
+            echo
+            echo "**完整变更**: $REPOSITORY_URL/compare/$previous_tag...$RELEASE_TAG"
+          else
+            git log --no-merges --pretty='- %s (`%h`)' HEAD
+          fi
+        } > release-notes.md
+
+        cat release-notes.md
+
+    # 仅为尚未发布的应用版本创建 Release
+    - name: Create Release
+      if: github.ref == 'refs/heads/main' && steps.release_tag.outputs.exists == 'false'
       uses: ncipollo/release-action@v1
       with:
         artifacts: "build/app/outputs/flutter-apk/app-gms-release.apk"
         token: ${{ secrets.GITHUB_TOKEN }}
         tag: "v${{ steps.app_version.outputs.name }}"
         name: "Release ${{ steps.app_version.outputs.name }}"
-        body: |
-          自动构建的 APK 文件
-          
-          ## 更新内容
-          - 基于最新代码自动构建
-          - 包含所有增强功能
+        bodyFile: release-notes.md
         draft: false
         prerelease: false
-        allowUpdates: true
