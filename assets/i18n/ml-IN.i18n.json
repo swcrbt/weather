@@ -312,5 +312,12 @@
   "colorPaletteSand": "മണൽ",
   "lastBackgroundRefresh": "അവസാന പശ്ചാത്തല റിഫ്രഷ്",
   "lastBackgroundRefreshNever": "ഇതുവരെ പശ്ചാത്തല റിഫ്രESH ഇല്ല",
-  "backgroundRefreshError": "അവസാന പശ്ചാത്തല പിശക്"
+  "backgroundRefreshError": "അവസാന പശ്ചാത്തല പിശക്",
+  "hourlyForecast": "മണിക്കൂർ പ്രവചനം",
+  "now": "ഇപ്പോൾ",
+  "temperature": "താപനില",
+  "currentTemperature": "നിലവിലെ താപനില",
+  "temperature24hAgo": "24 മണിക്കൂർ മുമ്പത്തെ താപനില",
+  "vsYesterday": "ഇന്നലെയുമായി താരതമ്യം",
+  "windLevel": "നില {n}"
 }

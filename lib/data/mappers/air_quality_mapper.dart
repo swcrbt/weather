@@ -17,7 +17,9 @@ class AirQualityMapper {
     };
     return List<T?>.generate(weatherTimes.length, (i) {
       final aqIndex = indexByTime[weatherTimes[i]];
-      return aqIndex == null ? null : source[aqIndex];
+      return aqIndex == null || aqIndex >= source.length
+          ? null
+          : source[aqIndex];
     });
   }
 

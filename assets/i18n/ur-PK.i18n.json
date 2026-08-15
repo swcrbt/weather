@@ -312,5 +312,12 @@
   "colorPaletteSand": "ریت",
   "lastBackgroundRefresh": "آخری پس منظر ریفریش",
   "lastBackgroundRefreshNever": "ابھی تک کوئی پس منظر ریفریش نہیں",
-  "backgroundRefreshError": "آخری پس منظر خرابی"
+  "backgroundRefreshError": "آخری پس منظر خرابی",
+  "hourlyForecast": "گھنٹہ وار پیش گوئی",
+  "now": "ابھی",
+  "temperature": "درجہ حرارت",
+  "currentTemperature": "موجودہ درجہ حرارت",
+  "temperature24hAgo": "24 گھنٹے پہلے کا درجہ حرارت",
+  "vsYesterday": "کل کے مقابلے میں",
+  "windLevel": "سطح {n}"
 }

@@ -7,6 +7,7 @@ import 'package:rain/data/models/db.dart';
 import 'package:rain/features/weather/presentation/widgets/desc/desc.dart';
 import 'package:rain/features/weather/presentation/widgets/desc/desc_container.dart';
 import 'package:rain/features/weather/presentation/widgets/hourly.dart';
+import 'package:rain/features/weather/presentation/widgets/hourly_chart/hourly_forecast_card.dart';
 import 'package:rain/features/weather/presentation/widgets/now.dart';
 import 'package:rain/features/weather/presentation/widgets/sunset_sunrise.dart';
 import 'package:rain/features/weather/presentation/widgets/daily/daily_card.dart';
@@ -194,6 +195,7 @@ void main() {
     );
 
     expect(find.byType(Now), findsOneWidget);
+    expect(find.byType(HourlyForecastCard), findsOneWidget);
 
     await tester.scrollUntilVisible(
       find.byType(DailyContainer),

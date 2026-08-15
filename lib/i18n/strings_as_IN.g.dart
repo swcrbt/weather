@@ -241,7 +241,7 @@ class TranslationsAsIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'সৰ্বোচ্চ দূষকৰ স্তৰ';
 	@override String get aqi_help_advice_label => 'পৰামৰ্শ';
 	@override String get aqi_help_source => 'উৎস: Open-Meteo Air Quality API — ভূ-স্তৰৰ ঘনত্ব (~10 মি), ~11 কিমি গ্ৰিড।';
-	@override String get widget_battery_hint => 'নিৰ্ভৰযোগ্য ৱিজেট আপডেইটৰ বাবে Weather ৰ বাবে এপৰ ছেটিংছত বেটাৰী অনুকূলন অফ কৰক';
+	@override String get widget_battery_hint => 'নিৰ্ভৰযোগ্য ৱিজেট আপডেইটৰ বাবে Rain ৰ বাবে এপৰ ছেটিংছত বেটাৰী অনুকূলন অফ কৰক';
 	@override String get persistent_notification => 'স্থায়ী জাননী';
 	@override String get last_updated => 'আপডেট কৰা হৈছে';
 	@override String get app_font => 'ফন্ট';
@@ -353,6 +353,13 @@ class TranslationsAsIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'শেষৰ পটভূমি সতেজকৰণ';
 	@override String get last_background_refresh_never => 'এতিয়ালৈকে কোনো পটভূমি সতেজকৰণ নাই';
 	@override String get background_refresh_error => 'শেষৰ পটভূমি ত্ৰুটি';
+	@override String get hourly_forecast => 'ঘণ্টাৰ বতৰৰ পূৰ্বানুমান';
+	@override String get now => 'এতিয়া';
+	@override String get temperature => 'উষ্ণতা';
+	@override String get current_temperature => 'বৰ্তমান উষ্ণতা';
+	@override String get temperature24h_ago => '২৪ ঘণ্টা আগৰ উষ্ণতা';
+	@override String get vs_yesterday => 'কালিৰ তুলনাত';
+	@override String get wind_level => 'স্তৰ {n}';
 }
 
 /// The flat map containing all translations for locale <as-IN>.
@@ -565,7 +572,7 @@ extension on TranslationsAsIn {
 			'aqi_help_dominant' => 'সৰ্বোচ্চ দূষকৰ স্তৰ',
 			'aqi_help_advice_label' => 'পৰামৰ্শ',
 			'aqi_help_source' => 'উৎস: Open-Meteo Air Quality API — ভূ-স্তৰৰ ঘনত্ব (~10 মি), ~11 কিমি গ্ৰিড।',
-			'widget_battery_hint' => 'নিৰ্ভৰযোগ্য ৱিজেট আপডেইটৰ বাবে Weather ৰ বাবে এপৰ ছেটিংছত বেটাৰী অনুকূলন অফ কৰক',
+			'widget_battery_hint' => 'নিৰ্ভৰযোগ্য ৱিজেট আপডেইটৰ বাবে Rain ৰ বাবে এপৰ ছেটিংছত বেটাৰী অনুকূলন অফ কৰক',
 			'persistent_notification' => 'স্থায়ী জাননী',
 			'last_updated' => 'আপডেট কৰা হৈছে',
 			'app_font' => 'ফন্ট',
@@ -677,6 +684,13 @@ extension on TranslationsAsIn {
 			'last_background_refresh' => 'শেষৰ পটভূমি সতেজকৰণ',
 			'last_background_refresh_never' => 'এতিয়ালৈকে কোনো পটভূমি সতেজকৰণ নাই',
 			'background_refresh_error' => 'শেষৰ পটভূমি ত্ৰুটি',
+			'hourly_forecast' => 'ঘণ্টাৰ বতৰৰ পূৰ্বানুমান',
+			'now' => 'এতিয়া',
+			'temperature' => 'উষ্ণতা',
+			'current_temperature' => 'বৰ্তমান উষ্ণতা',
+			'temperature24h_ago' => '২৪ ঘণ্টা আগৰ উষ্ণতা',
+			'vs_yesterday' => 'কালিৰ তুলনাত',
+			'wind_level' => 'স্তৰ {n}',
 			_ => null,
 		};
 	}

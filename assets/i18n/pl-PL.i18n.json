@@ -312,5 +312,12 @@
   "colorPaletteSand": "Piaskowy",
   "lastBackgroundRefresh": "Ostatnie odświeżenie w tle",
   "lastBackgroundRefreshNever": "Brak odświeżenia w tle",
-  "backgroundRefreshError": "Ostatni błąd w tle"
+  "backgroundRefreshError": "Ostatni błąd w tle",
+  "hourlyForecast": "Prognoza godzinowa",
+  "now": "Teraz",
+  "temperature": "Temperatura",
+  "currentTemperature": "Aktualna temperatura",
+  "temperature24hAgo": "Temperatura sprzed 24 godzin",
+  "vsYesterday": "w porównaniu z wczoraj",
+  "windLevel": "Poziom {n}"
 }

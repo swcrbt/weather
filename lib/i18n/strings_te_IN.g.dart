@@ -241,7 +241,7 @@ class TranslationsTeIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'అత్యధిక కాలుష్య స్థాయి';
 	@override String get aqi_help_advice_label => 'సిఫార్సు';
 	@override String get aqi_help_source => 'మూలం: Open-Meteo Air Quality API — నేల స్థాయి సాంద్రత (~10 మీ), ~11 కిమీ గ్రిడ్.';
-	@override String get widget_battery_hint => 'నమ్మకమైన విడ్జెట్ నవీకరణల కోసం యాప్ సెట్టింగ్‌లలో Weather కోసం బ్యాటరీ పరిమితిని నిలిపివేయండి';
+	@override String get widget_battery_hint => 'నమ్మకమైన విడ్జెట్ నవీకరణల కోసం యాప్ సెట్టింగ్‌లలో Rain కోసం బ్యాటరీ పరిమితిని నిలిపివేయండి';
 	@override String get persistent_notification => 'శాశ్వత నోటిఫికేషన్';
 	@override String get last_updated => 'నవీకరించబడింది';
 	@override String get app_font => 'ఫాంట్';
@@ -353,6 +353,13 @@ class TranslationsTeIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'చివరి నేపథ్య రిఫ్రెష్';
 	@override String get last_background_refresh_never => 'ఇంకా నేపథ్య రిఫ్రెష్ లేదు';
 	@override String get background_refresh_error => 'చివరి నేపథ్య లోపం';
+	@override String get hourly_forecast => 'గంటవారీ అంచనా';
+	@override String get now => 'ఇప్పుడు';
+	@override String get temperature => 'ఉష్ణోగ్రత';
+	@override String get current_temperature => 'ప్రస్తుత ఉష్ణోగ్రత';
+	@override String get temperature24h_ago => '24 గంటల క్రితం ఉష్ణోగ్రత';
+	@override String get vs_yesterday => 'నిన్నతో పోలిస్తే';
+	@override String get wind_level => 'స్థాయి {n}';
 }
 
 /// The flat map containing all translations for locale <te-IN>.
@@ -565,7 +572,7 @@ extension on TranslationsTeIn {
 			'aqi_help_dominant' => 'అత్యధిక కాలుష్య స్థాయి',
 			'aqi_help_advice_label' => 'సిఫార్సు',
 			'aqi_help_source' => 'మూలం: Open-Meteo Air Quality API — నేల స్థాయి సాంద్రత (~10 మీ), ~11 కిమీ గ్రిడ్.',
-			'widget_battery_hint' => 'నమ్మకమైన విడ్జెట్ నవీకరణల కోసం యాప్ సెట్టింగ్‌లలో Weather కోసం బ్యాటరీ పరిమితిని నిలిపివేయండి',
+			'widget_battery_hint' => 'నమ్మకమైన విడ్జెట్ నవీకరణల కోసం యాప్ సెట్టింగ్‌లలో Rain కోసం బ్యాటరీ పరిమితిని నిలిపివేయండి',
 			'persistent_notification' => 'శాశ్వత నోటిఫికేషన్',
 			'last_updated' => 'నవీకరించబడింది',
 			'app_font' => 'ఫాంట్',
@@ -677,6 +684,13 @@ extension on TranslationsTeIn {
 			'last_background_refresh' => 'చివరి నేపథ్య రిఫ్రెష్',
 			'last_background_refresh_never' => 'ఇంకా నేపథ్య రిఫ్రెష్ లేదు',
 			'background_refresh_error' => 'చివరి నేపథ్య లోపం',
+			'hourly_forecast' => 'గంటవారీ అంచనా',
+			'now' => 'ఇప్పుడు',
+			'temperature' => 'ఉష్ణోగ్రత',
+			'current_temperature' => 'ప్రస్తుత ఉష్ణోగ్రత',
+			'temperature24h_ago' => '24 గంటల క్రితం ఉష్ణోగ్రత',
+			'vs_yesterday' => 'నిన్నతో పోలిస్తే',
+			'wind_level' => 'స్థాయి {n}',
 			_ => null,
 		};
 	}

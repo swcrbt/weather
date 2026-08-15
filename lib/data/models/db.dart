@@ -72,6 +72,10 @@ class MainWeatherCache {
   List<int?>? precipitationProbability;
   List<double?>? shortwaveRadiation;
 
+  /// Hourly timestamps and temperatures preceding the normalized forecast.
+  List<String>? timePast;
+  List<double?>? temperature2MPast;
+
   List<double?>? europeanAqi;
   List<double?>? usAqi;
   List<double?>? pm25;
@@ -122,6 +126,8 @@ class MainWeatherCache {
     this.dewpoint2M,
     this.precipitationProbability,
     this.shortwaveRadiation,
+    this.timePast,
+    this.temperature2MPast,
     this.europeanAqi,
     this.usAqi,
     this.pm25,
@@ -172,6 +178,8 @@ class MainWeatherCache {
     'dewpoint2M': dewpoint2M,
     'precipitationProbability': precipitationProbability,
     'shortwaveRadiation': shortwaveRadiation,
+    'timePast': timePast,
+    'temperature2MPast': temperature2MPast,
     'europeanAqi': europeanAqi,
     'usAqi': usAqi,
     'pm25': pm25,
@@ -251,6 +259,10 @@ class WeatherCard {
   List<int?>? precipitationProbability;
   List<double?>? shortwaveRadiation;
 
+  /// Hourly timestamps and temperatures preceding the normalized forecast.
+  List<String>? timePast;
+  List<double?>? temperature2MPast;
+
   List<double?>? europeanAqi;
   List<double?>? usAqi;
   List<double?>? pm25;
@@ -306,6 +318,8 @@ class WeatherCard {
     this.dewpoint2M,
     this.precipitationProbability,
     this.shortwaveRadiation,
+    this.timePast,
+    this.temperature2MPast,
     this.europeanAqi,
     this.usAqi,
     this.pm25,
@@ -361,6 +375,8 @@ class WeatherCard {
     'dewpoint2M': dewpoint2M,
     'precipitationProbability': precipitationProbability,
     'shortwaveRadiation': shortwaveRadiation,
+    'timePast': timePast,
+    'temperature2MPast': temperature2MPast,
     'europeanAqi': europeanAqi,
     'usAqi': usAqi,
     'pm25': pm25,
@@ -421,6 +437,8 @@ class WeatherCard {
     dewpoint2M: cache.dewpoint2M,
     precipitationProbability: cache.precipitationProbability,
     shortwaveRadiation: cache.shortwaveRadiation,
+    timePast: cache.timePast,
+    temperature2MPast: cache.temperature2MPast,
     europeanAqi: cache.europeanAqi,
     usAqi: cache.usAqi,
     pm25: cache.pm25,
@@ -491,6 +509,8 @@ class WeatherCard {
         json['precipitationProbability'] ?? [],
       ),
       shortwaveRadiation: List<double?>.from(json['shortwaveRadiation'] ?? []),
+      timePast: List<String>.from(json['timePast'] ?? []),
+      temperature2MPast: List<double?>.from(json['temperature2MPast'] ?? []),
       europeanAqi: List<double?>.from(json['europeanAqi'] ?? []),
       usAqi: List<double?>.from(json['usAqi'] ?? []),
       pm25: List<double?>.from(json['pm25'] ?? []),

@@ -241,7 +241,7 @@ class TranslationsFaIr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'بالاترین سطح آلاینده';
 	@override String get aqi_help_advice_label => 'توصیه';
 	@override String get aqi_help_source => 'منبع: Open-Meteo Air Quality API — غلظت در سطح زمین (~۱۰ م)، شبکهٔ ~۱۱ کیلومتر.';
-	@override String get widget_battery_hint => 'برای به‌روزرسانی پایدار ویجت، بهینه‌سازی باتری Weather را در تنظیمات برنامه غیرفعال کنید';
+	@override String get widget_battery_hint => 'برای به‌روزرسانی پایدار ویجت، بهینه‌سازی باتری Rain را در تنظیمات برنامه غیرفعال کنید';
 	@override String get persistent_notification => 'اعلان دائمی';
 	@override String get last_updated => 'به‌روزرسانی';
 	@override String get app_font => 'قلم';
@@ -353,6 +353,13 @@ class TranslationsFaIr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'آخرین به‌روزرسانی پس‌زمینه';
 	@override String get last_background_refresh_never => 'هنوز به‌روزرسانی پس‌زمینه‌ای انجام نشده';
 	@override String get background_refresh_error => 'آخرین خطای پس‌زمینه';
+	@override String get hourly_forecast => 'پیش‌بینی ساعتی';
+	@override String get now => 'اکنون';
+	@override String get temperature => 'دما';
+	@override String get current_temperature => 'دمای فعلی';
+	@override String get temperature24h_ago => 'دمای ۲۴ ساعت قبل';
+	@override String get vs_yesterday => 'در مقایسه با دیروز';
+	@override String get wind_level => 'سطح {n}';
 }
 
 /// The flat map containing all translations for locale <fa-IR>.
@@ -565,7 +572,7 @@ extension on TranslationsFaIr {
 			'aqi_help_dominant' => 'بالاترین سطح آلاینده',
 			'aqi_help_advice_label' => 'توصیه',
 			'aqi_help_source' => 'منبع: Open-Meteo Air Quality API — غلظت در سطح زمین (~۱۰ م)، شبکهٔ ~۱۱ کیلومتر.',
-			'widget_battery_hint' => 'برای به‌روزرسانی پایدار ویجت، بهینه‌سازی باتری Weather را در تنظیمات برنامه غیرفعال کنید',
+			'widget_battery_hint' => 'برای به‌روزرسانی پایدار ویجت، بهینه‌سازی باتری Rain را در تنظیمات برنامه غیرفعال کنید',
 			'persistent_notification' => 'اعلان دائمی',
 			'last_updated' => 'به‌روزرسانی',
 			'app_font' => 'قلم',
@@ -677,6 +684,13 @@ extension on TranslationsFaIr {
 			'last_background_refresh' => 'آخرین به‌روزرسانی پس‌زمینه',
 			'last_background_refresh_never' => 'هنوز به‌روزرسانی پس‌زمینه‌ای انجام نشده',
 			'background_refresh_error' => 'آخرین خطای پس‌زمینه',
+			'hourly_forecast' => 'پیش‌بینی ساعتی',
+			'now' => 'اکنون',
+			'temperature' => 'دما',
+			'current_temperature' => 'دمای فعلی',
+			'temperature24h_ago' => 'دمای ۲۴ ساعت قبل',
+			'vs_yesterday' => 'در مقایسه با دیروز',
+			'wind_level' => 'سطح {n}',
 			_ => null,
 		};
 	}

@@ -241,7 +241,7 @@ class TranslationsCsCz extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Nejvyšší hladina znečišťovadla';
 	@override String get aqi_help_advice_label => 'Doporučení';
 	@override String get aqi_help_source => 'Zdroj: Open-Meteo Air Quality API — koncentrace u země (~10 m), mřížka ~11 km.';
-	@override String get widget_battery_hint => 'Pro spolehlivé aktualizace widgetu vypněte optimalizaci baterie pro Weather v nastavení aplikace';
+	@override String get widget_battery_hint => 'Pro spolehlivé aktualizace widgetu vypněte optimalizaci baterie pro Rain v nastavení aplikace';
 	@override String get persistent_notification => 'Trvalé oznámení';
 	@override String get last_updated => 'Aktualizováno';
 	@override String get app_font => 'Písmo';
@@ -353,6 +353,13 @@ class TranslationsCsCz extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'Poslední aktualizace na pozadí';
 	@override String get last_background_refresh_never => 'Zatím žádná aktualizace na pozadí';
 	@override String get background_refresh_error => 'Poslední chyba na pozadí';
+	@override String get hourly_forecast => 'Hodinová předpověď';
+	@override String get now => 'Nyní';
+	@override String get temperature => 'Teplota';
+	@override String get current_temperature => 'Aktuální teplota';
+	@override String get temperature24h_ago => 'Teplota před 24 hodinami';
+	@override String get vs_yesterday => 'oproti včerejšku';
+	@override String get wind_level => 'Úroveň {n}';
 }
 
 /// The flat map containing all translations for locale <cs-CZ>.
@@ -565,7 +572,7 @@ extension on TranslationsCsCz {
 			'aqi_help_dominant' => 'Nejvyšší hladina znečišťovadla',
 			'aqi_help_advice_label' => 'Doporučení',
 			'aqi_help_source' => 'Zdroj: Open-Meteo Air Quality API — koncentrace u země (~10 m), mřížka ~11 km.',
-			'widget_battery_hint' => 'Pro spolehlivé aktualizace widgetu vypněte optimalizaci baterie pro Weather v nastavení aplikace',
+			'widget_battery_hint' => 'Pro spolehlivé aktualizace widgetu vypněte optimalizaci baterie pro Rain v nastavení aplikace',
 			'persistent_notification' => 'Trvalé oznámení',
 			'last_updated' => 'Aktualizováno',
 			'app_font' => 'Písmo',
@@ -677,6 +684,13 @@ extension on TranslationsCsCz {
 			'last_background_refresh' => 'Poslední aktualizace na pozadí',
 			'last_background_refresh_never' => 'Zatím žádná aktualizace na pozadí',
 			'background_refresh_error' => 'Poslední chyba na pozadí',
+			'hourly_forecast' => 'Hodinová předpověď',
+			'now' => 'Nyní',
+			'temperature' => 'Teplota',
+			'current_temperature' => 'Aktuální teplota',
+			'temperature24h_ago' => 'Teplota před 24 hodinami',
+			'vs_yesterday' => 'oproti včerejšku',
+			'wind_level' => 'Úroveň {n}',
 			_ => null,
 		};
 	}

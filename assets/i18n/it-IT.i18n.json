@@ -312,5 +312,12 @@
   "colorPaletteSand": "Sabbia",
   "lastBackgroundRefresh": "Ultimo aggiornamento in background",
   "lastBackgroundRefreshNever": "Nessun aggiornamento in background",
-  "backgroundRefreshError": "Ultimo errore in background"
+  "backgroundRefreshError": "Ultimo errore in background",
+  "hourlyForecast": "Previsione oraria",
+  "now": "Ora",
+  "temperature": "Temperatura",
+  "currentTemperature": "Temperatura attuale",
+  "temperature24hAgo": "Temperatura di 24 ore fa",
+  "vsYesterday": "rispetto a ieri",
+  "windLevel": "Livello {n}"
 }

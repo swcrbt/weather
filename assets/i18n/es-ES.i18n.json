@@ -312,5 +312,12 @@
   "colorPaletteSand": "Arena",
   "lastBackgroundRefresh": "Última actualización en segundo plano",
   "lastBackgroundRefreshNever": "Aún no hay actualización en segundo plano",
-  "backgroundRefreshError": "Último error en segundo plano"
+  "backgroundRefreshError": "Último error en segundo plano",
+  "hourlyForecast": "Previsión por horas",
+  "now": "Ahora",
+  "temperature": "Temperatura",
+  "currentTemperature": "Temperatura actual",
+  "temperature24hAgo": "Temperatura de hace 24 h",
+  "vsYesterday": "frente a ayer",
+  "windLevel": "Nivel {n}"
 }

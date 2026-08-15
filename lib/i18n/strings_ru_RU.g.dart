@@ -288,7 +288,7 @@ class TranslationsRuRu extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Наибольший уровень загрязнителя';
 	@override String get aqi_help_advice_label => 'Рекомендация';
 	@override String get aqi_help_source => 'Источник: Open-Meteo Air Quality API — концентрации у земли (~10 м), сетка ~11 км.';
-	@override String get widget_battery_hint => 'Для стабильного обновления виджета отключите оптимизацию батареи для Weather в настройках приложения';
+	@override String get widget_battery_hint => 'Для стабильного обновления виджета отключите оптимизацию батареи для Rain в настройках приложения';
 	@override String get persistent_notification => 'Постоянное уведомление';
 	@override String get last_updated => 'Обновлено';
 	@override String get app_font => 'Шрифт';
@@ -353,6 +353,13 @@ class TranslationsRuRu extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'Последнее фоновое обновление';
 	@override String get last_background_refresh_never => 'Фоновых обновлений ещё не было';
 	@override String get background_refresh_error => 'Последняя фоновая ошибка';
+	@override String get hourly_forecast => 'Почасовой прогноз';
+	@override String get now => 'Сейчас';
+	@override String get temperature => 'Температура';
+	@override String get current_temperature => 'Текущая температура';
+	@override String get temperature24h_ago => 'Температура 24 часа назад';
+	@override String get vs_yesterday => 'по сравнению со вчера';
+	@override String get wind_level => 'Уровень {n}';
 }
 
 /// The flat map containing all translations for locale <ru-RU>.
@@ -612,7 +619,7 @@ extension on TranslationsRuRu {
 			'aqi_help_dominant' => 'Наибольший уровень загрязнителя',
 			'aqi_help_advice_label' => 'Рекомендация',
 			'aqi_help_source' => 'Источник: Open-Meteo Air Quality API — концентрации у земли (~10 м), сетка ~11 км.',
-			'widget_battery_hint' => 'Для стабильного обновления виджета отключите оптимизацию батареи для Weather в настройках приложения',
+			'widget_battery_hint' => 'Для стабильного обновления виджета отключите оптимизацию батареи для Rain в настройках приложения',
 			'persistent_notification' => 'Постоянное уведомление',
 			'last_updated' => 'Обновлено',
 			'app_font' => 'Шрифт',
@@ -677,6 +684,13 @@ extension on TranslationsRuRu {
 			'last_background_refresh' => 'Последнее фоновое обновление',
 			'last_background_refresh_never' => 'Фоновых обновлений ещё не было',
 			'background_refresh_error' => 'Последняя фоновая ошибка',
+			'hourly_forecast' => 'Почасовой прогноз',
+			'now' => 'Сейчас',
+			'temperature' => 'Температура',
+			'current_temperature' => 'Текущая температура',
+			'temperature24h_ago' => 'Температура 24 часа назад',
+			'vs_yesterday' => 'по сравнению со вчера',
+			'wind_level' => 'Уровень {n}',
 			_ => null,
 		};
 	}

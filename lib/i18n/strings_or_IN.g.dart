@@ -241,7 +241,7 @@ class TranslationsOrIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'ସର୍ବୋଚ୍ଚ ପ୍ରଦୂଷକ ସ୍ତର';
 	@override String get aqi_help_advice_label => 'ସୁପାରିଶ';
 	@override String get aqi_help_source => 'ଉତ୍ସ: Open-Meteo Air Quality API — ଭୂମି ସ୍ତରର ଘନତା (~10 ମି), ~11 କିମି ଗ୍ରିଡ୍।';
-	@override String get widget_battery_hint => 'ନିର୍ଭରଯୋଗ୍ୟ ୱିଜେଟ୍ ଅପଡେଟ୍ ପାଇଁ ଆପ୍ ସେଟିଂସ୍‌ରେ Weather ପାଇଁ ବ୍ୟାଟେରୀ ଅପ୍ଟିମାଇଜେସନ୍ ବନ୍ଦ କରନ୍ତୁ';
+	@override String get widget_battery_hint => 'ନିର୍ଭରଯୋଗ୍ୟ ୱିଜେଟ୍ ଅପଡେଟ୍ ପାଇଁ ଆପ୍ ସେଟିଂସ୍‌ରେ Rain ପାଇଁ ବ୍ୟାଟେରୀ ଅପ୍ଟିମାଇଜେସନ୍ ବନ୍ଦ କରନ୍ତୁ';
 	@override String get persistent_notification => 'ସ୍ଥାୟୀ ବିଜ୍ଞପ୍ତି';
 	@override String get last_updated => 'ଅପଡେଟ୍ ହୋଇଛି';
 	@override String get app_font => 'ଫଣ୍ଟ';
@@ -353,6 +353,13 @@ class TranslationsOrIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'ଶେଷ ପୃଷ୍ଠପଟି ରିଫ୍ରେଶ';
 	@override String get last_background_refresh_never => 'ଏପର୍ଯ୍ୟନ୍ତ କono ପୃଷ୍ଠପଟି ରିଫ୍ରେଶ ନାହିଁ';
 	@override String get background_refresh_error => 'ଶେଷ ପୃଷ୍ଠପଟି ତ୍ରୁଟି';
+	@override String get hourly_forecast => 'ଘଣ୍ଟାକିଆ ପୂର୍ବାନୁମାନ';
+	@override String get now => 'ବର୍ତ୍ତମାନ';
+	@override String get temperature => 'ତାପମାତ୍ରା';
+	@override String get current_temperature => 'ବର୍ତ୍ତମାନ ତାପମାତ୍ରା';
+	@override String get temperature24h_ago => '24 ଘଣ୍ଟା ପୂର୍ବର ତାପମାତ୍ରା';
+	@override String get vs_yesterday => 'ଗତକାଲି ତୁଳନାରେ';
+	@override String get wind_level => 'ସ୍ତର {n}';
 }
 
 /// The flat map containing all translations for locale <or-IN>.
@@ -565,7 +572,7 @@ extension on TranslationsOrIn {
 			'aqi_help_dominant' => 'ସର୍ବୋଚ୍ଚ ପ୍ରଦୂଷକ ସ୍ତର',
 			'aqi_help_advice_label' => 'ସୁପାରିଶ',
 			'aqi_help_source' => 'ଉତ୍ସ: Open-Meteo Air Quality API — ଭୂମି ସ୍ତରର ଘନତା (~10 ମି), ~11 କିମି ଗ୍ରିଡ୍।',
-			'widget_battery_hint' => 'ନିର୍ଭରଯୋଗ୍ୟ ୱିଜେଟ୍ ଅପଡେଟ୍ ପାଇଁ ଆପ୍ ସେଟିଂସ୍‌ରେ Weather ପାଇଁ ବ୍ୟାଟେରୀ ଅପ୍ଟିମାଇଜେସନ୍ ବନ୍ଦ କରନ୍ତୁ',
+			'widget_battery_hint' => 'ନିର୍ଭରଯୋଗ୍ୟ ୱିଜେଟ୍ ଅପଡେଟ୍ ପାଇଁ ଆପ୍ ସେଟିଂସ୍‌ରେ Rain ପାଇଁ ବ୍ୟାଟେରୀ ଅପ୍ଟିମାଇଜେସନ୍ ବନ୍ଦ କରନ୍ତୁ',
 			'persistent_notification' => 'ସ୍ଥାୟୀ ବିଜ୍ଞପ୍ତି',
 			'last_updated' => 'ଅପଡେଟ୍ ହୋଇଛି',
 			'app_font' => 'ଫଣ୍ଟ',
@@ -677,6 +684,13 @@ extension on TranslationsOrIn {
 			'last_background_refresh' => 'ଶେଷ ପୃଷ୍ଠପଟି ରିଫ୍ରେଶ',
 			'last_background_refresh_never' => 'ଏପର୍ଯ୍ୟନ୍ତ କono ପୃଷ୍ଠପଟି ରିଫ୍ରେଶ ନାହିଁ',
 			'background_refresh_error' => 'ଶେଷ ପୃଷ୍ଠପଟି ତ୍ରୁଟି',
+			'hourly_forecast' => 'ଘଣ୍ଟାକିଆ ପୂର୍ବାନୁମାନ',
+			'now' => 'ବର୍ତ୍ତମାନ',
+			'temperature' => 'ତାପମାତ୍ରା',
+			'current_temperature' => 'ବର୍ତ୍ତମାନ ତାପମାତ୍ରା',
+			'temperature24h_ago' => '24 ଘଣ୍ଟା ପୂର୍ବର ତାପମାତ୍ରା',
+			'vs_yesterday' => 'ଗତକାଲି ତୁଳନାରେ',
+			'wind_level' => 'ସ୍ତର {n}',
 			_ => null,
 		};
 	}

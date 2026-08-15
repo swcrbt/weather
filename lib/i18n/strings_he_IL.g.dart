@@ -241,7 +241,7 @@ class TranslationsHeIl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'רמת המזהם הגבוהה ביותר';
 	@override String get aqi_help_advice_label => 'המלצה';
 	@override String get aqi_help_source => 'מקור: Open-Meteo Air Quality API — ריכוזים בגובה הקרקע (~10 מ\'), רשת ~11 ק"מ.';
-	@override String get widget_battery_hint => 'לעדכוני ווידג\'ט אמינים, השבת אופטימיזציית סוללה עבור Weather בהגדרות האפליקציה';
+	@override String get widget_battery_hint => 'לעדכוני ווידג\'ט אמינים, השבת אופטימיזציית סוללה עבור Rain בהגדרות האפליקציה';
 	@override String get persistent_notification => 'התראה קבועה';
 	@override String get last_updated => 'עודכן';
 	@override String get app_font => 'גופן';
@@ -353,6 +353,13 @@ class TranslationsHeIl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'רענון רקע אחרון';
 	@override String get last_background_refresh_never => 'עדיין אין רענון רקע';
 	@override String get background_refresh_error => 'שגיאת רקע אחרונה';
+	@override String get hourly_forecast => 'תחזית לפי שעה';
+	@override String get now => 'עכשיו';
+	@override String get temperature => 'טמפרטורה';
+	@override String get current_temperature => 'טמפרטורה נוכחית';
+	@override String get temperature24h_ago => 'טמפרטורה לפני 24 שעות';
+	@override String get vs_yesterday => 'לעומת אתמול';
+	@override String get wind_level => 'רמה {n}';
 }
 
 /// The flat map containing all translations for locale <he-IL>.
@@ -565,7 +572,7 @@ extension on TranslationsHeIl {
 			'aqi_help_dominant' => 'רמת המזהם הגבוהה ביותר',
 			'aqi_help_advice_label' => 'המלצה',
 			'aqi_help_source' => 'מקור: Open-Meteo Air Quality API — ריכוזים בגובה הקרקע (~10 מ\'), רשת ~11 ק"מ.',
-			'widget_battery_hint' => 'לעדכוני ווידג\'ט אמינים, השבת אופטימיזציית סוללה עבור Weather בהגדרות האפליקציה',
+			'widget_battery_hint' => 'לעדכוני ווידג\'ט אמינים, השבת אופטימיזציית סוללה עבור Rain בהגדרות האפליקציה',
 			'persistent_notification' => 'התראה קבועה',
 			'last_updated' => 'עודכן',
 			'app_font' => 'גופן',
@@ -677,6 +684,13 @@ extension on TranslationsHeIl {
 			'last_background_refresh' => 'רענון רקע אחרון',
 			'last_background_refresh_never' => 'עדיין אין רענון רקע',
 			'background_refresh_error' => 'שגיאת רקע אחרונה',
+			'hourly_forecast' => 'תחזית לפי שעה',
+			'now' => 'עכשיו',
+			'temperature' => 'טמפרטורה',
+			'current_temperature' => 'טמפרטורה נוכחית',
+			'temperature24h_ago' => 'טמפרטורה לפני 24 שעות',
+			'vs_yesterday' => 'לעומת אתמול',
+			'wind_level' => 'רמה {n}',
 			_ => null,
 		};
 	}

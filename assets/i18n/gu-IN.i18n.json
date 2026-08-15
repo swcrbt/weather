@@ -312,5 +312,12 @@
   "colorPaletteSand": "રેત",
   "lastBackgroundRefresh": "છેલ્લું પૃષ્ઠભૂમિ રિફ્રેશ",
   "lastBackgroundRefreshNever": "હજી સુધી કોઈ પૃષ્ઠભૂમિ રિફ્રેશ નથી",
-  "backgroundRefreshError": "છેલ્લી પૃષ્ઠભૂમિ ભૂલ"
+  "backgroundRefreshError": "છેલ્લી પૃષ્ઠભૂમિ ભૂલ",
+  "hourlyForecast": "કલાકદીઠ આગાહી",
+  "now": "હમણાં",
+  "temperature": "તાપમાન",
+  "currentTemperature": "વર્તમાન તાપમાન",
+  "temperature24hAgo": "24 કલાક પહેલાંનું તાપમાન",
+  "vsYesterday": "ગઈકાલની સરખામણીમાં",
+  "windLevel": "સ્તર {n}"
 }

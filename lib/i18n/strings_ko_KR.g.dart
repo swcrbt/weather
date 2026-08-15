@@ -241,7 +241,7 @@ class TranslationsKoKr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => '가장 높은 오염물질 수준';
 	@override String get aqi_help_advice_label => '권장 사항';
 	@override String get aqi_help_source => '출처: Open-Meteo Air Quality API — 지상 농도(~10 m), ~11 km 격자.';
-	@override String get widget_battery_hint => '위젯을 안정적으로 업데이트하려면 앱 설정에서 Weather의 배터리 최적화를 끄세요';
+	@override String get widget_battery_hint => '위젯을 안정적으로 업데이트하려면 앱 설정에서 Rain의 배터리 최적화를 끄세요';
 	@override String get persistent_notification => '상시 알림';
 	@override String get last_updated => '업데이트';
 	@override String get app_font => '글꼴';
@@ -353,6 +353,13 @@ class TranslationsKoKr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => '마지막 백그라운드 새로고침';
 	@override String get last_background_refresh_never => '백그라운드 새로고침 없음';
 	@override String get background_refresh_error => '마지막 백그라운드 오류';
+	@override String get hourly_forecast => '시간별 예보';
+	@override String get now => '현재';
+	@override String get temperature => '기온';
+	@override String get current_temperature => '현재 기온';
+	@override String get temperature24h_ago => '24시간 전 기온';
+	@override String get vs_yesterday => '어제 대비';
+	@override String get wind_level => '{n}단계';
 }
 
 /// The flat map containing all translations for locale <ko-KR>.
@@ -565,7 +572,7 @@ extension on TranslationsKoKr {
 			'aqi_help_dominant' => '가장 높은 오염물질 수준',
 			'aqi_help_advice_label' => '권장 사항',
 			'aqi_help_source' => '출처: Open-Meteo Air Quality API — 지상 농도(~10 m), ~11 km 격자.',
-			'widget_battery_hint' => '위젯을 안정적으로 업데이트하려면 앱 설정에서 Weather의 배터리 최적화를 끄세요',
+			'widget_battery_hint' => '위젯을 안정적으로 업데이트하려면 앱 설정에서 Rain의 배터리 최적화를 끄세요',
 			'persistent_notification' => '상시 알림',
 			'last_updated' => '업데이트',
 			'app_font' => '글꼴',
@@ -677,6 +684,13 @@ extension on TranslationsKoKr {
 			'last_background_refresh' => '마지막 백그라운드 새로고침',
 			'last_background_refresh_never' => '백그라운드 새로고침 없음',
 			'background_refresh_error' => '마지막 백그라운드 오류',
+			'hourly_forecast' => '시간별 예보',
+			'now' => '현재',
+			'temperature' => '기온',
+			'current_temperature' => '현재 기온',
+			'temperature24h_ago' => '24시간 전 기온',
+			'vs_yesterday' => '어제 대비',
+			'wind_level' => '{n}단계',
 			_ => null,
 		};
 	}

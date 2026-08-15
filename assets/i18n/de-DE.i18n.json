@@ -312,5 +312,12 @@
   "colorPaletteSand": "Sand",
   "lastBackgroundRefresh": "Letzte Hintergrundaktualisierung",
   "lastBackgroundRefreshNever": "Noch keine Hintergrundaktualisierung",
-  "backgroundRefreshError": "Letzter Hintergrundfehler"
+  "backgroundRefreshError": "Letzter Hintergrundfehler",
+  "hourlyForecast": "Stündliche Vorhersage",
+  "now": "Jetzt",
+  "temperature": "Temperatur",
+  "currentTemperature": "Aktuelle Temperatur",
+  "temperature24hAgo": "Temperatur vor 24 Stunden",
+  "vsYesterday": "im Vergleich zu gestern",
+  "windLevel": "Stufe {n}"
 }

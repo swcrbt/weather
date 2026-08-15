@@ -241,7 +241,7 @@ class TranslationsUrPk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'سب سے زیادہ آلودگی کی سطح';
 	@override String get aqi_help_advice_label => 'سفارش';
 	@override String get aqi_help_source => 'ماخذ: Open-Meteo Air Quality API — زمینی سطح کی ارتکاز (~10 میٹر)، ~11 کلومیٹر گرڈ۔';
-	@override String get widget_battery_hint => 'قابلِ اعتماد ویجٹ اپ ڈیٹس کے لیے ایپ کی ترتیبات میں Weather کی بیٹری پابندی بند کریں';
+	@override String get widget_battery_hint => 'قابلِ اعتماد ویجٹ اپ ڈیٹس کے لیے ایپ کی ترتیبات میں Rain کی بیٹری پابندی بند کریں';
 	@override String get persistent_notification => 'مستقل اطلاع';
 	@override String get last_updated => 'اپ ڈیٹ';
 	@override String get app_font => 'فونٹ';
@@ -353,6 +353,13 @@ class TranslationsUrPk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'آخری پس منظر ریفریش';
 	@override String get last_background_refresh_never => 'ابھی تک کوئی پس منظر ریفریش نہیں';
 	@override String get background_refresh_error => 'آخری پس منظر خرابی';
+	@override String get hourly_forecast => 'گھنٹہ وار پیش گوئی';
+	@override String get now => 'ابھی';
+	@override String get temperature => 'درجہ حرارت';
+	@override String get current_temperature => 'موجودہ درجہ حرارت';
+	@override String get temperature24h_ago => '24 گھنٹے پہلے کا درجہ حرارت';
+	@override String get vs_yesterday => 'کل کے مقابلے میں';
+	@override String get wind_level => 'سطح {n}';
 }
 
 /// The flat map containing all translations for locale <ur-PK>.
@@ -565,7 +572,7 @@ extension on TranslationsUrPk {
 			'aqi_help_dominant' => 'سب سے زیادہ آلودگی کی سطح',
 			'aqi_help_advice_label' => 'سفارش',
 			'aqi_help_source' => 'ماخذ: Open-Meteo Air Quality API — زمینی سطح کی ارتکاز (~10 میٹر)، ~11 کلومیٹر گرڈ۔',
-			'widget_battery_hint' => 'قابلِ اعتماد ویجٹ اپ ڈیٹس کے لیے ایپ کی ترتیبات میں Weather کی بیٹری پابندی بند کریں',
+			'widget_battery_hint' => 'قابلِ اعتماد ویجٹ اپ ڈیٹس کے لیے ایپ کی ترتیبات میں Rain کی بیٹری پابندی بند کریں',
 			'persistent_notification' => 'مستقل اطلاع',
 			'last_updated' => 'اپ ڈیٹ',
 			'app_font' => 'فونٹ',
@@ -677,6 +684,13 @@ extension on TranslationsUrPk {
 			'last_background_refresh' => 'آخری پس منظر ریفریش',
 			'last_background_refresh_never' => 'ابھی تک کوئی پس منظر ریفریش نہیں',
 			'background_refresh_error' => 'آخری پس منظر خرابی',
+			'hourly_forecast' => 'گھنٹہ وار پیش گوئی',
+			'now' => 'ابھی',
+			'temperature' => 'درجہ حرارت',
+			'current_temperature' => 'موجودہ درجہ حرارت',
+			'temperature24h_ago' => '24 گھنٹے پہلے کا درجہ حرارت',
+			'vs_yesterday' => 'کل کے مقابلے میں',
+			'wind_level' => 'سطح {n}',
 			_ => null,
 		};
 	}

@@ -312,5 +312,12 @@
   "colorPaletteSand": "ఇసుక",
   "lastBackgroundRefresh": "చివరి నేపథ్య రిఫ్రెష్",
   "lastBackgroundRefreshNever": "ఇంకా నేపథ్య రిఫ్రెష్ లేదు",
-  "backgroundRefreshError": "చివరి నేపథ్య లోపం"
+  "backgroundRefreshError": "చివరి నేపథ్య లోపం",
+  "hourlyForecast": "గంటవారీ అంచనా",
+  "now": "ఇప్పుడు",
+  "temperature": "ఉష్ణోగ్రత",
+  "currentTemperature": "ప్రస్తుత ఉష్ణోగ్రత",
+  "temperature24hAgo": "24 గంటల క్రితం ఉష్ణోగ్రత",
+  "vsYesterday": "నిన్నతో పోలిస్తే",
+  "windLevel": "స్థాయి {n}"
 }

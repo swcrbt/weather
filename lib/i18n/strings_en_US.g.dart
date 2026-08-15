@@ -71,6 +71,27 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	/// en-US: 'Hourly weather variables'
 	String get hourly_variables => 'Hourly weather variables';
 
+	/// en-US: 'Hourly forecast'
+	String get hourly_forecast => 'Hourly forecast';
+
+	/// en-US: 'Now'
+	String get now => 'Now';
+
+	/// en-US: 'Temperature'
+	String get temperature => 'Temperature';
+
+	/// en-US: 'Current temperature'
+	String get current_temperature => 'Current temperature';
+
+	/// en-US: '24h ago temperature'
+	String get temperature24h_ago => '24h ago temperature';
+
+	/// en-US: 'vs yesterday'
+	String get vs_yesterday => 'vs yesterday';
+
+	/// en-US: 'Level {n}'
+	String get wind_level => 'Level {n}';
+
 	/// en-US: 'UV-index'
 	String get uv_index => 'UV-index';
 
@@ -125,8 +146,8 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	/// en-US: 'Direction'
 	String get direction => 'Direction';
 
-	/// en-US: 'Weather showers'
-	String get heavy_rains => 'Weather showers';
+	/// en-US: 'Rain showers'
+	String get heavy_rains => 'Rain showers';
 
 	/// en-US: 'Maximum apparent temperature'
 	String get apparent_temperature_max => 'Maximum apparent temperature';
@@ -452,8 +473,8 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	/// en-US: 'Evapotranspiration'
 	String get evaporation => 'Evapotranspiration';
 
-	/// en-US: 'Freezing Weather'
-	String get freezing_rain => 'Freezing Weather';
+	/// en-US: 'Freezing Rain'
+	String get freezing_rain => 'Freezing Rain';
 
 	/// en-US: 'Moderate'
 	String get uv_average => 'Moderate';
@@ -512,8 +533,8 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	/// en-US: 'Data by Open-Meteo (CC-BY 4.0)'
 	String get open_meteo => 'Data by Open-Meteo (CC-BY 4.0)';
 
-	/// en-US: 'Weather'
-	String get rain => 'Weather';
+	/// en-US: 'Rain'
+	String get rain => 'Rain';
 
 	/// en-US: 'mmHg'
 	String get mm_hg => 'mmHg';
@@ -788,8 +809,8 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	/// en-US: 'Source: Open-Meteo Air Quality API — ground-level concentrations (~10 m), ~11 km grid.'
 	String get aqi_help_source => 'Source: Open-Meteo Air Quality API — ground-level concentrations (~10 m), ~11 km grid.';
 
-	/// en-US: 'For reliable widget updates, disable battery optimization for Weather in app settings'
-	String get widget_battery_hint => 'For reliable widget updates, disable battery optimization for Weather in app settings';
+	/// en-US: 'For reliable widget updates, disable battery optimization for Rain in app settings'
+	String get widget_battery_hint => 'For reliable widget updates, disable battery optimization for Rain in app settings';
 
 	/// en-US: 'Last background refresh'
 	String get last_background_refresh => 'Last background refresh';
@@ -1002,6 +1023,13 @@ extension on Translations {
 			'time_end' => 'End time',
 			'search_method' => 'Use search or geolocation',
 			'hourly_variables' => 'Hourly weather variables',
+			'hourly_forecast' => 'Hourly forecast',
+			'now' => 'Now',
+			'temperature' => 'Temperature',
+			'current_temperature' => 'Current temperature',
+			'temperature24h_ago' => '24h ago temperature',
+			'vs_yesterday' => 'vs yesterday',
+			'wind_level' => 'Level {n}',
 			'uv_index' => 'UV-index',
 			'clear_sky' => 'Clear sky',
 			'k_24' => '24-hour',
@@ -1020,7 +1048,7 @@ extension on Translations {
 			'name3' => 'Contact Us',
 			'apparent_temperature_min' => 'Minimum apparent temperature',
 			'direction' => 'Direction',
-			'heavy_rains' => 'Weather showers',
+			'heavy_rains' => 'Rain showers',
 			'apparent_temperature_max' => 'Maximum apparent temperature',
 			'k_12' => '12-hour',
 			'discord' => 'Discord',
@@ -1129,7 +1157,7 @@ extension on Translations {
 			'about_app' => 'About the app',
 			'save' => 'Save',
 			'evaporation' => 'Evapotranspiration',
-			'freezing_rain' => 'Freezing Weather',
+			'freezing_rain' => 'Freezing Rain',
 			'uv_average' => 'Moderate',
 			'reset_color' => 'Reset to default',
 			'metric' => 'Metric',
@@ -1149,7 +1177,7 @@ extension on Translations {
 			'windgusts' => 'Gust',
 			'northwest' => 'Northwest',
 			'open_meteo' => 'Data by Open-Meteo (CC-BY 4.0)',
-			'rain' => 'Weather',
+			'rain' => 'Rain',
 			'mm_hg' => 'mmHg',
 			'validate180' => 'Value must be between -180 and 180',
 			'description' => 'Weather application with an up-to-date forecast for each hour, day, and week for any location.',
@@ -1241,7 +1269,7 @@ extension on Translations {
 			'aqi_help_dominant' => 'Highest pollutant level',
 			'aqi_help_advice_label' => 'Recommendation',
 			'aqi_help_source' => 'Source: Open-Meteo Air Quality API — ground-level concentrations (~10 m), ~11 km grid.',
-			'widget_battery_hint' => 'For reliable widget updates, disable battery optimization for Weather in app settings',
+			'widget_battery_hint' => 'For reliable widget updates, disable battery optimization for Rain in app settings',
 			'last_background_refresh' => 'Last background refresh',
 			'last_background_refresh_never' => 'No background refresh yet',
 			'background_refresh_error' => 'Last background error',

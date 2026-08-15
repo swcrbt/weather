@@ -241,7 +241,7 @@ class TranslationsNlNl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Hoogste vervuilingsniveau';
 	@override String get aqi_help_advice_label => 'Aanbeveling';
 	@override String get aqi_help_source => 'Bron: Open-Meteo Air Quality API — concentraties op grondniveau (~10 m), raster ~11 km.';
-	@override String get widget_battery_hint => 'Schakel voor betrouwbare widget-updates batterijoptimalisatie voor Weather uit in de app-instellingen';
+	@override String get widget_battery_hint => 'Schakel voor betrouwbare widget-updates batterijoptimalisatie voor Rain uit in de app-instellingen';
 	@override String get persistent_notification => 'Vaste melding';
 	@override String get last_updated => 'Bijgewerkt';
 	@override String get app_font => 'Lettertype';
@@ -353,6 +353,13 @@ class TranslationsNlNl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'Laatste achtergrondvernieuwing';
 	@override String get last_background_refresh_never => 'Nog geen achtergrondvernieuwing';
 	@override String get background_refresh_error => 'Laatste achtergrondfout';
+	@override String get hourly_forecast => 'Uurlijkse voorspelling';
+	@override String get now => 'Nu';
+	@override String get temperature => 'Temperatuur';
+	@override String get current_temperature => 'Huidige temperatuur';
+	@override String get temperature24h_ago => 'Temperatuur 24 uur geleden';
+	@override String get vs_yesterday => 'vs. gisteren';
+	@override String get wind_level => 'Niveau {n}';
 }
 
 /// The flat map containing all translations for locale <nl-NL>.
@@ -565,7 +572,7 @@ extension on TranslationsNlNl {
 			'aqi_help_dominant' => 'Hoogste vervuilingsniveau',
 			'aqi_help_advice_label' => 'Aanbeveling',
 			'aqi_help_source' => 'Bron: Open-Meteo Air Quality API — concentraties op grondniveau (~10 m), raster ~11 km.',
-			'widget_battery_hint' => 'Schakel voor betrouwbare widget-updates batterijoptimalisatie voor Weather uit in de app-instellingen',
+			'widget_battery_hint' => 'Schakel voor betrouwbare widget-updates batterijoptimalisatie voor Rain uit in de app-instellingen',
 			'persistent_notification' => 'Vaste melding',
 			'last_updated' => 'Bijgewerkt',
 			'app_font' => 'Lettertype',
@@ -677,6 +684,13 @@ extension on TranslationsNlNl {
 			'last_background_refresh' => 'Laatste achtergrondvernieuwing',
 			'last_background_refresh_never' => 'Nog geen achtergrondvernieuwing',
 			'background_refresh_error' => 'Laatste achtergrondfout',
+			'hourly_forecast' => 'Uurlijkse voorspelling',
+			'now' => 'Nu',
+			'temperature' => 'Temperatuur',
+			'current_temperature' => 'Huidige temperatuur',
+			'temperature24h_ago' => 'Temperatuur 24 uur geleden',
+			'vs_yesterday' => 'vs. gisteren',
+			'wind_level' => 'Niveau {n}',
 			_ => null,
 		};
 	}

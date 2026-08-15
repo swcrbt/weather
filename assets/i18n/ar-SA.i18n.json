@@ -312,5 +312,12 @@
   "colorPaletteSand": "رمل",
   "lastBackgroundRefresh": "آخر تحديث في الخلفية",
   "lastBackgroundRefreshNever": "لا يوجد تحديث في الخلفية بعد",
-  "backgroundRefreshError": "آخر خطأ في الخلفية"
+  "backgroundRefreshError": "آخر خطأ في الخلفية",
+  "hourlyForecast": "التوقعات كل ساعة",
+  "now": "الآن",
+  "temperature": "درجة الحرارة",
+  "currentTemperature": "درجة الحرارة الحالية",
+  "temperature24hAgo": "درجة الحرارة قبل 24 ساعة",
+  "vsYesterday": "مقارنةً بالأمس",
+  "windLevel": "المستوى {n}"
 }

@@ -241,7 +241,7 @@ class TranslationsSkSk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Najvyššia hladina znečisťovadla';
 	@override String get aqi_help_advice_label => 'Odporúčanie';
 	@override String get aqi_help_source => 'Zdroj: Open-Meteo Air Quality API — koncentrácie pri zemi (~10 m), mriežka ~11 km.';
-	@override String get widget_battery_hint => 'Pre spoľahlivé aktualizácie widgetu vypnite optimalizáciu batérie pre Weather v nastaveniach aplikácie';
+	@override String get widget_battery_hint => 'Pre spoľahlivé aktualizácie widgetu vypnite optimalizáciu batérie pre Rain v nastaveniach aplikácie';
 	@override String get persistent_notification => 'Trvalé upozornenie';
 	@override String get last_updated => 'Aktualizované';
 	@override String get app_font => 'Písmo';
@@ -353,6 +353,13 @@ class TranslationsSkSk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'Posledná aktualizácia na pozadí';
 	@override String get last_background_refresh_never => 'Zatiaľ žiadna aktualizácia na pozadí';
 	@override String get background_refresh_error => 'Posledná chyba na pozadí';
+	@override String get hourly_forecast => 'Hodinová predpoveď';
+	@override String get now => 'Teraz';
+	@override String get temperature => 'Teplota';
+	@override String get current_temperature => 'Aktuálna teplota';
+	@override String get temperature24h_ago => 'Teplota pred 24 hodinami';
+	@override String get vs_yesterday => 'v porovnaní so včerajškom';
+	@override String get wind_level => 'Úroveň {n}';
 }
 
 /// The flat map containing all translations for locale <sk-SK>.
@@ -565,7 +572,7 @@ extension on TranslationsSkSk {
 			'aqi_help_dominant' => 'Najvyššia hladina znečisťovadla',
 			'aqi_help_advice_label' => 'Odporúčanie',
 			'aqi_help_source' => 'Zdroj: Open-Meteo Air Quality API — koncentrácie pri zemi (~10 m), mriežka ~11 km.',
-			'widget_battery_hint' => 'Pre spoľahlivé aktualizácie widgetu vypnite optimalizáciu batérie pre Weather v nastaveniach aplikácie',
+			'widget_battery_hint' => 'Pre spoľahlivé aktualizácie widgetu vypnite optimalizáciu batérie pre Rain v nastaveniach aplikácie',
 			'persistent_notification' => 'Trvalé upozornenie',
 			'last_updated' => 'Aktualizované',
 			'app_font' => 'Písmo',
@@ -677,6 +684,13 @@ extension on TranslationsSkSk {
 			'last_background_refresh' => 'Posledná aktualizácia na pozadí',
 			'last_background_refresh_never' => 'Zatiaľ žiadna aktualizácia na pozadí',
 			'background_refresh_error' => 'Posledná chyba na pozadí',
+			'hourly_forecast' => 'Hodinová predpoveď',
+			'now' => 'Teraz',
+			'temperature' => 'Teplota',
+			'current_temperature' => 'Aktuálna teplota',
+			'temperature24h_ago' => 'Teplota pred 24 hodinami',
+			'vs_yesterday' => 'v porovnaní so včerajškom',
+			'wind_level' => 'Úroveň {n}',
 			_ => null,
 		};
 	}

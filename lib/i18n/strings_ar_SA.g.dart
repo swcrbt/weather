@@ -241,7 +241,7 @@ class TranslationsArSa extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'أعلى مستوى للملوث';
 	@override String get aqi_help_advice_label => 'توصية';
 	@override String get aqi_help_source => 'المصدر: Open-Meteo Air Quality API — تركيزات على مستوى الأرض (~10 م)، شبكة ~11 كم.';
-	@override String get widget_battery_hint => 'لتحديثات موثوقة للأداة، عطّل تحسين البطارية لتطبيق Weather في إعدادات التطبيق';
+	@override String get widget_battery_hint => 'لتحديثات موثوقة للأداة، عطّل تحسين البطارية لتطبيق Rain في إعدادات التطبيق';
 	@override String get persistent_notification => 'إشعار دائم';
 	@override String get last_updated => 'تم التحديث';
 	@override String get app_font => 'الخط';
@@ -353,6 +353,13 @@ class TranslationsArSa extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'آخر تحديث في الخلفية';
 	@override String get last_background_refresh_never => 'لا يوجد تحديث في الخلفية بعد';
 	@override String get background_refresh_error => 'آخر خطأ في الخلفية';
+	@override String get hourly_forecast => 'التوقعات كل ساعة';
+	@override String get now => 'الآن';
+	@override String get temperature => 'درجة الحرارة';
+	@override String get current_temperature => 'درجة الحرارة الحالية';
+	@override String get temperature24h_ago => 'درجة الحرارة قبل 24 ساعة';
+	@override String get vs_yesterday => 'مقارنةً بالأمس';
+	@override String get wind_level => 'المستوى {n}';
 }
 
 /// The flat map containing all translations for locale <ar-SA>.
@@ -565,7 +572,7 @@ extension on TranslationsArSa {
 			'aqi_help_dominant' => 'أعلى مستوى للملوث',
 			'aqi_help_advice_label' => 'توصية',
 			'aqi_help_source' => 'المصدر: Open-Meteo Air Quality API — تركيزات على مستوى الأرض (~10 م)، شبكة ~11 كم.',
-			'widget_battery_hint' => 'لتحديثات موثوقة للأداة، عطّل تحسين البطارية لتطبيق Weather في إعدادات التطبيق',
+			'widget_battery_hint' => 'لتحديثات موثوقة للأداة، عطّل تحسين البطارية لتطبيق Rain في إعدادات التطبيق',
 			'persistent_notification' => 'إشعار دائم',
 			'last_updated' => 'تم التحديث',
 			'app_font' => 'الخط',
@@ -677,6 +684,13 @@ extension on TranslationsArSa {
 			'last_background_refresh' => 'آخر تحديث في الخلفية',
 			'last_background_refresh_never' => 'لا يوجد تحديث في الخلفية بعد',
 			'background_refresh_error' => 'آخر خطأ في الخلفية',
+			'hourly_forecast' => 'التوقعات كل ساعة',
+			'now' => 'الآن',
+			'temperature' => 'درجة الحرارة',
+			'current_temperature' => 'درجة الحرارة الحالية',
+			'temperature24h_ago' => 'درجة الحرارة قبل 24 ساعة',
+			'vs_yesterday' => 'مقارنةً بالأمس',
+			'wind_level' => 'المستوى {n}',
 			_ => null,
 		};
 	}

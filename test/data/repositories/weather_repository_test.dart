@@ -33,7 +33,20 @@ void main() {
       final cached = await repository.readCache();
 
       expect(cached.weather, isNotNull);
+      expect(cached.weather?.timePast, isNull);
       expect(cached.location?.city, 'Moscow');
+    });
+
+    test('persists previous-day temperatures for the hourly chart', () async {
+      final weather = sampleMainWeatherCache()
+        ..timePast = ['2026-06-04T23:00']
+        ..temperature2MPast = [18.0];
+
+      await repository.writeCache(weather, sampleLocationCache());
+      final cached = await repository.readCache();
+
+      expect(cached.weather?.timePast, ['2026-06-04T23:00']);
+      expect(cached.weather?.temperature2MPast, [18.0]);
     });
 
     test('isCacheExpired reflects local datasource state', () async {

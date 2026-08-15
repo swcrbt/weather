@@ -312,5 +312,12 @@
   "colorPaletteSand": "Areia",
   "lastBackgroundRefresh": "Última atualização em segundo plano",
   "lastBackgroundRefreshNever": "Ainda sem atualização em segundo plano",
-  "backgroundRefreshError": "Último erro em segundo plano"
+  "backgroundRefreshError": "Último erro em segundo plano",
+  "hourlyForecast": "Previsão horária",
+  "now": "Agora",
+  "temperature": "Temperatura",
+  "currentTemperature": "Temperatura atual",
+  "temperature24hAgo": "Temperatura de há 24 horas",
+  "vsYesterday": "em relação a ontem",
+  "windLevel": "Nível {n}"
 }

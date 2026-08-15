@@ -312,5 +312,12 @@
   "colorPaletteSand": "বালি",
   "lastBackgroundRefresh": "শেষৰ পটভূমি সতেজকৰণ",
   "lastBackgroundRefreshNever": "এতিয়ালৈকে কোনো পটভূমি সতেজকৰণ নাই",
-  "backgroundRefreshError": "শেষৰ পটভূমি ত্ৰুটি"
+  "backgroundRefreshError": "শেষৰ পটভূমি ত্ৰুটি",
+  "hourlyForecast": "ঘণ্টাৰ বতৰৰ পূৰ্বানুমান",
+  "now": "এতিয়া",
+  "temperature": "উষ্ণতা",
+  "currentTemperature": "বৰ্তমান উষ্ণতা",
+  "temperature24hAgo": "২৪ ঘণ্টা আগৰ উষ্ণতা",
+  "vsYesterday": "কালিৰ তুলনাত",
+  "windLevel": "স্তৰ {n}"
 }

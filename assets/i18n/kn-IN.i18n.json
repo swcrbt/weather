@@ -312,5 +312,12 @@
   "colorPaletteSand": "ಮರಳು",
   "lastBackgroundRefresh": "ಕೊನೆಯ ಹಿನ್ನೆಲೆ ರಿಫ್ರೆಶ್",
   "lastBackgroundRefreshNever": "ಇನ್ನೂ ಹಿನ್ನೆಲೆ ರಿಫ್ರೆಶ್ ಇಲ್ಲ",
-  "backgroundRefreshError": "ಕೊನೆಯ ಹಿನ್ನೆಲೆ ದೋಷ"
+  "backgroundRefreshError": "ಕೊನೆಯ ಹಿನ್ನೆಲೆ ದೋಷ",
+  "hourlyForecast": "ಗಂಟೆಯ ಮುನ್ಸೂಚನೆ",
+  "now": "ಈಗ",
+  "temperature": "ತಾಪಮಾನ",
+  "currentTemperature": "ಪ್ರಸ್ತುತ ತಾಪಮಾನ",
+  "temperature24hAgo": "24 ಗಂಟೆಗಳ ಹಿಂದಿನ ತಾಪಮಾನ",
+  "vsYesterday": "ನಿನ್ನೆಗಿಂತ",
+  "windLevel": "ಮಟ್ಟ {n}"
 }

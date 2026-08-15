@@ -312,5 +312,12 @@
   "colorPaletteSand": "Sable",
   "lastBackgroundRefresh": "Dernière actualisation en arrière-plan",
   "lastBackgroundRefreshNever": "Aucune actualisation en arrière-plan",
-  "backgroundRefreshError": "Dernière erreur en arrière-plan"
+  "backgroundRefreshError": "Dernière erreur en arrière-plan",
+  "hourlyForecast": "Prévisions horaires",
+  "now": "Maintenant",
+  "temperature": "Température",
+  "currentTemperature": "Température actuelle",
+  "temperature24hAgo": "Température il y a 24 h",
+  "vsYesterday": "par rapport à hier",
+  "windLevel": "Niveau {n}"
 }

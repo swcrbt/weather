@@ -312,5 +312,12 @@
   "colorPaletteSand": "Zand",
   "lastBackgroundRefresh": "Laatste achtergrondvernieuwing",
   "lastBackgroundRefreshNever": "Nog geen achtergrondvernieuwing",
-  "backgroundRefreshError": "Laatste achtergrondfout"
+  "backgroundRefreshError": "Laatste achtergrondfout",
+  "hourlyForecast": "Uurlijkse voorspelling",
+  "now": "Nu",
+  "temperature": "Temperatuur",
+  "currentTemperature": "Huidige temperatuur",
+  "temperature24hAgo": "Temperatuur 24 uur geleden",
+  "vsYesterday": "vs. gisteren",
+  "windLevel": "Niveau {n}"
 }

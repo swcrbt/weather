@@ -241,7 +241,7 @@ class TranslationsMlIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'ഏറ്റവും ഉയർന്ന മലിനത്വ നില';
 	@override String get aqi_help_advice_label => 'ശുപാർശ';
 	@override String get aqi_help_source => 'ഉറവിടം: Open-Meteo Air Quality API — നിലത്തിന്റെ സാന്ദ്രത (~10 മീ), ~11 കിമീ ഗ്രിഡ്.';
-	@override String get widget_battery_hint => 'വിശ്വസനീയമായ വിജറ്റ് അപ്‌ഡേറ്റുകൾക്ക് ആപ്പ് settings-ൽ Weather-ന്റെ ബാറ്ററി പരിമിതം ഓഫ് ചെയ്യുക';
+	@override String get widget_battery_hint => 'വിശ്വസനീയമായ വിജറ്റ് അപ്‌ഡേറ്റുകൾക്ക് ആപ്പ് settings-ൽ Rain-ന്റെ ബാറ്ററി പരിമിതം ഓഫ് ചെയ്യുക';
 	@override String get persistent_notification => 'സ്ഥിരമായ അറിയിപ്പ്';
 	@override String get last_updated => 'അപ്ഡേറ്റ് ചെയ്തു';
 	@override String get app_font => 'ഫോണ്ട്';
@@ -353,6 +353,13 @@ class TranslationsMlIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'അവസാന പശ്ചാത്തല റിഫ്രഷ്';
 	@override String get last_background_refresh_never => 'ഇതുവരെ പശ്ചാത്തല റിഫ്രESH ഇല്ല';
 	@override String get background_refresh_error => 'അവസാന പശ്ചാത്തല പിശക്';
+	@override String get hourly_forecast => 'മണിക്കൂർ പ്രവചനം';
+	@override String get now => 'ഇപ്പോൾ';
+	@override String get temperature => 'താപനില';
+	@override String get current_temperature => 'നിലവിലെ താപനില';
+	@override String get temperature24h_ago => '24 മണിക്കൂർ മുമ്പത്തെ താപനില';
+	@override String get vs_yesterday => 'ഇന്നലെയുമായി താരതമ്യം';
+	@override String get wind_level => 'നില {n}';
 }
 
 /// The flat map containing all translations for locale <ml-IN>.
@@ -565,7 +572,7 @@ extension on TranslationsMlIn {
 			'aqi_help_dominant' => 'ഏറ്റവും ഉയർന്ന മലിനത്വ നില',
 			'aqi_help_advice_label' => 'ശുപാർശ',
 			'aqi_help_source' => 'ഉറവിടം: Open-Meteo Air Quality API — നിലത്തിന്റെ സാന്ദ്രത (~10 മീ), ~11 കിമീ ഗ്രിഡ്.',
-			'widget_battery_hint' => 'വിശ്വസനീയമായ വിജറ്റ് അപ്‌ഡേറ്റുകൾക്ക് ആപ്പ് settings-ൽ Weather-ന്റെ ബാറ്ററി പരിമിതം ഓഫ് ചെയ്യുക',
+			'widget_battery_hint' => 'വിശ്വസനീയമായ വിജറ്റ് അപ്‌ഡേറ്റുകൾക്ക് ആപ്പ് settings-ൽ Rain-ന്റെ ബാറ്ററി പരിമിതം ഓഫ് ചെയ്യുക',
 			'persistent_notification' => 'സ്ഥിരമായ അറിയിപ്പ്',
 			'last_updated' => 'അപ്ഡേറ്റ് ചെയ്തു',
 			'app_font' => 'ഫോണ്ട്',
@@ -677,6 +684,13 @@ extension on TranslationsMlIn {
 			'last_background_refresh' => 'അവസാന പശ്ചാത്തല റിഫ്രഷ്',
 			'last_background_refresh_never' => 'ഇതുവരെ പശ്ചാത്തല റിഫ്രESH ഇല്ല',
 			'background_refresh_error' => 'അവസാന പശ്ചാത്തല പിശക്',
+			'hourly_forecast' => 'മണിക്കൂർ പ്രവചനം',
+			'now' => 'ഇപ്പോൾ',
+			'temperature' => 'താപനില',
+			'current_temperature' => 'നിലവിലെ താപനില',
+			'temperature24h_ago' => '24 മണിക്കൂർ മുമ്പത്തെ താപനില',
+			'vs_yesterday' => 'ഇന്നലെയുമായി താരതമ്യം',
+			'wind_level' => 'നില {n}',
 			_ => null,
 		};
 	}

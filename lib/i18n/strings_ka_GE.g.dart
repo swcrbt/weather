@@ -241,7 +241,7 @@ class TranslationsKaGe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'დამაბინძურებლის უმაღლესი დონე';
 	@override String get aqi_help_advice_label => 'რეკომენდაცია';
 	@override String get aqi_help_source => 'წყარო: Open-Meteo Air Quality API — კონცენტრაციები მიწის დონეზე (~10 მ), ~11 კმ ბადე.';
-	@override String get widget_battery_hint => 'ვიჯეტის საიმედო განახლებისთვის გამორთეთ Weather-ის ბატარეის ოპტიმიზაცია აპის პარამეტრებში';
+	@override String get widget_battery_hint => 'ვიჯეტის საიმედო განახლებისთვის გამორთეთ Rain-ის ბატარეის ოპტიმიზაცია აპის პარამეტრებში';
 	@override String get persistent_notification => 'მუდმივი შეტყობინება';
 	@override String get last_updated => 'განახლებულია';
 	@override String get app_font => 'შრიფტი';
@@ -353,6 +353,13 @@ class TranslationsKaGe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'ბოლო ფონური განახლება';
 	@override String get last_background_refresh_never => 'ფონური განახლება ჯერ არ მომხდარა';
 	@override String get background_refresh_error => 'ბოლო ფონური შეცდომა';
+	@override String get hourly_forecast => 'საათობრივი პროგნოზი';
+	@override String get now => 'ახლა';
+	@override String get temperature => 'ტემპერატურა';
+	@override String get current_temperature => 'მიმდინარე ტემპერატურა';
+	@override String get temperature24h_ago => 'ტემპერატურა 24 საათის წინ';
+	@override String get vs_yesterday => 'გუშინდელთან შედარებით';
+	@override String get wind_level => 'დონე {n}';
 }
 
 /// The flat map containing all translations for locale <ka-GE>.
@@ -565,7 +572,7 @@ extension on TranslationsKaGe {
 			'aqi_help_dominant' => 'დამაბინძურებლის უმაღლესი დონე',
 			'aqi_help_advice_label' => 'რეკომენდაცია',
 			'aqi_help_source' => 'წყარო: Open-Meteo Air Quality API — კონცენტრაციები მიწის დონეზე (~10 მ), ~11 კმ ბადე.',
-			'widget_battery_hint' => 'ვიჯეტის საიმედო განახლებისთვის გამორთეთ Weather-ის ბატარეის ოპტიმიზაცია აპის პარამეტრებში',
+			'widget_battery_hint' => 'ვიჯეტის საიმედო განახლებისთვის გამორთეთ Rain-ის ბატარეის ოპტიმიზაცია აპის პარამეტრებში',
 			'persistent_notification' => 'მუდმივი შეტყობინება',
 			'last_updated' => 'განახლებულია',
 			'app_font' => 'შრიფტი',
@@ -677,6 +684,13 @@ extension on TranslationsKaGe {
 			'last_background_refresh' => 'ბოლო ფონური განახლება',
 			'last_background_refresh_never' => 'ფონური განახლება ჯერ არ მომხდარა',
 			'background_refresh_error' => 'ბოლო ფონური შეცდომა',
+			'hourly_forecast' => 'საათობრივი პროგნოზი',
+			'now' => 'ახლა',
+			'temperature' => 'ტემპერატურა',
+			'current_temperature' => 'მიმდინარე ტემპერატურა',
+			'temperature24h_ago' => 'ტემპერატურა 24 საათის წინ',
+			'vs_yesterday' => 'გუშინდელთან შედარებით',
+			'wind_level' => 'დონე {n}',
 			_ => null,
 		};
 	}

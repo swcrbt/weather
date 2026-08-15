@@ -241,7 +241,7 @@ class TranslationsTrTr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'En yüksek kirletici düzeyi';
 	@override String get aqi_help_advice_label => 'Öneri';
 	@override String get aqi_help_source => 'Kaynak: Open-Meteo Air Quality API — yer düzeyi konsantrasyonları (~10 m), ~11 km ızgara.';
-	@override String get widget_battery_hint => 'Güvenilir widget güncellemeleri için uygulama ayarlarında Weather için pil optimizasyonunu kapatın';
+	@override String get widget_battery_hint => 'Güvenilir widget güncellemeleri için uygulama ayarlarında Rain için pil optimizasyonunu kapatın';
 	@override String get persistent_notification => 'Kalıcı bildirim';
 	@override String get last_updated => 'Güncellendi';
 	@override String get app_font => 'Yazı tipi';
@@ -353,6 +353,13 @@ class TranslationsTrTr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'Son arka plan yenilemesi';
 	@override String get last_background_refresh_never => 'Henüz arka plan yenilemesi yok';
 	@override String get background_refresh_error => 'Son arka plan hatası';
+	@override String get hourly_forecast => 'Saatlik tahmin';
+	@override String get now => 'Şimdi';
+	@override String get temperature => 'Sıcaklık';
+	@override String get current_temperature => 'Mevcut sıcaklık';
+	@override String get temperature24h_ago => '24 saat önceki sıcaklık';
+	@override String get vs_yesterday => 'düne göre';
+	@override String get wind_level => 'Seviye {n}';
 }
 
 /// The flat map containing all translations for locale <tr-TR>.
@@ -565,7 +572,7 @@ extension on TranslationsTrTr {
 			'aqi_help_dominant' => 'En yüksek kirletici düzeyi',
 			'aqi_help_advice_label' => 'Öneri',
 			'aqi_help_source' => 'Kaynak: Open-Meteo Air Quality API — yer düzeyi konsantrasyonları (~10 m), ~11 km ızgara.',
-			'widget_battery_hint' => 'Güvenilir widget güncellemeleri için uygulama ayarlarında Weather için pil optimizasyonunu kapatın',
+			'widget_battery_hint' => 'Güvenilir widget güncellemeleri için uygulama ayarlarında Rain için pil optimizasyonunu kapatın',
 			'persistent_notification' => 'Kalıcı bildirim',
 			'last_updated' => 'Güncellendi',
 			'app_font' => 'Yazı tipi',
@@ -677,6 +684,13 @@ extension on TranslationsTrTr {
 			'last_background_refresh' => 'Son arka plan yenilemesi',
 			'last_background_refresh_never' => 'Henüz arka plan yenilemesi yok',
 			'background_refresh_error' => 'Son arka plan hatası',
+			'hourly_forecast' => 'Saatlik tahmin',
+			'now' => 'Şimdi',
+			'temperature' => 'Sıcaklık',
+			'current_temperature' => 'Mevcut sıcaklık',
+			'temperature24h_ago' => '24 saat önceki sıcaklık',
+			'vs_yesterday' => 'düne göre',
+			'wind_level' => 'Seviye {n}',
 			_ => null,
 		};
 	}

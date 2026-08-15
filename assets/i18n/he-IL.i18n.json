@@ -312,5 +312,12 @@
   "colorPaletteSand": "חול",
   "lastBackgroundRefresh": "רענון רקע אחרון",
   "lastBackgroundRefreshNever": "עדיין אין רענון רקע",
-  "backgroundRefreshError": "שגיאת רקע אחרונה"
+  "backgroundRefreshError": "שגיאת רקע אחרונה",
+  "hourlyForecast": "תחזית לפי שעה",
+  "now": "עכשיו",
+  "temperature": "טמפרטורה",
+  "currentTemperature": "טמפרטורה נוכחית",
+  "temperature24hAgo": "טמפרטורה לפני 24 שעות",
+  "vsYesterday": "לעומת אתמול",
+  "windLevel": "רמה {n}"
 }

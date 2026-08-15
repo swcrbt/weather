@@ -241,7 +241,7 @@ class TranslationsJaJp extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => '最も高い汚染物質レベル';
 	@override String get aqi_help_advice_label => '推奨';
 	@override String get aqi_help_source => '出典：Open-Meteo Air Quality API — 地上濃度（約 10 m）、約 11 km グリッド。';
-	@override String get widget_battery_hint => 'ウィジェットを確実に更新するには、アプリ設定で Weather のバッテリー最適化を無効にしてください';
+	@override String get widget_battery_hint => 'ウィジェットを確実に更新するには、アプリ設定で Rain のバッテリー最適化を無効にしてください';
 	@override String get persistent_notification => '常時通知';
 	@override String get last_updated => '更新';
 	@override String get app_font => 'フォント';
@@ -353,6 +353,13 @@ class TranslationsJaJp extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => '最後のバックグラウンド更新';
 	@override String get last_background_refresh_never => 'バックグラウンド更新はまだありません';
 	@override String get background_refresh_error => '最後のバックグラウンドエラー';
+	@override String get hourly_forecast => '時間ごとの予報';
+	@override String get now => '現在';
+	@override String get temperature => '気温';
+	@override String get current_temperature => '現在の気温';
+	@override String get temperature24h_ago => '24時間前の気温';
+	@override String get vs_yesterday => '昨日との差';
+	@override String get wind_level => 'レベル {n}';
 }
 
 /// The flat map containing all translations for locale <ja-JP>.
@@ -565,7 +572,7 @@ extension on TranslationsJaJp {
 			'aqi_help_dominant' => '最も高い汚染物質レベル',
 			'aqi_help_advice_label' => '推奨',
 			'aqi_help_source' => '出典：Open-Meteo Air Quality API — 地上濃度（約 10 m）、約 11 km グリッド。',
-			'widget_battery_hint' => 'ウィジェットを確実に更新するには、アプリ設定で Weather のバッテリー最適化を無効にしてください',
+			'widget_battery_hint' => 'ウィジェットを確実に更新するには、アプリ設定で Rain のバッテリー最適化を無効にしてください',
 			'persistent_notification' => '常時通知',
 			'last_updated' => '更新',
 			'app_font' => 'フォント',
@@ -677,6 +684,13 @@ extension on TranslationsJaJp {
 			'last_background_refresh' => '最後のバックグラウンド更新',
 			'last_background_refresh_never' => 'バックグラウンド更新はまだありません',
 			'background_refresh_error' => '最後のバックグラウンドエラー',
+			'hourly_forecast' => '時間ごとの予報',
+			'now' => '現在',
+			'temperature' => '気温',
+			'current_temperature' => '現在の気温',
+			'temperature24h_ago' => '24時間前の気温',
+			'vs_yesterday' => '昨日との差',
+			'wind_level' => 'レベル {n}',
 			_ => null,
 		};
 	}

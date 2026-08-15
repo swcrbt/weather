@@ -312,5 +312,12 @@
   "colorPaletteSand": "모래",
   "lastBackgroundRefresh": "마지막 백그라운드 새로고침",
   "lastBackgroundRefreshNever": "백그라운드 새로고침 없음",
-  "backgroundRefreshError": "마지막 백그라운드 오류"
+  "backgroundRefreshError": "마지막 백그라운드 오류",
+  "hourlyForecast": "시간별 예보",
+  "now": "현재",
+  "temperature": "기온",
+  "currentTemperature": "현재 기온",
+  "temperature24hAgo": "24시간 전 기온",
+  "vsYesterday": "어제 대비",
+  "windLevel": "{n}단계"
 }

@@ -312,5 +312,12 @@
   "colorPaletteSand": "Piesková",
   "lastBackgroundRefresh": "Posledná aktualizácia na pozadí",
   "lastBackgroundRefreshNever": "Zatiaľ žiadna aktualizácia na pozadí",
-  "backgroundRefreshError": "Posledná chyba na pozadí"
+  "backgroundRefreshError": "Posledná chyba na pozadí",
+  "hourlyForecast": "Hodinová predpoveď",
+  "now": "Teraz",
+  "temperature": "Teplota",
+  "currentTemperature": "Aktuálna teplota",
+  "temperature24hAgo": "Teplota pred 24 hodinami",
+  "vsYesterday": "v porovnaní so včerajškom",
+  "windLevel": "Úroveň {n}"
 }

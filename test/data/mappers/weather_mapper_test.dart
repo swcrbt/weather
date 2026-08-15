@@ -22,6 +22,29 @@ WeatherDataApi _sampleApi() => WeatherDataApi(
   utcOffsetSeconds: 10800,
 );
 
+WeatherDataApi _sampleApiWithPastDay() => WeatherDataApi(
+  hourly: const Hourly(
+    time: [
+      '2026-06-04T22:00',
+      '2026-06-04T23:00',
+      '2026-06-05T00:00',
+      '2026-06-05T01:00',
+    ],
+    weatherCode: [1, 2, 3, 0],
+    temperature2M: [18.0, 17.0, 16.0, 19.0],
+  ),
+  daily: Daily(
+    time: [DateTime(2026, 6, 4), DateTime(2026, 6, 5)],
+    weatherCode: [1, 0],
+    temperature2MMax: [22.0, 25.0],
+    temperature2MMin: [14.0, 15.0],
+    sunrise: ['06:00', '06:00'],
+    sunset: ['18:00', '18:00'],
+  ),
+  timezone: 'Europe/Moscow',
+  utcOffsetSeconds: 10800,
+);
+
 void main() {
   group('WeatherMapper.toMainWeatherCache', () {
     test('maps hourly and daily fields', () {
@@ -33,6 +56,26 @@ void main() {
       expect(cache.timeDaily, [DateTime(2026, 6, 5)]);
       expect(cache.timezone, 'Europe/Moscow');
       expect(cache.timestamp, isNotNull);
+    });
+
+    test('splits past-day hours into temperature2MPast', () {
+      final cache = WeatherMapper.toMainWeatherCache(
+        _sampleApiWithPastDay(),
+        pastDays: 1,
+      );
+
+      expect(cache.time, ['2026-06-05T00:00', '2026-06-05T01:00']);
+      expect(cache.temperature2M, [16.0, 19.0]);
+      expect(cache.weathercode, [3, 0]);
+      expect(cache.timePast, ['2026-06-04T22:00', '2026-06-04T23:00']);
+      expect(cache.temperature2MPast, [18.0, 17.0]);
+      expect(cache.timeDaily, [DateTime(2026, 6, 5)]);
+    });
+
+    test('keeps temperature2MPast null without past-day hours', () {
+      final cache = WeatherMapper.toMainWeatherCache(_sampleApi());
+
+      expect(cache.temperature2MPast, isNull);
     });
   });
 

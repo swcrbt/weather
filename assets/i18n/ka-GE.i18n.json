@@ -312,5 +312,12 @@
   "colorPaletteSand": "ქვიშისფერი",
   "lastBackgroundRefresh": "ბოლო ფონური განახლება",
   "lastBackgroundRefreshNever": "ფონური განახლება ჯერ არ მომხდარა",
-  "backgroundRefreshError": "ბოლო ფონური შეცდომა"
+  "backgroundRefreshError": "ბოლო ფონური შეცდომა",
+  "hourlyForecast": "საათობრივი პროგნოზი",
+  "now": "ახლა",
+  "temperature": "ტემპერატურა",
+  "currentTemperature": "მიმდინარე ტემპერატურა",
+  "temperature24hAgo": "ტემპერატურა 24 საათის წინ",
+  "vsYesterday": "გუშინდელთან შედარებით",
+  "windLevel": "დონე {n}"
 }

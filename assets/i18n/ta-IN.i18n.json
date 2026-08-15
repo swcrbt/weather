@@ -312,5 +312,12 @@
   "colorPaletteSand": "மணல்",
   "lastBackgroundRefresh": "கடைசி பின்னணி புதுப்பிப்பு",
   "lastBackgroundRefreshNever": "இன்னும் பின்னணி புதுப்பிப்பு இல்லை",
-  "backgroundRefreshError": "கடைசி பின்னணி பிழை"
+  "backgroundRefreshError": "கடைசி பின்னணி பிழை",
+  "hourlyForecast": "மணிநேர முன்னறிவிப்பு",
+  "now": "இப்போது",
+  "temperature": "வெப்பநிலை",
+  "currentTemperature": "தற்போதைய வெப்பநிலை",
+  "temperature24hAgo": "24 மணி நேரத்திற்கு முன் வெப்பநிலை",
+  "vsYesterday": "நேற்றுடன் ஒப்பிடுகையில்",
+  "windLevel": "{n} நிலை"
 }

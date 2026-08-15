@@ -241,7 +241,7 @@ class TranslationsEsEs extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Mayor nivel de contaminante';
 	@override String get aqi_help_advice_label => 'Recomendación';
 	@override String get aqi_help_source => 'Fuente: Open-Meteo Air Quality API — concentraciones a nivel del suelo (~10 m), cuadrícula ~11 km.';
-	@override String get widget_battery_hint => 'Para actualizaciones fiables del widget, desactiva la optimización de batería de Weather en los ajustes de la aplicación';
+	@override String get widget_battery_hint => 'Para actualizaciones fiables del widget, desactiva la optimización de batería de Rain en los ajustes de la aplicación';
 	@override String get persistent_notification => 'Notificación persistente';
 	@override String get last_updated => 'Actualizado';
 	@override String get app_font => 'Fuente';
@@ -353,6 +353,13 @@ class TranslationsEsEs extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'Última actualización en segundo plano';
 	@override String get last_background_refresh_never => 'Aún no hay actualización en segundo plano';
 	@override String get background_refresh_error => 'Último error en segundo plano';
+	@override String get hourly_forecast => 'Previsión por horas';
+	@override String get now => 'Ahora';
+	@override String get temperature => 'Temperatura';
+	@override String get current_temperature => 'Temperatura actual';
+	@override String get temperature24h_ago => 'Temperatura de hace 24 h';
+	@override String get vs_yesterday => 'frente a ayer';
+	@override String get wind_level => 'Nivel {n}';
 }
 
 /// The flat map containing all translations for locale <es-ES>.
@@ -565,7 +572,7 @@ extension on TranslationsEsEs {
 			'aqi_help_dominant' => 'Mayor nivel de contaminante',
 			'aqi_help_advice_label' => 'Recomendación',
 			'aqi_help_source' => 'Fuente: Open-Meteo Air Quality API — concentraciones a nivel del suelo (~10 m), cuadrícula ~11 km.',
-			'widget_battery_hint' => 'Para actualizaciones fiables del widget, desactiva la optimización de batería de Weather en los ajustes de la aplicación',
+			'widget_battery_hint' => 'Para actualizaciones fiables del widget, desactiva la optimización de batería de Rain en los ajustes de la aplicación',
 			'persistent_notification' => 'Notificación persistente',
 			'last_updated' => 'Actualizado',
 			'app_font' => 'Fuente',
@@ -677,6 +684,13 @@ extension on TranslationsEsEs {
 			'last_background_refresh' => 'Última actualización en segundo plano',
 			'last_background_refresh_never' => 'Aún no hay actualización en segundo plano',
 			'background_refresh_error' => 'Último error en segundo plano',
+			'hourly_forecast' => 'Previsión por horas',
+			'now' => 'Ahora',
+			'temperature' => 'Temperatura',
+			'current_temperature' => 'Temperatura actual',
+			'temperature24h_ago' => 'Temperatura de hace 24 h',
+			'vs_yesterday' => 'frente a ayer',
+			'wind_level' => 'Nivel {n}',
 			_ => null,
 		};
 	}

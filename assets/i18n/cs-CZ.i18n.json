@@ -312,5 +312,12 @@
   "colorPaletteSand": "Písková",
   "lastBackgroundRefresh": "Poslední aktualizace na pozadí",
   "lastBackgroundRefreshNever": "Zatím žádná aktualizace na pozadí",
-  "backgroundRefreshError": "Poslední chyba na pozadí"
+  "backgroundRefreshError": "Poslední chyba na pozadí",
+  "hourlyForecast": "Hodinová předpověď",
+  "now": "Nyní",
+  "temperature": "Teplota",
+  "currentTemperature": "Aktuální teplota",
+  "temperature24hAgo": "Teplota před 24 hodinami",
+  "vsYesterday": "oproti včerejšku",
+  "windLevel": "Úroveň {n}"
 }

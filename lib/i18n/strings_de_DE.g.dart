@@ -241,7 +241,7 @@ class TranslationsDeDe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Höchster Schadstoffwert';
 	@override String get aqi_help_advice_label => 'Empfehlung';
 	@override String get aqi_help_source => 'Quelle: Open-Meteo Air Quality API — Bodenkonzentrationen (~10 m), ~11 km Raster.';
-	@override String get widget_battery_hint => 'Für zuverlässige Widget-Aktualisierungen deaktivieren Sie die Akku-Optimierung für Weather in den App-Einstellungen';
+	@override String get widget_battery_hint => 'Für zuverlässige Widget-Aktualisierungen deaktivieren Sie die Akku-Optimierung für Rain in den App-Einstellungen';
 	@override String get persistent_notification => 'Dauerhafte Benachrichtigung';
 	@override String get last_updated => 'Aktualisiert';
 	@override String get app_font => 'Schriftart';
@@ -353,6 +353,13 @@ class TranslationsDeDe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'Letzte Hintergrundaktualisierung';
 	@override String get last_background_refresh_never => 'Noch keine Hintergrundaktualisierung';
 	@override String get background_refresh_error => 'Letzter Hintergrundfehler';
+	@override String get hourly_forecast => 'Stündliche Vorhersage';
+	@override String get now => 'Jetzt';
+	@override String get temperature => 'Temperatur';
+	@override String get current_temperature => 'Aktuelle Temperatur';
+	@override String get temperature24h_ago => 'Temperatur vor 24 Stunden';
+	@override String get vs_yesterday => 'im Vergleich zu gestern';
+	@override String get wind_level => 'Stufe {n}';
 }
 
 /// The flat map containing all translations for locale <de-DE>.
@@ -565,7 +572,7 @@ extension on TranslationsDeDe {
 			'aqi_help_dominant' => 'Höchster Schadstoffwert',
 			'aqi_help_advice_label' => 'Empfehlung',
 			'aqi_help_source' => 'Quelle: Open-Meteo Air Quality API — Bodenkonzentrationen (~10 m), ~11 km Raster.',
-			'widget_battery_hint' => 'Für zuverlässige Widget-Aktualisierungen deaktivieren Sie die Akku-Optimierung für Weather in den App-Einstellungen',
+			'widget_battery_hint' => 'Für zuverlässige Widget-Aktualisierungen deaktivieren Sie die Akku-Optimierung für Rain in den App-Einstellungen',
 			'persistent_notification' => 'Dauerhafte Benachrichtigung',
 			'last_updated' => 'Aktualisiert',
 			'app_font' => 'Schriftart',
@@ -677,6 +684,13 @@ extension on TranslationsDeDe {
 			'last_background_refresh' => 'Letzte Hintergrundaktualisierung',
 			'last_background_refresh_never' => 'Noch keine Hintergrundaktualisierung',
 			'background_refresh_error' => 'Letzter Hintergrundfehler',
+			'hourly_forecast' => 'Stündliche Vorhersage',
+			'now' => 'Jetzt',
+			'temperature' => 'Temperatur',
+			'current_temperature' => 'Aktuelle Temperatur',
+			'temperature24h_ago' => 'Temperatur vor 24 Stunden',
+			'vs_yesterday' => 'im Vergleich zu gestern',
+			'wind_level' => 'Stufe {n}',
 			_ => null,
 		};
 	}

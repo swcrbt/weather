@@ -241,7 +241,7 @@ class TranslationsKnIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'ಅತ್ಯಧಿಕ ಮಾಲಿನ್ಯ ಮಟ್ಟ';
 	@override String get aqi_help_advice_label => 'ಶಿಫಾರಸು';
 	@override String get aqi_help_source => 'ಮೂಲ: Open-Meteo Air Quality API — ನೆಲ ಮಟ್ಟದ ಸಾಂದ್ರತೆ (~10 ಮೀ), ~11 ಕಿಮೀ ಗ್ರಿಡ್.';
-	@override String get widget_battery_hint => 'ವಿಶ್ವಾಸಾರ್ಹ ವಿಜೆಟ್ ನವೀಕರಣಗಳಿಗಾಗಿ ಆ್ಯಪ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ Weather ಗಾಗಿ ಬ್ಯಾಟರಿ ನಿರ್ಬಂಧವನ್ನು ಆಫ್ ಮಾಡಿ';
+	@override String get widget_battery_hint => 'ವಿಶ್ವಾಸಾರ್ಹ ವಿಜೆಟ್ ನವೀಕರಣಗಳಿಗಾಗಿ ಆ್ಯಪ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ Rain ಗಾಗಿ ಬ್ಯಾಟರಿ ನಿರ್ಬಂಧವನ್ನು ಆಫ್ ಮಾಡಿ';
 	@override String get persistent_notification => 'ಸ್ಥಿರ ಅಧಿಸೂಚನೆ';
 	@override String get last_updated => 'ನವೀಕರಿಸಲಾಗಿದೆ';
 	@override String get app_font => 'ಫಾಂಟ್';
@@ -353,6 +353,13 @@ class TranslationsKnIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'ಕೊನೆಯ ಹಿನ್ನೆಲೆ ರಿಫ್ರೆಶ್';
 	@override String get last_background_refresh_never => 'ಇನ್ನೂ ಹಿನ್ನೆಲೆ ರಿಫ್ರೆಶ್ ಇಲ್ಲ';
 	@override String get background_refresh_error => 'ಕೊನೆಯ ಹಿನ್ನೆಲೆ ದೋಷ';
+	@override String get hourly_forecast => 'ಗಂಟೆಯ ಮುನ್ಸೂಚನೆ';
+	@override String get now => 'ಈಗ';
+	@override String get temperature => 'ತಾಪಮಾನ';
+	@override String get current_temperature => 'ಪ್ರಸ್ತುತ ತಾಪಮಾನ';
+	@override String get temperature24h_ago => '24 ಗಂಟೆಗಳ ಹಿಂದಿನ ತಾಪಮಾನ';
+	@override String get vs_yesterday => 'ನಿನ್ನೆಗಿಂತ';
+	@override String get wind_level => 'ಮಟ್ಟ {n}';
 }
 
 /// The flat map containing all translations for locale <kn-IN>.
@@ -565,7 +572,7 @@ extension on TranslationsKnIn {
 			'aqi_help_dominant' => 'ಅತ್ಯಧಿಕ ಮಾಲಿನ್ಯ ಮಟ್ಟ',
 			'aqi_help_advice_label' => 'ಶಿಫಾರಸು',
 			'aqi_help_source' => 'ಮೂಲ: Open-Meteo Air Quality API — ನೆಲ ಮಟ್ಟದ ಸಾಂದ್ರತೆ (~10 ಮೀ), ~11 ಕಿಮೀ ಗ್ರಿಡ್.',
-			'widget_battery_hint' => 'ವಿಶ್ವಾಸಾರ್ಹ ವಿಜೆಟ್ ನವೀಕರಣಗಳಿಗಾಗಿ ಆ್ಯಪ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ Weather ಗಾಗಿ ಬ್ಯಾಟರಿ ನಿರ್ಬಂಧವನ್ನು ಆಫ್ ಮಾಡಿ',
+			'widget_battery_hint' => 'ವಿಶ್ವಾಸಾರ್ಹ ವಿಜೆಟ್ ನವೀಕರಣಗಳಿಗಾಗಿ ಆ್ಯಪ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ Rain ಗಾಗಿ ಬ್ಯಾಟರಿ ನಿರ್ಬಂಧವನ್ನು ಆಫ್ ಮಾಡಿ',
 			'persistent_notification' => 'ಸ್ಥಿರ ಅಧಿಸೂಚನೆ',
 			'last_updated' => 'ನವೀಕರಿಸಲಾಗಿದೆ',
 			'app_font' => 'ಫಾಂಟ್',
@@ -677,6 +684,13 @@ extension on TranslationsKnIn {
 			'last_background_refresh' => 'ಕೊನೆಯ ಹಿನ್ನೆಲೆ ರಿಫ್ರೆಶ್',
 			'last_background_refresh_never' => 'ಇನ್ನೂ ಹಿನ್ನೆಲೆ ರಿಫ್ರೆಶ್ ಇಲ್ಲ',
 			'background_refresh_error' => 'ಕೊನೆಯ ಹಿನ್ನೆಲೆ ದೋಷ',
+			'hourly_forecast' => 'ಗಂಟೆಯ ಮುನ್ಸೂಚನೆ',
+			'now' => 'ಈಗ',
+			'temperature' => 'ತಾಪಮಾನ',
+			'current_temperature' => 'ಪ್ರಸ್ತುತ ತಾಪಮಾನ',
+			'temperature24h_ago' => '24 ಗಂಟೆಗಳ ಹಿಂದಿನ ತಾಪಮಾನ',
+			'vs_yesterday' => 'ನಿನ್ನೆಗಿಂತ',
+			'wind_level' => 'ಮಟ್ಟ {n}',
 			_ => null,
 		};
 	}

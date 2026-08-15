@@ -241,7 +241,7 @@ class TranslationsRoRo extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Cel mai ridicat nivel de poluant';
 	@override String get aqi_help_advice_label => 'Recomandare';
 	@override String get aqi_help_source => 'Sursă: Open-Meteo Air Quality API — concentrații la sol (~10 m), grilă ~11 km.';
-	@override String get widget_battery_hint => 'Pentru actualizări fiabile ale widgetului, dezactivați optimizarea bateriei pentru Weather în setările aplicației';
+	@override String get widget_battery_hint => 'Pentru actualizări fiabile ale widgetului, dezactivați optimizarea bateriei pentru Rain în setările aplicației';
 	@override String get persistent_notification => 'Notificare persistentă';
 	@override String get last_updated => 'Actualizat';
 	@override String get app_font => 'Fonturi';
@@ -353,6 +353,13 @@ class TranslationsRoRo extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'Ultima reîmprospătare în fundal';
 	@override String get last_background_refresh_never => 'Nicio reîmprospătare în fundal';
 	@override String get background_refresh_error => 'Ultima eroare în fundal';
+	@override String get hourly_forecast => 'Prognoză orară';
+	@override String get now => 'Acum';
+	@override String get temperature => 'Temperatură';
+	@override String get current_temperature => 'Temperatura actuală';
+	@override String get temperature24h_ago => 'Temperatura de acum 24 de ore';
+	@override String get vs_yesterday => 'față de ieri';
+	@override String get wind_level => 'Nivel {n}';
 }
 
 /// The flat map containing all translations for locale <ro-RO>.
@@ -565,7 +572,7 @@ extension on TranslationsRoRo {
 			'aqi_help_dominant' => 'Cel mai ridicat nivel de poluant',
 			'aqi_help_advice_label' => 'Recomandare',
 			'aqi_help_source' => 'Sursă: Open-Meteo Air Quality API — concentrații la sol (~10 m), grilă ~11 km.',
-			'widget_battery_hint' => 'Pentru actualizări fiabile ale widgetului, dezactivați optimizarea bateriei pentru Weather în setările aplicației',
+			'widget_battery_hint' => 'Pentru actualizări fiabile ale widgetului, dezactivați optimizarea bateriei pentru Rain în setările aplicației',
 			'persistent_notification' => 'Notificare persistentă',
 			'last_updated' => 'Actualizat',
 			'app_font' => 'Fonturi',
@@ -677,6 +684,13 @@ extension on TranslationsRoRo {
 			'last_background_refresh' => 'Ultima reîmprospătare în fundal',
 			'last_background_refresh_never' => 'Nicio reîmprospătare în fundal',
 			'background_refresh_error' => 'Ultima eroare în fundal',
+			'hourly_forecast' => 'Prognoză orară',
+			'now' => 'Acum',
+			'temperature' => 'Temperatură',
+			'current_temperature' => 'Temperatura actuală',
+			'temperature24h_ago' => 'Temperatura de acum 24 de ore',
+			'vs_yesterday' => 'față de ieri',
+			'wind_level' => 'Nivel {n}',
 			_ => null,
 		};
 	}

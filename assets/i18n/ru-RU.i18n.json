@@ -312,5 +312,12 @@
   "licensePackages": "пакетов",
   "lastBackgroundRefresh": "Последнее фоновое обновление",
   "lastBackgroundRefreshNever": "Фоновых обновлений ещё не было",
-  "backgroundRefreshError": "Последняя фоновая ошибка"
+  "backgroundRefreshError": "Последняя фоновая ошибка",
+  "hourlyForecast": "Почасовой прогноз",
+  "now": "Сейчас",
+  "temperature": "Температура",
+  "currentTemperature": "Текущая температура",
+  "temperature24hAgo": "Температура 24 часа назад",
+  "vsYesterday": "по сравнению со вчера",
+  "windLevel": "Уровень {n}"
 }

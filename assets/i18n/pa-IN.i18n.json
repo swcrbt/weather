@@ -312,5 +312,12 @@
   "colorPaletteSand": "ਰੇਤ",
   "lastBackgroundRefresh": "ਆਖਰੀ ਬੈਕਗ੍ਰਾਊਂਡ ਰਿਫ੍ਰੈਸ਼",
   "lastBackgroundRefreshNever": "ਹਾਲੇ ਕੋਈ ਬੈਕਗ੍ਰਾਊਂਡ ਰਿਫ੍ਰੈਸ਼ ਨਹੀਂ",
-  "backgroundRefreshError": "ਆਖਰੀ ਬੈਕਗ੍ਰਾਊਂਡ ਗਲਤੀ"
+  "backgroundRefreshError": "ਆਖਰੀ ਬੈਕਗ੍ਰਾਊਂਡ ਗਲਤੀ",
+  "hourlyForecast": "ਘੰਟਾਵਾਰ ਪੂਰਵ-ਅਨੁਮਾਨ",
+  "now": "ਹੁਣ",
+  "temperature": "ਤਾਪਮਾਨ",
+  "currentTemperature": "ਮੌਜੂਦਾ ਤਾਪਮਾਨ",
+  "temperature24hAgo": "24 ਘੰਟੇ ਪਹਿਲਾਂ ਦਾ ਤਾਪਮਾਨ",
+  "vsYesterday": "ਕੱਲ੍ਹ ਦੇ ਮੁਕਾਬਲੇ",
+  "windLevel": "ਪੱਧਰ {n}"
 }

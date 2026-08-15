@@ -49,6 +49,13 @@ class TranslationsZhCn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get time_end => '结束时间';
 	@override String get search_method => '使用搜索或地理定位';
 	@override String get hourly_variables => '每小时天气变量';
+	@override String get hourly_forecast => '逐小时预报';
+	@override String get now => '现在';
+	@override String get temperature => '温度';
+	@override String get current_temperature => '当前温度';
+	@override String get temperature24h_ago => '24小时前温度';
+	@override String get vs_yesterday => '比昨天';
+	@override String get wind_level => '{n}级';
 	@override String get uv_index => '紫外线指数';
 	@override String get clear_sky => '晴朗';
 	@override String get k_24 => '24小时制';
@@ -241,7 +248,7 @@ class TranslationsZhCn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => '最高污染物水平';
 	@override String get aqi_help_advice_label => '建议';
 	@override String get aqi_help_source => '来源：Open-Meteo Air Quality API — 近地面浓度（约 10 米），约 11 公里网格。';
-	@override String get widget_battery_hint => '为确保小组件可靠更新，请在应用设置中关闭 Weather 的电池优化';
+	@override String get widget_battery_hint => '为确保小组件可靠更新，请在应用设置中关闭 Rain 的电池优化';
 	@override String get persistent_notification => '常驻通知';
 	@override String get last_updated => '已更新';
 	@override String get app_font => '字体';
@@ -373,6 +380,13 @@ extension on TranslationsZhCn {
 			'time_end' => '结束时间',
 			'search_method' => '使用搜索或地理定位',
 			'hourly_variables' => '每小时天气变量',
+			'hourly_forecast' => '逐小时预报',
+			'now' => '现在',
+			'temperature' => '温度',
+			'current_temperature' => '当前温度',
+			'temperature24h_ago' => '24小时前温度',
+			'vs_yesterday' => '比昨天',
+			'wind_level' => '{n}级',
 			'uv_index' => '紫外线指数',
 			'clear_sky' => '晴朗',
 			'k_24' => '24小时制',
@@ -565,7 +579,7 @@ extension on TranslationsZhCn {
 			'aqi_help_dominant' => '最高污染物水平',
 			'aqi_help_advice_label' => '建议',
 			'aqi_help_source' => '来源：Open-Meteo Air Quality API — 近地面浓度（约 10 米），约 11 公里网格。',
-			'widget_battery_hint' => '为确保小组件可靠更新，请在应用设置中关闭 Weather 的电池优化',
+			'widget_battery_hint' => '为确保小组件可靠更新，请在应用设置中关闭 Rain 的电池优化',
 			'persistent_notification' => '常驻通知',
 			'last_updated' => '已更新',
 			'app_font' => '字体',

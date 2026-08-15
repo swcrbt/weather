@@ -312,5 +312,12 @@
   "colorPaletteSand": "Homok",
   "lastBackgroundRefresh": "Utolsó háttérfrissítés",
   "lastBackgroundRefreshNever": "Még nincs háttérfrissítés",
-  "backgroundRefreshError": "Utolsó háttérhiba"
+  "backgroundRefreshError": "Utolsó háttérhiba",
+  "hourlyForecast": "Óránkénti előrejelzés",
+  "now": "Most",
+  "temperature": "Hőmérséklet",
+  "currentTemperature": "Jelenlegi hőmérséklet",
+  "temperature24hAgo": "Hőmérséklet 24 órával ezelőtt",
+  "vsYesterday": "tegnaphoz képest",
+  "windLevel": "{n}. szint"
 }

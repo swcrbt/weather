@@ -241,7 +241,7 @@ class TranslationsHiIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'सर्वोच्च प्रदूषक स्तर';
 	@override String get aqi_help_advice_label => 'सिफ़ारिश';
 	@override String get aqi_help_source => 'स्रोत: Open-Meteo Air Quality API — ज़मीन स्तर की सांद्रता (~10 मी), ~11 किमी ग्रिड।';
-	@override String get widget_battery_hint => 'विश्वसनीय विजेट अपडेट के लिए ऐप सेटिंग्स में Weather की बैटरी अनुकूलन बंद करें';
+	@override String get widget_battery_hint => 'विश्वसनीय विजेट अपडेट के लिए ऐप सेटिंग्स में Rain की बैटरी अनुकूलन बंद करें';
 	@override String get persistent_notification => 'स्थायी सूचना';
 	@override String get last_updated => 'अपडेट किया गया';
 	@override String get app_font => 'फ़ॉन्ट';
@@ -353,6 +353,13 @@ class TranslationsHiIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'अंतिम पृष्ठभूमि रीफ़्रेश';
 	@override String get last_background_refresh_never => 'अभी तक कोई पृष्ठभूमि रीफ़्रेश नहीं';
 	@override String get background_refresh_error => 'अंतिम पृष्ठभूमि त्रुटि';
+	@override String get hourly_forecast => 'घंटेवार पूर्वानुमान';
+	@override String get now => 'अभी';
+	@override String get temperature => 'तापमान';
+	@override String get current_temperature => 'वर्तमान तापमान';
+	@override String get temperature24h_ago => '24 घंटे पहले का तापमान';
+	@override String get vs_yesterday => 'कल की तुलना में';
+	@override String get wind_level => 'स्तर {n}';
 }
 
 /// The flat map containing all translations for locale <hi-IN>.
@@ -565,7 +572,7 @@ extension on TranslationsHiIn {
 			'aqi_help_dominant' => 'सर्वोच्च प्रदूषक स्तर',
 			'aqi_help_advice_label' => 'सिफ़ारिश',
 			'aqi_help_source' => 'स्रोत: Open-Meteo Air Quality API — ज़मीन स्तर की सांद्रता (~10 मी), ~11 किमी ग्रिड।',
-			'widget_battery_hint' => 'विश्वसनीय विजेट अपडेट के लिए ऐप सेटिंग्स में Weather की बैटरी अनुकूलन बंद करें',
+			'widget_battery_hint' => 'विश्वसनीय विजेट अपडेट के लिए ऐप सेटिंग्स में Rain की बैटरी अनुकूलन बंद करें',
 			'persistent_notification' => 'स्थायी सूचना',
 			'last_updated' => 'अपडेट किया गया',
 			'app_font' => 'फ़ॉन्ट',
@@ -677,6 +684,13 @@ extension on TranslationsHiIn {
 			'last_background_refresh' => 'अंतिम पृष्ठभूमि रीफ़्रेश',
 			'last_background_refresh_never' => 'अभी तक कोई पृष्ठभूमि रीफ़्रेश नहीं',
 			'background_refresh_error' => 'अंतिम पृष्ठभूमि त्रुटि',
+			'hourly_forecast' => 'घंटेवार पूर्वानुमान',
+			'now' => 'अभी',
+			'temperature' => 'तापमान',
+			'current_temperature' => 'वर्तमान तापमान',
+			'temperature24h_ago' => '24 घंटे पहले का तापमान',
+			'vs_yesterday' => 'कल की तुलना में',
+			'wind_level' => 'स्तर {n}',
 			_ => null,
 		};
 	}

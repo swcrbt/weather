@@ -241,7 +241,7 @@ class TranslationsPtBr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Maior nível de poluente';
 	@override String get aqi_help_advice_label => 'Recomendação';
 	@override String get aqi_help_source => 'Fonte: Open-Meteo Air Quality API — concentrações ao nível do solo (~10 m), grade ~11 km.';
-	@override String get widget_battery_hint => 'Para atualizações confiáveis do widget, desative a otimização de bateria do Weather nas configurações do app';
+	@override String get widget_battery_hint => 'Para atualizações confiáveis do widget, desative a otimização de bateria do Rain nas configurações do app';
 	@override String get persistent_notification => 'Notificação persistente';
 	@override String get last_updated => 'Atualizado';
 	@override String get app_font => 'Fonte';
@@ -353,6 +353,13 @@ class TranslationsPtBr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'Última atualização em segundo plano';
 	@override String get last_background_refresh_never => 'Nenhuma atualização em segundo plano';
 	@override String get background_refresh_error => 'Último erro em segundo plano';
+	@override String get hourly_forecast => 'Previsão por hora';
+	@override String get now => 'Agora';
+	@override String get temperature => 'Temperatura';
+	@override String get current_temperature => 'Temperatura atual';
+	@override String get temperature24h_ago => 'Temperatura de 24h atrás';
+	@override String get vs_yesterday => 'comparado a ontem';
+	@override String get wind_level => 'Nível {n}';
 }
 
 /// The flat map containing all translations for locale <pt-BR>.
@@ -565,7 +572,7 @@ extension on TranslationsPtBr {
 			'aqi_help_dominant' => 'Maior nível de poluente',
 			'aqi_help_advice_label' => 'Recomendação',
 			'aqi_help_source' => 'Fonte: Open-Meteo Air Quality API — concentrações ao nível do solo (~10 m), grade ~11 km.',
-			'widget_battery_hint' => 'Para atualizações confiáveis do widget, desative a otimização de bateria do Weather nas configurações do app',
+			'widget_battery_hint' => 'Para atualizações confiáveis do widget, desative a otimização de bateria do Rain nas configurações do app',
 			'persistent_notification' => 'Notificação persistente',
 			'last_updated' => 'Atualizado',
 			'app_font' => 'Fonte',
@@ -677,6 +684,13 @@ extension on TranslationsPtBr {
 			'last_background_refresh' => 'Última atualização em segundo plano',
 			'last_background_refresh_never' => 'Nenhuma atualização em segundo plano',
 			'background_refresh_error' => 'Último erro em segundo plano',
+			'hourly_forecast' => 'Previsão por hora',
+			'now' => 'Agora',
+			'temperature' => 'Temperatura',
+			'current_temperature' => 'Temperatura atual',
+			'temperature24h_ago' => 'Temperatura de 24h atrás',
+			'vs_yesterday' => 'comparado a ontem',
+			'wind_level' => 'Nível {n}',
 			_ => null,
 		};
 	}

@@ -1,51 +1,133 @@
 import 'package:rain/data/models/db.dart';
 import 'package:rain/data/models/weather_api.dart';
+import 'package:rain/core/weather/time_index_helper.dart';
 
 /// Maps Open-Meteo API responses to local Isar cache models.
 class WeatherMapper {
+  /// Returns the number of leading hourly slots that precede the normalized
+  /// forecast start. [pastDays] must match the request parameter used by the
+  /// datasource.
+  static int _pastHourCount(WeatherDataApi weatherData, int pastDays) {
+    final times = weatherData.hourly.time;
+    final daily = weatherData.daily.time;
+    if (pastDays <= 0 ||
+        times == null ||
+        times.isEmpty ||
+        daily == null ||
+        daily.length <= pastDays) {
+      return 0;
+    }
+
+    // Open-Meteo includes past days in daily.time as well. Only treat the
+    // response as a past-day response when hourly and daily start together.
+    final firstHour = TimeIndexHelper.parseForecastDate(times.first);
+    final firstDaily = daily.first;
+    if (!_sameDate(firstHour, firstDaily)) return 0;
+
+    final normalizedDate = daily[pastDays];
+    for (var i = 0; i < times.length; i++) {
+      final date = TimeIndexHelper.parseForecastDate(times[i]);
+      if (_sameDate(date, normalizedDate)) return i;
+    }
+    return 0;
+  }
+
+  static bool _sameDate(DateTime a, DateTime b) =>
+      a.year == b.year && a.month == b.month && a.day == b.day;
+
+  /// Returns the number of daily slots that precede the normalized forecast.
+  static int _pastDayCount(WeatherDataApi weatherData, int pastDays) {
+    final times = weatherData.hourly.time;
+    final daily = weatherData.daily.time;
+    if (pastDays <= 0 ||
+        times == null ||
+        times.isEmpty ||
+        daily == null ||
+        daily.length <= pastDays) {
+      return 0;
+    }
+    final firstHour = TimeIndexHelper.parseForecastDate(times.first);
+    return _sameDate(firstHour, daily.first) ? pastDays : 0;
+  }
+
+  /// Drops leading entries and returns an empty list when the source is too
+  /// short, so malformed parallel API arrays cannot be reused at a wrong index.
+  static List<T>? _slice<T>(List<T>? values, int start) {
+    if (values == null || start <= 0) return values;
+    if (start >= values.length) return <T>[];
+    return values.sublist(start);
+  }
+
+  static List<T>? _prefix<T>(List<T>? values, int length) {
+    if (values == null || length <= 0) return null;
+    return values.take(length).toList();
+  }
+
   /// Converts API forecast data into the main weather cache shape.
   static MainWeatherCache toMainWeatherCache(
     WeatherDataApi weatherData, {
     int clockSkewSeconds = 0,
-  }) => MainWeatherCache(
-    time: weatherData.hourly.time,
-    temperature2M: weatherData.hourly.temperature2M,
-    relativehumidity2M: weatherData.hourly.relativeHumidity2M,
-    apparentTemperature: weatherData.hourly.apparentTemperature,
-    precipitation: weatherData.hourly.precipitation,
-    rain: weatherData.hourly.rain,
-    weathercode: weatherData.hourly.weatherCode,
-    surfacePressure: weatherData.hourly.surfacePressure,
-    visibility: weatherData.hourly.visibility,
-    evapotranspiration: weatherData.hourly.evapotranspiration,
-    windspeed10M: weatherData.hourly.windSpeed10M,
-    winddirection10M: weatherData.hourly.windDirection10M,
-    windgusts10M: weatherData.hourly.windGusts10M,
-    cloudcover: weatherData.hourly.cloudCover,
-    uvIndex: weatherData.hourly.uvIndex,
-    dewpoint2M: weatherData.hourly.dewpoint2M,
-    precipitationProbability: weatherData.hourly.precipitationProbability,
-    shortwaveRadiation: weatherData.hourly.shortwaveRadiation,
-    timeDaily: weatherData.daily.time,
-    weathercodeDaily: weatherData.daily.weatherCode,
-    temperature2MMax: weatherData.daily.temperature2MMax,
-    temperature2MMin: weatherData.daily.temperature2MMin,
-    apparentTemperatureMax: weatherData.daily.apparentTemperatureMax,
-    apparentTemperatureMin: weatherData.daily.apparentTemperatureMin,
-    sunrise: weatherData.daily.sunrise,
-    sunset: weatherData.daily.sunset,
-    precipitationSum: weatherData.daily.precipitationSum,
-    precipitationProbabilityMax: weatherData.daily.precipitationProbabilityMax,
-    windspeed10MMax: weatherData.daily.windSpeed10MMax,
-    windgusts10MMax: weatherData.daily.windGusts10MMax,
-    uvIndexMax: weatherData.daily.uvIndexMax,
-    rainSum: weatherData.daily.rainSum,
-    winddirection10MDominant: weatherData.daily.windDirection10MDominant,
-    timezone: weatherData.timezone,
-    utcOffsetSeconds: weatherData.utcOffsetSeconds,
-    clockSkewSeconds: clockSkewSeconds,
-    timestamp: DateTime.now(),
-  );
+    int pastDays = 0,
+  }) {
+    final past = _pastHourCount(weatherData, pastDays);
+    final dailyPast = _pastDayCount(weatherData, pastDays);
+    return MainWeatherCache(
+      time: _slice(weatherData.hourly.time, past),
+      temperature2M: _slice(weatherData.hourly.temperature2M, past),
+      relativehumidity2M: _slice(weatherData.hourly.relativeHumidity2M, past),
+      apparentTemperature: _slice(weatherData.hourly.apparentTemperature, past),
+      precipitation: _slice(weatherData.hourly.precipitation, past),
+      rain: _slice(weatherData.hourly.rain, past),
+      weathercode: _slice(weatherData.hourly.weatherCode, past),
+      surfacePressure: _slice(weatherData.hourly.surfacePressure, past),
+      visibility: _slice(weatherData.hourly.visibility, past),
+      evapotranspiration: _slice(weatherData.hourly.evapotranspiration, past),
+      windspeed10M: _slice(weatherData.hourly.windSpeed10M, past),
+      winddirection10M: _slice(weatherData.hourly.windDirection10M, past),
+      windgusts10M: _slice(weatherData.hourly.windGusts10M, past),
+      cloudcover: _slice(weatherData.hourly.cloudCover, past),
+      uvIndex: _slice(weatherData.hourly.uvIndex, past),
+      dewpoint2M: _slice(weatherData.hourly.dewpoint2M, past),
+      precipitationProbability: _slice(
+        weatherData.hourly.precipitationProbability,
+        past,
+      ),
+      shortwaveRadiation: _slice(weatherData.hourly.shortwaveRadiation, past),
+      timePast: _prefix(weatherData.hourly.time, past),
+      temperature2MPast: _prefix(weatherData.hourly.temperature2M, past),
+      timeDaily: _slice(weatherData.daily.time, dailyPast),
+      weathercodeDaily: _slice(weatherData.daily.weatherCode, dailyPast),
+      temperature2MMax: _slice(weatherData.daily.temperature2MMax, dailyPast),
+      temperature2MMin: _slice(weatherData.daily.temperature2MMin, dailyPast),
+      apparentTemperatureMax: _slice(
+        weatherData.daily.apparentTemperatureMax,
+        dailyPast,
+      ),
+      apparentTemperatureMin: _slice(
+        weatherData.daily.apparentTemperatureMin,
+        dailyPast,
+      ),
+      sunrise: _slice(weatherData.daily.sunrise, dailyPast),
+      sunset: _slice(weatherData.daily.sunset, dailyPast),
+      precipitationSum: _slice(weatherData.daily.precipitationSum, dailyPast),
+      precipitationProbabilityMax: _slice(
+        weatherData.daily.precipitationProbabilityMax,
+        dailyPast,
+      ),
+      windspeed10MMax: _slice(weatherData.daily.windSpeed10MMax, dailyPast),
+      windgusts10MMax: _slice(weatherData.daily.windGusts10MMax, dailyPast),
+      uvIndexMax: _slice(weatherData.daily.uvIndexMax, dailyPast),
+      rainSum: _slice(weatherData.daily.rainSum, dailyPast),
+      winddirection10MDominant: _slice(
+        weatherData.daily.windDirection10MDominant,
+        dailyPast,
+      ),
+      timezone: weatherData.timezone,
+      utcOffsetSeconds: weatherData.utcOffsetSeconds,
+      clockSkewSeconds: clockSkewSeconds,
+      timestamp: DateTime.now(),
+    );
+  }
 
   /// Converts API forecast data into a city weather card with location fields.
   static WeatherCard toWeatherCard(
@@ -55,49 +137,71 @@ class WeatherMapper {
     String city,
     String district, {
     int clockSkewSeconds = 0,
-  }) => WeatherCard(
-    time: weatherData.hourly.time,
-    temperature2M: weatherData.hourly.temperature2M,
-    relativehumidity2M: weatherData.hourly.relativeHumidity2M,
-    apparentTemperature: weatherData.hourly.apparentTemperature,
-    precipitation: weatherData.hourly.precipitation,
-    rain: weatherData.hourly.rain,
-    weathercode: weatherData.hourly.weatherCode,
-    surfacePressure: weatherData.hourly.surfacePressure,
-    visibility: weatherData.hourly.visibility,
-    evapotranspiration: weatherData.hourly.evapotranspiration,
-    windspeed10M: weatherData.hourly.windSpeed10M,
-    winddirection10M: weatherData.hourly.windDirection10M,
-    windgusts10M: weatherData.hourly.windGusts10M,
-    cloudcover: weatherData.hourly.cloudCover,
-    uvIndex: weatherData.hourly.uvIndex,
-    dewpoint2M: weatherData.hourly.dewpoint2M,
-    precipitationProbability: weatherData.hourly.precipitationProbability,
-    shortwaveRadiation: weatherData.hourly.shortwaveRadiation,
-    timeDaily: weatherData.daily.time,
-    weathercodeDaily: weatherData.daily.weatherCode,
-    temperature2MMax: weatherData.daily.temperature2MMax,
-    temperature2MMin: weatherData.daily.temperature2MMin,
-    apparentTemperatureMax: weatherData.daily.apparentTemperatureMax,
-    apparentTemperatureMin: weatherData.daily.apparentTemperatureMin,
-    sunrise: weatherData.daily.sunrise,
-    sunset: weatherData.daily.sunset,
-    precipitationSum: weatherData.daily.precipitationSum,
-    precipitationProbabilityMax: weatherData.daily.precipitationProbabilityMax,
-    windspeed10MMax: weatherData.daily.windSpeed10MMax,
-    windgusts10MMax: weatherData.daily.windGusts10MMax,
-    uvIndexMax: weatherData.daily.uvIndexMax,
-    rainSum: weatherData.daily.rainSum,
-    winddirection10MDominant: weatherData.daily.windDirection10MDominant,
-    lat: lat,
-    lon: lon,
-    city: city,
-    district: district,
-    timezone: weatherData.timezone,
-    utcOffsetSeconds: weatherData.utcOffsetSeconds,
-    clockSkewSeconds: clockSkewSeconds,
-    timestamp: DateTime.now(),
-  );
+    int pastDays = 0,
+  }) {
+    final past = _pastHourCount(weatherData, pastDays);
+    final dailyPast = _pastDayCount(weatherData, pastDays);
+    return WeatherCard(
+      time: _slice(weatherData.hourly.time, past),
+      temperature2M: _slice(weatherData.hourly.temperature2M, past),
+      relativehumidity2M: _slice(weatherData.hourly.relativeHumidity2M, past),
+      apparentTemperature: _slice(weatherData.hourly.apparentTemperature, past),
+      precipitation: _slice(weatherData.hourly.precipitation, past),
+      rain: _slice(weatherData.hourly.rain, past),
+      weathercode: _slice(weatherData.hourly.weatherCode, past),
+      surfacePressure: _slice(weatherData.hourly.surfacePressure, past),
+      visibility: _slice(weatherData.hourly.visibility, past),
+      evapotranspiration: _slice(weatherData.hourly.evapotranspiration, past),
+      windspeed10M: _slice(weatherData.hourly.windSpeed10M, past),
+      winddirection10M: _slice(weatherData.hourly.windDirection10M, past),
+      windgusts10M: _slice(weatherData.hourly.windGusts10M, past),
+      cloudcover: _slice(weatherData.hourly.cloudCover, past),
+      uvIndex: _slice(weatherData.hourly.uvIndex, past),
+      dewpoint2M: _slice(weatherData.hourly.dewpoint2M, past),
+      precipitationProbability: _slice(
+        weatherData.hourly.precipitationProbability,
+        past,
+      ),
+      shortwaveRadiation: _slice(weatherData.hourly.shortwaveRadiation, past),
+      timePast: _prefix(weatherData.hourly.time, past),
+      temperature2MPast: _prefix(weatherData.hourly.temperature2M, past),
+      timeDaily: _slice(weatherData.daily.time, dailyPast),
+      weathercodeDaily: _slice(weatherData.daily.weatherCode, dailyPast),
+      temperature2MMax: _slice(weatherData.daily.temperature2MMax, dailyPast),
+      temperature2MMin: _slice(weatherData.daily.temperature2MMin, dailyPast),
+      apparentTemperatureMax: _slice(
+        weatherData.daily.apparentTemperatureMax,
+        dailyPast,
+      ),
+      apparentTemperatureMin: _slice(
+        weatherData.daily.apparentTemperatureMin,
+        dailyPast,
+      ),
+      sunrise: _slice(weatherData.daily.sunrise, dailyPast),
+      sunset: _slice(weatherData.daily.sunset, dailyPast),
+      precipitationSum: _slice(weatherData.daily.precipitationSum, dailyPast),
+      precipitationProbabilityMax: _slice(
+        weatherData.daily.precipitationProbabilityMax,
+        dailyPast,
+      ),
+      windspeed10MMax: _slice(weatherData.daily.windSpeed10MMax, dailyPast),
+      windgusts10MMax: _slice(weatherData.daily.windGusts10MMax, dailyPast),
+      uvIndexMax: _slice(weatherData.daily.uvIndexMax, dailyPast),
+      rainSum: _slice(weatherData.daily.rainSum, dailyPast),
+      winddirection10MDominant: _slice(
+        weatherData.daily.windDirection10MDominant,
+        dailyPast,
+      ),
+      lat: lat,
+      lon: lon,
+      city: city,
+      district: district,
+      timezone: weatherData.timezone,
+      utcOffsetSeconds: weatherData.utcOffsetSeconds,
+      clockSkewSeconds: clockSkewSeconds,
+      timestamp: DateTime.now(),
+    );
+  }
 
   /// Copies forecast fields from [updated] onto [oldCard] and refreshes timestamp.
   static void copyWeatherCardFields(WeatherCard oldCard, WeatherCard updated) {
@@ -120,6 +224,8 @@ class WeatherMapper {
       ..dewpoint2M = updated.dewpoint2M
       ..precipitationProbability = updated.precipitationProbability
       ..shortwaveRadiation = updated.shortwaveRadiation
+      ..timePast = updated.timePast
+      ..temperature2MPast = updated.temperature2MPast
       ..europeanAqi = updated.europeanAqi
       ..usAqi = updated.usAqi
       ..pm25 = updated.pm25

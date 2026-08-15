@@ -312,5 +312,12 @@
   "colorPaletteSand": "砂",
   "lastBackgroundRefresh": "最後のバックグラウンド更新",
   "lastBackgroundRefreshNever": "バックグラウンド更新はまだありません",
-  "backgroundRefreshError": "最後のバックグラウンドエラー"
+  "backgroundRefreshError": "最後のバックグラウンドエラー",
+  "hourlyForecast": "時間ごとの予報",
+  "now": "現在",
+  "temperature": "気温",
+  "currentTemperature": "現在の気温",
+  "temperature24hAgo": "24時間前の気温",
+  "vsYesterday": "昨日との差",
+  "windLevel": "レベル {n}"
 }

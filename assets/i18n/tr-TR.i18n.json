@@ -312,5 +312,12 @@
   "colorPaletteSand": "Kum",
   "lastBackgroundRefresh": "Son arka plan yenilemesi",
   "lastBackgroundRefreshNever": "Henüz arka plan yenilemesi yok",
-  "backgroundRefreshError": "Son arka plan hatası"
+  "backgroundRefreshError": "Son arka plan hatası",
+  "hourlyForecast": "Saatlik tahmin",
+  "now": "Şimdi",
+  "temperature": "Sıcaklık",
+  "currentTemperature": "Mevcut sıcaklık",
+  "temperature24hAgo": "24 saat önceki sıcaklık",
+  "vsYesterday": "düne göre",
+  "windLevel": "Seviye {n}"
 }

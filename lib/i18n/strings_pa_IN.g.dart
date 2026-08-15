@@ -241,7 +241,7 @@ class TranslationsPaIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'ਸਭ ਤੋਂ ਵੱਧ ਪ੍ਰਦੂਸ਼ਕ ਪੱਧਰ';
 	@override String get aqi_help_advice_label => 'ਸਿਫ਼ਾਰਿਸ਼';
 	@override String get aqi_help_source => 'ਸਰੋਤ: Open-Meteo Air Quality API — ਜ਼ਮੀਨੀ ਪੱਧਰ ਦੀ ਸਾਂਦ੍ਰਤਾ (~10 ਮੀ), ~11 ਕਿਮੀ ਗ੍ਰਿਡ।';
-	@override String get widget_battery_hint => 'ਭਰੋਸੇਮੰਦ ਵਿਜੇਟ ਅਪਡੇਟ ਲਈ ਐਪ ਸੈਟਿੰਗਾਂ ਵਿੱਚ Weather ਲਈ ਬੈਟਰੀ ਸੀਮਾ ਬੰਦ ਕਰੋ';
+	@override String get widget_battery_hint => 'ਭਰੋਸੇਮੰਦ ਵਿਜੇਟ ਅਪਡੇਟ ਲਈ ਐਪ ਸੈਟਿੰਗਾਂ ਵਿੱਚ Rain ਲਈ ਬੈਟਰੀ ਸੀਮਾ ਬੰਦ ਕਰੋ';
 	@override String get persistent_notification => 'ਸਥਾਈ ਸੂਚਨਾ';
 	@override String get last_updated => 'ਅਪਡੇਟ ਕੀਤਾ';
 	@override String get app_font => 'ਫੌਂਟ';
@@ -353,6 +353,13 @@ class TranslationsPaIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'ਆਖਰੀ ਬੈਕਗ੍ਰਾਊਂਡ ਰਿਫ੍ਰੈਸ਼';
 	@override String get last_background_refresh_never => 'ਹਾਲੇ ਕੋਈ ਬੈਕਗ੍ਰਾਊਂਡ ਰਿਫ੍ਰੈਸ਼ ਨਹੀਂ';
 	@override String get background_refresh_error => 'ਆਖਰੀ ਬੈਕਗ੍ਰਾਊਂਡ ਗਲਤੀ';
+	@override String get hourly_forecast => 'ਘੰਟਾਵਾਰ ਪੂਰਵ-ਅਨੁਮਾਨ';
+	@override String get now => 'ਹੁਣ';
+	@override String get temperature => 'ਤਾਪਮਾਨ';
+	@override String get current_temperature => 'ਮੌਜੂਦਾ ਤਾਪਮਾਨ';
+	@override String get temperature24h_ago => '24 ਘੰਟੇ ਪਹਿਲਾਂ ਦਾ ਤਾਪਮਾਨ';
+	@override String get vs_yesterday => 'ਕੱਲ੍ਹ ਦੇ ਮੁਕਾਬਲੇ';
+	@override String get wind_level => 'ਪੱਧਰ {n}';
 }
 
 /// The flat map containing all translations for locale <pa-IN>.
@@ -565,7 +572,7 @@ extension on TranslationsPaIn {
 			'aqi_help_dominant' => 'ਸਭ ਤੋਂ ਵੱਧ ਪ੍ਰਦੂਸ਼ਕ ਪੱਧਰ',
 			'aqi_help_advice_label' => 'ਸਿਫ਼ਾਰਿਸ਼',
 			'aqi_help_source' => 'ਸਰੋਤ: Open-Meteo Air Quality API — ਜ਼ਮੀਨੀ ਪੱਧਰ ਦੀ ਸਾਂਦ੍ਰਤਾ (~10 ਮੀ), ~11 ਕਿਮੀ ਗ੍ਰਿਡ।',
-			'widget_battery_hint' => 'ਭਰੋਸੇਮੰਦ ਵਿਜੇਟ ਅਪਡੇਟ ਲਈ ਐਪ ਸੈਟਿੰਗਾਂ ਵਿੱਚ Weather ਲਈ ਬੈਟਰੀ ਸੀਮਾ ਬੰਦ ਕਰੋ',
+			'widget_battery_hint' => 'ਭਰੋਸੇਮੰਦ ਵਿਜੇਟ ਅਪਡੇਟ ਲਈ ਐਪ ਸੈਟਿੰਗਾਂ ਵਿੱਚ Rain ਲਈ ਬੈਟਰੀ ਸੀਮਾ ਬੰਦ ਕਰੋ',
 			'persistent_notification' => 'ਸਥਾਈ ਸੂਚਨਾ',
 			'last_updated' => 'ਅਪਡੇਟ ਕੀਤਾ',
 			'app_font' => 'ਫੌਂਟ',
@@ -677,6 +684,13 @@ extension on TranslationsPaIn {
 			'last_background_refresh' => 'ਆਖਰੀ ਬੈਕਗ੍ਰਾਊਂਡ ਰਿਫ੍ਰੈਸ਼',
 			'last_background_refresh_never' => 'ਹਾਲੇ ਕੋਈ ਬੈਕਗ੍ਰਾਊਂਡ ਰਿਫ੍ਰੈਸ਼ ਨਹੀਂ',
 			'background_refresh_error' => 'ਆਖਰੀ ਬੈਕਗ੍ਰਾਊਂਡ ਗਲਤੀ',
+			'hourly_forecast' => 'ਘੰਟਾਵਾਰ ਪੂਰਵ-ਅਨੁਮਾਨ',
+			'now' => 'ਹੁਣ',
+			'temperature' => 'ਤਾਪਮਾਨ',
+			'current_temperature' => 'ਮੌਜੂਦਾ ਤਾਪਮਾਨ',
+			'temperature24h_ago' => '24 ਘੰਟੇ ਪਹਿਲਾਂ ਦਾ ਤਾਪਮਾਨ',
+			'vs_yesterday' => 'ਕੱਲ੍ਹ ਦੇ ਮੁਕਾਬਲੇ',
+			'wind_level' => 'ਪੱਧਰ {n}',
 			_ => null,
 		};
 	}

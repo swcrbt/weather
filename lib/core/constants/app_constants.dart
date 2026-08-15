@@ -83,7 +83,7 @@ class AppConstants {
   static const Duration cacheExpiry = Duration(hours: 12);
 
   /// Incremented when forecast cache schema changes; triggers a re-save migration.
-  static const int weatherCacheSchemaVersion = 3;
+  static const int weatherCacheSchemaVersion = 4;
 
   /// Bumped when Android forecast notification channels change (requires reschedule).
   static const int notificationChannelSchemaVersion = 1;

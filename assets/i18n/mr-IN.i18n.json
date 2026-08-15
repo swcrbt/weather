@@ -312,5 +312,12 @@
   "colorPaletteSand": "वाळू",
   "lastBackgroundRefresh": "शेवटचे पार्श्वभूमी रिफ्रेश",
   "lastBackgroundRefreshNever": "अद्याप पार्श्वभूमी रिफ्रेश नाही",
-  "backgroundRefreshError": "शेवटची पार्श्वभूमी त्रुटी"
+  "backgroundRefreshError": "शेवटची पार्श्वभूमी त्रुटी",
+  "hourlyForecast": "तासाचे अंदाज",
+  "now": "आत्ता",
+  "temperature": "तापमान",
+  "currentTemperature": "सध्याचे तापमान",
+  "temperature24hAgo": "24 तासांपूर्वीचे तापमान",
+  "vsYesterday": "कालच्या तुलनेत",
+  "windLevel": "पातळी {n}"
 }

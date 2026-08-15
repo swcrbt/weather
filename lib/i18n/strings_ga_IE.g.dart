@@ -241,7 +241,7 @@ class TranslationsGaIe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Leibhéal is airde truailleáin';
 	@override String get aqi_help_advice_label => 'Moladh';
 	@override String get aqi_help_source => 'Foinse: Open-Meteo Air Quality API — tiúchan ag leibhéal na talún (~10 m), greille ~11 km.';
-	@override String get widget_battery_hint => 'Le haghaidh nuashonruithe iontaofa giuirléid, díchumasaigh optamú ceallraí do Weather sna socruithe aipe';
+	@override String get widget_battery_hint => 'Le haghaidh nuashonruithe iontaofa giuirléid, díchumasaigh optamú ceallraí do Rain sna socruithe aipe';
 	@override String get persistent_notification => 'Fógra buan';
 	@override String get last_updated => 'Nuashonraithe';
 	@override String get app_font => 'Cló';
@@ -353,6 +353,13 @@ class TranslationsGaIe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'An nuashonrú cúlra is déanaí';
 	@override String get last_background_refresh_never => 'Níl aon nuashonrú cúlra fós';
 	@override String get background_refresh_error => 'An earráid chúlra is déanaí';
+	@override String get hourly_forecast => 'Réamhaisnéis in aghaidh na huaire';
+	@override String get now => 'Anois';
+	@override String get temperature => 'Teocht';
+	@override String get current_temperature => 'Teocht reatha';
+	@override String get temperature24h_ago => 'Teocht 24 uair ó shin';
+	@override String get vs_yesterday => 'i gcomparáid leis an inné';
+	@override String get wind_level => 'Leibhéal {n}';
 }
 
 /// The flat map containing all translations for locale <ga-IE>.
@@ -565,7 +572,7 @@ extension on TranslationsGaIe {
 			'aqi_help_dominant' => 'Leibhéal is airde truailleáin',
 			'aqi_help_advice_label' => 'Moladh',
 			'aqi_help_source' => 'Foinse: Open-Meteo Air Quality API — tiúchan ag leibhéal na talún (~10 m), greille ~11 km.',
-			'widget_battery_hint' => 'Le haghaidh nuashonruithe iontaofa giuirléid, díchumasaigh optamú ceallraí do Weather sna socruithe aipe',
+			'widget_battery_hint' => 'Le haghaidh nuashonruithe iontaofa giuirléid, díchumasaigh optamú ceallraí do Rain sna socruithe aipe',
 			'persistent_notification' => 'Fógra buan',
 			'last_updated' => 'Nuashonraithe',
 			'app_font' => 'Cló',
@@ -677,6 +684,13 @@ extension on TranslationsGaIe {
 			'last_background_refresh' => 'An nuashonrú cúlra is déanaí',
 			'last_background_refresh_never' => 'Níl aon nuashonrú cúlra fós',
 			'background_refresh_error' => 'An earráid chúlra is déanaí',
+			'hourly_forecast' => 'Réamhaisnéis in aghaidh na huaire',
+			'now' => 'Anois',
+			'temperature' => 'Teocht',
+			'current_temperature' => 'Teocht reatha',
+			'temperature24h_ago' => 'Teocht 24 uair ó shin',
+			'vs_yesterday' => 'i gcomparáid leis an inné',
+			'wind_level' => 'Leibhéal {n}',
 			_ => null,
 		};
 	}

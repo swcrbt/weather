@@ -25,6 +25,14 @@ class AirQualityRemoteDatasource {
         stackTrace,
       );
       return null;
+    } catch (e, stackTrace) {
+      // 第三方响应格式异常时，空气质量是可选数据，不应阻塞天气更新。
+      debugLogError(
+        'AirQualityRemoteDatasource.fetchAirQuality',
+        e,
+        stackTrace,
+      );
+      return null;
     }
   }
 }

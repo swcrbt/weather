@@ -312,5 +312,12 @@
   "colorPaletteSand": "شن",
   "lastBackgroundRefresh": "آخرین به‌روزرسانی پس‌زمینه",
   "lastBackgroundRefreshNever": "هنوز به‌روزرسانی پس‌زمینه‌ای انجام نشده",
-  "backgroundRefreshError": "آخرین خطای پس‌زمینه"
+  "backgroundRefreshError": "آخرین خطای پس‌زمینه",
+  "hourlyForecast": "پیش‌بینی ساعتی",
+  "now": "اکنون",
+  "temperature": "دما",
+  "currentTemperature": "دمای فعلی",
+  "temperature24hAgo": "دمای ۲۴ ساعت قبل",
+  "vsYesterday": "در مقایسه با دیروز",
+  "windLevel": "سطح {n}"
 }

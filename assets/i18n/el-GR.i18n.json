@@ -312,5 +312,12 @@
   "colorPaletteSand": "Άμμος",
   "lastBackgroundRefresh": "Τελευταία ανανέωση στο παρασκήνιο",
   "lastBackgroundRefreshNever": "Καμία ανανέωση στο παρασκήνιο ακόμα",
-  "backgroundRefreshError": "Τελευταίο σφάλμα παρασκηνίου"
+  "backgroundRefreshError": "Τελευταίο σφάλμα παρασκηνίου",
+  "hourlyForecast": "Ωριαία πρόγνωση",
+  "now": "Τώρα",
+  "temperature": "Θερμοκρασία",
+  "currentTemperature": "Τρέχουσα θερμοκρασία",
+  "temperature24hAgo": "Θερμοκρασία πριν από 24 ώρες",
+  "vsYesterday": "σε σχέση με χθες",
+  "windLevel": "Επίπεδο {n}"
 }

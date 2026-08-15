@@ -312,5 +312,12 @@
   "colorPaletteSand": "Nisip",
   "lastBackgroundRefresh": "Ultima reîmprospătare în fundal",
   "lastBackgroundRefreshNever": "Nicio reîmprospătare în fundal",
-  "backgroundRefreshError": "Ultima eroare în fundal"
+  "backgroundRefreshError": "Ultima eroare în fundal",
+  "hourlyForecast": "Prognoză orară",
+  "now": "Acum",
+  "temperature": "Temperatură",
+  "currentTemperature": "Temperatura actuală",
+  "temperature24hAgo": "Temperatura de acum 24 de ore",
+  "vsYesterday": "față de ieri",
+  "windLevel": "Nivel {n}"
 }

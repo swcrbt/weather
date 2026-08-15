@@ -241,7 +241,7 @@ class TranslationsHuHu extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get aqi_help_dominant => 'Legmagasabb szennyezőanyag-szint';
 	@override String get aqi_help_advice_label => 'Ajánlás';
 	@override String get aqi_help_source => 'Forrás: Open-Meteo Air Quality API — földszinti koncentrációk (~10 m), ~11 km-es rács.';
-	@override String get widget_battery_hint => 'Megbízható widget-frissítéshez kapcsolja ki a Weather akkumulátor-optimalizálását az alkalmazás beállításaiban';
+	@override String get widget_battery_hint => 'Megbízható widget-frissítéshez kapcsolja ki a Rain akkumulátor-optimalizálását az alkalmazás beállításaiban';
 	@override String get persistent_notification => 'Állandó értesítés';
 	@override String get last_updated => 'Frissítve';
 	@override String get app_font => 'Betűtípus';
@@ -353,6 +353,13 @@ class TranslationsHuHu extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => 'Utolsó háttérfrissítés';
 	@override String get last_background_refresh_never => 'Még nincs háttérfrissítés';
 	@override String get background_refresh_error => 'Utolsó háttérhiba';
+	@override String get hourly_forecast => 'Óránkénti előrejelzés';
+	@override String get now => 'Most';
+	@override String get temperature => 'Hőmérséklet';
+	@override String get current_temperature => 'Jelenlegi hőmérséklet';
+	@override String get temperature24h_ago => 'Hőmérséklet 24 órával ezelőtt';
+	@override String get vs_yesterday => 'tegnaphoz képest';
+	@override String get wind_level => '{n}. szint';
 }
 
 /// The flat map containing all translations for locale <hu-HU>.
@@ -565,7 +572,7 @@ extension on TranslationsHuHu {
 			'aqi_help_dominant' => 'Legmagasabb szennyezőanyag-szint',
 			'aqi_help_advice_label' => 'Ajánlás',
 			'aqi_help_source' => 'Forrás: Open-Meteo Air Quality API — földszinti koncentrációk (~10 m), ~11 km-es rács.',
-			'widget_battery_hint' => 'Megbízható widget-frissítéshez kapcsolja ki a Weather akkumulátor-optimalizálását az alkalmazás beállításaiban',
+			'widget_battery_hint' => 'Megbízható widget-frissítéshez kapcsolja ki a Rain akkumulátor-optimalizálását az alkalmazás beállításaiban',
 			'persistent_notification' => 'Állandó értesítés',
 			'last_updated' => 'Frissítve',
 			'app_font' => 'Betűtípus',
@@ -677,6 +684,13 @@ extension on TranslationsHuHu {
 			'last_background_refresh' => 'Utolsó háttérfrissítés',
 			'last_background_refresh_never' => 'Még nincs háttérfrissítés',
 			'background_refresh_error' => 'Utolsó háttérhiba',
+			'hourly_forecast' => 'Óránkénti előrejelzés',
+			'now' => 'Most',
+			'temperature' => 'Hőmérséklet',
+			'current_temperature' => 'Jelenlegi hőmérséklet',
+			'temperature24h_ago' => 'Hőmérséklet 24 órával ezelőtt',
+			'vs_yesterday' => 'tegnaphoz képest',
+			'wind_level' => '{n}. szint',
 			_ => null,
 		};
 	}

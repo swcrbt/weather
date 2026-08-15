@@ -312,5 +312,12 @@
   "colorPaletteSand": "Gainimh",
   "lastBackgroundRefresh": "An nuashonrú cúlra is déanaí",
   "lastBackgroundRefreshNever": "Níl aon nuashonrú cúlra fós",
-  "backgroundRefreshError": "An earráid chúlra is déanaí"
+  "backgroundRefreshError": "An earráid chúlra is déanaí",
+  "hourlyForecast": "Réamhaisnéis in aghaidh na huaire",
+  "now": "Anois",
+  "temperature": "Teocht",
+  "currentTemperature": "Teocht reatha",
+  "temperature24hAgo": "Teocht 24 uair ó shin",
+  "vsYesterday": "i gcomparáid leis an inné",
+  "windLevel": "Leibhéal {n}"
 }

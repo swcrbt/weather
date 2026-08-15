@@ -312,5 +312,12 @@
   "colorPaletteSand": "Sand",
   "lastBackgroundRefresh": "Seneste baggrundsopdatering",
   "lastBackgroundRefreshNever": "Ingen baggrundsopdatering endnu",
-  "backgroundRefreshError": "Seneste baggrundsfejl"
+  "backgroundRefreshError": "Seneste baggrundsfejl",
+  "hourlyForecast": "Timeprognose",
+  "now": "Nu",
+  "temperature": "Temperatur",
+  "currentTemperature": "Aktuel temperatur",
+  "temperature24hAgo": "Temperatur for 24 timer siden",
+  "vsYesterday": "i forhold til i går",
+  "windLevel": "Niveau {n}"
 }
