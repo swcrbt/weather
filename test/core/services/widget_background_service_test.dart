@@ -46,10 +46,61 @@ void main() {
         sampleLocationCache(),
       );
 
-      await refreshMainWeatherIfStale(ctx.isar);
+      var internetChecked = false;
+      await refreshMainWeatherIfStale(
+        ctx.isar,
+        internetAccess: () async {
+          internetChecked = true;
+          return false;
+        },
+      );
 
       expect((await local.getMainWeather())!.timestamp, isNotNull);
+      expect(internetChecked, isFalse);
     });
+
+    test('force refresh bypasses a fresh widget cache', () async {
+      final local = WeatherLocalDatasource(ctx.isar);
+      await local.saveMainWeather(
+        sampleMainWeatherCache()..timestamp = DateTime.now(),
+        sampleLocationCache(),
+      );
+
+      var internetChecked = false;
+      await refreshMainWeatherIfStale(
+        ctx.isar,
+        forceRefresh: true,
+        internetAccess: () async {
+          internetChecked = true;
+          return false;
+        },
+      );
+
+      expect(internetChecked, isTrue);
+    });
+
+    test(
+      'missing weather cache with saved location attempts refresh',
+      () async {
+        final local = WeatherLocalDatasource(ctx.isar);
+        await local.saveMainWeather(
+          sampleMainWeatherCache(),
+          sampleLocationCache(),
+        );
+        await local.deleteMainWeather();
+
+        var internetChecked = false;
+        await refreshMainWeatherIfStale(
+          ctx.isar,
+          internetAccess: () async {
+            internetChecked = true;
+            return false;
+          },
+        );
+
+        expect(internetChecked, isTrue);
+      },
+    );
 
     test('does not throw when cache is stale but offline', () async {
       final local = WeatherLocalDatasource(ctx.isar);
@@ -61,13 +112,35 @@ void main() {
         sampleLocationCache(),
       );
 
-      await expectLater(refreshMainWeatherIfStale(ctx.isar), completes);
-    });
-  });
+      var internetChecked = false;
+      await refreshMainWeatherIfStale(
+        ctx.isar,
+        internetAccess: () async {
+          internetChecked = true;
+          return false;
+        },
+      );
 
-  group('hasBackgroundInternetAccess', () {
-    test('returns false when connectivity plugin is unavailable', () async {
-      await expectLater(hasBackgroundInternetAccess(), completion(isA<bool>()));
+      expect(internetChecked, isTrue);
+    });
+
+    test('propagates connectivity check failures', () async {
+      final local = WeatherLocalDatasource(ctx.isar);
+      await local.saveMainWeather(
+        sampleMainWeatherCache()
+          ..timestamp = DateTime.now().subtract(
+            AppConstants.workManagerMinInterval + const Duration(minutes: 1),
+          ),
+        sampleLocationCache(),
+      );
+
+      await expectLater(
+        refreshMainWeatherIfStale(
+          ctx.isar,
+          internetAccess: () async => throw StateError('probe failed'),
+        ),
+        throwsA(isA<StateError>()),
+      );
     });
   });
 
@@ -99,17 +172,31 @@ void main() {
       expect(ctx.isar.isOpen, isTrue);
     });
 
-    test('still invokes update callback when weather refresh throws', () async {
+    test('reports failure when widget update returns false', () async {
       await closeSharedTestIsar();
 
-      var callbackInvoked = false;
-      final result = await runWidgetBackgroundRefresh((isar) async {
-        callbackInvoked = true;
-        return true;
-      }, refreshStaleWeather: (_) async => throw StateError('offline'));
+      final result = await runWidgetBackgroundRefresh(
+        (_) async => false,
+        refreshStaleWeather: (_) async {},
+      );
 
-      expect(callbackInvoked, isTrue);
-      expect(result, isTrue);
+      expect(result, isFalse);
     });
+
+    test(
+      'updates widgets but reports failure when weather refresh throws',
+      () async {
+        await closeSharedTestIsar();
+
+        var callbackInvoked = false;
+        final result = await runWidgetBackgroundRefresh((isar) async {
+          callbackInvoked = true;
+          return true;
+        }, refreshStaleWeather: (_) async => throw StateError('offline'));
+
+        expect(callbackInvoked, isTrue);
+        expect(result, isFalse);
+      },
+    );
   });
 }

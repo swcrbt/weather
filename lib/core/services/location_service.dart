@@ -23,13 +23,16 @@ class LocationService {
     return Geolocator.getCurrentPosition();
   }
 
-  /// Resolves coordinates and a human-readable city/district label.
+  /// Resolves coordinates and a human-readable address.
   ///
   /// Platform reverse geocoding runs first; when it fails, [resolveLabels] (e.g.
   /// Nominatim) is used. Returns `null` only when labels cannot be resolved.
-  Future<({double lat, double lon, String city, String district})?>
+  Future<({double lat, double lon, String city, String district, String address})?>
   getCurrentPlace({
-    Future<({String city, String district})?> Function(double lat, double lon)?
+    Future<({String city, String district, String address})?> Function(
+      double lat,
+      double lon,
+    )?
     resolveLabels,
   }) async {
     final position = await determinePosition();
@@ -53,12 +56,14 @@ class LocationService {
         );
         if (labels != null &&
             (hasNonEmptyLocationText(labels.city) ||
-                hasNonEmptyLocationText(labels.district))) {
+                hasNonEmptyLocationText(labels.district) ||
+                hasNonEmptyLocationText(labels.address))) {
           return (
             lat: position.latitude,
             lon: position.longitude,
             city: labels.city,
             district: labels.district,
+            address: labels.address,
           );
         }
       } catch (_) {
@@ -71,27 +76,61 @@ class LocationService {
 
   /// Builds a place record from GPS coordinates and geocoding results.
   @visibleForTesting
-  static ({double lat, double lon, String city, String district})?
+  static ({double lat, double lon, String city, String district, String address})?
   parsePlaceFromPlacemarks(Position position, List<Placemark> placemarks) {
     if (placemarks.isEmpty) return null;
     final place = placemarks.first;
     final city = firstNonEmptyLocationLabel([
       place.locality,
       place.subAdministrativeArea,
-      place.name,
       place.subLocality,
+      place.name,
     ]);
     final district = firstNonEmptyLocationLabel([
       place.administrativeArea,
       place.subAdministrativeArea,
     ]);
-    if (city.isEmpty && district.isEmpty) return null;
+    final address = formatPlacemarkAddress(place);
+    if (city.isEmpty && district.isEmpty && address.isEmpty) return null;
     return (
       lat: position.latitude,
       lon: position.longitude,
       city: city,
       district: district,
+      address: address,
     );
+  }
+
+  /// Orders the most useful placemark parts for a compact widget address.
+  @visibleForTesting
+  static String formatPlacemarkAddress(Placemark place) {
+    final street = firstNonEmptyLocationLabel([
+      place.thoroughfare,
+      place.street,
+    ]);
+    final name = place.name?.trim() ?? '';
+    final houseNumber = firstNonEmptyLocationLabel([
+      place.subThoroughfare,
+      RegExp(r'\d').hasMatch(name) ? name : null,
+    ]);
+    final placeName =
+        name.isNotEmpty && name != houseNumber && name != street ? name : null;
+    final parts = [
+      place.subLocality,
+      place.administrativeArea,
+      place.locality,
+      place.subAdministrativeArea,
+      placeName,
+      street,
+      houseNumber,
+    ];
+    final unique = <String>[];
+    for (final value in parts) {
+      final text = value?.trim();
+      if (text == null || text.isEmpty || unique.contains(text)) continue;
+      unique.add(text);
+    }
+    return unique.join(' ');
   }
 
   /// Whether the device location service is enabled at the OS level.

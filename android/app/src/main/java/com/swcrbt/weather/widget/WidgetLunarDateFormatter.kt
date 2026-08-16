@@ -2,6 +2,7 @@ package com.swcrbt.weather.widget
 
 import android.icu.util.Calendar
 import android.icu.util.ChineseCalendar
+import android.icu.util.TimeZone
 import android.os.Build
 import java.util.Date
 
@@ -46,7 +47,10 @@ object WidgetLunarDateFormatter {
     fun format(epochMillis: Long = System.currentTimeMillis()): String? {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) return null
         return try {
-            val calendar = ChineseCalendar(Date(epochMillis))
+            val calendar = ChineseCalendar(Date(epochMillis)).apply {
+                // Flutter encodes the location's calendar date at UTC noon.
+                timeZone = TimeZone.getTimeZone("UTC")
+            }
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
             if (month !in monthNames.indices || day !in 1..dayNames.size) return null

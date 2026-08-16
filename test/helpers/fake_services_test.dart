@@ -11,6 +11,7 @@ void main() {
       final place = await service.getCurrentPlace();
 
       expect(place?.city, 'Moscow');
+      expect(place?.address, 'Tverskaya Street 1 Moscow');
       expect(place?.lat, 55.75);
     });
 

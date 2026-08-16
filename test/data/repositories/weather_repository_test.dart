@@ -35,6 +35,7 @@ void main() {
       expect(cached.weather, isNotNull);
       expect(cached.weather?.timePast, isNull);
       expect(cached.location?.city, 'Moscow');
+      expect(cached.location?.address, 'Tverskaya Street 1, Moscow');
     });
 
     test('persists previous-day temperatures for the hourly chart', () async {

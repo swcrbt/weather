@@ -27,6 +27,7 @@ void main() {
         lon: 37.62,
         city: 'Moscow',
         district: 'Moscow',
+        address: 'Tverskaya Street 1, Moscow',
       );
 
       final json = location.toJson();
@@ -34,6 +35,18 @@ void main() {
       expect(json['lon'], 37.62);
       expect(json['city'], 'Moscow');
       expect(json['district'], 'Moscow');
+      expect(json['address'], 'Tverskaya Street 1, Moscow');
+      expect(location.displayLabel, 'Moscow');
+    });
+
+    test('displayLabel falls back to the detailed address', () {
+      final location = LocationCache(
+        city: '',
+        district: ' ',
+        address: 'Tverskaya Street 1, Moscow',
+      );
+
+      expect(location.displayLabel, 'Tverskaya Street 1, Moscow');
     });
   });
 

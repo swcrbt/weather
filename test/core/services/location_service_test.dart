@@ -36,12 +36,23 @@ void main() {
   group('LocationService.parsePlaceFromPlacemarks', () {
     test('builds city and district from placemark fields', () {
       final place = LocationService.parsePlaceFromPlacemarks(_testPosition(), [
-        Placemark(locality: 'Moscow', administrativeArea: 'Moscow Oblast'),
+        Placemark(
+          locality: 'Moscow',
+          administrativeArea: 'Moscow Oblast',
+          subLocality: 'Tverskoy District',
+          street: 'Tverskaya Street',
+          subThoroughfare: '1',
+          name: 'Tverskaya Plaza',
+        ),
       ]);
 
       expect(place, isNotNull);
       expect(place!.city, 'Moscow');
       expect(place.district, 'Moscow Oblast');
+      expect(
+        place.address,
+        'Tverskoy District Moscow Oblast Moscow Tverskaya Plaza Tverskaya Street 1',
+      );
       expect(place.lat, 55.75);
       expect(place.lon, 37.62);
     });

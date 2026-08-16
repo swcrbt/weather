@@ -64,6 +64,7 @@ void syncBootstrapLocationCache(Ref ref, LocationCache source) {
   target.lon = source.lon;
   target.city = source.city;
   target.district = source.district;
+  target.address = source.address;
 }
 
 /// Provides the asset cache service for weather icons and images.

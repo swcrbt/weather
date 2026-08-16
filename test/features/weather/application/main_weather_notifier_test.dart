@@ -178,6 +178,7 @@ void main() {
 
         final state = container.read(mainWeatherNotifierProvider);
         expect(state.city, 'Moscow');
+        expect(state.location.address, 'Tverskaya Street 1 Moscow');
       },
     );
 
@@ -190,6 +191,7 @@ void main() {
       final state = container.read(mainWeatherNotifierProvider);
       expect(state.city, 'Moscow');
       expect(state.district, 'Central Federal District');
+      expect(state.location.address, 'Tverskaya Street 1, Moscow, Russia');
     });
 
     test(

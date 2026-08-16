@@ -203,6 +203,7 @@ class MainWeatherNotifier extends Notifier<MainWeatherState> {
     double longitude,
     String district,
     String locality, {
+    String? address,
     bool showLoading = true,
   }) => _queue.enqueue(
     () => _getLocationImpl(
@@ -210,6 +211,7 @@ class MainWeatherNotifier extends Notifier<MainWeatherState> {
       longitude,
       district,
       locality,
+      address: address,
       showLoading: showLoading,
     ),
   );
@@ -219,6 +221,7 @@ class MainWeatherNotifier extends Notifier<MainWeatherState> {
     double longitude,
     String district,
     String locality, {
+    String? address,
     bool showLoading = true,
   }) async {
     if (!await ConnectivityService.hasInternet()) {
@@ -231,8 +234,13 @@ class MainWeatherNotifier extends Notifier<MainWeatherState> {
     }
     try {
       await NetworkCacheHandler.fetchOrKeepCache(
-        onNetworkFetch: () =>
-            _fetchAndSave(latitude, longitude, district, locality),
+        onNetworkFetch: () => _fetchAndSave(
+          latitude,
+          longitude,
+          district,
+          locality,
+          address: address,
+        ),
         onUseCache: _readCacheImpl,
         onError: () => showSnackBar('error_occurred'.tr, isError: true),
       );
@@ -253,10 +261,17 @@ class MainWeatherNotifier extends Notifier<MainWeatherState> {
       await _readCacheImpl();
       return;
     }
-    await _fetchAndSave(place.lat, place.lon, place.district, place.city);
+    await _fetchAndSave(
+      place.lat,
+      place.lon,
+      place.district,
+      place.city,
+      address: place.address,
+    );
   }
 
-  Future<({String city, String district})?> _reverseGeocodeLabels(
+  Future<({String city, String district, String address})?>
+  _reverseGeocodeLabels(
     double lat,
     double lon,
   ) async {
@@ -271,13 +286,15 @@ class MainWeatherNotifier extends Notifier<MainWeatherState> {
     double lat,
     double lon,
     String district,
-    String city,
-  ) async {
-    final resolvedLabels = await _resolveMissingLabels(
+    String city, {
+    String? address,
+  }) async {
+    final resolvedLabels = await _resolveLocationDetails(
       lat,
       lon,
       city,
       district,
+      address,
     );
     final weather = await ref
         .read(weatherRepositoryProvider)
@@ -287,6 +304,7 @@ class MainWeatherNotifier extends Notifier<MainWeatherState> {
       lon: lon,
       city: resolvedLabels.city,
       district: resolvedLabels.district,
+      address: resolvedLabels.address,
     );
     await ref.read(weatherRepositoryProvider).writeCache(weather, location);
     await persistClockSkew(ref, weather.clockSkewSeconds ?? 0);
@@ -295,27 +313,31 @@ class MainWeatherNotifier extends Notifier<MainWeatherState> {
     await _readCacheImpl(rescheduleNotifications: true);
   }
 
-  /// Fills missing city or district labels via reverse geocoding when needed.
-  Future<({String city, String district})> _resolveMissingLabels(
+  /// Fills missing labels and address data through reverse geocoding.
+  Future<({String city, String district, String address})>
+  _resolveLocationDetails(
     double lat,
     double lon,
     String city,
     String district,
+    String? address,
   ) async {
-    if (hasNonEmptyLocationText(city) || hasNonEmptyLocationText(district)) {
-      return (city: city, district: district);
+    final hasAddress = hasNonEmptyLocationText(address);
+    if (hasAddress &&
+        (hasNonEmptyLocationText(city) ||
+            hasNonEmptyLocationText(district))) {
+      return (city: city, district: district, address: address!.trim());
     }
 
     final labels = await _reverseGeocodeLabels(lat, lon);
     if (labels == null) {
-      return (city: city, district: district);
+      return (city: city, district: district, address: address?.trim() ?? '');
     }
 
     return (
-      city: hasNonEmptyLocationText(labels.city) ? labels.city : city,
-      district: hasNonEmptyLocationText(labels.district)
-          ? labels.district
-          : district,
+      city: hasNonEmptyLocationText(city) ? city : labels.city,
+      district: hasNonEmptyLocationText(district) ? district : labels.district,
+      address: hasAddress ? address!.trim() : labels.address,
     );
   }
 
@@ -351,6 +373,7 @@ class MainWeatherNotifier extends Notifier<MainWeatherState> {
             loc.lon!,
             loc.district ?? '',
             loc.city ?? '',
+            address: loc.address,
           );
           return;
         } catch (_) {
@@ -683,6 +706,7 @@ class MainWeatherNotifier extends Notifier<MainWeatherState> {
       loc.lon!,
       loc.district ?? '',
       loc.city ?? '',
+      address: loc.address,
       showLoading: false,
     );
   }
@@ -707,6 +731,7 @@ class MainWeatherNotifier extends Notifier<MainWeatherState> {
         loc.lon!,
         loc.district ?? '',
         loc.city ?? '',
+        address: loc.address,
       );
       return;
     }

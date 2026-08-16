@@ -42,9 +42,9 @@ Future<void> ensureWidgetBackgroundTaskScheduled() async {
 }
 
 /// Schedules a one-off widget refresh on the next app launch.
-void registerWidgetBootUpdateTask() {
+Future<void> registerWidgetBootUpdateTask() async {
   if (!Platform.isAndroid) return;
-  Workmanager().registerOneOffTask(
+  await Workmanager().registerOneOffTask(
     'widgetBootUpdate',
     'widgetBackgroundUpdate',
     existingWorkPolicy: ExistingWorkPolicy.replace,
@@ -52,30 +52,62 @@ void registerWidgetBootUpdateTask() {
 }
 
 /// Returns true when the device appears to have internet access.
-Future<bool> hasBackgroundInternetAccess() async {
-  try {
-    return await InternetConnection().hasInternetAccess;
-  } catch (e, st) {
-    logBackgroundError('hasBackgroundInternetAccess', e, st);
-    return false;
-  }
-}
+Future<bool> hasBackgroundInternetAccess() =>
+    InternetConnection().hasInternetAccess;
 
-/// Refreshes the main forecast when the cache is older than the widget interval.
+/// Refreshes the main forecast when the widget cache is stale, or always when
+/// [forceRefresh] is true.
 ///
 /// Exported for unit tests; used by [runWidgetBackgroundRefresh].
-Future<void> refreshMainWeatherIfStale(Isar isar) async {
+Future<void> refreshMainWeatherIfStale(
+  Isar isar, {
+  bool forceRefresh = false,
+  Future<bool> Function()? internetAccess,
+}) async {
   final local = WeatherLocalDatasource(isar);
   final location = await local.getLocation();
   if (location?.lat == null || location?.lon == null) return;
 
-  final staleAfter = AppConstants.weatherCacheExpiryThreshold();
-  if (!await local.isMainWeatherExpired(staleAfter)) return;
-  if (!await hasBackgroundInternetAccess()) return;
+  if (!forceRefresh) {
+    final cacheIsEmpty = await local.isMainWeatherEmpty();
+    final staleAfter = AppConstants.widgetWeatherRefreshThreshold();
+    if (!cacheIsEmpty && !await local.isMainWeatherExpired(staleAfter)) {
+      return;
+    }
+  }
+  if (!await (internetAccess ?? hasBackgroundInternetAccess)()) return;
 
-  final repo = WeatherRepository(WeatherRemoteDatasource(), local);
-  final weather = await repo.fetchWeather(location!.lat!, location.lon!);
-  await repo.writeCache(weather, location);
+  final resolvedLocation = location!;
+  final remote = WeatherRemoteDatasource();
+  if (resolvedLocation.address?.trim().isEmpty ?? true) {
+    try {
+      final details = await remote
+          .reverseGeocode(
+            resolvedLocation.lat!,
+            resolvedLocation.lon!,
+            languageCode: LocaleSettings.currentLocale.languageCode,
+          )
+          .timeout(const Duration(seconds: 5));
+      if (details != null) {
+        resolvedLocation.address = details.address;
+        if (resolvedLocation.city?.trim().isEmpty ?? true) {
+          resolvedLocation.city = details.city;
+        }
+        if (resolvedLocation.district?.trim().isEmpty ?? true) {
+          resolvedLocation.district = details.district;
+        }
+      }
+    } catch (e, st) {
+      logBackgroundError('reverseGeocodeWidgetLocation', e, st);
+    }
+  }
+
+  final repo = WeatherRepository(remote, local);
+  final weather = await repo.fetchWeather(
+    resolvedLocation.lat!,
+    resolvedLocation.lon!,
+  );
+  await repo.writeCache(weather, resolvedLocation);
   if (weather.clockSkewSeconds != null) {
     await persistClockSkewInIsar(isar, weather.clockSkewSeconds!);
   }
@@ -100,9 +132,9 @@ Future<void> _applyBackgroundLocale(Isar isar) async {
 
 /// Fetches stale main weather when online, then pushes widget data from disk.
 ///
-/// Also refreshes the persistent notification and top-up forecast alarms when
-/// Same side effects as a foreground resume with a fresh cache (via
-/// [MainWeatherNotifier._syncForegroundSideEffects], not this entry point).
+/// It also refreshes the persistent notification and tops up forecast alarms,
+/// matching the foreground side effects in
+/// [MainWeatherNotifier._syncForegroundSideEffects].
 Future<bool> runWidgetBackgroundRefresh(
   Future<bool> Function(Isar isar) updateWidgets, {
   Future<void> Function(Isar isar)? refreshStaleWeather,
@@ -110,7 +142,7 @@ Future<bool> runWidgetBackgroundRefresh(
   Isar? isar;
   var ownsIsar = false;
   var widgetUpdated = false;
-  var notificationUpdated = false;
+  var weatherRefreshFailed = false;
   String? failureError;
 
   try {
@@ -127,6 +159,7 @@ Future<bool> runWidgetBackgroundRefresh(
     try {
       await (refreshStaleWeather ?? refreshMainWeatherIfStale)(isar);
     } catch (e, st) {
+      weatherRefreshFailed = true;
       logBackgroundError('refreshMainWeatherIfStale', e, st);
       failureError ??= e.toString();
     }
@@ -140,7 +173,6 @@ Future<bool> runWidgetBackgroundRefresh(
 
     try {
       await updatePersistentNotificationFromIsar(isar);
-      notificationUpdated = true;
     } catch (e, st) {
       logBackgroundError('updatePersistentNotificationFromIsar', e, st);
       failureError ??= e.toString();
@@ -153,10 +185,10 @@ Future<bool> runWidgetBackgroundRefresh(
       failureError ??= e.toString();
     }
 
-    final success = widgetUpdated || notificationUpdated;
+    final success = !weatherRefreshFailed && widgetUpdated;
     await recordBackgroundRefreshResult(
       success: success,
-      error: success ? null : failureError,
+      error: failureError,
     );
     return success;
   } catch (e, st) {

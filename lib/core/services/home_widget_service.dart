@@ -27,6 +27,19 @@ class HomeWidgetService {
     return '$converted${UnitConverter.temperatureSuffix(settings)}';
   }
 
+  String _widgetLocationLabel(LocationCache? location) {
+    final address = location?.address?.trim();
+    if (address != null && address.isNotEmpty) return address;
+
+    final labels = <String>[];
+    for (final value in [location?.district, location?.city]) {
+      final label = value?.trim();
+      if (label == null || label.isEmpty || labels.contains(label)) continue;
+      labels.add(label);
+    }
+    return labels.join(' ');
+  }
+
   /// Reads Isar and writes widget data for all registered widget providers.
   Future<bool> updateFromIsar(Isar isar, {Settings? settings}) async {
     try {
@@ -135,7 +148,7 @@ class HomeWidgetService {
 
     final bundle = <String, dynamic>{
       'current': <String, dynamic>{
-        'location': location?.displayLabel ?? '',
+        'location': _widgetLocationLabel(location),
         'temperature': _widgetTemperature(temperatures[hour], settings),
         'condition': statusWeather.getText(weatherCodes[hour]),
         'icon': currentIcon,
@@ -295,8 +308,8 @@ class HomeWidgetService {
   }
 
   String _formatWidgetDate(DateTime date, String languageCode) =>
-      '${LocaleFormatHelper.weekdayAbbrev(date, languageCode)} · '
-      '${_calendarDate(date)}';
+      '${_calendarDate(date)} '
+      '${LocaleFormatHelper.weekdayAbbrev(date, languageCode)}';
 
   String _formatUpdateTime({
     required DateTime? timestamp,
@@ -331,8 +344,13 @@ class HomeWidgetService {
       '${date.month.toString().padLeft(2, '0')}-'
       '${date.day.toString().padLeft(2, '0')}';
 
-  /// Background entry point: refreshes stale cache and updates widgets from disk.
-  static Future<bool> updateFromDisk() => runWidgetBackgroundRefresh(
-    (isar) => HomeWidgetService(AssetCacheService()).updateFromIsar(isar),
-  );
+  /// Updates widgets from disk and optionally forces fresh weather first.
+  static Future<bool> updateFromDisk({bool forceRefresh = false}) =>
+      runWidgetBackgroundRefresh(
+        (isar) => HomeWidgetService(AssetCacheService()).updateFromIsar(isar),
+        refreshStaleWeather: (isar) => refreshMainWeatherIfStale(
+          isar,
+          forceRefresh: forceRefresh,
+        ),
+      );
 }

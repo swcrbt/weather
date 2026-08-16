@@ -15,19 +15,36 @@ class FakeLocationService extends LocationService {
       lon: 37.62,
       city: 'Moscow',
       district: 'Moscow Oblast',
+      address: 'Tverskaya Street 1 Moscow',
     ),
   });
 
   final bool serviceEnabled;
-  final ({double lat, double lon, String city, String district})? place;
+  final ({
+    double lat,
+    double lon,
+    String city,
+    String district,
+    String address,
+  })?
+  place;
 
   @override
   Future<bool> isServiceEnabled() async => serviceEnabled;
 
   @override
-  Future<({double lat, double lon, String city, String district})?>
+  Future<({
+    double lat,
+    double lon,
+    String city,
+    String district,
+    String address,
+  })?>
   getCurrentPlace({
-    Future<({String city, String district})?> Function(double lat, double lon)?
+    Future<({String city, String district, String address})?> Function(
+      double lat,
+      double lon,
+    )?
     resolveLabels,
   }) async {
     if (place != null) return place;
@@ -42,6 +59,7 @@ class FakeLocationService extends LocationService {
           lon: place?.lon ?? 37.62,
           city: labels.city,
           district: labels.district,
+          address: labels.address,
         );
       }
     }

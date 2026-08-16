@@ -26,6 +26,18 @@ void main() {
     );
     expect(
       hasResolvedLocation(
+        LocationCache(
+          lat: 55.75,
+          lon: 37.62,
+          city: '',
+          district: '',
+          address: 'Tverskaya Street 1, Moscow',
+        ),
+      ),
+      isTrue,
+    );
+    expect(
+      hasResolvedLocation(
         LocationCache(lat: null, lon: 37.62, city: 'Moscow', district: ''),
       ),
       isFalse,

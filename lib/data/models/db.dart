@@ -210,7 +210,7 @@ class MainWeatherCache {
   };
 }
 
-/// Cached city and coordinates for the primary home-screen location.
+/// Cached coordinates and labels for the primary home-screen location.
 @collection
 class LocationCache {
   Id id = Isar.autoIncrement;
@@ -218,12 +218,25 @@ class LocationCache {
   double? lon;
   String? city;
   String? district;
+  String? address;
 
   /// Creates a location cache with optional coordinates and labels.
-  LocationCache({this.lat, this.lon, this.city, this.district});
+  LocationCache({
+    this.lat,
+    this.lon,
+    this.city,
+    this.district,
+    this.address,
+  });
 
-  /// City name for widgets and notifications, falling back to [district].
-  String get displayLabel => city ?? district ?? '';
+  /// Preferred concise label for notifications and other compact surfaces.
+  String get displayLabel {
+    for (final value in [city, district, address]) {
+      final label = value?.trim();
+      if (label != null && label.isNotEmpty) return label;
+    }
+    return '';
+  }
 
   /// Serializes location fields to a JSON map.
   Map<String, dynamic> toJson() => {
@@ -232,6 +245,7 @@ class LocationCache {
     'lon': lon,
     'city': city,
     'district': district,
+    'address': address,
   };
 }
 

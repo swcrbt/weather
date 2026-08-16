@@ -80,6 +80,7 @@ Map<String, dynamic> sampleCitySearchJson() => {
 
 /// Sample Nominatim reverse-geocoding JSON.
 Map<String, dynamic> sampleNominatimReverseJson() => {
+  'display_name': 'Tverskaya Street 1, Moscow, Russia',
   'address': {
     'city': 'Moscow',
     'state': 'Central Federal District',
@@ -196,6 +197,7 @@ LocationCache sampleLocationCache() => LocationCache(
   lon: 37.62,
   city: 'Moscow',
   district: 'Moscow Oblast',
+  address: 'Tverskaya Street 1, Moscow',
 );
 
 /// Main weather cache with seven daily entries for detail screens.

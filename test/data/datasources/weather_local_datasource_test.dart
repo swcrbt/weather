@@ -27,7 +27,9 @@ void main() {
 
       expect(await datasource.getMainWeather(), isNotNull);
       expect(await datasource.getLocation(), isNotNull);
-      expect((await datasource.getLocation())!.city, 'Moscow');
+      final cachedLocation = await datasource.getLocation();
+      expect(cachedLocation!.city, 'Moscow');
+      expect(cachedLocation.address, 'Tverskaya Street 1, Moscow');
     });
 
     test('isMainWeatherExpired returns false when cache is absent', () async {

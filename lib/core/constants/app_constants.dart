@@ -79,7 +79,7 @@ class AppConstants {
 
   // --- Weather cache ---
 
-  /// How long forecast and city-card data stay fresh before background refresh.
+  /// How long forecast and city-card data stay fresh for foreground refreshes.
   static const Duration cacheExpiry = Duration(hours: 12);
 
   /// Incremented when forecast cache schema changes; triggers a re-save migration.
@@ -91,6 +91,11 @@ class AppConstants {
   /// Cutoff before which persisted forecast rows are treated as stale.
   static DateTime weatherCacheExpiryThreshold() =>
       DateTime.now().subtract(cacheExpiry);
+
+  /// Cutoff used by the Android widget task before it fetches fresh weather.
+  static DateTime widgetWeatherRefreshThreshold() =>
+      DateTime.now().subtract(workManagerMinInterval);
+
   static const Duration mapTileCacheDays = Duration(days: 30);
 
   // --- Home-screen widget UI ---
@@ -131,6 +136,8 @@ class AppConstants {
   // --- Time & background work ---
 
   static const Duration scrollDuration = Duration(seconds: 2);
+
+  /// Refresh interval used by the Android widget background task.
   static const Duration workManagerMinInterval = Duration(minutes: 15);
 
   // --- Coordinates ---

@@ -9,7 +9,8 @@ bool hasResolvedLocation(LocationCache location) =>
     location.lat != null &&
     location.lon != null &&
     (hasNonEmptyLocationText(location.city) ||
-        hasNonEmptyLocationText(location.district));
+        hasNonEmptyLocationText(location.district) ||
+        hasNonEmptyLocationText(location.address));
 
 /// Returns the first trimmed non-empty string from [values].
 String firstNonEmptyLocationLabel(List<String?> values) {

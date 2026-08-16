@@ -22,6 +22,7 @@ void main() {
               district: 'Berlin',
               lat: 52.52,
               lon: 13.405,
+              address: 'Unter den Linden 1, Berlin',
             ),
           );
         }),
@@ -32,6 +33,7 @@ void main() {
       expect(cache.district, 'Berlin');
       expect(cache.lat, 52.52);
       expect(cache.lon, 13.405);
+      expect(cache.address, 'Unter den Linden 1, Berlin');
     });
   });
 

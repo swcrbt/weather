@@ -136,8 +136,8 @@ class WeatherRemoteDatasource {
     }
   }
 
-  /// Reverse-geocodes coordinates via Nominatim when platform geocoding fails.
-  Future<({String city, String district})?> reverseGeocode(
+  /// Reverse-geocodes coordinates via Nominatim for detailed location labels.
+  Future<({String city, String district, String address})?> reverseGeocode(
     double lat,
     double lon, {
     String? languageCode,
@@ -162,35 +162,88 @@ class WeatherRemoteDatasource {
     }
   }
 
-  /// Maps a Nominatim reverse-geocoding payload to city and district labels.
+  /// Maps a Nominatim reverse-geocoding payload to location labels.
   @visibleForTesting
-  static ({String city, String district})? parseNominatimLabels(dynamic data) {
+  static ({String city, String district, String address})? parseNominatimLabels(
+    dynamic data,
+  ) {
     if (data is! Map) return null;
     final address = data['address'];
     if (address is! Map) return null;
 
     final city = firstNonEmptyLocationLabel([
-      address['city'] as String?,
-      address['town'] as String?,
-      address['village'] as String?,
-      address['municipality'] as String?,
-      address['hamlet'] as String?,
-      address['suburb'] as String?,
-      address['county'] as String?,
+      _stringField(address, 'city'),
+      _stringField(address, 'town'),
+      _stringField(address, 'village'),
+      _stringField(address, 'municipality'),
+      _stringField(address, 'hamlet'),
+      _stringField(address, 'city_district'),
+      _stringField(address, 'suburb'),
+      _stringField(address, 'county'),
     ]);
     final district = firstNonEmptyLocationLabel([
-      address['state'] as String?,
-      address['region'] as String?,
-      address['state_district'] as String?,
-      address['country'] as String?,
+      _stringField(address, 'state'),
+      _stringField(address, 'region'),
+      _stringField(address, 'state_district'),
+      _stringField(address, 'country'),
     ]);
 
-    if (city.isEmpty && district.isEmpty) return null;
-    return (city: city, district: district);
+    final displayName = data['display_name'] is String
+        ? (data['display_name'] as String).trim()
+        : '';
+    final structuredAddress = _joinNominatimAddress(address);
+    final hasStreetDetail = [
+      _stringField(address, 'road'),
+      _stringField(address, 'house_number'),
+      _stringField(address, 'building'),
+      _stringField(address, 'residential'),
+      _stringField(address, 'amenity'),
+    ].any(hasNonEmptyLocationText);
+    final String addressText;
+    if (hasStreetDetail && structuredAddress.isNotEmpty) {
+      addressText = structuredAddress;
+    } else if (displayName.isNotEmpty) {
+      addressText = displayName;
+    } else {
+      addressText = structuredAddress;
+    }
+
+    if (city.isEmpty && district.isEmpty && addressText.isEmpty) return null;
+    return (city: city, district: district, address: addressText);
   }
 
-  ({String city, String district})? _parseNominatimLabels(dynamic data) =>
-      parseNominatimLabels(data);
+  static String _joinNominatimAddress(Map address) {
+    final parts = <String>[
+      _stringField(address, 'city_district') ?? '',
+      _stringField(address, 'suburb') ?? '',
+      _stringField(address, 'neighbourhood') ?? '',
+      _stringField(address, 'county') ?? '',
+      _stringField(address, 'state') ?? '',
+      _stringField(address, 'city') ?? '',
+      _stringField(address, 'town') ?? '',
+      _stringField(address, 'building') ?? '',
+      _stringField(address, 'residential') ?? '',
+      _stringField(address, 'amenity') ?? '',
+      _stringField(address, 'road') ?? '',
+      _stringField(address, 'house_number') ?? '',
+    ];
+    final unique = <String>[];
+    for (final part in parts) {
+      final value = part.trim();
+      if (value.isEmpty || unique.contains(value)) continue;
+      unique.add(value);
+    }
+    return unique.join(' ');
+  }
+
+  static String? _stringField(Map data, String key) {
+    final value = data[key];
+    return value is String ? value : null;
+  }
+
+  ({String city, String district, String address})? _parseNominatimLabels(
+    dynamic data,
+  ) => parseNominatimLabels(data);
 }
 
 /// A normalized city match returned from geocoding search.

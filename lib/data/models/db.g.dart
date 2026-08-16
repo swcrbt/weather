@@ -14708,6 +14708,11 @@ const LocationCacheSchema = CollectionSchema(
     ),
     r'lat': PropertySchema(id: 3, name: r'lat', type: IsarType.double),
     r'lon': PropertySchema(id: 4, name: r'lon', type: IsarType.double),
+    r'address': PropertySchema(
+      id: 5,
+      name: r'address',
+      type: IsarType.string,
+    ),
   },
 
   estimateSize: _locationCacheEstimateSize,
@@ -14744,6 +14749,12 @@ int _locationCacheEstimateSize(
       bytesCount += 3 + value.length * 3;
     }
   }
+  {
+    final value = object.address;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
   return bytesCount;
 }
 
@@ -14758,6 +14769,7 @@ void _locationCacheSerialize(
   writer.writeString(offsets[2], object.district);
   writer.writeDouble(offsets[3], object.lat);
   writer.writeDouble(offsets[4], object.lon);
+  writer.writeString(offsets[5], object.address);
 }
 
 LocationCache _locationCacheDeserialize(
@@ -14771,6 +14783,7 @@ LocationCache _locationCacheDeserialize(
     district: reader.readStringOrNull(offsets[2]),
     lat: reader.readDoubleOrNull(offsets[3]),
     lon: reader.readDoubleOrNull(offsets[4]),
+    address: reader.readStringOrNull(offsets[5]),
   );
   object.id = id;
   return object;
@@ -14793,6 +14806,8 @@ P _locationCacheDeserializeProp<P>(
       return (reader.readDoubleOrNull(offset)) as P;
     case 4:
       return (reader.readDoubleOrNull(offset)) as P;
+    case 5:
+      return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }

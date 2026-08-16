@@ -46,11 +46,19 @@ class _SelectGeolocationState extends ConsumerState<SelectGeolocation> {
   final _controllerLon = TextEditingController();
   final _controllerCity = TextEditingController();
   final _controllerDistrict = TextEditingController();
+  ({
+    double lat,
+    double lon,
+    String city,
+    String district,
+    String address,
+  })? _resolvedAddress;
 
   final mapController = MapController();
 
   /// Fills coordinate and label fields from a [CitySearchResult].
   void fillController(CitySearchResult selection) {
+    _resolvedAddress = null;
     fillPlaceControllers(
       selection: selection,
       latitude: _controllerLat,
@@ -64,14 +72,27 @@ class _SelectGeolocationState extends ConsumerState<SelectGeolocation> {
 
   /// Fills coordinate and label fields from a geolocation [location] map.
   void fillControllerGeo(Map<String, dynamic> location) {
-    _controllerLat.text = '${location['lat']}';
-    _controllerLon.text = '${location['lon']}';
+    final lat = location['lat'] as double;
+    final lon = location['lon'] as double;
+    final address = (location['address'] as String? ?? '').trim();
+    _controllerLat.text = '$lat';
+    _controllerLon.text = '$lon';
     _controllerCity.text = location['city'] ?? '';
     _controllerDistrict.text = location['district'] ?? '';
+    _resolvedAddress = address.isEmpty
+        ? null
+        : (
+            lat: lat,
+            lon: lon,
+            city: _controllerCity.text,
+            district: _controllerDistrict.text,
+            address: address,
+          );
   }
 
   /// Updates latitude and longitude fields from map coordinates.
   void fillMap(double latitude, double longitude) {
+    _resolvedAddress = null;
     _controllerLat.text = '$latitude';
     _controllerLon.text = '$longitude';
   }
@@ -201,6 +222,7 @@ class _SelectGeolocationState extends ConsumerState<SelectGeolocation> {
         'lon': place.lon,
         'city': place.city,
         'district': place.district,
+        'address': place.address,
       });
     } catch (_) {
       if (mounted) showSnackBar('no_location'.tr, isError: true);
@@ -246,13 +268,24 @@ class _SelectGeolocationState extends ConsumerState<SelectGeolocation> {
     setState(() => _isSubmitting = true);
     try {
       await ref.read(mainWeatherNotifierProvider.notifier).deleteAll(true);
+      final latitude = double.parse(_controllerLat.text);
+      final longitude = double.parse(_controllerLon.text);
+      final resolvedAddress = _resolvedAddress;
+      final address = resolvedAddress != null &&
+              resolvedAddress.lat == latitude &&
+              resolvedAddress.lon == longitude &&
+              resolvedAddress.city == _controllerCity.text &&
+              resolvedAddress.district == _controllerDistrict.text
+          ? resolvedAddress.address
+          : null;
       await ref
           .read(mainWeatherNotifierProvider.notifier)
           .getLocation(
-            double.parse(_controllerLat.text),
-            double.parse(_controllerLon.text),
+            latitude,
+            longitude,
             _controllerDistrict.text,
             _controllerCity.text,
+            address: address,
           );
       if (!mounted) return;
       if (widget.isStart) {

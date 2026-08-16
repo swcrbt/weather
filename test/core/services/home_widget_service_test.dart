@@ -10,6 +10,7 @@ import 'package:rain/core/bootstrap/app_initializer.dart';
 import 'package:rain/core/services/asset_cache_service.dart';
 import 'package:rain/core/services/home_widget_service.dart';
 import 'package:rain/core/weather/time_index_helper.dart';
+import 'package:rain/data/models/db.dart';
 import 'package:rain/i18n/tr.dart';
 
 void main() {
@@ -86,7 +87,7 @@ void main() {
       final aqi = bundle['aqi'] as Map<String, dynamic>;
       final forecast = bundle['forecast'] as List<dynamic>;
 
-      expect(current['location'], 'Moscow');
+      expect(current['location'], 'Tverskaya Street 1, Moscow');
       expect(current['temperature'], isNotEmpty);
       expect(current['condition'], isNotEmpty);
       final expectedHour = TimeIndexHelper.getTime(
@@ -97,7 +98,10 @@ void main() {
         ),
       );
       expect(aqi['value'], weather.europeanAqi![expectedHour]!.round());
-      expect(bundle['date'], isNotEmpty);
+      expect(
+        bundle['date'],
+        matches(RegExp(r'^\d{1,2}/\d{1,2}\s+\S+$')),
+      );
       expect(bundle['calendarDate'], matches(RegExp(r'^\d{1,2}/\d{1,2}$')));
       expect(bundle['dateEpochMillis'], isA<int>());
       expect(bundle['timeZoneId'], weather.timezone);
@@ -123,6 +127,27 @@ void main() {
           ),
         ),
       );
+    });
+
+    test('widget location falls back to district and city', () async {
+      await seedMainWeatherCache(
+        ctx.isarContext.isar,
+        weather: sampleMainWeatherCache(),
+        location: LocationCache(
+          lat: 55.75,
+          lon: 37.62,
+          city: 'Moscow',
+          district: 'Moscow Oblast',
+        ),
+      );
+
+      await service.updateFromIsar(ctx.isarContext.isar);
+
+      final bundle =
+          jsonDecode(savedWidgetData['widget_bundle']! as String)
+              as Map<String, dynamic>;
+      final current = bundle['current'] as Map<String, dynamic>;
+      expect(current['location'], 'Moscow Oblast Moscow');
     });
 
     test('updateFromIsar uses the selected AQI standard thresholds', () async {

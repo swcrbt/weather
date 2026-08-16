@@ -31,12 +31,12 @@ class AppInitializer {
     await initializeNotificationsPlugin();
     if (Platform.isAndroid) {
       await _setOptimalDisplayMode();
-      Workmanager().initialize(callbackDispatcher);
+      await Workmanager().initialize(callbackDispatcher);
       await HomeWidget.registerInteractivityCallback(
         widgetInteractivityCallback,
       );
       await ensureWidgetBackgroundTaskScheduled();
-      registerWidgetBootUpdateTask();
+      await registerWidgetBootUpdateTask();
       Future.microtask(HomeWidgetService.updateFromDisk);
     }
     if (Platform.isIOS) {
@@ -105,10 +105,10 @@ class AppInitializer {
 @pragma('vm:entry-point')
 Future<void> widgetInteractivityCallback(Uri? uri) async {
   if (uri?.host != 'refresh') return;
-  await HomeWidgetService.updateFromDisk();
+  await HomeWidgetService.updateFromDisk(forceRefresh: true);
 }
 
-/// Workmanager entry point that refreshes home widgets from disk.
+/// Workmanager entry point for periodic widget weather refreshes.
 @pragma('vm:entry-point')
 void callbackDispatcher() {
   Workmanager().executeTask((task, inputData) async {
