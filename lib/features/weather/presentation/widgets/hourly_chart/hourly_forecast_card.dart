@@ -38,6 +38,7 @@ class HourlyForecastCard extends ConsumerStatefulWidget {
 }
 
 class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
+  static const int _visibleSlotCount = 51;
   static const double _slotWidth = 68;
   static const double _chartHeight = 120;
   static const double _conditionHeight = 40;
@@ -48,7 +49,15 @@ class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
 
   final ScrollController _controller = ScrollController();
   final FocusNode _focusNode = FocusNode();
-  bool _alignedToNow = false;
+  bool _alignedToSelection = false;
+
+  @override
+  void didUpdateWidget(covariant HourlyForecastCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.selectedHour != widget.selectedHour) {
+      _alignedToSelection = false;
+    }
+  }
 
   @override
   void dispose() {
@@ -91,12 +100,13 @@ class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
         ? 0
         : TimeIndexHelper.getDay(card.timeDaily!, clock);
 
-    final start = math.max(0, nowIndex - 2);
-    final end = math.min(times.length, nowIndex + 49);
+    final selected = widget.selectedHour.clamp(0, times.length - 1).toInt();
+    final maxStart = math.max(0, times.length - _visibleSlotCount);
+    final start = (selected - 2).clamp(0, maxStart).toInt();
+    final end = math.min(times.length, start + _visibleSlotCount);
     final count = end - start;
     if (count <= 1) return const SizedBox.shrink();
 
-    final selected = widget.selectedHour.clamp(start, end - 1).toInt();
     final selectedLocal = selected - start;
 
     double? tempAt(int abs) =>
@@ -133,8 +143,8 @@ class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
     final conditionSpans = _conditionSpans(card, start, count);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (_alignedToNow || !mounted || !_controller.hasClients) return;
-      _alignedToNow = true;
+      if (_alignedToSelection || !mounted || !_controller.hasClients) return;
+      _alignedToSelection = true;
       final viewport = _controller.position.viewportDimension;
       final target = selectedLocal * _slotWidth - viewport * 0.35;
       _controller.jumpTo(

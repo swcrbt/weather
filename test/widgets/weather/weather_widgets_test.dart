@@ -3,6 +3,8 @@ import '../../helpers/test_bootstrap.dart';
 import '../../helpers/widget_test_harness.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:intl/intl.dart';
+import 'package:rain/core/weather/time_index_helper.dart';
 import 'package:rain/data/models/db.dart';
 import 'package:rain/features/weather/presentation/widgets/desc/desc.dart';
 import 'package:rain/features/weather/presentation/widgets/desc/desc_container.dart';
@@ -176,6 +178,37 @@ void main() {
     expect(find.byType(InkWell), findsWidgets);
     expect(find.text('Today'), findsOneWidget);
     expect(find.text('Tomorrow'), findsOneWidget);
+  });
+
+  testWidgets('HourlyForecastCard keeps an out-of-window selection visible', (
+    tester,
+  ) async {
+    final forecast = dailyDetailWeatherCard();
+    final times = forecast.time!;
+    final nowIndex = TimeIndexHelper.getTime(
+      times,
+      LocationClock.fromWeatherCard(forecast),
+    );
+    final selectedHour = nowIndex <= times.length - 52
+        ? nowIndex + 51
+        : nowIndex - 51;
+    final start = (selectedHour - 2).clamp(0, times.length - 51).toInt();
+    final date = TimeIndexHelper.parseForecastDateTime(times[start]);
+    final expectedDateLabel =
+        '${DateFormat.Md('en').format(date)} ${DateFormat.E('en').format(date)}';
+
+    await pumpRainWidget(
+      tester,
+      HourlyForecastCard(
+        weatherCard: forecast,
+        selectedHour: selectedHour,
+        onHourSelected: (_) {},
+      ),
+      bootstrap: ctx.bootstrap,
+    );
+
+    expect(find.text(expectedDateLabel), findsOneWidget);
+    expect(tester.takeException(), isNull);
   });
 
   testWidgets('HourlyForecastCard handles missing sun times', (tester) async {
