@@ -9,6 +9,7 @@ import 'package:rain/core/di/provider_refs.dart';
 import 'package:rain/core/settings/app_settings_notifier.dart';
 import 'package:rain/core/weather/aqi_helper.dart';
 import 'package:rain/core/weather/beaufort_helper.dart';
+import 'package:rain/core/weather/message.dart';
 import 'package:rain/core/weather/status_data.dart';
 import 'package:rain/core/weather/status_weather.dart';
 import 'package:rain/core/weather/time_index_helper.dart';
@@ -17,9 +18,9 @@ import 'package:rain/data/models/db.dart';
 import 'package:rain/features/weather/presentation/widgets/hourly_chart/hourly_temperature_painter.dart';
 import 'package:rain/i18n/tr.dart';
 
-/// Hourly forecast chart card: temperature curves, condition spans with
-/// precipitation probability, AQI/UV color bars, wind/gust Beaufort segments,
-/// a time axis, and a tap-selectable detail bubble.
+/// Hourly forecast chart card in badge style: day pills, temperature curve
+/// with per-hour labels, condition spans, and per-hour badges for AQI, UV,
+/// wind, and gusts above an hourly time axis.
 class HourlyForecastCard extends ConsumerStatefulWidget {
   const HourlyForecastCard({
     super.key,
@@ -37,15 +38,13 @@ class HourlyForecastCard extends ConsumerStatefulWidget {
 }
 
 class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
-  static const double _slotWidth = 56;
+  static const double _slotWidth = 68;
   static const double _chartHeight = 120;
-  static const double _conditionHeight = 56;
-  static const double _barRowHeight = 18;
-  static const double _windRowHeight = 26;
+  static const double _conditionHeight = 40;
+  static const double _badgeRowHeight = 22;
   static const double _axisHeight = 22;
+  static const double _pillRowHeight = 26;
   static const double _rowGap = 8;
-  static const double _labelWidth = 64;
-  static const double _bubbleWidth = 176;
 
   final ScrollController _controller = ScrollController();
   final FocusNode _focusNode = FocusNode();
@@ -81,6 +80,7 @@ class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final statusData = StatusData(settings: settings, locale: locale);
+    final message = Message();
 
     final clock = LocationClock.fromWeatherCard(
       card,
@@ -95,7 +95,6 @@ class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
     final end = math.min(times.length, nowIndex + 49);
     final count = end - start;
     if (count <= 1) return const SizedBox.shrink();
-    _windowStart = start;
 
     final selected = widget.selectedHour.clamp(start, end - 1).toInt();
     final selectedLocal = selected - start;
@@ -127,21 +126,11 @@ class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
 
     final windowTemps = [for (var i = start; i < end; i++) tempAt(i)];
     final windowPast = [for (var i = start; i < end; i++) temp24hAgo(i)];
+    final windowLabels = [
+      for (final temp in windowTemps)
+        temp == null ? null : statusData.getDegree(temp),
+    ];
     final conditionSpans = _conditionSpans(card, start, count);
-    final windSegments = _levelSegments(
-      card.windspeed10M,
-      card,
-      start,
-      count,
-      splitOnDirection: true,
-    );
-    final gustSegments = _levelSegments(
-      card.windgusts10M,
-      card,
-      start,
-      count,
-      splitOnDirection: false,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_alignedToNow || !mounted || !_controller.hasClients) return;
@@ -162,132 +151,168 @@ class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
           children: [
             _buildHeader(context, t, statusData, card, dayIndex),
             const SizedBox(height: 12),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(width: _labelWidth, child: _buildLabels(context, t)),
-                Expanded(
-                  child: CallbackShortcuts(
-                    bindings: {
-                      const SingleActivator(LogicalKeyboardKey.arrowLeft): () =>
-                          _moveSelection(-1),
-                      const SingleActivator(
-                        LogicalKeyboardKey.arrowRight,
-                      ): () =>
-                          _moveSelection(1),
-                    },
-                    child: Focus(
-                      focusNode: _focusNode,
-                      child: Semantics(
-                        container: true,
-                        label: t.hourly_forecast,
-                        value: statusData.getTimeFormat(times[selected]),
-                        child: SingleChildScrollView(
-                          controller: _controller,
-                          scrollDirection: Axis.horizontal,
-                          child: GestureDetector(
-                            behavior: HitTestBehavior.translucent,
-                            onTapUp: (details) {
-                              _focusNode.requestFocus();
-                              final index =
-                                  start +
-                                  (details.localPosition.dx / _slotWidth)
-                                      .floor();
-                              if (index >= start && index < end) {
-                                widget.onHourSelected(index);
-                              }
-                            },
-                            child: SizedBox(
-                              width: count * _slotWidth,
-                              child: Column(
-                                children: [
-                                  _buildChart(
-                                    context,
-                                    card,
-                                    statusData,
-                                    statusWeather,
-                                    t,
-                                    locale.languageCode,
-                                    windowTemps,
-                                    windowPast,
-                                    selectedLocal,
-                                    start,
-                                    count,
-                                    tempAt,
-                                    temp24hAgo,
-                                  ),
-                                  const SizedBox(height: _rowGap),
-                                  _buildConditions(
-                                    context,
-                                    statusWeather,
-                                    conditionSpans,
-                                  ),
-                                  const SizedBox(height: _rowGap),
-                                  _buildBarRow(
-                                    context,
-                                    count,
-                                    selectedLocal,
-                                    (abs) => _aqiColor(
-                                      card,
-                                      abs,
-                                      settings.aqiStandard,
-                                    ),
-                                    (abs) => AqiHelper.aqiAt(
-                                      card,
-                                      abs,
-                                      settings.aqiStandard,
-                                    )?.round().toString(),
-                                    t.air_quality,
-                                  ),
-                                  const SizedBox(height: _rowGap),
-                                  _buildBarRow(
-                                    context,
-                                    count,
-                                    selectedLocal,
-                                    (abs) => BeaufortHelper.uvColor(
-                                      _safeAt(card.uvIndex, abs),
-                                    ),
-                                    (abs) => _safeAt<double>(
-                                      card.uvIndex,
-                                      abs,
-                                    )?.round().toString(),
-                                    t.uv_index,
-                                  ),
-                                  const SizedBox(height: _rowGap),
-                                  _buildLevelRow(
-                                    context,
-                                    t,
-                                    windSegments,
-                                    withArrow: true,
-                                  ),
-                                  const SizedBox(height: _rowGap),
-                                  _buildLevelRow(
-                                    context,
-                                    t,
-                                    gustSegments,
-                                    withArrow: false,
-                                  ),
-                                  const SizedBox(height: _rowGap),
-                                  _buildAxis(
-                                    context,
-                                    t,
-                                    statusData,
-                                    times,
-                                    nowIndex,
-                                    start,
-                                    count,
-                                    locale.languageCode,
-                                  ),
-                                ],
-                              ),
+            CallbackShortcuts(
+              bindings: {
+                const SingleActivator(LogicalKeyboardKey.arrowLeft): () =>
+                    _moveSelection(-1),
+                const SingleActivator(LogicalKeyboardKey.arrowRight): () =>
+                    _moveSelection(1),
+              },
+              child: Focus(
+                focusNode: _focusNode,
+                child: Semantics(
+                  container: true,
+                  label: t.hourly_forecast,
+                  value: statusData.getTimeFormat(times[selected]),
+                  child: SingleChildScrollView(
+                    controller: _controller,
+                    scrollDirection: Axis.horizontal,
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTapUp: (details) {
+                        _focusNode.requestFocus();
+                        final index =
+                            start +
+                            (details.localPosition.dx / _slotWidth).floor();
+                        if (index >= start && index < end) {
+                          widget.onHourSelected(index);
+                        }
+                      },
+                      child: SizedBox(
+                        width: count * _slotWidth,
+                        child: Column(
+                          children: [
+                            _buildDatePills(
+                              context,
+                              colorScheme,
+                              times,
+                              start,
+                              count,
+                              locale.languageCode,
                             ),
-                          ),
+                            const SizedBox(height: _rowGap),
+                            _buildChart(
+                              context,
+                              windowTemps,
+                              windowPast,
+                              windowLabels,
+                              selectedLocal,
+                              count,
+                            ),
+                            const SizedBox(height: _rowGap),
+                            _buildConditions(
+                              context,
+                              statusWeather,
+                              conditionSpans,
+                            ),
+                            const SizedBox(height: _rowGap),
+                            _buildBadgeRow(
+                              context,
+                              start,
+                              count,
+                              selected,
+                              t.air_quality,
+                              (abs) {
+                                final value = AqiHelper.aqiAt(
+                                  card,
+                                  abs,
+                                  settings.aqiStandard,
+                                );
+                                if (value == null) return null;
+                                return _BadgeData(
+                                  text: _joinValueLabel(
+                                    value.round().toString(),
+                                    AqiHelper.severityLabel(
+                                      settings.aqiStandard,
+                                      value,
+                                    ),
+                                    locale.languageCode,
+                                  ),
+                                  color: AqiHelper.severityColor(
+                                    settings.aqiStandard,
+                                    value,
+                                  ),
+                                );
+                              },
+                            ),
+                            const SizedBox(height: _rowGap),
+                            _buildBadgeRow(
+                              context,
+                              start,
+                              count,
+                              selected,
+                              t.uv_index,
+                              (abs) {
+                                final uv = _safeAt(card.uvIndex, abs);
+                                if (uv == null) return null;
+                                final rounded = uv.round();
+                                return _BadgeData(
+                                  text:
+                                      '$rounded ${message.getUvIndex(rounded)}',
+                                  color: BeaufortHelper.uvColor(uv),
+                                );
+                              },
+                            ),
+                            const SizedBox(height: _rowGap),
+                            _buildBadgeRow(
+                              context,
+                              start,
+                              count,
+                              selected,
+                              t.wind,
+                              (abs) {
+                                final speed = _safeAt(card.windspeed10M, abs);
+                                if (speed == null) return null;
+                                final level = t.wind_level.replaceFirst(
+                                  '{n}',
+                                  '${BeaufortHelper.level(speed)}',
+                                );
+                                final direction = message.getDirection(
+                                  _safeAt(card.winddirection10M, abs),
+                                );
+                                return _BadgeData(
+                                  text: direction.isEmpty
+                                      ? level
+                                      : '$direction $level',
+                                );
+                              },
+                            ),
+                            const SizedBox(height: _rowGap),
+                            _buildBadgeRow(
+                              context,
+                              start,
+                              count,
+                              selected,
+                              t.windgusts,
+                              (abs) {
+                                final gust = _safeAt(card.windgusts10M, abs);
+                                if (gust == null) return null;
+                                final level = t.wind_level.replaceFirst(
+                                  '{n}',
+                                  '${BeaufortHelper.level(gust)}',
+                                );
+                                return _BadgeData(
+                                  text: '${t.windgusts} $level',
+                                );
+                              },
+                            ),
+                            const SizedBox(height: _rowGap),
+                            _buildAxis(
+                              context,
+                              t,
+                              statusData,
+                              times,
+                              nowIndex,
+                              start,
+                              count,
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
                 ),
-              ],
+              ),
             ),
             const SizedBox(height: 12),
             _buildLegend(context, t, colorScheme.primary),
@@ -319,7 +344,7 @@ class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
           context,
           themeId,
           'sunrise.png',
-          card.sunrise?[dayIndex],
+          _safeAt(card.sunrise, dayIndex),
           statusData,
         ),
         const SizedBox(width: 12),
@@ -327,7 +352,7 @@ class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
           context,
           themeId,
           'sunset.png',
-          card.sunset?[dayIndex],
+          _safeAt(card.sunset, dayIndex),
           statusData,
         ),
       ],
@@ -396,193 +421,74 @@ class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
     ],
   );
 
-  // --- left label column ----------------------------------------------------
+  // --- day pills ------------------------------------------------------------
 
-  Widget _buildLabels(BuildContext context, Translations t) {
-    final style = Theme.of(context).textTheme.bodySmall?.copyWith(
-      color: Theme.of(context).colorScheme.onSurfaceVariant,
-    );
-    Widget label(String text, double height) => SizedBox(
-      height: height,
-      child: Center(
-        child: Text(
-          text,
-          style: style,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+  Widget _buildDatePills(
+    BuildContext context,
+    ColorScheme colorScheme,
+    List<String> times,
+    int start,
+    int count,
+    String languageCode,
+  ) {
+    final dateFormat = DateFormat.Md(languageCode);
+    final weekdayFormat = DateFormat.E(languageCode);
+    final pills = <Widget>[];
+    for (var i = 0; i < count; i++) {
+      final date = TimeIndexHelper.parseForecastDateTime(times[start + i]);
+      if (i != 0 && date.hour != 0) continue;
+      pills.add(
+        Positioned(
+          left: i * _slotWidth + 2,
+          top: 0,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: BoxDecoration(
+              color: colorScheme.primary.withValues(alpha: 0.12),
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: Text(
+              '${dateFormat.format(date)} ${weekdayFormat.format(date)}',
+              style: TextStyle(
+                color: colorScheme.primary,
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
         ),
-      ),
-    );
-    return Column(
-      children: [
-        label(t.temperature, _chartHeight + _rowGap + _conditionHeight),
-        const SizedBox(height: _rowGap),
-        label(t.air_quality, _barRowHeight),
-        const SizedBox(height: _rowGap),
-        label(t.uv_index, _barRowHeight),
-        const SizedBox(height: _rowGap),
-        label(t.wind, _windRowHeight),
-        const SizedBox(height: _rowGap),
-        label(t.windgusts, _windRowHeight),
-        const SizedBox(height: _rowGap),
-        const SizedBox(height: _axisHeight),
-      ],
-    );
+      );
+    }
+    return SizedBox(height: _pillRowHeight, child: Stack(children: pills));
   }
 
-  // --- chart & bubble -------------------------------------------------------
+  // --- chart ----------------------------------------------------------------
 
   Widget _buildChart(
     BuildContext context,
-    WeatherCard card,
-    StatusData statusData,
-    StatusWeather statusWeather,
-    Translations t,
-    String languageCode,
     List<double?> windowTemps,
     List<double?> windowPast,
+    List<String?> windowLabels,
     int selectedLocal,
-    int start,
     int count,
-    double? Function(int) tempAt,
-    double? Function(int) temp24hAgo,
   ) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     return SizedBox(
       height: _chartHeight,
-      child: Stack(
-        children: [
-          CustomPaint(
-            size: Size(count * _slotWidth, _chartHeight),
-            painter: HourlyTemperaturePainter(
-              temperatures: windowTemps,
-              previousDay: windowPast,
-              slotWidth: _slotWidth,
-              selectedIndex: selectedLocal,
-              lineColor: colorScheme.primary,
-              previousColor: colorScheme.primary.withValues(alpha: 0.4),
-              fillColor: colorScheme.primary.withValues(alpha: 0.14),
-              ringColor: colorScheme.surface,
-              gridColor: colorScheme.outlineVariant.withValues(alpha: 0.45),
-            ),
-          ),
-          _buildBubble(
-            context,
-            card,
-            statusData,
-            statusWeather,
-            t,
-            languageCode,
-            selectedLocal + start,
-            selectedLocal,
-            count,
-            tempAt,
-            temp24hAgo,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildBubble(
-    BuildContext context,
-    WeatherCard card,
-    StatusData statusData,
-    StatusWeather statusWeather,
-    Translations t,
-    String languageCode,
-    int abs,
-    int selectedLocal,
-    int count,
-    double? Function(int) tempAt,
-    double? Function(int) temp24hAgo,
-  ) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final times = card.time!;
-    final time = times[abs];
-    final temp = tempAt(abs);
-    final previous = temp24hAgo(abs);
-    final date = TimeIndexHelper.parseForecastDateTime(time);
-    final dateLabel = DateFormat('MMMd', languageCode).format(date);
-    final condition = statusWeather.getText(_safeAt(card.weathercode, abs));
-
-    double? delta;
-    if (temp != null && previous != null) {
-      delta = temp - previous;
-      if (ref.read(settingsProvider).degrees == 'fahrenheit') {
-        delta = delta * 9 / 5;
-      }
-    }
-    final arrow = delta == null
-        ? ''
-        : delta > 0
-        ? '↑'
-        : delta < 0
-        ? '↓'
-        : '±';
-
-    final contentWidth = count * _slotWidth;
-    final bubbleLeft =
-        (selectedLocal * _slotWidth + _slotWidth / 2 - _bubbleWidth / 2)
-            .clamp(0.0, math.max(0.0, contentWidth - _bubbleWidth))
-            .toDouble();
-
-    return Positioned(
-      left: bubbleLeft,
-      top: 0,
-      child: SizedBox(
-        width: _bubbleWidth,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          decoration: BoxDecoration(
-            color: colorScheme.primary,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                '$dateLabel ${statusData.getTimeFormat(time)} · $condition',
-                style: TextStyle(color: colorScheme.onPrimary, fontSize: 13),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              const SizedBox(height: 4),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    statusData.getDegree(temp),
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: colorScheme.onPrimary,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  if (delta != null) ...[
-                    const SizedBox(width: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 2,
-                      ),
-                      decoration: BoxDecoration(
-                        color: colorScheme.onPrimary.withValues(alpha: 0.2),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        '${t.vs_yesterday} $arrow${delta.round().abs()}°',
-                        style: TextStyle(
-                          color: colorScheme.onPrimary,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ),
-                  ],
-                ],
-              ),
-            ],
-          ),
+      child: CustomPaint(
+        size: Size(count * _slotWidth, _chartHeight),
+        painter: HourlyTemperaturePainter(
+          temperatures: windowTemps,
+          previousDay: windowPast,
+          labels: windowLabels,
+          slotWidth: _slotWidth,
+          selectedIndex: selectedLocal,
+          lineColor: colorScheme.primary,
+          previousColor: colorScheme.primary.withValues(alpha: 0.4),
+          fillColor: colorScheme.primary.withValues(alpha: 0.14),
+          ringColor: theme.cardTheme.color ?? colorScheme.surface,
+          labelColor: colorScheme.primary,
         ),
       ),
     );
@@ -596,10 +502,22 @@ class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
     List<_ConditionSpan> spans,
   ) {
     final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
     return SizedBox(
       height: _conditionHeight,
       child: Stack(
         children: [
+          for (final span in spans)
+            if (span.start > 0)
+              Positioned(
+                left: span.start * _slotWidth,
+                top: 0,
+                bottom: 0,
+                width: 1,
+                child: ColoredBox(
+                  color: colorScheme.outlineVariant.withValues(alpha: 0.5),
+                ),
+              ),
           for (final span in spans)
             Positioned(
               left: span.start * _slotWidth,
@@ -609,18 +527,11 @@ class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (span.code != null &&
-                      statusWeather.getImageNowDaily(span.code).isNotEmpty)
-                    Image.asset(
-                      statusWeather.getImageNowDaily(span.code),
-                      width: 20,
-                      height: 20,
-                    ),
                   if (span.length * _slotWidth >= 40)
                     Text(
                       statusWeather.getText(span.code),
                       style: textTheme.bodySmall?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        color: colorScheme.onSurfaceVariant,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -671,160 +582,75 @@ class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
     return spans;
   }
 
-  // --- bar & level rows -----------------------------------------------------
+  // --- badge rows -----------------------------------------------------------
 
-  Color _aqiColor(WeatherCard card, int abs, String standard) {
-    final value = AqiHelper.aqiAt(card, abs, standard);
-    if (value == null) {
-      return Theme.of(context).colorScheme.surfaceContainerHighest;
-    }
-    return AqiHelper.severityColor(standard, value).withValues(alpha: 0.85);
-  }
+  /// Joins a metric value with its severity label; Chinese uses no space.
+  String _joinValueLabel(String value, String label, String languageCode) =>
+      languageCode == 'zh' ? '$value$label' : '$value $label';
 
-  Widget _buildBarRow(
+  Widget _buildBadgeRow(
     BuildContext context,
+    int start,
     int count,
-    int selectedLocal,
-    Color Function(int abs) colorAt,
-    String? Function(int abs) valueAt,
+    int selected,
     String semanticLabel,
+    _BadgeData? Function(int abs) dataAt,
   ) {
-    final start = _windowStart;
-    final selectedValue = valueAt(start + selectedLocal);
     final row = SizedBox(
-      height: _barRowHeight,
+      height: _badgeRowHeight,
       child: Row(
         children: [
-          for (var i = 0; i < count; i++)
-            Container(
-              width: _slotWidth - 3,
-              margin: const EdgeInsets.symmetric(horizontal: 1.5),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: colorAt(start + i),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: i == selectedLocal && valueAt(start + i) != null
-                  ? Text(
-                      valueAt(start + i)!,
-                      style: TextStyle(
-                        color:
-                            ThemeData.estimateBrightnessForColor(
-                                  colorAt(start + i),
-                                ) ==
-                                Brightness.dark
-                            ? Colors.white
-                            : Colors.black87,
-                        fontSize: 11,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    )
-                  : null,
-            ),
+          for (var i = 0; i < count; i++) _badge(context, dataAt(start + i)),
         ],
       ),
     );
     return Semantics(
       label: semanticLabel,
-      value: selectedValue,
+      value: dataAt(selected)?.text,
       child: ExcludeSemantics(child: row),
     );
   }
 
-  Widget _buildLevelRow(
-    BuildContext context,
-    Translations t,
-    List<_LevelSegment> segments, {
-    required bool withArrow,
-  }) {
+  Widget _badge(BuildContext context, _BadgeData? data) {
     final colorScheme = Theme.of(context).colorScheme;
-    return SizedBox(
-      height: _windRowHeight,
-      child: Row(
-        children: [
-          for (final segment in segments)
-            Container(
-              width: segment.length * _slotWidth - 2,
-              margin: const EdgeInsets.symmetric(horizontal: 1),
-              decoration: BoxDecoration(
-                color: colorScheme.surfaceContainerHighest,
-                borderRadius: BorderRadius.circular(6),
-              ),
-              alignment: Alignment.center,
-              child: segment.level == null || segment.length * _slotWidth < 36
-                  ? null
-                  : FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        spacing: 2,
-                        children: [
-                          if (withArrow && segment.direction != null)
-                            Transform.rotate(
-                              angle: (segment.direction! + 180) * math.pi / 180,
-                              child: Icon(
-                                Icons.arrow_upward,
-                                size: 12,
-                                color: colorScheme.onSurfaceVariant,
-                              ),
-                            ),
-                          Text(
-                            t.wind_level.replaceFirst(
-                              '{n}',
-                              '${segment.level}',
-                            ),
-                            style: Theme.of(context).textTheme.labelSmall
-                                ?.copyWith(fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                    ),
-            ),
-        ],
+    final colored = data?.color != null;
+    final background = colored
+        ? data!.color!.withValues(alpha: 0.16)
+        : colorScheme.surfaceContainerHighest.withValues(
+            alpha: data == null ? 0.4 : 1,
+          );
+    final foreground = colored
+        ? Color.alphaBlend(
+            colorScheme.onSurface.withValues(alpha: 0.35),
+            data!.color!,
+          )
+        : colorScheme.onSurfaceVariant;
+    return Container(
+      width: _slotWidth - 6,
+      margin: const EdgeInsets.symmetric(horizontal: 3),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: background,
+        borderRadius: BorderRadius.circular(6),
       ),
+      child: data?.text == null
+          ? null
+          : FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                child: Text(
+                  data!.text!,
+                  maxLines: 1,
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                    color: foreground,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
     );
   }
-
-  List<_LevelSegment> _levelSegments(
-    List<double?>? values,
-    WeatherCard card,
-    int start,
-    int count, {
-    required bool splitOnDirection,
-  }) {
-    final segments = <_LevelSegment>[];
-    var spanStart = 0;
-    for (var i = 1; i <= count; i++) {
-      final sameLevel =
-          i < count &&
-          _levelKey(values, start + i) == _levelKey(values, start + spanStart);
-      final sameDirection =
-          !splitOnDirection ||
-          _safeAt(card.winddirection10M, start + i) ==
-              _safeAt(card.winddirection10M, start + spanStart);
-      final same = sameLevel && sameDirection;
-      if (!same) {
-        final value = _safeAt(values, start + spanStart);
-        segments.add(
-          _LevelSegment(
-            start: spanStart,
-            length: i - spanStart,
-            level: value == null ? null : BeaufortHelper.level(value),
-            direction: _safeAt(card.winddirection10M, start + spanStart),
-          ),
-        );
-        spanStart = i;
-      }
-    }
-    return segments;
-  }
-
-  int _levelKey(List<double?>? values, int abs) {
-    final value = _safeAt(values, abs);
-    return value == null ? -1 : BeaufortHelper.level(value);
-  }
-
-  int _windowStart = 0;
 
   // --- time axis ------------------------------------------------------------
 
@@ -836,7 +662,6 @@ class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
     int nowIndex,
     int start,
     int count,
-    String languageCode,
   ) {
     final textTheme = Theme.of(context).textTheme;
     return SizedBox(
@@ -847,56 +672,25 @@ class _HourlyForecastCardState extends ConsumerState<HourlyForecastCard> {
             SizedBox(
               width: _slotWidth,
               child: Center(
-                child: _axisLabel(
-                  context,
-                  t,
-                  statusData,
-                  times,
-                  nowIndex,
-                  start + i,
-                  languageCode,
-                  textTheme,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    start + i == nowIndex
+                        ? t.now
+                        : statusData.getTimeFormat(times[start + i]),
+                    style: start + i == nowIndex
+                        ? textTheme.labelMedium?.copyWith(
+                            fontWeight: FontWeight.w700,
+                          )
+                        : textTheme.labelMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.onSurfaceVariant,
+                          ),
+                  ),
                 ),
               ),
             ),
         ],
       ),
-    );
-  }
-
-  Widget _axisLabel(
-    BuildContext context,
-    Translations t,
-    StatusData statusData,
-    List<String> times,
-    int nowIndex,
-    int abs,
-    String languageCode,
-    TextTheme textTheme,
-  ) {
-    String? label;
-    var emphasized = false;
-    if (abs == nowIndex) {
-      label = t.now;
-      emphasized = true;
-    } else {
-      final date = TimeIndexHelper.parseForecastDateTime(times[abs]);
-      if (date.hour == 0) {
-        label = DateFormat('MMMd', languageCode).format(date);
-      } else if (date.hour % 4 == 0) {
-        label = statusData.getTimeFormat(times[abs]);
-      }
-    }
-    if (label == null) return const SizedBox.shrink();
-    return Text(
-      label,
-      style: emphasized
-          ? textTheme.labelMedium?.copyWith(fontWeight: FontWeight.w700)
-          : textTheme.labelMedium?.copyWith(
-              color: Theme.of(context).colorScheme.onSurfaceVariant,
-            ),
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
     );
   }
 
@@ -920,16 +714,9 @@ class _ConditionSpan {
   final int? maxProbability;
 }
 
-class _LevelSegment {
-  const _LevelSegment({
-    required this.start,
-    required this.length,
-    required this.level,
-    this.direction,
-  });
+class _BadgeData {
+  const _BadgeData({required this.text, this.color});
 
-  final int start;
-  final int length;
-  final int? level;
-  final int? direction;
+  final String? text;
+  final Color? color;
 }

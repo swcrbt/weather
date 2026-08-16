@@ -178,6 +178,25 @@ void main() {
     expect(find.text('Tomorrow'), findsOneWidget);
   });
 
+  testWidgets('HourlyForecastCard handles missing sun times', (tester) async {
+    final forecast = weeklyWeatherCard()
+      ..sunrise = []
+      ..sunset = [];
+
+    await pumpRainWidget(
+      tester,
+      HourlyForecastCard(
+        weatherCard: forecast,
+        selectedHour: 0,
+        onHourSelected: (_) {},
+      ),
+      bootstrap: ctx.bootstrap,
+    );
+
+    expect(find.byType(HourlyForecastCard), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('WeatherDetailView renders main sections', (tester) async {
     final weekly = weeklyWeatherCard();
     final scrollController = ItemScrollController();

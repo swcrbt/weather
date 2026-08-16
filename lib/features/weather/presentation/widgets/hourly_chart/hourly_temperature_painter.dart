@@ -4,20 +4,22 @@ import 'package:flutter/material.dart';
 
 /// Paints the current and previous-day temperature curves of the hourly chart.
 ///
-/// The current curve is a smoothed solid line with a gradient fill; the
-/// previous-day curve (temperature 24 h earlier per slot) is dashed. The
-/// selected slot gets a vertical indicator line and a dot on the curve.
+/// The current curve is a smoothed solid line with a gradient fill, a hollow
+/// dot per hour and a temperature label above each dot; the previous-day
+/// curve (temperature 24 h earlier per slot) is dashed. The selected slot
+/// gets a filled dot with a surface-colored ring.
 class HourlyTemperaturePainter extends CustomPainter {
   const HourlyTemperaturePainter({
     required this.temperatures,
     required this.previousDay,
+    required this.labels,
     required this.slotWidth,
     required this.selectedIndex,
     required this.lineColor,
     required this.previousColor,
     required this.fillColor,
     required this.ringColor,
-    required this.gridColor,
+    required this.labelColor,
   });
 
   /// Current temperature per visible hour slot (nulls break the curve).
@@ -25,15 +27,20 @@ class HourlyTemperaturePainter extends CustomPainter {
 
   /// Temperature 24 h earlier per visible hour slot.
   final List<double?> previousDay;
+
+  /// Formatted temperature label per visible hour slot (null hides it).
+  final List<String?> labels;
+
   final double slotWidth;
   final int selectedIndex;
   final Color lineColor;
   final Color previousColor;
   final Color fillColor;
   final Color ringColor;
-  final Color gridColor;
+  final Color labelColor;
 
-  static const double _verticalPadding = 12;
+  static const double _topPadding = 26;
+  static const double _bottomPadding = 10;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -45,17 +52,8 @@ class HourlyTemperaturePainter extends CustomPainter {
 
     double xAt(int i) => i * slotWidth + slotWidth / 2;
     double yAt(double v) =>
-        _verticalPadding +
-        (size.height - _verticalPadding * 2) * (1 - (v - min) / span);
-
-    final gridPaint = Paint()
-      ..color = gridColor
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1;
-    for (var i = 0; i <= temperatures.length; i++) {
-      final x = i * slotWidth;
-      canvas.drawLine(Offset(x, 0), Offset(x, size.height), gridPaint);
-    }
+        _topPadding +
+        (size.height - _topPadding - _bottomPadding) * (1 - (v - min) / span);
 
     // Previous-day dashed curve underneath the current one.
     final dashPaint = Paint()
@@ -83,29 +81,65 @@ class HourlyTemperaturePainter extends CustomPainter {
       canvas.drawPath(_curvePath(run, xAt, yAt), linePaint);
     }
 
-    _drawSelection(canvas, size, xAt, yAt);
+    _drawDots(canvas, xAt, yAt);
+    _drawLabels(canvas, xAt, yAt);
   }
 
-  /// Vertical indicator line plus a dot on the current curve.
-  void _drawSelection(
+  /// A dot per hour: hollow on the line, filled with a ring when selected.
+  void _drawDots(
     Canvas canvas,
-    Size size,
     double Function(int) xAt,
     double Function(double) yAt,
   ) {
-    if (selectedIndex < 0 || selectedIndex >= temperatures.length) return;
-    final x = xAt(selectedIndex);
-    canvas.drawLine(
-      Offset(x, 0),
-      Offset(x, size.height),
-      Paint()
-        ..color = lineColor.withValues(alpha: 0.45)
-        ..strokeWidth = 1.5,
-    );
-    final value = temperatures[selectedIndex];
-    if (value == null) return;
-    canvas.drawCircle(Offset(x, yAt(value)), 6, Paint()..color = ringColor);
-    canvas.drawCircle(Offset(x, yAt(value)), 3.5, Paint()..color = lineColor);
+    for (var i = 0; i < temperatures.length; i++) {
+      final value = temperatures[i];
+      if (value == null) continue;
+      final center = Offset(xAt(i), yAt(value));
+      if (i == selectedIndex) {
+        canvas.drawCircle(center, 6, Paint()..color = ringColor);
+        canvas.drawCircle(center, 3.5, Paint()..color = lineColor);
+      } else {
+        canvas.drawCircle(center, 4, Paint()..color = ringColor);
+        canvas.drawCircle(
+          center,
+          4,
+          Paint()
+            ..color = lineColor
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 2,
+        );
+      }
+    }
+  }
+
+  /// Temperature text centered above each dot.
+  void _drawLabels(
+    Canvas canvas,
+    double Function(int) xAt,
+    double Function(double) yAt,
+  ) {
+    for (var i = 0; i < temperatures.length; i++) {
+      final value = temperatures[i];
+      final label = i < labels.length ? labels[i] : null;
+      if (value == null || label == null) continue;
+      final painter = TextPainter(
+        text: TextSpan(
+          text: label,
+          style: TextStyle(
+            color: labelColor,
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        textDirection: TextDirection.ltr,
+      )..layout();
+      final x = xAt(i);
+      final y = yAt(value);
+      painter.paint(
+        canvas,
+        Offset(x - painter.width / 2, y - 10 - painter.height),
+      );
+    }
   }
 
   /// Min/max across both series, or null when no values exist.
@@ -203,9 +237,12 @@ class HourlyTemperaturePainter extends CustomPainter {
       oldDelegate.slotWidth != slotWidth ||
       oldDelegate.lineColor != lineColor ||
       oldDelegate.previousColor != previousColor ||
-      oldDelegate.gridColor != gridColor ||
+      oldDelegate.fillColor != fillColor ||
+      oldDelegate.ringColor != ringColor ||
+      oldDelegate.labelColor != labelColor ||
       !identical(oldDelegate.temperatures, temperatures) ||
-      !identical(oldDelegate.previousDay, previousDay);
+      !identical(oldDelegate.previousDay, previousDay) ||
+      !identical(oldDelegate.labels, labels);
 }
 
 /// Small solid or dashed line sample for the chart legend.
