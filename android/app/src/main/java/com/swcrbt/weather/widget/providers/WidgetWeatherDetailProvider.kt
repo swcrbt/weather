@@ -3,8 +3,14 @@ package com.swcrbt.weather.widget.providers
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.View
 import android.widget.RemoteViews
 import com.swcrbt.weather.MainActivity
@@ -61,7 +67,7 @@ class WidgetWeatherDetailProvider : WeatherHomeWidgetProvider() {
         views.setViewVisibility(R.id.widget_aqi_icon, if (aqi.severity <= 1) View.VISIBLE else View.GONE)
         views.setTextColor(
             R.id.widget_aqi,
-            android.graphics.Color.BLACK,
+            if (aqi.severity == 0) Color.WHITE else Color.BLACK,
         )
         views.setInt(
             R.id.widget_aqi_background,
@@ -124,15 +130,55 @@ class WidgetWeatherDetailProvider : WeatherHomeWidgetProvider() {
             views.setViewVisibility(iconIds[index], View.INVISIBLE)
             views.setViewVisibility(columnIds[index], if (day == null) View.INVISIBLE else View.VISIBLE)
             if (day == null) continue
-            views.setTextViewText(labelIds[index], "${day.label} ${day.date}")
+            views.setTextViewText(
+                labelIds[index],
+                styledPair(day.label, day.date, boldPrimary = true, separator = " "),
+            )
             views.setTextViewText(
                 tempIds[index],
-                "${temperatureWithDegreeOnly(day.tempMin)}  ${temperatureWithDegreeOnly(day.tempMax)}",
+                styledPair(
+                    temperatureWithDegreeOnly(day.tempMin),
+                    temperatureWithDegreeOnly(day.tempMax),
+                    boldPrimary = false,
+                    separator = "  ",
+                ),
             )
             if (!day.icon.isNullOrBlank()) {
                 views.setViewVisibility(iconIds[index], View.VISIBLE)
                 WidgetIconHelper.setIcon(views, iconIds[index], day.icon)
             }
+        }
+    }
+
+    private fun styledPair(
+        primary: String,
+        secondary: String,
+        boldPrimary: Boolean,
+        separator: String,
+    ): CharSequence {
+        if (secondary.isBlank()) return primary
+        val secondaryStart = primary.length + separator.length
+        return SpannableString("$primary$separator$secondary").apply {
+            setSpan(
+                ForegroundColorSpan(Color.WHITE),
+                0,
+                primary.length,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE,
+            )
+            if (boldPrimary) {
+                setSpan(
+                    StyleSpan(Typeface.BOLD),
+                    0,
+                    primary.length,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE,
+                )
+            }
+            setSpan(
+                ForegroundColorSpan(Color.argb(160, 255, 255, 255)),
+                secondaryStart,
+                length,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE,
+            )
         }
     }
 
