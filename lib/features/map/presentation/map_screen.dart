@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
@@ -16,13 +18,25 @@ import 'package:rain/data/models/db.dart';
 import 'package:rain/features/cities/presentation/view/place_info.dart';
 import 'package:rain/features/cities/presentation/widgets/place_action.dart';
 import 'package:rain/features/cities/presentation/widgets/weather_card_tile.dart';
+import 'package:rain/features/radar/application/radar_provider.dart';
+import 'package:rain/features/radar/domain/radar_timeline.dart';
+import 'package:rain/features/radar/precipitation_radar_map.dart';
 import 'package:rain/core/weather/status_data.dart';
 import 'package:rain/core/utils/navigation_helper.dart';
 import 'package:rain/core/utils/url_launcher_util.dart';
 
 /// Interactive map showing the main location and saved city markers.
 class MapPage extends ConsumerStatefulWidget {
-  const MapPage({super.key});
+  const MapPage({
+    super.key,
+    this.cacheStore,
+    this.renderTileLayers = true,
+    this.active = true,
+  });
+
+  final CacheStore? cacheStore;
+  final bool renderTileLayers;
+  final bool active;
 
   @override
   ConsumerState<MapPage> createState() => _MapPageState();
@@ -30,11 +44,11 @@ class MapPage extends ConsumerStatefulWidget {
 
 /// Renders the weather map, markers, search, and selected-card overlay.
 class _MapPageState extends ConsumerState<MapPage>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin, WidgetsBindingObserver {
   late final AnimatedMapController _animatedMapController =
       AnimatedMapController(vsync: this);
 
-  late final Future<CacheStore> _cacheStoreFuture = openMapTilesCacheStore();
+  late final Future<CacheStore> _cacheStoreFuture;
 
   final GlobalKey<ExpandableFabState> _fabKey = GlobalKey<ExpandableFabState>();
 
@@ -46,10 +60,22 @@ class _MapPageState extends ConsumerState<MapPage>
 
   final _focusNode = FocusNode();
   late final TextEditingController _controllerSearch = TextEditingController();
+  Timer? _radarPlaybackTimer;
+  Timer? _radarRefreshTimer;
+  bool _showRadar = false;
+  bool _isRadarPlaying = false;
+  bool _appResumed = true;
+  int? _selectedRadarTime;
+  RadarTimeline? _lastRadarTimeline;
 
   /// Initializes slide animation for the selected weather card overlay.
   @override
   void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    _cacheStoreFuture = widget.cacheStore == null
+        ? openMapTilesCacheStore()
+        : Future.value(widget.cacheStore!);
     _animationController = AnimationController(
       duration: AppConstants.animationDuration,
       vsync: this,
@@ -62,12 +88,35 @@ class _MapPageState extends ConsumerState<MapPage>
             curve: Curves.easeInOut,
           ),
         );
-    super.initState();
+    _radarRefreshTimer = Timer.periodic(const Duration(minutes: 10), (_) {
+      if (mounted && widget.active && _appResumed && _showRadar) {
+        ref.invalidate(radarTimelineProvider);
+      }
+    });
+  }
+
+  @override
+  void didUpdateWidget(covariant MapPage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.active && !widget.active) {
+      _radarPlaybackTimer?.cancel();
+      _radarPlaybackTimer = null;
+      _isRadarPlaying = false;
+    }
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    _appResumed = state == AppLifecycleState.resumed;
+    if (!_appResumed) _stopRadarPlayback();
   }
 
   /// Disposes map, search, and animation controllers.
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _radarPlaybackTimer?.cancel();
+    _radarRefreshTimer?.cancel();
     _animatedMapController.dispose();
     _controllerSearch.dispose();
     _focusNode.dispose();
@@ -85,6 +134,94 @@ class _MapPageState extends ConsumerState<MapPage>
         duration: AppConstants.longAnimation,
         curve: Curves.easeInOut,
       );
+
+  int _selectedRadarIndex(RadarTimeline timeline) {
+    final selectedTime = _selectedRadarTime;
+    if (selectedTime == null) return timeline.frames.length - 1;
+    final index = timeline.frames.indexWhere(
+      (frame) => frame.time == selectedTime,
+    );
+    return index < 0 ? timeline.frames.length - 1 : index;
+  }
+
+  void _stopRadarPlayback() {
+    _radarPlaybackTimer?.cancel();
+    _radarPlaybackTimer = null;
+    if (_isRadarPlaying && mounted) {
+      setState(() => _isRadarPlaying = false);
+    }
+  }
+
+  void _toggleRadarPlayback(RadarTimeline timeline) {
+    if (_isRadarPlaying) {
+      _stopRadarPlayback();
+      return;
+    }
+    if (timeline.frames.length < 2) return;
+
+    setState(() => _isRadarPlaying = true);
+    _radarPlaybackTimer = Timer.periodic(const Duration(milliseconds: 850), (
+      _,
+    ) {
+      if (!mounted || !widget.active || !_appResumed || !_showRadar) {
+        _stopRadarPlayback();
+        return;
+      }
+      final latestTimeline = ref.read(radarTimelineProvider).asData?.value;
+      if (latestTimeline == null || latestTimeline.frames.length < 2) {
+        _stopRadarPlayback();
+        return;
+      }
+      final current = _selectedRadarIndex(latestTimeline);
+      final next = (current + 1) % latestTimeline.frames.length;
+      setState(() => _selectedRadarTime = latestTimeline.frames[next].time);
+    });
+  }
+
+  void _selectRadarFrame(RadarTimeline timeline, int index) {
+    _stopRadarPlayback();
+    final safeIndex = index.clamp(0, timeline.frames.length - 1);
+    setState(() => _selectedRadarTime = timeline.frames[safeIndex].time);
+  }
+
+  void _toggleRadarLayer() {
+    _radarPlaybackTimer?.cancel();
+    _radarPlaybackTimer = null;
+    setState(() {
+      _showRadar = !_showRadar;
+      _isRadarPlaying = false;
+      if (_showRadar) {
+        _isCardVisible = false;
+        _selectedWeatherCard = null;
+      }
+    });
+  }
+
+  Marker _buildRadarLocationMarker(LatLng point) => Marker(
+    point: point,
+    width: 34,
+    height: 34,
+    child: IgnorePointer(
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: const Color(0x332F80ED),
+          shape: BoxShape.circle,
+          border: Border.all(color: const Color(0x552F80ED)),
+        ),
+        child: Center(
+          child: Container(
+            width: 13,
+            height: 13,
+            decoration: BoxDecoration(
+              color: const Color(0xFF2F80ED),
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.white, width: 2),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
 
   /// Shows the weather card overlay for the tapped [weatherCard] marker.
   void _onMarkerTap(WeatherCard weatherCard) {
@@ -280,6 +417,16 @@ class _MapPageState extends ConsumerState<MapPage>
           ),
         );
     final settings = ref.watch(settingsProvider);
+    final radarState = _showRadar ? ref.watch(radarTimelineProvider) : null;
+    final freshRadarTimeline = radarState?.asData?.value;
+    if (freshRadarTimeline != null) _lastRadarTimeline = freshRadarTimeline;
+    final radarTimeline = _showRadar
+        ? freshRadarTimeline ?? _lastRadarTimeline
+        : null;
+    final radarError = radarState?.hasError == true ? radarState?.error : null;
+    final radarIndex = radarTimeline == null
+        ? 0
+        : _selectedRadarIndex(radarTimeline);
     final statusData = StatusData(settings: settings);
     final mainLocation = location;
 
@@ -312,6 +459,7 @@ class _MapPageState extends ConsumerState<MapPage>
                   backgroundColor: Theme.of(context).colorScheme.surface,
                   initialCenter: LatLng(lat, lon),
                   initialZoom: AppConstants.mapDefaultZoom,
+                  maxZoom: 18,
                   interactionOptions: const InteractionOptions(
                     flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
                   ),
@@ -334,94 +482,165 @@ class _MapPageState extends ConsumerState<MapPage>
                   ),
                 ),
                 children: [
-                  buildWeatherMapDarkModeFilter(
-                    isDark: Theme.of(context).brightness == Brightness.dark,
-                    child: _buildMapTileLayer(cacheStore),
-                  ),
-                  RichAttributionWidget(
-                    animationConfig: const ScaleRAWA(),
-                    alignment: AttributionAlignment.bottomLeft,
-                    attributions: [
-                      TextSourceAttribution(
-                        'OpenStreetMap contributors',
-                        onTap: () =>
-                            openUrl(AppConstants.openStreetMapCopyrightUrl),
-                      ),
-                    ],
-                  ),
-                  Consumer(
-                    builder: (context, ref, _) {
-                      final mainMarker = _buildMainLocationMarker(
-                        WeatherCard.fromMainAndLocation(
-                          mainWeather,
-                          mainLocation,
+                  if (widget.renderTileLayers)
+                    buildWeatherMapDarkModeFilter(
+                      isDark: Theme.of(context).brightness == Brightness.dark,
+                      child: _buildMapTileLayer(cacheStore),
+                    ),
+                  if (widget.renderTileLayers &&
+                      _showRadar &&
+                      radarTimeline != null)
+                    PrecipitationRadarLayer(
+                      timeline: radarTimeline,
+                      frame: radarTimeline.frames[radarIndex],
+                    ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: _showRadar ? 136 : 0),
+                    child: RichAttributionWidget(
+                      animationConfig: const ScaleRAWA(),
+                      alignment: AttributionAlignment.bottomLeft,
+                      attributions: [
+                        TextSourceAttribution(
+                          'OpenStreetMap contributors',
+                          onTap: () =>
+                              openUrl(AppConstants.openStreetMapCopyrightUrl),
                         ),
-                        hourOfDay,
-                        dayOfNow,
-                        statusData: statusData,
-                      );
-
-                      final cardMarkers = ref
-                          .watch(citiesNotifierProvider)
-                          .cards
-                          .map(
-                            (weatherCardList) => _buildCardMarker(
-                              weatherCardList,
-                              statusData: statusData,
+                        if (_showRadar)
+                          TextSourceAttribution(
+                            'RainViewer',
+                            onTap: () => openUrl(
+                              'https://www.rainviewer.com/api/weather-maps-api.html',
                             ),
-                          )
-                          .toList();
-
-                      return MarkerLayer(markers: [mainMarker, ...cardMarkers]);
-                    },
+                          ),
+                      ],
+                    ),
                   ),
-                  ExpandableFab(
-                    key: _fabKey,
-                    pos: ExpandableFabPos.right,
-                    type: ExpandableFabType.up,
-                    distance: 70,
-                    openButtonBuilder: RotateFloatingActionButtonBuilder(
-                      child: const Icon(IconsaxPlusLinear.menu),
-                      fabSize: ExpandableFabSize.regular,
+                  if (_showRadar)
+                    MarkerLayer(
+                      markers: [_buildRadarLocationMarker(LatLng(lat, lon))],
+                    )
+                  else
+                    Consumer(
+                      builder: (context, ref, _) {
+                        final mainMarker = _buildMainLocationMarker(
+                          WeatherCard.fromMainAndLocation(
+                            mainWeather,
+                            mainLocation,
+                          ),
+                          hourOfDay,
+                          dayOfNow,
+                          statusData: statusData,
+                        );
+
+                        final cardMarkers = ref
+                            .watch(citiesNotifierProvider)
+                            .cards
+                            .map(
+                              (weatherCardList) => _buildCardMarker(
+                                weatherCardList,
+                                statusData: statusData,
+                              ),
+                            )
+                            .toList();
+
+                        return MarkerLayer(
+                          markers: [mainMarker, ...cardMarkers],
+                        );
+                      },
                     ),
-                    closeButtonBuilder: DefaultFloatingActionButtonBuilder(
-                      child: const Icon(Icons.close),
-                      fabSize: ExpandableFabSize.regular,
-                    ),
-                    children: [
-                      FloatingActionButton(
+                  if (_showRadar)
+                    Positioned(
+                      right: 16,
+                      bottom: 148,
+                      child: FloatingActionButton.small(
                         heroTag: null,
-                        child: const Icon(IconsaxPlusLinear.home_2),
                         onPressed: () => _resetMapOrientation(
                           center: LatLng(lat, lon),
                           zoom: AppConstants.mapDefaultZoom,
                         ),
+                        child: const Icon(IconsaxPlusLinear.gps),
                       ),
-                      FloatingActionButton(
-                        heroTag: null,
-                        child: const Icon(IconsaxPlusLinear.search_zoom_out_1),
-                        onPressed: () => _animatedMapController.animatedZoomOut(
-                          customId: _useTransformerId,
+                    )
+                  else
+                    ExpandableFab(
+                      key: _fabKey,
+                      pos: ExpandableFabPos.right,
+                      type: ExpandableFabType.up,
+                      distance: 70,
+                      openButtonBuilder: RotateFloatingActionButtonBuilder(
+                        child: const Icon(IconsaxPlusLinear.menu),
+                        fabSize: ExpandableFabSize.regular,
+                      ),
+                      closeButtonBuilder: DefaultFloatingActionButtonBuilder(
+                        child: const Icon(Icons.close),
+                        fabSize: ExpandableFabSize.regular,
+                      ),
+                      children: [
+                        FloatingActionButton(
+                          heroTag: null,
+                          child: const Icon(IconsaxPlusLinear.home_2),
+                          onPressed: () => _resetMapOrientation(
+                            center: LatLng(lat, lon),
+                            zoom: AppConstants.mapDefaultZoom,
+                          ),
                         ),
-                      ),
-                      FloatingActionButton(
-                        heroTag: null,
-                        child: const Icon(IconsaxPlusLinear.search_zoom_in),
-                        onPressed: () => _animatedMapController.animatedZoomIn(
-                          customId: _useTransformerId,
+                        FloatingActionButton(
+                          heroTag: null,
+                          child: const Icon(
+                            IconsaxPlusLinear.search_zoom_out_1,
+                          ),
+                          onPressed: () => _animatedMapController
+                              .animatedZoomOut(customId: _useTransformerId),
                         ),
-                      ),
-                    ],
-                  ),
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: _buildWeatherCard(),
-                  ),
+                        FloatingActionButton(
+                          heroTag: null,
+                          child: const Icon(IconsaxPlusLinear.search_zoom_in),
+                          onPressed: () => _animatedMapController
+                              .animatedZoomIn(customId: _useTransformerId),
+                        ),
+                      ],
+                    ),
+                  if (!_showRadar)
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      child: _buildWeatherCard(),
+                    ),
                 ],
               ),
               _buildSearchField(),
+              Positioned(
+                top: 72,
+                right: 12,
+                child: RadarLayerButton(
+                  enabled: _showRadar,
+                  loading: _showRadar && (radarState?.isLoading ?? false),
+                  onPressed: _toggleRadarLayer,
+                ),
+              ),
+              if (_showRadar)
+                const Positioned(top: 72, left: 12, child: RadarLegend()),
+              if (_showRadar)
+                Positioned(
+                  left: 12,
+                  right: 12,
+                  bottom: 12,
+                  child: RadarTimelinePanel(
+                    timeline: radarTimeline,
+                    error: radarError,
+                    loading: radarState?.isLoading ?? false,
+                    selectedIndex: radarIndex,
+                    playing: _isRadarPlaying,
+                    onPlayPause: radarTimeline == null
+                        ? () {}
+                        : () => _toggleRadarPlayback(radarTimeline),
+                    onFrameSelected: radarTimeline == null
+                        ? (_) {}
+                        : (index) => _selectRadarFrame(radarTimeline, index),
+                    onRetry: () => ref.invalidate(radarTimelineProvider),
+                  ),
+                ),
             ],
           );
         },

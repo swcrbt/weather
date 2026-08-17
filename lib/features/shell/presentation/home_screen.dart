@@ -128,7 +128,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
   List<Widget> _pages(bool hideMap) => [
     const MainWeatherScreen(),
     const PlaceList(),
-    if (!hideMap) const MapPage(),
+    if (!hideMap) MapPage(active: tabIndex == 2),
     const SettingsPage(),
   ];
 
