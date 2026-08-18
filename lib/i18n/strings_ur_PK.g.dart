@@ -360,6 +360,15 @@ class TranslationsUrPk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => '24 گھنٹے پہلے کا درجہ حرارت';
 	@override String get vs_yesterday => 'کل کے مقابلے میں';
 	@override String get wind_level => 'سطح {n}';
+	@override String get rain_starts_in => 'بارش {minutes} منٹ میں شروع ہوگی';
+	@override String get rain_stops_in => 'بارش {minutes} منٹ میں رک جائے گی';
+	@override String get rain_changes_in => '{minutes} منٹ میں {from} سے {to} ہو جائے گی';
+	@override String get rain_starts_now => 'اب بارش شروع ہوگی';
+	@override String get rain_stops_now => 'اب بارش رک جائے گی';
+	@override String get rain_light => 'ہلکی بارش';
+	@override String get rain_moderate => 'درمیانی بارش';
+	@override String get rain_heavy => 'تیز بارش';
+	@override String get rain_torrential => 'موسلا دھار بارش';
 }
 
 /// The flat map containing all translations for locale <ur-PK>.
@@ -691,6 +700,15 @@ extension on TranslationsUrPk {
 			'temperature24h_ago' => '24 گھنٹے پہلے کا درجہ حرارت',
 			'vs_yesterday' => 'کل کے مقابلے میں',
 			'wind_level' => 'سطح {n}',
+			'rain_starts_in' => 'بارش {minutes} منٹ میں شروع ہوگی',
+			'rain_stops_in' => 'بارش {minutes} منٹ میں رک جائے گی',
+			'rain_changes_in' => '{minutes} منٹ میں {from} سے {to} ہو جائے گی',
+			'rain_starts_now' => 'اب بارش شروع ہوگی',
+			'rain_stops_now' => 'اب بارش رک جائے گی',
+			'rain_light' => 'ہلکی بارش',
+			'rain_moderate' => 'درمیانی بارش',
+			'rain_heavy' => 'تیز بارش',
+			'rain_torrential' => 'موسلا دھار بارش',
 			_ => null,
 		};
 	}

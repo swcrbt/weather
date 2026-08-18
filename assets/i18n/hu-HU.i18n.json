@@ -319,5 +319,14 @@
   "currentTemperature": "Jelenlegi hőmérséklet",
   "temperature24hAgo": "Hőmérséklet 24 órával ezelőtt",
   "vsYesterday": "tegnaphoz képest",
-  "windLevel": "{n}. szint"
+  "windLevel": "{n}. szint",
+  "rainStartsIn": "Az eső {minutes} perc múlva kezdődik",
+  "rainStopsIn": "Az eső {minutes} perc múlva eláll",
+  "rainChangesIn": "{minutes} perc múlva a(z) {from} {to} lesz",
+  "rainStartsNow": "Az eső most kezdődik",
+  "rainStopsNow": "Az eső most eláll",
+  "rainLight": "Gyenge eső",
+  "rainModerate": "Mérsékelt eső",
+  "rainHeavy": "Erős eső",
+  "rainTorrential": "Zuhogó eső"
 }

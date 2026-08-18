@@ -28,6 +28,19 @@ Map<String, dynamic> sampleWeatherJson() => {
     'precipitation_probability': [0, 0, 10],
     'shortwave_radiation': [480.0, 500.0, 520.0],
   },
+  'minutely_15': {
+    'time': [
+      '2026-06-05T12:00',
+      '2026-06-05T12:15',
+      '2026-06-05T12:30',
+      '2026-06-05T12:45',
+      '2026-06-05T13:00',
+    ],
+    'precipitation': [0.0, 0.6, 0.6, 0.1, 0.0],
+    'rain': [0.0, 0.6, 0.6, 0.1, 0.0],
+    'showers': [0.0, 0.0, 0.0, 0.0, 0.0],
+    'precipitation_probability': [0, 80, 80, 50, 10],
+  },
   'daily': {
     'time': ['2026-06-04', '2026-06-05', '2026-06-06'],
     'weathercode': [2, 0, 1],

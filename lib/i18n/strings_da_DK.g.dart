@@ -360,6 +360,15 @@ class TranslationsDaDk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'Temperatur for 24 timer siden';
 	@override String get vs_yesterday => 'i forhold til i går';
 	@override String get wind_level => 'Niveau {n}';
+	@override String get rain_starts_in => 'Regn starter om {minutes} min';
+	@override String get rain_stops_in => 'Regn stopper om {minutes} min';
+	@override String get rain_changes_in => 'Om {minutes} min ændres {from} til {to}';
+	@override String get rain_starts_now => 'Regn starter nu';
+	@override String get rain_stops_now => 'Regn stopper nu';
+	@override String get rain_light => 'Let regn';
+	@override String get rain_moderate => 'Moderat regn';
+	@override String get rain_heavy => 'Kraftig regn';
+	@override String get rain_torrential => 'Skybrud';
 }
 
 /// The flat map containing all translations for locale <da-DK>.
@@ -691,6 +700,15 @@ extension on TranslationsDaDk {
 			'temperature24h_ago' => 'Temperatur for 24 timer siden',
 			'vs_yesterday' => 'i forhold til i går',
 			'wind_level' => 'Niveau {n}',
+			'rain_starts_in' => 'Regn starter om {minutes} min',
+			'rain_stops_in' => 'Regn stopper om {minutes} min',
+			'rain_changes_in' => 'Om {minutes} min ændres {from} til {to}',
+			'rain_starts_now' => 'Regn starter nu',
+			'rain_stops_now' => 'Regn stopper nu',
+			'rain_light' => 'Let regn',
+			'rain_moderate' => 'Moderat regn',
+			'rain_heavy' => 'Kraftig regn',
+			'rain_torrential' => 'Skybrud',
 			_ => null,
 		};
 	}

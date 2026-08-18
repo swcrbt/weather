@@ -38,6 +38,30 @@ void main() {
       expect(cached.location?.address, 'Tverskaya Street 1, Moscow');
     });
 
+    test('persists 15-minute precipitation forecasts for widgets', () async {
+      final weather = sampleMainWeatherCache()
+        ..timeMinutely15 = ['2026-06-05T12:00', '2026-06-05T12:15']
+        ..precipitationMinutely15 = [0.0, 0.6]
+        ..rainMinutely15 = [0.0, 0.6]
+        ..showersMinutely15 = [0.0, 0.0]
+        ..precipitationProbabilityMinutely15 = [10, 80];
+
+      await repository.writeCache(weather, sampleLocationCache());
+      final cached = await repository.readCache();
+
+      expect(cached.weather?.timeMinutely15, weather.timeMinutely15);
+      expect(
+        cached.weather?.precipitationMinutely15,
+        weather.precipitationMinutely15,
+      );
+      expect(cached.weather?.rainMinutely15, weather.rainMinutely15);
+      expect(cached.weather?.showersMinutely15, weather.showersMinutely15);
+      expect(
+        cached.weather?.precipitationProbabilityMinutely15,
+        weather.precipitationProbabilityMinutely15,
+      );
+    });
+
     test('persists previous-day temperatures for the hourly chart', () async {
       final weather = sampleMainWeatherCache()
         ..timePast = ['2026-06-04T23:00']

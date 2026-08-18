@@ -319,5 +319,14 @@
   "currentTemperature": "현재 기온",
   "temperature24hAgo": "24시간 전 기온",
   "vsYesterday": "어제 대비",
-  "windLevel": "{n}단계"
+  "windLevel": "{n}단계",
+  "rainStartsIn": "{minutes}분 후 비가 시작됩니다",
+  "rainStopsIn": "{minutes}분 후 비가 그칩니다",
+  "rainChangesIn": "{minutes}분 후 {from}에서 {to}(으)로 바뀝니다",
+  "rainStartsNow": "곧 비가 시작됩니다",
+  "rainStopsNow": "곧 비가 그칩니다",
+  "rainLight": "약한 비",
+  "rainModerate": "보통 비",
+  "rainHeavy": "강한 비",
+  "rainTorrential": "폭우"
 }

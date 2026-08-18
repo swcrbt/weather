@@ -319,5 +319,14 @@
   "currentTemperature": "বৰ্তমান উষ্ণতা",
   "temperature24hAgo": "২৪ ঘণ্টা আগৰ উষ্ণতা",
   "vsYesterday": "কালিৰ তুলনাত",
-  "windLevel": "স্তৰ {n}"
+  "windLevel": "স্তৰ {n}",
+  "rainStartsIn": "{minutes} মিনিটৰ পিছত বৰষুণ আৰম্ভ হ'ব",
+  "rainStopsIn": "{minutes} মিনিটৰ পিছত বৰষুণ বন্ধ হ'ব",
+  "rainChangesIn": "{minutes} মিনিটৰ পিছত {from}ৰ পৰা {to}লৈ সলনি হ'ব",
+  "rainStartsNow": "এতিয়াই বৰষুণ আৰম্ভ হ'ব",
+  "rainStopsNow": "এতিয়াই বৰষুণ বন্ধ হ'ব",
+  "rainLight": "পাতল বৰষুণ",
+  "rainModerate": "মধ্যমীয়া বৰষুণ",
+  "rainHeavy": "ভাৰী বৰষুণ",
+  "rainTorrential": "মূষলধাৰ বৰষুণ"
 }

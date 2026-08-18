@@ -360,6 +360,15 @@ class TranslationsAsIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => '২৪ ঘণ্টা আগৰ উষ্ণতা';
 	@override String get vs_yesterday => 'কালিৰ তুলনাত';
 	@override String get wind_level => 'স্তৰ {n}';
+	@override String get rain_starts_in => '{minutes} মিনিটৰ পিছত বৰষুণ আৰম্ভ হ\'ব';
+	@override String get rain_stops_in => '{minutes} মিনিটৰ পিছত বৰষুণ বন্ধ হ\'ব';
+	@override String get rain_changes_in => '{minutes} মিনিটৰ পিছত {from}ৰ পৰা {to}লৈ সলনি হ\'ব';
+	@override String get rain_starts_now => 'এতিয়াই বৰষুণ আৰম্ভ হ\'ব';
+	@override String get rain_stops_now => 'এতিয়াই বৰষুণ বন্ধ হ\'ব';
+	@override String get rain_light => 'পাতল বৰষুণ';
+	@override String get rain_moderate => 'মধ্যমীয়া বৰষুণ';
+	@override String get rain_heavy => 'ভাৰী বৰষুণ';
+	@override String get rain_torrential => 'মূষলধাৰ বৰষুণ';
 }
 
 /// The flat map containing all translations for locale <as-IN>.
@@ -691,6 +700,15 @@ extension on TranslationsAsIn {
 			'temperature24h_ago' => '২৪ ঘণ্টা আগৰ উষ্ণতা',
 			'vs_yesterday' => 'কালিৰ তুলনাত',
 			'wind_level' => 'স্তৰ {n}',
+			'rain_starts_in' => '{minutes} মিনিটৰ পিছত বৰষুণ আৰম্ভ হ\'ব',
+			'rain_stops_in' => '{minutes} মিনিটৰ পিছত বৰষুণ বন্ধ হ\'ব',
+			'rain_changes_in' => '{minutes} মিনিটৰ পিছত {from}ৰ পৰা {to}লৈ সলনি হ\'ব',
+			'rain_starts_now' => 'এতিয়াই বৰষুণ আৰম্ভ হ\'ব',
+			'rain_stops_now' => 'এতিয়াই বৰষুণ বন্ধ হ\'ব',
+			'rain_light' => 'পাতল বৰষুণ',
+			'rain_moderate' => 'মধ্যমীয়া বৰষুণ',
+			'rain_heavy' => 'ভাৰী বৰষুণ',
+			'rain_torrential' => 'মূষলধাৰ বৰষুণ',
 			_ => null,
 		};
 	}

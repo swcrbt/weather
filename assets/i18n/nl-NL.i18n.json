@@ -319,5 +319,14 @@
   "currentTemperature": "Huidige temperatuur",
   "temperature24hAgo": "Temperatuur 24 uur geleden",
   "vsYesterday": "vs. gisteren",
-  "windLevel": "Niveau {n}"
+  "windLevel": "Niveau {n}",
+  "rainStartsIn": "Regen begint over {minutes} min",
+  "rainStopsIn": "Regen stopt over {minutes} min",
+  "rainChangesIn": "Over {minutes} min verandert {from} in {to}",
+  "rainStartsNow": "Regen begint nu",
+  "rainStopsNow": "Regen stopt nu",
+  "rainLight": "Lichte regen",
+  "rainModerate": "Matige regen",
+  "rainHeavy": "Zware regen",
+  "rainTorrential": "Stortregen"
 }

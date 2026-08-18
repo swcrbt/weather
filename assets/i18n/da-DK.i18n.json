@@ -319,5 +319,14 @@
   "currentTemperature": "Aktuel temperatur",
   "temperature24hAgo": "Temperatur for 24 timer siden",
   "vsYesterday": "i forhold til i går",
-  "windLevel": "Niveau {n}"
+  "windLevel": "Niveau {n}",
+  "rainStartsIn": "Regn starter om {minutes} min",
+  "rainStopsIn": "Regn stopper om {minutes} min",
+  "rainChangesIn": "Om {minutes} min ændres {from} til {to}",
+  "rainStartsNow": "Regn starter nu",
+  "rainStopsNow": "Regn stopper nu",
+  "rainLight": "Let regn",
+  "rainModerate": "Moderat regn",
+  "rainHeavy": "Kraftig regn",
+  "rainTorrential": "Skybrud"
 }

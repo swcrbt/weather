@@ -319,5 +319,14 @@
   "currentTemperature": "دمای فعلی",
   "temperature24hAgo": "دمای ۲۴ ساعت قبل",
   "vsYesterday": "در مقایسه با دیروز",
-  "windLevel": "سطح {n}"
+  "windLevel": "سطح {n}",
+  "rainStartsIn": "بارش تا {minutes} دقیقه دیگر شروع می‌شود",
+  "rainStopsIn": "بارش تا {minutes} دقیقه دیگر متوقف می‌شود",
+  "rainChangesIn": "تا {minutes} دقیقه دیگر {from} به {to} تبدیل می‌شود",
+  "rainStartsNow": "بارش اکنون شروع می‌شود",
+  "rainStopsNow": "بارش اکنون متوقف می‌شود",
+  "rainLight": "باران سبک",
+  "rainModerate": "باران متوسط",
+  "rainHeavy": "باران شدید",
+  "rainTorrential": "باران سیل‌آسا"
 }

@@ -360,6 +360,15 @@ class TranslationsCsCz extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'Teplota před 24 hodinami';
 	@override String get vs_yesterday => 'oproti včerejšku';
 	@override String get wind_level => 'Úroveň {n}';
+	@override String get rain_starts_in => 'Déšť začne za {minutes} min';
+	@override String get rain_stops_in => 'Déšť ustane za {minutes} min';
+	@override String get rain_changes_in => 'Za {minutes} min se {from} změní na {to}';
+	@override String get rain_starts_now => 'Déšť začne nyní';
+	@override String get rain_stops_now => 'Déšť nyní ustane';
+	@override String get rain_light => 'Slabý déšť';
+	@override String get rain_moderate => 'Mírný déšť';
+	@override String get rain_heavy => 'Silný déšť';
+	@override String get rain_torrential => 'Přívalový déšť';
 }
 
 /// The flat map containing all translations for locale <cs-CZ>.
@@ -691,6 +700,15 @@ extension on TranslationsCsCz {
 			'temperature24h_ago' => 'Teplota před 24 hodinami',
 			'vs_yesterday' => 'oproti včerejšku',
 			'wind_level' => 'Úroveň {n}',
+			'rain_starts_in' => 'Déšť začne za {minutes} min',
+			'rain_stops_in' => 'Déšť ustane za {minutes} min',
+			'rain_changes_in' => 'Za {minutes} min se {from} změní na {to}',
+			'rain_starts_now' => 'Déšť začne nyní',
+			'rain_stops_now' => 'Déšť nyní ustane',
+			'rain_light' => 'Slabý déšť',
+			'rain_moderate' => 'Mírný déšť',
+			'rain_heavy' => 'Silný déšť',
+			'rain_torrential' => 'Přívalový déšť',
 			_ => null,
 		};
 	}

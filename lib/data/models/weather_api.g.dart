@@ -10,6 +10,9 @@ _WeatherDataApi _$WeatherDataApiFromJson(Map<String, dynamic> json) =>
     _WeatherDataApi(
       hourly: Hourly.fromJson(json['hourly'] as Map<String, dynamic>),
       daily: Daily.fromJson(json['daily'] as Map<String, dynamic>),
+      minutely15: json['minutely_15'] == null
+          ? null
+          : Minutely15.fromJson(json['minutely_15'] as Map<String, dynamic>),
       timezone: json['timezone'] as String,
       utcOffsetSeconds: (json['utc_offset_seconds'] as num).toInt(),
     );
@@ -18,8 +21,35 @@ Map<String, dynamic> _$WeatherDataApiToJson(_WeatherDataApi instance) =>
     <String, dynamic>{
       'hourly': instance.hourly,
       'daily': instance.daily,
+      'minutely_15': instance.minutely15,
       'timezone': instance.timezone,
       'utc_offset_seconds': instance.utcOffsetSeconds,
+    };
+
+_Minutely15 _$Minutely15FromJson(Map<String, dynamic> json) => _Minutely15(
+  time: (json['time'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  precipitation: (json['precipitation'] as List<dynamic>?)
+      ?.map((e) => (e as num?)?.toDouble())
+      .toList(),
+  rain: (json['rain'] as List<dynamic>?)
+      ?.map((e) => (e as num?)?.toDouble())
+      .toList(),
+  showers: (json['showers'] as List<dynamic>?)
+      ?.map((e) => (e as num?)?.toDouble())
+      .toList(),
+  precipitationProbability:
+      (json['precipitation_probability'] as List<dynamic>?)
+          ?.map((e) => (e as num?)?.toInt())
+          .toList(),
+);
+
+Map<String, dynamic> _$Minutely15ToJson(_Minutely15 instance) =>
+    <String, dynamic>{
+      'time': instance.time,
+      'precipitation': instance.precipitation,
+      'rain': instance.rain,
+      'showers': instance.showers,
+      'precipitation_probability': instance.precipitationProbability,
     };
 
 _Hourly _$HourlyFromJson(Map<String, dynamic> json) => _Hourly(

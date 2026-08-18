@@ -360,6 +360,15 @@ class TranslationsRoRo extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'Temperatura de acum 24 de ore';
 	@override String get vs_yesterday => 'față de ieri';
 	@override String get wind_level => 'Nivel {n}';
+	@override String get rain_starts_in => 'Ploaia începe în {minutes} min';
+	@override String get rain_stops_in => 'Ploaia se oprește în {minutes} min';
+	@override String get rain_changes_in => 'În {minutes} min, {from} devine {to}';
+	@override String get rain_starts_now => 'Ploaia începe acum';
+	@override String get rain_stops_now => 'Ploaia se oprește acum';
+	@override String get rain_light => 'Ploaie ușoară';
+	@override String get rain_moderate => 'Ploaie moderată';
+	@override String get rain_heavy => 'Ploaie puternică';
+	@override String get rain_torrential => 'Ploaie torențială';
 }
 
 /// The flat map containing all translations for locale <ro-RO>.
@@ -691,6 +700,15 @@ extension on TranslationsRoRo {
 			'temperature24h_ago' => 'Temperatura de acum 24 de ore',
 			'vs_yesterday' => 'față de ieri',
 			'wind_level' => 'Nivel {n}',
+			'rain_starts_in' => 'Ploaia începe în {minutes} min',
+			'rain_stops_in' => 'Ploaia se oprește în {minutes} min',
+			'rain_changes_in' => 'În {minutes} min, {from} devine {to}',
+			'rain_starts_now' => 'Ploaia începe acum',
+			'rain_stops_now' => 'Ploaia se oprește acum',
+			'rain_light' => 'Ploaie ușoară',
+			'rain_moderate' => 'Ploaie moderată',
+			'rain_heavy' => 'Ploaie puternică',
+			'rain_torrential' => 'Ploaie torențială',
 			_ => null,
 		};
 	}

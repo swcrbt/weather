@@ -360,6 +360,15 @@ class TranslationsArSa extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'درجة الحرارة قبل 24 ساعة';
 	@override String get vs_yesterday => 'مقارنةً بالأمس';
 	@override String get wind_level => 'المستوى {n}';
+	@override String get rain_starts_in => 'يبدأ المطر بعد {minutes} دقيقة';
+	@override String get rain_stops_in => 'يتوقف المطر بعد {minutes} دقيقة';
+	@override String get rain_changes_in => 'يتغير المطر من {from} إلى {to} بعد {minutes} دقيقة';
+	@override String get rain_starts_now => 'سيبدأ المطر الآن';
+	@override String get rain_stops_now => 'سيتوقف المطر الآن';
+	@override String get rain_light => 'مطر خفيف';
+	@override String get rain_moderate => 'مطر متوسط';
+	@override String get rain_heavy => 'مطر غزير';
+	@override String get rain_torrential => 'أمطار غزيرة جدًا';
 }
 
 /// The flat map containing all translations for locale <ar-SA>.
@@ -691,6 +700,15 @@ extension on TranslationsArSa {
 			'temperature24h_ago' => 'درجة الحرارة قبل 24 ساعة',
 			'vs_yesterday' => 'مقارنةً بالأمس',
 			'wind_level' => 'المستوى {n}',
+			'rain_starts_in' => 'يبدأ المطر بعد {minutes} دقيقة',
+			'rain_stops_in' => 'يتوقف المطر بعد {minutes} دقيقة',
+			'rain_changes_in' => 'يتغير المطر من {from} إلى {to} بعد {minutes} دقيقة',
+			'rain_starts_now' => 'سيبدأ المطر الآن',
+			'rain_stops_now' => 'سيتوقف المطر الآن',
+			'rain_light' => 'مطر خفيف',
+			'rain_moderate' => 'مطر متوسط',
+			'rain_heavy' => 'مطر غزير',
+			'rain_torrential' => 'أمطار غزيرة جدًا',
 			_ => null,
 		};
 	}

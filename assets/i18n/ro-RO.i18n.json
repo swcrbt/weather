@@ -319,5 +319,14 @@
   "currentTemperature": "Temperatura actuală",
   "temperature24hAgo": "Temperatura de acum 24 de ore",
   "vsYesterday": "față de ieri",
-  "windLevel": "Nivel {n}"
+  "windLevel": "Nivel {n}",
+  "rainStartsIn": "Ploaia începe în {minutes} min",
+  "rainStopsIn": "Ploaia se oprește în {minutes} min",
+  "rainChangesIn": "În {minutes} min, {from} devine {to}",
+  "rainStartsNow": "Ploaia începe acum",
+  "rainStopsNow": "Ploaia se oprește acum",
+  "rainLight": "Ploaie ușoară",
+  "rainModerate": "Ploaie moderată",
+  "rainHeavy": "Ploaie puternică",
+  "rainTorrential": "Ploaie torențială"
 }

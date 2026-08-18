@@ -92,6 +92,33 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	/// en-US: 'Level {n}'
 	String get wind_level => 'Level {n}';
 
+	/// en-US: '{minutes} minutes until rain starts'
+	String get rain_starts_in => '{minutes} minutes until rain starts';
+
+	/// en-US: '{minutes} minutes until rain stops'
+	String get rain_stops_in => '{minutes} minutes until rain stops';
+
+	/// en-US: '{minutes} minutes until {from} changes to {to}'
+	String get rain_changes_in => '{minutes} minutes until {from} changes to {to}';
+
+	/// en-US: 'Rain starts now'
+	String get rain_starts_now => 'Rain starts now';
+
+	/// en-US: 'Rain stops now'
+	String get rain_stops_now => 'Rain stops now';
+
+	/// en-US: 'Light rain'
+	String get rain_light => 'Light rain';
+
+	/// en-US: 'Moderate rain'
+	String get rain_moderate => 'Moderate rain';
+
+	/// en-US: 'Heavy rain'
+	String get rain_heavy => 'Heavy rain';
+
+	/// en-US: 'Torrential rain'
+	String get rain_torrential => 'Torrential rain';
+
 	/// en-US: 'UV-index'
 	String get uv_index => 'UV-index';
 
@@ -1030,6 +1057,15 @@ extension on Translations {
 			'temperature24h_ago' => '24h ago temperature',
 			'vs_yesterday' => 'vs yesterday',
 			'wind_level' => 'Level {n}',
+			'rain_starts_in' => '{minutes} minutes until rain starts',
+			'rain_stops_in' => '{minutes} minutes until rain stops',
+			'rain_changes_in' => '{minutes} minutes until {from} changes to {to}',
+			'rain_starts_now' => 'Rain starts now',
+			'rain_stops_now' => 'Rain stops now',
+			'rain_light' => 'Light rain',
+			'rain_moderate' => 'Moderate rain',
+			'rain_heavy' => 'Heavy rain',
+			'rain_torrential' => 'Torrential rain',
 			'uv_index' => 'UV-index',
 			'clear_sky' => 'Clear sky',
 			'k_24' => '24-hour',

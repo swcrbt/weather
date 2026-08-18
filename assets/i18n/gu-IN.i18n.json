@@ -319,5 +319,14 @@
   "currentTemperature": "વર્તમાન તાપમાન",
   "temperature24hAgo": "24 કલાક પહેલાંનું તાપમાન",
   "vsYesterday": "ગઈકાલની સરખામણીમાં",
-  "windLevel": "સ્તર {n}"
+  "windLevel": "સ્તર {n}",
+  "rainStartsIn": "{minutes} મિનિટમાં વરસાદ શરૂ થશે",
+  "rainStopsIn": "{minutes} મિનિટમાં વરસાદ બંધ થશે",
+  "rainChangesIn": "{minutes} મિનિટમાં {from} થી {to} થશે",
+  "rainStartsNow": "હવે વરસાદ શરૂ થશે",
+  "rainStopsNow": "હવે વરસાદ બંધ થશે",
+  "rainLight": "હળવો વરસાદ",
+  "rainModerate": "મધ્યમ વરસાદ",
+  "rainHeavy": "ભારે વરસાદ",
+  "rainTorrential": "મુશળધાર વરસાદ"
 }

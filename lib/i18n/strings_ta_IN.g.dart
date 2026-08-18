@@ -360,6 +360,15 @@ class TranslationsTaIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => '24 மணி நேரத்திற்கு முன் வெப்பநிலை';
 	@override String get vs_yesterday => 'நேற்றுடன் ஒப்பிடுகையில்';
 	@override String get wind_level => '{n} நிலை';
+	@override String get rain_starts_in => '{minutes} நிமிடங்களில் மழை தொடங்கும்';
+	@override String get rain_stops_in => '{minutes} நிமிடங்களில் மழை நிற்கும்';
+	@override String get rain_changes_in => '{minutes} நிமிடங்களில் {from} {to} ஆக மாறும்';
+	@override String get rain_starts_now => 'இப்போது மழை தொடங்கும்';
+	@override String get rain_stops_now => 'இப்போது மழை நிற்கும்';
+	@override String get rain_light => 'லேசான மழை';
+	@override String get rain_moderate => 'மிதமான மழை';
+	@override String get rain_heavy => 'கனமழை';
+	@override String get rain_torrential => 'பலத்த மழை';
 }
 
 /// The flat map containing all translations for locale <ta-IN>.
@@ -691,6 +700,15 @@ extension on TranslationsTaIn {
 			'temperature24h_ago' => '24 மணி நேரத்திற்கு முன் வெப்பநிலை',
 			'vs_yesterday' => 'நேற்றுடன் ஒப்பிடுகையில்',
 			'wind_level' => '{n} நிலை',
+			'rain_starts_in' => '{minutes} நிமிடங்களில் மழை தொடங்கும்',
+			'rain_stops_in' => '{minutes} நிமிடங்களில் மழை நிற்கும்',
+			'rain_changes_in' => '{minutes} நிமிடங்களில் {from} {to} ஆக மாறும்',
+			'rain_starts_now' => 'இப்போது மழை தொடங்கும்',
+			'rain_stops_now' => 'இப்போது மழை நிற்கும்',
+			'rain_light' => 'லேசான மழை',
+			'rain_moderate' => 'மிதமான மழை',
+			'rain_heavy' => 'கனமழை',
+			'rain_torrential' => 'பலத்த மழை',
 			_ => null,
 		};
 	}

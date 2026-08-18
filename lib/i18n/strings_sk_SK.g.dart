@@ -360,6 +360,15 @@ class TranslationsSkSk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'Teplota pred 24 hodinami';
 	@override String get vs_yesterday => 'v porovnaní so včerajškom';
 	@override String get wind_level => 'Úroveň {n}';
+	@override String get rain_starts_in => 'Dážď začne o {minutes} min';
+	@override String get rain_stops_in => 'Dážď ustane o {minutes} min';
+	@override String get rain_changes_in => 'O {minutes} min sa {from} zmení na {to}';
+	@override String get rain_starts_now => 'Dážď začne teraz';
+	@override String get rain_stops_now => 'Dážď teraz ustane';
+	@override String get rain_light => 'Slabý dážď';
+	@override String get rain_moderate => 'Mierny dážď';
+	@override String get rain_heavy => 'Silný dážď';
+	@override String get rain_torrential => 'Lejak';
 }
 
 /// The flat map containing all translations for locale <sk-SK>.
@@ -691,6 +700,15 @@ extension on TranslationsSkSk {
 			'temperature24h_ago' => 'Teplota pred 24 hodinami',
 			'vs_yesterday' => 'v porovnaní so včerajškom',
 			'wind_level' => 'Úroveň {n}',
+			'rain_starts_in' => 'Dážď začne o {minutes} min',
+			'rain_stops_in' => 'Dážď ustane o {minutes} min',
+			'rain_changes_in' => 'O {minutes} min sa {from} zmení na {to}',
+			'rain_starts_now' => 'Dážď začne teraz',
+			'rain_stops_now' => 'Dážď teraz ustane',
+			'rain_light' => 'Slabý dážď',
+			'rain_moderate' => 'Mierny dážď',
+			'rain_heavy' => 'Silný dážď',
+			'rain_torrential' => 'Lejak',
 			_ => null,
 		};
 	}

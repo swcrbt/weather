@@ -360,6 +360,15 @@ class TranslationsMrIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => '24 तासांपूर्वीचे तापमान';
 	@override String get vs_yesterday => 'कालच्या तुलनेत';
 	@override String get wind_level => 'पातळी {n}';
+	@override String get rain_starts_in => '{minutes} मिनिटांत पाऊस सुरू होईल';
+	@override String get rain_stops_in => '{minutes} मिनिटांत पाऊस थांबेल';
+	@override String get rain_changes_in => '{minutes} मिनिटांत {from} चे {to} होईल';
+	@override String get rain_starts_now => 'आता पाऊस सुरू होईल';
+	@override String get rain_stops_now => 'आता पाऊस थांबेल';
+	@override String get rain_light => 'हलका पाऊस';
+	@override String get rain_moderate => 'मध्यम पाऊस';
+	@override String get rain_heavy => 'जोरदार पाऊस';
+	@override String get rain_torrential => 'मुसळधार पाऊस';
 }
 
 /// The flat map containing all translations for locale <mr-IN>.
@@ -691,6 +700,15 @@ extension on TranslationsMrIn {
 			'temperature24h_ago' => '24 तासांपूर्वीचे तापमान',
 			'vs_yesterday' => 'कालच्या तुलनेत',
 			'wind_level' => 'पातळी {n}',
+			'rain_starts_in' => '{minutes} मिनिटांत पाऊस सुरू होईल',
+			'rain_stops_in' => '{minutes} मिनिटांत पाऊस थांबेल',
+			'rain_changes_in' => '{minutes} मिनिटांत {from} चे {to} होईल',
+			'rain_starts_now' => 'आता पाऊस सुरू होईल',
+			'rain_stops_now' => 'आता पाऊस थांबेल',
+			'rain_light' => 'हलका पाऊस',
+			'rain_moderate' => 'मध्यम पाऊस',
+			'rain_heavy' => 'जोरदार पाऊस',
+			'rain_torrential' => 'मुसळधार पाऊस',
 			_ => null,
 		};
 	}

@@ -319,5 +319,14 @@
   "currentTemperature": "ਮੌਜੂਦਾ ਤਾਪਮਾਨ",
   "temperature24hAgo": "24 ਘੰਟੇ ਪਹਿਲਾਂ ਦਾ ਤਾਪਮਾਨ",
   "vsYesterday": "ਕੱਲ੍ਹ ਦੇ ਮੁਕਾਬਲੇ",
-  "windLevel": "ਪੱਧਰ {n}"
+  "windLevel": "ਪੱਧਰ {n}",
+  "rainStartsIn": "{minutes} ਮਿੰਟਾਂ ਵਿੱਚ ਮੀਂਹ ਸ਼ੁਰੂ ਹੋਵੇਗਾ",
+  "rainStopsIn": "{minutes} ਮਿੰਟਾਂ ਵਿੱਚ ਮੀਂਹ ਰੁਕ ਜਾਵੇਗਾ",
+  "rainChangesIn": "{minutes} ਮਿੰਟਾਂ ਵਿੱਚ {from} ਤੋਂ {to} ਹੋ ਜਾਵੇਗਾ",
+  "rainStartsNow": "ਹੁਣ ਮੀਂਹ ਸ਼ੁਰੂ ਹੋਵੇਗਾ",
+  "rainStopsNow": "ਹੁਣ ਮੀਂਹ ਰੁਕ ਜਾਵੇਗਾ",
+  "rainLight": "ਹਲਕਾ ਮੀਂਹ",
+  "rainModerate": "ਦਰਮਿਆਨਾ ਮੀਂਹ",
+  "rainHeavy": "ਤੇਜ਼ ਮੀਂਹ",
+  "rainTorrential": "ਮੋਹਲੇਧਾਰ ਮੀਂਹ"
 }

@@ -319,5 +319,14 @@
   "currentTemperature": "درجة الحرارة الحالية",
   "temperature24hAgo": "درجة الحرارة قبل 24 ساعة",
   "vsYesterday": "مقارنةً بالأمس",
-  "windLevel": "المستوى {n}"
+  "windLevel": "المستوى {n}",
+  "rainStartsIn": "يبدأ المطر بعد {minutes} دقيقة",
+  "rainStopsIn": "يتوقف المطر بعد {minutes} دقيقة",
+  "rainChangesIn": "يتغير المطر من {from} إلى {to} بعد {minutes} دقيقة",
+  "rainStartsNow": "سيبدأ المطر الآن",
+  "rainStopsNow": "سيتوقف المطر الآن",
+  "rainLight": "مطر خفيف",
+  "rainModerate": "مطر متوسط",
+  "rainHeavy": "مطر غزير",
+  "rainTorrential": "أمطار غزيرة جدًا"
 }

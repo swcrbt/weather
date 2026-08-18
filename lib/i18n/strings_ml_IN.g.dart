@@ -360,6 +360,15 @@ class TranslationsMlIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => '24 മണിക്കൂർ മുമ്പത്തെ താപനില';
 	@override String get vs_yesterday => 'ഇന്നലെയുമായി താരതമ്യം';
 	@override String get wind_level => 'നില {n}';
+	@override String get rain_starts_in => '{minutes} മിനിറ്റിനുള്ളിൽ മഴ തുടങ്ങും';
+	@override String get rain_stops_in => '{minutes} മിനിറ്റിനുള്ളിൽ മഴ നിൽക്കും';
+	@override String get rain_changes_in => '{minutes} മിനിറ്റിനുള്ളിൽ {from} {to} ആയി മാറും';
+	@override String get rain_starts_now => 'ഇപ്പോൾ മഴ തുടങ്ങും';
+	@override String get rain_stops_now => 'ഇപ്പോൾ മഴ നിൽക്കും';
+	@override String get rain_light => 'നേരിയ മഴ';
+	@override String get rain_moderate => 'മിതമായ മഴ';
+	@override String get rain_heavy => 'കനത്ത മഴ';
+	@override String get rain_torrential => 'കോരിച്ചൊരിയുന്ന മഴ';
 }
 
 /// The flat map containing all translations for locale <ml-IN>.
@@ -691,6 +700,15 @@ extension on TranslationsMlIn {
 			'temperature24h_ago' => '24 മണിക്കൂർ മുമ്പത്തെ താപനില',
 			'vs_yesterday' => 'ഇന്നലെയുമായി താരതമ്യം',
 			'wind_level' => 'നില {n}',
+			'rain_starts_in' => '{minutes} മിനിറ്റിനുള്ളിൽ മഴ തുടങ്ങും',
+			'rain_stops_in' => '{minutes} മിനിറ്റിനുള്ളിൽ മഴ നിൽക്കും',
+			'rain_changes_in' => '{minutes} മിനിറ്റിനുള്ളിൽ {from} {to} ആയി മാറും',
+			'rain_starts_now' => 'ഇപ്പോൾ മഴ തുടങ്ങും',
+			'rain_stops_now' => 'ഇപ്പോൾ മഴ നിൽക്കും',
+			'rain_light' => 'നേരിയ മഴ',
+			'rain_moderate' => 'മിതമായ മഴ',
+			'rain_heavy' => 'കനത്ത മഴ',
+			'rain_torrential' => 'കോരിച്ചൊരിയുന്ന മഴ',
 			_ => null,
 		};
 	}

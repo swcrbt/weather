@@ -10,6 +10,11 @@ WeatherDataApi _sampleApi() => WeatherDataApi(
     temperature2M: [20.0],
     relativeHumidity2M: [50],
   ),
+  minutely15: const Minutely15(
+    time: ['2026-06-05T12:00', '2026-06-05T12:15'],
+    precipitation: [0.0, 0.6],
+    rain: [0.0, 0.6],
+  ),
   daily: Daily(
     time: [DateTime(2026, 6, 5)],
     weatherCode: [0],
@@ -56,6 +61,8 @@ void main() {
       expect(cache.timeDaily, [DateTime(2026, 6, 5)]);
       expect(cache.timezone, 'Europe/Moscow');
       expect(cache.timestamp, isNotNull);
+      expect(cache.timeMinutely15, ['2026-06-05T12:00', '2026-06-05T12:15']);
+      expect(cache.precipitationMinutely15, [0.0, 0.6]);
     });
 
     test('splits past-day hours into temperature2MPast', () {

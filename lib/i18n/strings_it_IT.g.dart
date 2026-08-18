@@ -360,6 +360,15 @@ class TranslationsItIt extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'Temperatura di 24 ore fa';
 	@override String get vs_yesterday => 'rispetto a ieri';
 	@override String get wind_level => 'Livello {n}';
+	@override String get rain_starts_in => 'La pioggia inizia tra {minutes} min';
+	@override String get rain_stops_in => 'La pioggia termina tra {minutes} min';
+	@override String get rain_changes_in => 'Tra {minutes} min, {from} diventa {to}';
+	@override String get rain_starts_now => 'La pioggia inizia ora';
+	@override String get rain_stops_now => 'La pioggia termina ora';
+	@override String get rain_light => 'Pioggia leggera';
+	@override String get rain_moderate => 'Pioggia moderata';
+	@override String get rain_heavy => 'Pioggia intensa';
+	@override String get rain_torrential => 'Pioggia torrenziale';
 }
 
 /// The flat map containing all translations for locale <it-IT>.
@@ -691,6 +700,15 @@ extension on TranslationsItIt {
 			'temperature24h_ago' => 'Temperatura di 24 ore fa',
 			'vs_yesterday' => 'rispetto a ieri',
 			'wind_level' => 'Livello {n}',
+			'rain_starts_in' => 'La pioggia inizia tra {minutes} min',
+			'rain_stops_in' => 'La pioggia termina tra {minutes} min',
+			'rain_changes_in' => 'Tra {minutes} min, {from} diventa {to}',
+			'rain_starts_now' => 'La pioggia inizia ora',
+			'rain_stops_now' => 'La pioggia termina ora',
+			'rain_light' => 'Pioggia leggera',
+			'rain_moderate' => 'Pioggia moderata',
+			'rain_heavy' => 'Pioggia intensa',
+			'rain_torrential' => 'Pioggia torrenziale',
 			_ => null,
 		};
 	}

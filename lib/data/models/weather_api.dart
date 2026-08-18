@@ -9,6 +9,7 @@ abstract class WeatherDataApi with _$WeatherDataApi {
   const factory WeatherDataApi({
     required Hourly hourly,
     required Daily daily,
+    @JsonKey(name: 'minutely_15') Minutely15? minutely15,
     required String timezone,
     @JsonKey(name: 'utc_offset_seconds') required int utcOffsetSeconds,
   }) = _WeatherDataApi;
@@ -16,6 +17,23 @@ abstract class WeatherDataApi with _$WeatherDataApi {
   /// Deserializes a [WeatherDataApi] from a JSON map.
   factory WeatherDataApi.fromJson(Map<String, dynamic> json) =>
       _$WeatherDataApiFromJson(json);
+}
+
+/// 15-minute precipitation forecast variables returned by Open-Meteo.
+@freezed
+abstract class Minutely15 with _$Minutely15 {
+  const factory Minutely15({
+    List<String>? time,
+    List<double?>? precipitation,
+    List<double?>? rain,
+    List<double?>? showers,
+    @JsonKey(name: 'precipitation_probability')
+    List<int?>? precipitationProbability,
+  }) = _Minutely15;
+
+  /// Deserializes a 15-minute forecast from an Open-Meteo response.
+  factory Minutely15.fromJson(Map<String, dynamic> json) =>
+      _$Minutely15FromJson(json);
 }
 
 /// Hourly forecast variables returned by Open-Meteo.

@@ -360,6 +360,15 @@ class TranslationsDeDe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'Temperatur vor 24 Stunden';
 	@override String get vs_yesterday => 'im Vergleich zu gestern';
 	@override String get wind_level => 'Stufe {n}';
+	@override String get rain_starts_in => 'Regen beginnt in {minutes} Min.';
+	@override String get rain_stops_in => 'Regen endet in {minutes} Min.';
+	@override String get rain_changes_in => 'In {minutes} Min. wird {from} zu {to}';
+	@override String get rain_starts_now => 'Regen beginnt jetzt';
+	@override String get rain_stops_now => 'Regen endet jetzt';
+	@override String get rain_light => 'Leichter Regen';
+	@override String get rain_moderate => 'Mäßiger Regen';
+	@override String get rain_heavy => 'Starker Regen';
+	@override String get rain_torrential => 'Starkregen';
 }
 
 /// The flat map containing all translations for locale <de-DE>.
@@ -691,6 +700,15 @@ extension on TranslationsDeDe {
 			'temperature24h_ago' => 'Temperatur vor 24 Stunden',
 			'vs_yesterday' => 'im Vergleich zu gestern',
 			'wind_level' => 'Stufe {n}',
+			'rain_starts_in' => 'Regen beginnt in {minutes} Min.',
+			'rain_stops_in' => 'Regen endet in {minutes} Min.',
+			'rain_changes_in' => 'In {minutes} Min. wird {from} zu {to}',
+			'rain_starts_now' => 'Regen beginnt jetzt',
+			'rain_stops_now' => 'Regen endet jetzt',
+			'rain_light' => 'Leichter Regen',
+			'rain_moderate' => 'Mäßiger Regen',
+			'rain_heavy' => 'Starker Regen',
+			'rain_torrential' => 'Starkregen',
 			_ => null,
 		};
 	}

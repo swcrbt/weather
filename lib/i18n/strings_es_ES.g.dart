@@ -360,6 +360,15 @@ class TranslationsEsEs extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'Temperatura de hace 24 h';
 	@override String get vs_yesterday => 'frente a ayer';
 	@override String get wind_level => 'Nivel {n}';
+	@override String get rain_starts_in => 'La lluvia empieza en {minutes} min';
+	@override String get rain_stops_in => 'La lluvia termina en {minutes} min';
+	@override String get rain_changes_in => 'En {minutes} min, {from} cambia a {to}';
+	@override String get rain_starts_now => 'La lluvia empieza ahora';
+	@override String get rain_stops_now => 'La lluvia termina ahora';
+	@override String get rain_light => 'Lluvia ligera';
+	@override String get rain_moderate => 'Lluvia moderada';
+	@override String get rain_heavy => 'Lluvia intensa';
+	@override String get rain_torrential => 'Lluvia torrencial';
 }
 
 /// The flat map containing all translations for locale <es-ES>.
@@ -691,6 +700,15 @@ extension on TranslationsEsEs {
 			'temperature24h_ago' => 'Temperatura de hace 24 h',
 			'vs_yesterday' => 'frente a ayer',
 			'wind_level' => 'Nivel {n}',
+			'rain_starts_in' => 'La lluvia empieza en {minutes} min',
+			'rain_stops_in' => 'La lluvia termina en {minutes} min',
+			'rain_changes_in' => 'En {minutes} min, {from} cambia a {to}',
+			'rain_starts_now' => 'La lluvia empieza ahora',
+			'rain_stops_now' => 'La lluvia termina ahora',
+			'rain_light' => 'Lluvia ligera',
+			'rain_moderate' => 'Lluvia moderada',
+			'rain_heavy' => 'Lluvia intensa',
+			'rain_torrential' => 'Lluvia torrencial',
 			_ => null,
 		};
 	}

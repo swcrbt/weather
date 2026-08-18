@@ -360,6 +360,15 @@ class TranslationsOrIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => '24 ଘଣ୍ଟା ପୂର୍ବର ତାପମାତ୍ରା';
 	@override String get vs_yesterday => 'ଗତକାଲି ତୁଳନାରେ';
 	@override String get wind_level => 'ସ୍ତର {n}';
+	@override String get rain_starts_in => '{minutes} ମିନିଟ୍ ପରେ ବର୍ଷା ଆରମ୍ଭ ହେବ';
+	@override String get rain_stops_in => '{minutes} ମିନିଟ୍ ପରେ ବର୍ଷା ବନ୍ଦ ହେବ';
+	@override String get rain_changes_in => '{minutes} ମିନିଟ୍ ପରେ {from}ରୁ {to} ହେବ';
+	@override String get rain_starts_now => 'ଏବେ ବର୍ଷା ଆରମ୍ଭ ହେବ';
+	@override String get rain_stops_now => 'ଏବେ ବର୍ଷା ବନ୍ଦ ହେବ';
+	@override String get rain_light => 'ହାଲୁକା ବର୍ଷା';
+	@override String get rain_moderate => 'ମଧ୍ୟମ ବର୍ଷା';
+	@override String get rain_heavy => 'ପ୍ରବଳ ବର୍ଷା';
+	@override String get rain_torrential => 'ମୂଷଳଧାରା ବର୍ଷା';
 }
 
 /// The flat map containing all translations for locale <or-IN>.
@@ -691,6 +700,15 @@ extension on TranslationsOrIn {
 			'temperature24h_ago' => '24 ଘଣ୍ଟା ପୂର୍ବର ତାପମାତ୍ରା',
 			'vs_yesterday' => 'ଗତକାଲି ତୁଳନାରେ',
 			'wind_level' => 'ସ୍ତର {n}',
+			'rain_starts_in' => '{minutes} ମିନିଟ୍ ପରେ ବର୍ଷା ଆରମ୍ଭ ହେବ',
+			'rain_stops_in' => '{minutes} ମିନିଟ୍ ପରେ ବର୍ଷା ବନ୍ଦ ହେବ',
+			'rain_changes_in' => '{minutes} ମିନିଟ୍ ପରେ {from}ରୁ {to} ହେବ',
+			'rain_starts_now' => 'ଏବେ ବର୍ଷା ଆରମ୍ଭ ହେବ',
+			'rain_stops_now' => 'ଏବେ ବର୍ଷା ବନ୍ଦ ହେବ',
+			'rain_light' => 'ହାଲୁକା ବର୍ଷା',
+			'rain_moderate' => 'ମଧ୍ୟମ ବର୍ଷା',
+			'rain_heavy' => 'ପ୍ରବଳ ବର୍ଷା',
+			'rain_torrential' => 'ମୂଷଳଧାରା ବର୍ଷା',
 			_ => null,
 		};
 	}

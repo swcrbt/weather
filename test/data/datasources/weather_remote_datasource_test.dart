@@ -19,6 +19,44 @@ void main() {
       expect(cache.temperature2M, [20.0, 21.0]);
       expect(cache.europeanAqi, [28.0, 32.0]);
       expect(cache.pm25, [8.4, 9.1]);
+      expect(cache.timeMinutely15, hasLength(5));
+      expect(cache.precipitationMinutely15, [0.0, 0.6, 0.6, 0.1, 0.0]);
+    });
+
+    test('requests 15-minute data only for the main location', () async {
+      final uris = <Uri>[];
+      final dio = createFakeWeatherDio();
+      dio.interceptors.insert(
+        0,
+        InterceptorsWrapper(
+          onRequest: (options, handler) {
+            uris.add(options.uri);
+            handler.next(options);
+          },
+        ),
+      );
+      final selectiveDatasource = WeatherRemoteDatasource(
+        dio: dio,
+        dioLocation: dio,
+      );
+
+      await selectiveDatasource.fetchWeather(55.75, 37.62);
+      final mainRequest = uris.firstWhere(
+        (uri) => uri.host == 'api.open-meteo.com',
+      );
+      expect(mainRequest.queryParameters, contains('minutely_15'));
+
+      uris.clear();
+      await selectiveDatasource.fetchWeatherCard(
+        55.75,
+        37.62,
+        'Moscow',
+        'Moscow Oblast',
+      );
+      final cardRequest = uris.firstWhere(
+        (uri) => uri.host == 'api.open-meteo.com',
+      );
+      expect(cardRequest.queryParameters, isNot(contains('minutely_15')));
     });
 
     test('fetchWeather succeeds when air quality API fails', () async {
@@ -112,10 +150,7 @@ void main() {
         },
       });
 
-      expect(
-        result?.address,
-        '番禺区 广东省 广州市 亚运城·天成 亚运大道 1199号',
-      );
+      expect(result?.address, '番禺区 广东省 广州市 亚运城·天成 亚运大道 1199号');
     });
 
     test('parseNominatimLabels ignores malformed field types', () {

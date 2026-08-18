@@ -98,10 +98,7 @@ void main() {
         ),
       );
       expect(aqi['value'], weather.europeanAqi![expectedHour]!.round());
-      expect(
-        bundle['date'],
-        matches(RegExp(r'^\d{1,2}/\d{1,2}\s+\S+$')),
-      );
+      expect(bundle['date'], matches(RegExp(r'^\d{1,2}/\d{1,2}\s+\S+$')));
       expect(bundle['calendarDate'], matches(RegExp(r'^\d{1,2}/\d{1,2}$')));
       expect(bundle['dateEpochMillis'], isA<int>());
       expect(bundle['timeZoneId'], weather.timezone);
@@ -127,6 +124,77 @@ void main() {
           ),
         ),
       );
+    });
+
+    test('uses 15-minute rain intensity changes in widget alerts', () async {
+      final previousLocale = LocaleSettings.currentLocale;
+      try {
+        await LocaleSettings.setLocale(AppLocale.enUs);
+        final weather = sampleMainWeatherCache()..timestamp = DateTime.now();
+        final wallNow = TimeIndexHelper.wallClockNow(
+          LocationClock.fromMainWeather(weather),
+        );
+        final start = DateTime(
+          wallNow.year,
+          wallNow.month,
+          wallNow.day,
+          wallNow.hour,
+          wallNow.minute - wallNow.minute % 15,
+        );
+        String iso(DateTime value) =>
+            '${value.year.toString().padLeft(4, '0')}-'
+            '${value.month.toString().padLeft(2, '0')}-'
+            '${value.day.toString().padLeft(2, '0')}T'
+            '${value.hour.toString().padLeft(2, '0')}:'
+            '${value.minute.toString().padLeft(2, '0')}';
+
+        weather
+          ..timeMinutely15 = List.generate(
+            3,
+            (index) => iso(start.add(Duration(minutes: index * 15))),
+          )
+          ..precipitationMinutely15 = [2.1, 0.2, 0.2]
+          ..rainMinutely15 = [2.1, 0.2, 0.2]
+          ..showersMinutely15 = [0.0, 0.0, 0.0];
+        await seedMainWeatherCache(
+          ctx.isarContext.isar,
+          weather: weather,
+          location: sampleLocationCache(),
+        );
+
+        await service.updateFromIsar(ctx.isarContext.isar);
+
+        final bundle =
+            jsonDecode(savedWidgetData['widget_bundle']! as String)
+                as Map<String, dynamic>;
+        expect(bundle['precipitationAlert'], contains('Heavy rain'));
+        expect(bundle['precipitationAlert'], contains('Light rain'));
+        expect(bundle['precipitationAlert'], isNot(contains('%')));
+      } finally {
+        await LocaleSettings.setLocale(previousLocale);
+      }
+    });
+
+    test('hides minute rain alerts when the forecast cache is stale', () async {
+      final weather = sampleMainWeatherCache()
+        ..timestamp = DateTime.now().subtract(const Duration(hours: 2))
+        ..timeMinutely15 = ['2026-06-05T12:00', '2026-06-05T12:15']
+        ..precipitationMinutely15 = [0.0, 0.2]
+        ..rainMinutely15 = [0.0, 0.2]
+        ..showersMinutely15 = [0.0, 0.0]
+        ..precipitationProbability = [0, 90];
+      await seedMainWeatherCache(
+        ctx.isarContext.isar,
+        weather: weather,
+        location: sampleLocationCache(),
+      );
+
+      await service.updateFromIsar(ctx.isarContext.isar);
+
+      final bundle =
+          jsonDecode(savedWidgetData['widget_bundle']! as String)
+              as Map<String, dynamic>;
+      expect(bundle.containsKey('precipitationAlert'), isFalse);
     });
 
     test('widget location falls back to district and city', () async {

@@ -319,5 +319,14 @@
   "currentTemperature": "טמפרטורה נוכחית",
   "temperature24hAgo": "טמפרטורה לפני 24 שעות",
   "vsYesterday": "לעומת אתמול",
-  "windLevel": "רמה {n}"
+  "windLevel": "רמה {n}",
+  "rainStartsIn": "הגשם יתחיל בעוד {minutes} דקות",
+  "rainStopsIn": "הגשם ייפסק בעוד {minutes} דקות",
+  "rainChangesIn": "בעוד {minutes} דקות {from} יהפוך ל־{to}",
+  "rainStartsNow": "הגשם מתחיל עכשיו",
+  "rainStopsNow": "הגשם נפסק עכשיו",
+  "rainLight": "גשם קל",
+  "rainModerate": "גשם בינוני",
+  "rainHeavy": "גשם כבד",
+  "rainTorrential": "גשם שוטף"
 }

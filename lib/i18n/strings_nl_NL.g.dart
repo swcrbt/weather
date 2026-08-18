@@ -360,6 +360,15 @@ class TranslationsNlNl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'Temperatuur 24 uur geleden';
 	@override String get vs_yesterday => 'vs. gisteren';
 	@override String get wind_level => 'Niveau {n}';
+	@override String get rain_starts_in => 'Regen begint over {minutes} min';
+	@override String get rain_stops_in => 'Regen stopt over {minutes} min';
+	@override String get rain_changes_in => 'Over {minutes} min verandert {from} in {to}';
+	@override String get rain_starts_now => 'Regen begint nu';
+	@override String get rain_stops_now => 'Regen stopt nu';
+	@override String get rain_light => 'Lichte regen';
+	@override String get rain_moderate => 'Matige regen';
+	@override String get rain_heavy => 'Zware regen';
+	@override String get rain_torrential => 'Stortregen';
 }
 
 /// The flat map containing all translations for locale <nl-NL>.
@@ -691,6 +700,15 @@ extension on TranslationsNlNl {
 			'temperature24h_ago' => 'Temperatuur 24 uur geleden',
 			'vs_yesterday' => 'vs. gisteren',
 			'wind_level' => 'Niveau {n}',
+			'rain_starts_in' => 'Regen begint over {minutes} min',
+			'rain_stops_in' => 'Regen stopt over {minutes} min',
+			'rain_changes_in' => 'Over {minutes} min verandert {from} in {to}',
+			'rain_starts_now' => 'Regen begint nu',
+			'rain_stops_now' => 'Regen stopt nu',
+			'rain_light' => 'Lichte regen',
+			'rain_moderate' => 'Matige regen',
+			'rain_heavy' => 'Zware regen',
+			'rain_torrential' => 'Stortregen',
 			_ => null,
 		};
 	}

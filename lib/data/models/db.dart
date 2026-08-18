@@ -72,6 +72,13 @@ class MainWeatherCache {
   List<int?>? precipitationProbability;
   List<double?>? shortwaveRadiation;
 
+  /// 15-minute precipitation forecast used by compact surfaces such as widgets.
+  List<String>? timeMinutely15;
+  List<double?>? precipitationMinutely15;
+  List<double?>? rainMinutely15;
+  List<double?>? showersMinutely15;
+  List<int?>? precipitationProbabilityMinutely15;
+
   /// Hourly timestamps and temperatures preceding the normalized forecast.
   List<String>? timePast;
   List<double?>? temperature2MPast;
@@ -126,6 +133,11 @@ class MainWeatherCache {
     this.dewpoint2M,
     this.precipitationProbability,
     this.shortwaveRadiation,
+    this.timeMinutely15,
+    this.precipitationMinutely15,
+    this.rainMinutely15,
+    this.showersMinutely15,
+    this.precipitationProbabilityMinutely15,
     this.timePast,
     this.temperature2MPast,
     this.europeanAqi,
@@ -178,6 +190,11 @@ class MainWeatherCache {
     'dewpoint2M': dewpoint2M,
     'precipitationProbability': precipitationProbability,
     'shortwaveRadiation': shortwaveRadiation,
+    'timeMinutely15': timeMinutely15,
+    'precipitationMinutely15': precipitationMinutely15,
+    'rainMinutely15': rainMinutely15,
+    'showersMinutely15': showersMinutely15,
+    'precipitationProbabilityMinutely15': precipitationProbabilityMinutely15,
     'timePast': timePast,
     'temperature2MPast': temperature2MPast,
     'europeanAqi': europeanAqi,

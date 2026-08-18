@@ -319,5 +319,14 @@
   "currentTemperature": "მიმდინარე ტემპერატურა",
   "temperature24hAgo": "ტემპერატურა 24 საათის წინ",
   "vsYesterday": "გუშინდელთან შედარებით",
-  "windLevel": "დონე {n}"
+  "windLevel": "დონე {n}",
+  "rainStartsIn": "წვიმა დაიწყება {minutes} წუთში",
+  "rainStopsIn": "წვიმა შეწყდება {minutes} წუთში",
+  "rainChangesIn": "{minutes} წუთში {from} გახდება {to}",
+  "rainStartsNow": "წვიმა ახლა დაიწყება",
+  "rainStopsNow": "წვიმა ახლა შეწყდება",
+  "rainLight": "მსუბუქი წვიმა",
+  "rainModerate": "ზომიერი წვიმა",
+  "rainHeavy": "ძლიერი წვიმა",
+  "rainTorrential": "კოკისპირული წვიმა"
 }

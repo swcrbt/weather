@@ -360,6 +360,15 @@ class TranslationsPlPl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'Temperatura sprzed 24 godzin';
 	@override String get vs_yesterday => 'w porównaniu z wczoraj';
 	@override String get wind_level => 'Poziom {n}';
+	@override String get rain_starts_in => 'Deszcz zacznie się za {minutes} min';
+	@override String get rain_stops_in => 'Deszcz ustanie za {minutes} min';
+	@override String get rain_changes_in => 'Za {minutes} min {from} zmieni się w {to}';
+	@override String get rain_starts_now => 'Deszcz zacznie się teraz';
+	@override String get rain_stops_now => 'Deszcz ustanie teraz';
+	@override String get rain_light => 'Lekki deszcz';
+	@override String get rain_moderate => 'Umiarkowany deszcz';
+	@override String get rain_heavy => 'Silny deszcz';
+	@override String get rain_torrential => 'Ulewa';
 }
 
 /// The flat map containing all translations for locale <pl-PL>.
@@ -691,6 +700,15 @@ extension on TranslationsPlPl {
 			'temperature24h_ago' => 'Temperatura sprzed 24 godzin',
 			'vs_yesterday' => 'w porównaniu z wczoraj',
 			'wind_level' => 'Poziom {n}',
+			'rain_starts_in' => 'Deszcz zacznie się za {minutes} min',
+			'rain_stops_in' => 'Deszcz ustanie za {minutes} min',
+			'rain_changes_in' => 'Za {minutes} min {from} zmieni się w {to}',
+			'rain_starts_now' => 'Deszcz zacznie się teraz',
+			'rain_stops_now' => 'Deszcz ustanie teraz',
+			'rain_light' => 'Lekki deszcz',
+			'rain_moderate' => 'Umiarkowany deszcz',
+			'rain_heavy' => 'Silny deszcz',
+			'rain_torrential' => 'Ulewa',
 			_ => null,
 		};
 	}

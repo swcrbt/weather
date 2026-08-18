@@ -360,6 +360,15 @@ class TranslationsHuHu extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'Hőmérséklet 24 órával ezelőtt';
 	@override String get vs_yesterday => 'tegnaphoz képest';
 	@override String get wind_level => '{n}. szint';
+	@override String get rain_starts_in => 'Az eső {minutes} perc múlva kezdődik';
+	@override String get rain_stops_in => 'Az eső {minutes} perc múlva eláll';
+	@override String get rain_changes_in => '{minutes} perc múlva a(z) {from} {to} lesz';
+	@override String get rain_starts_now => 'Az eső most kezdődik';
+	@override String get rain_stops_now => 'Az eső most eláll';
+	@override String get rain_light => 'Gyenge eső';
+	@override String get rain_moderate => 'Mérsékelt eső';
+	@override String get rain_heavy => 'Erős eső';
+	@override String get rain_torrential => 'Zuhogó eső';
 }
 
 /// The flat map containing all translations for locale <hu-HU>.
@@ -691,6 +700,15 @@ extension on TranslationsHuHu {
 			'temperature24h_ago' => 'Hőmérséklet 24 órával ezelőtt',
 			'vs_yesterday' => 'tegnaphoz képest',
 			'wind_level' => '{n}. szint',
+			'rain_starts_in' => 'Az eső {minutes} perc múlva kezdődik',
+			'rain_stops_in' => 'Az eső {minutes} perc múlva eláll',
+			'rain_changes_in' => '{minutes} perc múlva a(z) {from} {to} lesz',
+			'rain_starts_now' => 'Az eső most kezdődik',
+			'rain_stops_now' => 'Az eső most eláll',
+			'rain_light' => 'Gyenge eső',
+			'rain_moderate' => 'Mérsékelt eső',
+			'rain_heavy' => 'Erős eső',
+			'rain_torrential' => 'Zuhogó eső',
 			_ => null,
 		};
 	}

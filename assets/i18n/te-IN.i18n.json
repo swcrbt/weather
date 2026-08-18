@@ -319,5 +319,14 @@
   "currentTemperature": "ప్రస్తుత ఉష్ణోగ్రత",
   "temperature24hAgo": "24 గంటల క్రితం ఉష్ణోగ్రత",
   "vsYesterday": "నిన్నతో పోలిస్తే",
-  "windLevel": "స్థాయి {n}"
+  "windLevel": "స్థాయి {n}",
+  "rainStartsIn": "{minutes} నిమిషాల్లో వర్షం ప్రారంభమవుతుంది",
+  "rainStopsIn": "{minutes} నిమిషాల్లో వర్షం ఆగిపోతుంది",
+  "rainChangesIn": "{minutes} నిమిషాల్లో {from} {to}గా మారుతుంది",
+  "rainStartsNow": "ఇప్పుడు వర్షం ప్రారంభమవుతుంది",
+  "rainStopsNow": "ఇప్పుడు వర్షం ఆగిపోతుంది",
+  "rainLight": "తేలికపాటి వర్షం",
+  "rainModerate": "మోస్తరు వర్షం",
+  "rainHeavy": "భారీ వర్షం",
+  "rainTorrential": "కుండపోత వర్షం"
 }

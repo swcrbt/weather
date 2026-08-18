@@ -360,6 +360,15 @@ class TranslationsElGr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'Θερμοκρασία πριν από 24 ώρες';
 	@override String get vs_yesterday => 'σε σχέση με χθες';
 	@override String get wind_level => 'Επίπεδο {n}';
+	@override String get rain_starts_in => 'Η βροχή ξεκινά σε {minutes} λεπτά';
+	@override String get rain_stops_in => 'Η βροχή σταματά σε {minutes} λεπτά';
+	@override String get rain_changes_in => 'Σε {minutes} λεπτά το {from} γίνεται {to}';
+	@override String get rain_starts_now => 'Η βροχή ξεκινά τώρα';
+	@override String get rain_stops_now => 'Η βροχή σταματά τώρα';
+	@override String get rain_light => 'Ελαφριά βροχή';
+	@override String get rain_moderate => 'Μέτρια βροχή';
+	@override String get rain_heavy => 'Ισχυρή βροχή';
+	@override String get rain_torrential => 'Καταρρακτώδης βροχή';
 }
 
 /// The flat map containing all translations for locale <el-GR>.
@@ -691,6 +700,15 @@ extension on TranslationsElGr {
 			'temperature24h_ago' => 'Θερμοκρασία πριν από 24 ώρες',
 			'vs_yesterday' => 'σε σχέση με χθες',
 			'wind_level' => 'Επίπεδο {n}',
+			'rain_starts_in' => 'Η βροχή ξεκινά σε {minutes} λεπτά',
+			'rain_stops_in' => 'Η βροχή σταματά σε {minutes} λεπτά',
+			'rain_changes_in' => 'Σε {minutes} λεπτά το {from} γίνεται {to}',
+			'rain_starts_now' => 'Η βροχή ξεκινά τώρα',
+			'rain_stops_now' => 'Η βροχή σταματά τώρα',
+			'rain_light' => 'Ελαφριά βροχή',
+			'rain_moderate' => 'Μέτρια βροχή',
+			'rain_heavy' => 'Ισχυρή βροχή',
+			'rain_torrential' => 'Καταρρακτώδης βροχή',
 			_ => null,
 		};
 	}

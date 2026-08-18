@@ -8,6 +8,8 @@ void main() {
         time: ['2026-06-05T12:00'],
         temperature2M: [20.0],
         weathercode: [0],
+        timeMinutely15: ['2026-06-05T12:00'],
+        precipitationMinutely15: [0.6],
         timezone: 'UTC',
         timestamp: DateTime(2026, 6, 5, 12),
       );
@@ -16,6 +18,8 @@ void main() {
       expect(json['time'], ['2026-06-05T12:00']);
       expect(json['temperature2M'], [20.0]);
       expect(json['weathercode'], [0]);
+      expect(json['timeMinutely15'], ['2026-06-05T12:00']);
+      expect(json['precipitationMinutely15'], [0.6]);
       expect(json['timezone'], 'UTC');
     });
   });

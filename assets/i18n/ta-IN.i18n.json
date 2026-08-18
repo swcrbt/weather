@@ -319,5 +319,14 @@
   "currentTemperature": "தற்போதைய வெப்பநிலை",
   "temperature24hAgo": "24 மணி நேரத்திற்கு முன் வெப்பநிலை",
   "vsYesterday": "நேற்றுடன் ஒப்பிடுகையில்",
-  "windLevel": "{n} நிலை"
+  "windLevel": "{n} நிலை",
+  "rainStartsIn": "{minutes} நிமிடங்களில் மழை தொடங்கும்",
+  "rainStopsIn": "{minutes} நிமிடங்களில் மழை நிற்கும்",
+  "rainChangesIn": "{minutes} நிமிடங்களில் {from} {to} ஆக மாறும்",
+  "rainStartsNow": "இப்போது மழை தொடங்கும்",
+  "rainStopsNow": "இப்போது மழை நிற்கும்",
+  "rainLight": "லேசான மழை",
+  "rainModerate": "மிதமான மழை",
+  "rainHeavy": "கனமழை",
+  "rainTorrential": "பலத்த மழை"
 }

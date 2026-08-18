@@ -319,5 +319,14 @@
   "currentTemperature": "Τρέχουσα θερμοκρασία",
   "temperature24hAgo": "Θερμοκρασία πριν από 24 ώρες",
   "vsYesterday": "σε σχέση με χθες",
-  "windLevel": "Επίπεδο {n}"
+  "windLevel": "Επίπεδο {n}",
+  "rainStartsIn": "Η βροχή ξεκινά σε {minutes} λεπτά",
+  "rainStopsIn": "Η βροχή σταματά σε {minutes} λεπτά",
+  "rainChangesIn": "Σε {minutes} λεπτά το {from} γίνεται {to}",
+  "rainStartsNow": "Η βροχή ξεκινά τώρα",
+  "rainStopsNow": "Η βροχή σταματά τώρα",
+  "rainLight": "Ελαφριά βροχή",
+  "rainModerate": "Μέτρια βροχή",
+  "rainHeavy": "Ισχυρή βροχή",
+  "rainTorrential": "Καταρρακτώδης βροχή"
 }

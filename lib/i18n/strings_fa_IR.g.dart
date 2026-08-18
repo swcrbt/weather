@@ -360,6 +360,15 @@ class TranslationsFaIr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'دمای ۲۴ ساعت قبل';
 	@override String get vs_yesterday => 'در مقایسه با دیروز';
 	@override String get wind_level => 'سطح {n}';
+	@override String get rain_starts_in => 'بارش تا {minutes} دقیقه دیگر شروع می‌شود';
+	@override String get rain_stops_in => 'بارش تا {minutes} دقیقه دیگر متوقف می‌شود';
+	@override String get rain_changes_in => 'تا {minutes} دقیقه دیگر {from} به {to} تبدیل می‌شود';
+	@override String get rain_starts_now => 'بارش اکنون شروع می‌شود';
+	@override String get rain_stops_now => 'بارش اکنون متوقف می‌شود';
+	@override String get rain_light => 'باران سبک';
+	@override String get rain_moderate => 'باران متوسط';
+	@override String get rain_heavy => 'باران شدید';
+	@override String get rain_torrential => 'باران سیل‌آسا';
 }
 
 /// The flat map containing all translations for locale <fa-IR>.
@@ -691,6 +700,15 @@ extension on TranslationsFaIr {
 			'temperature24h_ago' => 'دمای ۲۴ ساعت قبل',
 			'vs_yesterday' => 'در مقایسه با دیروز',
 			'wind_level' => 'سطح {n}',
+			'rain_starts_in' => 'بارش تا {minutes} دقیقه دیگر شروع می‌شود',
+			'rain_stops_in' => 'بارش تا {minutes} دقیقه دیگر متوقف می‌شود',
+			'rain_changes_in' => 'تا {minutes} دقیقه دیگر {from} به {to} تبدیل می‌شود',
+			'rain_starts_now' => 'بارش اکنون شروع می‌شود',
+			'rain_stops_now' => 'بارش اکنون متوقف می‌شود',
+			'rain_light' => 'باران سبک',
+			'rain_moderate' => 'باران متوسط',
+			'rain_heavy' => 'باران شدید',
+			'rain_torrential' => 'باران سیل‌آسا',
 			_ => null,
 		};
 	}

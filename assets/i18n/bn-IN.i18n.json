@@ -319,5 +319,14 @@
   "currentTemperature": "বর্তমান তাপমাত্রা",
   "temperature24hAgo": "২৪ ঘণ্টা আগের তাপমাত্রা",
   "vsYesterday": "গতকালের তুলনায়",
-  "windLevel": "স্তর {n}"
+  "windLevel": "স্তর {n}",
+  "rainStartsIn": "{minutes} মিনিট পর বৃষ্টি শুরু হবে",
+  "rainStopsIn": "{minutes} মিনিট পর বৃষ্টি থামবে",
+  "rainChangesIn": "{minutes} মিনিট পর {from} থেকে {to} হবে",
+  "rainStartsNow": "এখনই বৃষ্টি শুরু হবে",
+  "rainStopsNow": "এখনই বৃষ্টি থামবে",
+  "rainLight": "হালকা বৃষ্টি",
+  "rainModerate": "মাঝারি বৃষ্টি",
+  "rainHeavy": "ভারী বৃষ্টি",
+  "rainTorrential": "মুষলধারে বৃষ্টি"
 }

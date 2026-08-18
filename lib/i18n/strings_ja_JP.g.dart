@@ -360,6 +360,15 @@ class TranslationsJaJp extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => '24時間前の気温';
 	@override String get vs_yesterday => '昨日との差';
 	@override String get wind_level => 'レベル {n}';
+	@override String get rain_starts_in => '{minutes}分後に雨が降り始めます';
+	@override String get rain_stops_in => '{minutes}分後に雨が止みます';
+	@override String get rain_changes_in => '{minutes}分後に{from}から{to}になります';
+	@override String get rain_starts_now => 'まもなく雨が降り始めます';
+	@override String get rain_stops_now => 'まもなく雨が止みます';
+	@override String get rain_light => '弱い雨';
+	@override String get rain_moderate => '中程度の雨';
+	@override String get rain_heavy => '強い雨';
+	@override String get rain_torrential => '豪雨';
 }
 
 /// The flat map containing all translations for locale <ja-JP>.
@@ -691,6 +700,15 @@ extension on TranslationsJaJp {
 			'temperature24h_ago' => '24時間前の気温',
 			'vs_yesterday' => '昨日との差',
 			'wind_level' => 'レベル {n}',
+			'rain_starts_in' => '{minutes}分後に雨が降り始めます',
+			'rain_stops_in' => '{minutes}分後に雨が止みます',
+			'rain_changes_in' => '{minutes}分後に{from}から{to}になります',
+			'rain_starts_now' => 'まもなく雨が降り始めます',
+			'rain_stops_now' => 'まもなく雨が止みます',
+			'rain_light' => '弱い雨',
+			'rain_moderate' => '中程度の雨',
+			'rain_heavy' => '強い雨',
+			'rain_torrential' => '豪雨',
 			_ => null,
 		};
 	}

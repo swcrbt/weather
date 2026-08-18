@@ -82,8 +82,11 @@ class AppConstants {
   /// How long forecast and city-card data stay fresh for foreground refreshes.
   static const Duration cacheExpiry = Duration(hours: 12);
 
+  /// Maximum age for minute-level rain alerts shown in home widgets.
+  static const Duration minutelyRainForecastFreshness = Duration(hours: 1);
+
   /// Incremented when forecast cache schema changes; triggers a re-save migration.
-  static const int weatherCacheSchemaVersion = 4;
+  static const int weatherCacheSchemaVersion = 5;
 
   /// Bumped when Android forecast notification channels change (requires reschedule).
   static const int notificationChannelSchemaVersion = 1;

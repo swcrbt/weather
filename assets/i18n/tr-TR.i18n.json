@@ -319,5 +319,14 @@
   "currentTemperature": "Mevcut sıcaklık",
   "temperature24hAgo": "24 saat önceki sıcaklık",
   "vsYesterday": "düne göre",
-  "windLevel": "Seviye {n}"
+  "windLevel": "Seviye {n}",
+  "rainStartsIn": "Yağmur {minutes} dk sonra başlayacak",
+  "rainStopsIn": "Yağmur {minutes} dk sonra duracak",
+  "rainChangesIn": "{minutes} dk sonra {from}, {to} olacak",
+  "rainStartsNow": "Yağmur şimdi başlayacak",
+  "rainStopsNow": "Yağmur şimdi duracak",
+  "rainLight": "Hafif yağmur",
+  "rainModerate": "Orta şiddetli yağmur",
+  "rainHeavy": "Şiddetli yağmur",
+  "rainTorrential": "Sağanak yağmur"
 }

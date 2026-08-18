@@ -360,6 +360,15 @@ class TranslationsGuIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => '24 કલાક પહેલાંનું તાપમાન';
 	@override String get vs_yesterday => 'ગઈકાલની સરખામણીમાં';
 	@override String get wind_level => 'સ્તર {n}';
+	@override String get rain_starts_in => '{minutes} મિનિટમાં વરસાદ શરૂ થશે';
+	@override String get rain_stops_in => '{minutes} મિનિટમાં વરસાદ બંધ થશે';
+	@override String get rain_changes_in => '{minutes} મિનિટમાં {from} થી {to} થશે';
+	@override String get rain_starts_now => 'હવે વરસાદ શરૂ થશે';
+	@override String get rain_stops_now => 'હવે વરસાદ બંધ થશે';
+	@override String get rain_light => 'હળવો વરસાદ';
+	@override String get rain_moderate => 'મધ્યમ વરસાદ';
+	@override String get rain_heavy => 'ભારે વરસાદ';
+	@override String get rain_torrential => 'મુશળધાર વરસાદ';
 }
 
 /// The flat map containing all translations for locale <gu-IN>.
@@ -691,6 +700,15 @@ extension on TranslationsGuIn {
 			'temperature24h_ago' => '24 કલાક પહેલાંનું તાપમાન',
 			'vs_yesterday' => 'ગઈકાલની સરખામણીમાં',
 			'wind_level' => 'સ્તર {n}',
+			'rain_starts_in' => '{minutes} મિનિટમાં વરસાદ શરૂ થશે',
+			'rain_stops_in' => '{minutes} મિનિટમાં વરસાદ બંધ થશે',
+			'rain_changes_in' => '{minutes} મિનિટમાં {from} થી {to} થશે',
+			'rain_starts_now' => 'હવે વરસાદ શરૂ થશે',
+			'rain_stops_now' => 'હવે વરસાદ બંધ થશે',
+			'rain_light' => 'હળવો વરસાદ',
+			'rain_moderate' => 'મધ્યમ વરસાદ',
+			'rain_heavy' => 'ભારે વરસાદ',
+			'rain_torrential' => 'મુશળધાર વરસાદ',
 			_ => null,
 		};
 	}

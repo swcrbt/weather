@@ -319,5 +319,14 @@
   "currentTemperature": "現在の気温",
   "temperature24hAgo": "24時間前の気温",
   "vsYesterday": "昨日との差",
-  "windLevel": "レベル {n}"
+  "windLevel": "レベル {n}",
+  "rainStartsIn": "{minutes}分後に雨が降り始めます",
+  "rainStopsIn": "{minutes}分後に雨が止みます",
+  "rainChangesIn": "{minutes}分後に{from}から{to}になります",
+  "rainStartsNow": "まもなく雨が降り始めます",
+  "rainStopsNow": "まもなく雨が止みます",
+  "rainLight": "弱い雨",
+  "rainModerate": "中程度の雨",
+  "rainHeavy": "強い雨",
+  "rainTorrential": "豪雨"
 }

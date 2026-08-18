@@ -360,6 +360,15 @@ class TranslationsKaGe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'ტემპერატურა 24 საათის წინ';
 	@override String get vs_yesterday => 'გუშინდელთან შედარებით';
 	@override String get wind_level => 'დონე {n}';
+	@override String get rain_starts_in => 'წვიმა დაიწყება {minutes} წუთში';
+	@override String get rain_stops_in => 'წვიმა შეწყდება {minutes} წუთში';
+	@override String get rain_changes_in => '{minutes} წუთში {from} გახდება {to}';
+	@override String get rain_starts_now => 'წვიმა ახლა დაიწყება';
+	@override String get rain_stops_now => 'წვიმა ახლა შეწყდება';
+	@override String get rain_light => 'მსუბუქი წვიმა';
+	@override String get rain_moderate => 'ზომიერი წვიმა';
+	@override String get rain_heavy => 'ძლიერი წვიმა';
+	@override String get rain_torrential => 'კოკისპირული წვიმა';
 }
 
 /// The flat map containing all translations for locale <ka-GE>.
@@ -691,6 +700,15 @@ extension on TranslationsKaGe {
 			'temperature24h_ago' => 'ტემპერატურა 24 საათის წინ',
 			'vs_yesterday' => 'გუშინდელთან შედარებით',
 			'wind_level' => 'დონე {n}',
+			'rain_starts_in' => 'წვიმა დაიწყება {minutes} წუთში',
+			'rain_stops_in' => 'წვიმა შეწყდება {minutes} წუთში',
+			'rain_changes_in' => '{minutes} წუთში {from} გახდება {to}',
+			'rain_starts_now' => 'წვიმა ახლა დაიწყება',
+			'rain_stops_now' => 'წვიმა ახლა შეწყდება',
+			'rain_light' => 'მსუბუქი წვიმა',
+			'rain_moderate' => 'ზომიერი წვიმა',
+			'rain_heavy' => 'ძლიერი წვიმა',
+			'rain_torrential' => 'კოკისპირული წვიმა',
 			_ => null,
 		};
 	}

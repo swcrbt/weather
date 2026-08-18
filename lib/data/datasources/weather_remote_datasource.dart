@@ -34,16 +34,28 @@ class WeatherRemoteDatasource {
       'hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation,rain,weathercode,surface_pressure,visibility,evapotranspiration,windspeed_10m,winddirection_10m,windgusts_10m,cloudcover,uv_index,dewpoint_2m,precipitation_probability,shortwave_radiation'
       '&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,precipitation_sum,precipitation_probability_max,windspeed_10m_max,windgusts_10m_max,uv_index_max,rain_sum,winddirection_10m_dominant'
       '&forecast_days=12&past_days=1&timezone=auto';
+  static const String _minutelyParams =
+      '&minutely_15=precipitation,rain,showers,precipitation_probability'
+      '&forecast_minutely_15=24';
 
   /// Builds the forecast query string for the given coordinates.
-  String _buildWeatherUrl(double lat, double lon) =>
-      'latitude=$lat&longitude=$lon&$_weatherParams';
+  String _buildWeatherUrl(
+    double lat,
+    double lon, {
+    required bool includeMinutely,
+  }) =>
+      'latitude=$lat&longitude=$lon&$_weatherParams'
+      '${includeMinutely ? _minutelyParams : ''}';
 
   /// Fetches weather and air quality in parallel.
   Future<(WeatherDataApi, AirQualityDataApi?, int clockSkewSeconds)>
-  _fetchWeatherAndAq(double lat, double lon) async {
+  _fetchWeatherAndAq(
+    double lat,
+    double lon, {
+    required bool includeMinutely,
+  }) async {
     final results = await Future.wait<dynamic>([
-      _dio.get(_buildWeatherUrl(lat, lon)),
+      _dio.get(_buildWeatherUrl(lat, lon, includeMinutely: includeMinutely)),
       _airQuality.fetchAirQuality(lat, lon),
     ]);
     final weatherResponse = results[0] as Response<dynamic>;
@@ -59,7 +71,11 @@ class WeatherRemoteDatasource {
   /// Fetches a 12-day forecast and maps it to a main weather cache model.
   Future<MainWeatherCache> fetchWeather(double lat, double lon) async {
     try {
-      final (weatherData, aqData, skew) = await _fetchWeatherAndAq(lat, lon);
+      final (weatherData, aqData, skew) = await _fetchWeatherAndAq(
+        lat,
+        lon,
+        includeMinutely: true,
+      );
       final cache = WeatherMapper.toMainWeatherCache(
         weatherData,
         clockSkewSeconds: skew,
@@ -86,7 +102,11 @@ class WeatherRemoteDatasource {
     String district,
   ) async {
     try {
-      final (weatherData, aqData, skew) = await _fetchWeatherAndAq(lat, lon);
+      final (weatherData, aqData, skew) = await _fetchWeatherAndAq(
+        lat,
+        lon,
+        includeMinutely: false,
+      );
       final card = WeatherMapper.toWeatherCard(
         weatherData,
         lat,

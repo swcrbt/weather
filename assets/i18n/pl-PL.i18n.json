@@ -319,5 +319,14 @@
   "currentTemperature": "Aktualna temperatura",
   "temperature24hAgo": "Temperatura sprzed 24 godzin",
   "vsYesterday": "w porównaniu z wczoraj",
-  "windLevel": "Poziom {n}"
+  "windLevel": "Poziom {n}",
+  "rainStartsIn": "Deszcz zacznie się za {minutes} min",
+  "rainStopsIn": "Deszcz ustanie za {minutes} min",
+  "rainChangesIn": "Za {minutes} min {from} zmieni się w {to}",
+  "rainStartsNow": "Deszcz zacznie się teraz",
+  "rainStopsNow": "Deszcz ustanie teraz",
+  "rainLight": "Lekki deszcz",
+  "rainModerate": "Umiarkowany deszcz",
+  "rainHeavy": "Silny deszcz",
+  "rainTorrential": "Ulewa"
 }

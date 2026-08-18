@@ -360,6 +360,15 @@ class TranslationsBnIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => '২৪ ঘণ্টা আগের তাপমাত্রা';
 	@override String get vs_yesterday => 'গতকালের তুলনায়';
 	@override String get wind_level => 'স্তর {n}';
+	@override String get rain_starts_in => '{minutes} মিনিট পর বৃষ্টি শুরু হবে';
+	@override String get rain_stops_in => '{minutes} মিনিট পর বৃষ্টি থামবে';
+	@override String get rain_changes_in => '{minutes} মিনিট পর {from} থেকে {to} হবে';
+	@override String get rain_starts_now => 'এখনই বৃষ্টি শুরু হবে';
+	@override String get rain_stops_now => 'এখনই বৃষ্টি থামবে';
+	@override String get rain_light => 'হালকা বৃষ্টি';
+	@override String get rain_moderate => 'মাঝারি বৃষ্টি';
+	@override String get rain_heavy => 'ভারী বৃষ্টি';
+	@override String get rain_torrential => 'মুষলধারে বৃষ্টি';
 }
 
 /// The flat map containing all translations for locale <bn-IN>.
@@ -691,6 +700,15 @@ extension on TranslationsBnIn {
 			'temperature24h_ago' => '২৪ ঘণ্টা আগের তাপমাত্রা',
 			'vs_yesterday' => 'গতকালের তুলনায়',
 			'wind_level' => 'স্তর {n}',
+			'rain_starts_in' => '{minutes} মিনিট পর বৃষ্টি শুরু হবে',
+			'rain_stops_in' => '{minutes} মিনিট পর বৃষ্টি থামবে',
+			'rain_changes_in' => '{minutes} মিনিট পর {from} থেকে {to} হবে',
+			'rain_starts_now' => 'এখনই বৃষ্টি শুরু হবে',
+			'rain_stops_now' => 'এখনই বৃষ্টি থামবে',
+			'rain_light' => 'হালকা বৃষ্টি',
+			'rain_moderate' => 'মাঝারি বৃষ্টি',
+			'rain_heavy' => 'ভারী বৃষ্টি',
+			'rain_torrential' => 'মুষলধারে বৃষ্টি',
 			_ => null,
 		};
 	}

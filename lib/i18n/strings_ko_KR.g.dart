@@ -360,6 +360,15 @@ class TranslationsKoKr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => '24시간 전 기온';
 	@override String get vs_yesterday => '어제 대비';
 	@override String get wind_level => '{n}단계';
+	@override String get rain_starts_in => '{minutes}분 후 비가 시작됩니다';
+	@override String get rain_stops_in => '{minutes}분 후 비가 그칩니다';
+	@override String get rain_changes_in => '{minutes}분 후 {from}에서 {to}(으)로 바뀝니다';
+	@override String get rain_starts_now => '곧 비가 시작됩니다';
+	@override String get rain_stops_now => '곧 비가 그칩니다';
+	@override String get rain_light => '약한 비';
+	@override String get rain_moderate => '보통 비';
+	@override String get rain_heavy => '강한 비';
+	@override String get rain_torrential => '폭우';
 }
 
 /// The flat map containing all translations for locale <ko-KR>.
@@ -691,6 +700,15 @@ extension on TranslationsKoKr {
 			'temperature24h_ago' => '24시간 전 기온',
 			'vs_yesterday' => '어제 대비',
 			'wind_level' => '{n}단계',
+			'rain_starts_in' => '{minutes}분 후 비가 시작됩니다',
+			'rain_stops_in' => '{minutes}분 후 비가 그칩니다',
+			'rain_changes_in' => '{minutes}분 후 {from}에서 {to}(으)로 바뀝니다',
+			'rain_starts_now' => '곧 비가 시작됩니다',
+			'rain_stops_now' => '곧 비가 그칩니다',
+			'rain_light' => '약한 비',
+			'rain_moderate' => '보통 비',
+			'rain_heavy' => '강한 비',
+			'rain_torrential' => '폭우',
 			_ => null,
 		};
 	}

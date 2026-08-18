@@ -360,6 +360,15 @@ class TranslationsPtBr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'Temperatura de 24h atrás';
 	@override String get vs_yesterday => 'comparado a ontem';
 	@override String get wind_level => 'Nível {n}';
+	@override String get rain_starts_in => 'A chuva começa em {minutes} min';
+	@override String get rain_stops_in => 'A chuva para em {minutes} min';
+	@override String get rain_changes_in => 'Em {minutes} min, {from} muda para {to}';
+	@override String get rain_starts_now => 'A chuva começa agora';
+	@override String get rain_stops_now => 'A chuva para agora';
+	@override String get rain_light => 'Chuva fraca';
+	@override String get rain_moderate => 'Chuva moderada';
+	@override String get rain_heavy => 'Chuva forte';
+	@override String get rain_torrential => 'Chuva torrencial';
 }
 
 /// The flat map containing all translations for locale <pt-BR>.
@@ -691,6 +700,15 @@ extension on TranslationsPtBr {
 			'temperature24h_ago' => 'Temperatura de 24h atrás',
 			'vs_yesterday' => 'comparado a ontem',
 			'wind_level' => 'Nível {n}',
+			'rain_starts_in' => 'A chuva começa em {minutes} min',
+			'rain_stops_in' => 'A chuva para em {minutes} min',
+			'rain_changes_in' => 'Em {minutes} min, {from} muda para {to}',
+			'rain_starts_now' => 'A chuva começa agora',
+			'rain_stops_now' => 'A chuva para agora',
+			'rain_light' => 'Chuva fraca',
+			'rain_moderate' => 'Chuva moderada',
+			'rain_heavy' => 'Chuva forte',
+			'rain_torrential' => 'Chuva torrencial',
 			_ => null,
 		};
 	}

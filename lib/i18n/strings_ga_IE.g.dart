@@ -360,6 +360,15 @@ class TranslationsGaIe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'Teocht 24 uair ó shin';
 	@override String get vs_yesterday => 'i gcomparáid leis an inné';
 	@override String get wind_level => 'Leibhéal {n}';
+	@override String get rain_starts_in => 'Tosaíonn an bháisteach i gceann {minutes} nóiméad';
+	@override String get rain_stops_in => 'Stopfaidh an bháisteach i gceann {minutes} nóiméad';
+	@override String get rain_changes_in => 'Athróidh {from} go {to} i gceann {minutes} nóiméad';
+	@override String get rain_starts_now => 'Tosaíonn an bháisteach anois';
+	@override String get rain_stops_now => 'Stopann an bháisteach anois';
+	@override String get rain_light => 'Báisteach éadrom';
+	@override String get rain_moderate => 'Báisteach mheasartha';
+	@override String get rain_heavy => 'Báisteach throm';
+	@override String get rain_torrential => 'Báisteach thromchúiseach';
 }
 
 /// The flat map containing all translations for locale <ga-IE>.
@@ -691,6 +700,15 @@ extension on TranslationsGaIe {
 			'temperature24h_ago' => 'Teocht 24 uair ó shin',
 			'vs_yesterday' => 'i gcomparáid leis an inné',
 			'wind_level' => 'Leibhéal {n}',
+			'rain_starts_in' => 'Tosaíonn an bháisteach i gceann {minutes} nóiméad',
+			'rain_stops_in' => 'Stopfaidh an bháisteach i gceann {minutes} nóiméad',
+			'rain_changes_in' => 'Athróidh {from} go {to} i gceann {minutes} nóiméad',
+			'rain_starts_now' => 'Tosaíonn an bháisteach anois',
+			'rain_stops_now' => 'Stopann an bháisteach anois',
+			'rain_light' => 'Báisteach éadrom',
+			'rain_moderate' => 'Báisteach mheasartha',
+			'rain_heavy' => 'Báisteach throm',
+			'rain_torrential' => 'Báisteach thromchúiseach',
 			_ => null,
 		};
 	}

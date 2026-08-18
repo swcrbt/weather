@@ -319,5 +319,14 @@
   "currentTemperature": "موجودہ درجہ حرارت",
   "temperature24hAgo": "24 گھنٹے پہلے کا درجہ حرارت",
   "vsYesterday": "کل کے مقابلے میں",
-  "windLevel": "سطح {n}"
+  "windLevel": "سطح {n}",
+  "rainStartsIn": "بارش {minutes} منٹ میں شروع ہوگی",
+  "rainStopsIn": "بارش {minutes} منٹ میں رک جائے گی",
+  "rainChangesIn": "{minutes} منٹ میں {from} سے {to} ہو جائے گی",
+  "rainStartsNow": "اب بارش شروع ہوگی",
+  "rainStopsNow": "اب بارش رک جائے گی",
+  "rainLight": "ہلکی بارش",
+  "rainModerate": "درمیانی بارش",
+  "rainHeavy": "تیز بارش",
+  "rainTorrential": "موسلا دھار بارش"
 }

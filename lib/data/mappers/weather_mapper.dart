@@ -93,6 +93,12 @@ class WeatherMapper {
         past,
       ),
       shortwaveRadiation: _slice(weatherData.hourly.shortwaveRadiation, past),
+      timeMinutely15: weatherData.minutely15?.time,
+      precipitationMinutely15: weatherData.minutely15?.precipitation,
+      rainMinutely15: weatherData.minutely15?.rain,
+      showersMinutely15: weatherData.minutely15?.showers,
+      precipitationProbabilityMinutely15:
+          weatherData.minutely15?.precipitationProbability,
       timePast: _prefix(weatherData.hourly.time, past),
       temperature2MPast: _prefix(weatherData.hourly.temperature2M, past),
       timeDaily: _slice(weatherData.daily.time, dailyPast),

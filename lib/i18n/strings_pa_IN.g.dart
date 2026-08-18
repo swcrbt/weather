@@ -360,6 +360,15 @@ class TranslationsPaIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => '24 ਘੰਟੇ ਪਹਿਲਾਂ ਦਾ ਤਾਪਮਾਨ';
 	@override String get vs_yesterday => 'ਕੱਲ੍ਹ ਦੇ ਮੁਕਾਬਲੇ';
 	@override String get wind_level => 'ਪੱਧਰ {n}';
+	@override String get rain_starts_in => '{minutes} ਮਿੰਟਾਂ ਵਿੱਚ ਮੀਂਹ ਸ਼ੁਰੂ ਹੋਵੇਗਾ';
+	@override String get rain_stops_in => '{minutes} ਮਿੰਟਾਂ ਵਿੱਚ ਮੀਂਹ ਰੁਕ ਜਾਵੇਗਾ';
+	@override String get rain_changes_in => '{minutes} ਮਿੰਟਾਂ ਵਿੱਚ {from} ਤੋਂ {to} ਹੋ ਜਾਵੇਗਾ';
+	@override String get rain_starts_now => 'ਹੁਣ ਮੀਂਹ ਸ਼ੁਰੂ ਹੋਵੇਗਾ';
+	@override String get rain_stops_now => 'ਹੁਣ ਮੀਂਹ ਰੁਕ ਜਾਵੇਗਾ';
+	@override String get rain_light => 'ਹਲਕਾ ਮੀਂਹ';
+	@override String get rain_moderate => 'ਦਰਮਿਆਨਾ ਮੀਂਹ';
+	@override String get rain_heavy => 'ਤੇਜ਼ ਮੀਂਹ';
+	@override String get rain_torrential => 'ਮੋਹਲੇਧਾਰ ਮੀਂਹ';
 }
 
 /// The flat map containing all translations for locale <pa-IN>.
@@ -691,6 +700,15 @@ extension on TranslationsPaIn {
 			'temperature24h_ago' => '24 ਘੰਟੇ ਪਹਿਲਾਂ ਦਾ ਤਾਪਮਾਨ',
 			'vs_yesterday' => 'ਕੱਲ੍ਹ ਦੇ ਮੁਕਾਬਲੇ',
 			'wind_level' => 'ਪੱਧਰ {n}',
+			'rain_starts_in' => '{minutes} ਮਿੰਟਾਂ ਵਿੱਚ ਮੀਂਹ ਸ਼ੁਰੂ ਹੋਵੇਗਾ',
+			'rain_stops_in' => '{minutes} ਮਿੰਟਾਂ ਵਿੱਚ ਮੀਂਹ ਰੁਕ ਜਾਵੇਗਾ',
+			'rain_changes_in' => '{minutes} ਮਿੰਟਾਂ ਵਿੱਚ {from} ਤੋਂ {to} ਹੋ ਜਾਵੇਗਾ',
+			'rain_starts_now' => 'ਹੁਣ ਮੀਂਹ ਸ਼ੁਰੂ ਹੋਵੇਗਾ',
+			'rain_stops_now' => 'ਹੁਣ ਮੀਂਹ ਰੁਕ ਜਾਵੇਗਾ',
+			'rain_light' => 'ਹਲਕਾ ਮੀਂਹ',
+			'rain_moderate' => 'ਦਰਮਿਆਨਾ ਮੀਂਹ',
+			'rain_heavy' => 'ਤੇਜ਼ ਮੀਂਹ',
+			'rain_torrential' => 'ਮੋਹਲੇਧਾਰ ਮੀਂਹ',
 			_ => null,
 		};
 	}

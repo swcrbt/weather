@@ -360,6 +360,15 @@ class TranslationsTeIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => '24 గంటల క్రితం ఉష్ణోగ్రత';
 	@override String get vs_yesterday => 'నిన్నతో పోలిస్తే';
 	@override String get wind_level => 'స్థాయి {n}';
+	@override String get rain_starts_in => '{minutes} నిమిషాల్లో వర్షం ప్రారంభమవుతుంది';
+	@override String get rain_stops_in => '{minutes} నిమిషాల్లో వర్షం ఆగిపోతుంది';
+	@override String get rain_changes_in => '{minutes} నిమిషాల్లో {from} {to}గా మారుతుంది';
+	@override String get rain_starts_now => 'ఇప్పుడు వర్షం ప్రారంభమవుతుంది';
+	@override String get rain_stops_now => 'ఇప్పుడు వర్షం ఆగిపోతుంది';
+	@override String get rain_light => 'తేలికపాటి వర్షం';
+	@override String get rain_moderate => 'మోస్తరు వర్షం';
+	@override String get rain_heavy => 'భారీ వర్షం';
+	@override String get rain_torrential => 'కుండపోత వర్షం';
 }
 
 /// The flat map containing all translations for locale <te-IN>.
@@ -691,6 +700,15 @@ extension on TranslationsTeIn {
 			'temperature24h_ago' => '24 గంటల క్రితం ఉష్ణోగ్రత',
 			'vs_yesterday' => 'నిన్నతో పోలిస్తే',
 			'wind_level' => 'స్థాయి {n}',
+			'rain_starts_in' => '{minutes} నిమిషాల్లో వర్షం ప్రారంభమవుతుంది',
+			'rain_stops_in' => '{minutes} నిమిషాల్లో వర్షం ఆగిపోతుంది',
+			'rain_changes_in' => '{minutes} నిమిషాల్లో {from} {to}గా మారుతుంది',
+			'rain_starts_now' => 'ఇప్పుడు వర్షం ప్రారంభమవుతుంది',
+			'rain_stops_now' => 'ఇప్పుడు వర్షం ఆగిపోతుంది',
+			'rain_light' => 'తేలికపాటి వర్షం',
+			'rain_moderate' => 'మోస్తరు వర్షం',
+			'rain_heavy' => 'భారీ వర్షం',
+			'rain_torrential' => 'కుండపోత వర్షం',
 			_ => null,
 		};
 	}

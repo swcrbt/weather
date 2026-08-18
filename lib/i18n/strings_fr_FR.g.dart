@@ -360,6 +360,15 @@ class TranslationsFrFr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'Température il y a 24 h';
 	@override String get vs_yesterday => 'par rapport à hier';
 	@override String get wind_level => 'Niveau {n}';
+	@override String get rain_starts_in => 'La pluie commence dans {minutes} min';
+	@override String get rain_stops_in => 'La pluie s\'arrête dans {minutes} min';
+	@override String get rain_changes_in => 'Dans {minutes} min, {from} devient {to}';
+	@override String get rain_starts_now => 'La pluie commence maintenant';
+	@override String get rain_stops_now => 'La pluie s\'arrête maintenant';
+	@override String get rain_light => 'Pluie légère';
+	@override String get rain_moderate => 'Pluie modérée';
+	@override String get rain_heavy => 'Forte pluie';
+	@override String get rain_torrential => 'Pluie torrentielle';
 }
 
 /// The flat map containing all translations for locale <fr-FR>.
@@ -691,6 +700,15 @@ extension on TranslationsFrFr {
 			'temperature24h_ago' => 'Température il y a 24 h',
 			'vs_yesterday' => 'par rapport à hier',
 			'wind_level' => 'Niveau {n}',
+			'rain_starts_in' => 'La pluie commence dans {minutes} min',
+			'rain_stops_in' => 'La pluie s\'arrête dans {minutes} min',
+			'rain_changes_in' => 'Dans {minutes} min, {from} devient {to}',
+			'rain_starts_now' => 'La pluie commence maintenant',
+			'rain_stops_now' => 'La pluie s\'arrête maintenant',
+			'rain_light' => 'Pluie légère',
+			'rain_moderate' => 'Pluie modérée',
+			'rain_heavy' => 'Forte pluie',
+			'rain_torrential' => 'Pluie torrentielle',
 			_ => null,
 		};
 	}

@@ -360,6 +360,15 @@ class TranslationsRuRu extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'Температура 24 часа назад';
 	@override String get vs_yesterday => 'по сравнению со вчера';
 	@override String get wind_level => 'Уровень {n}';
+	@override String get rain_starts_in => 'Дождь начнётся через {minutes} мин';
+	@override String get rain_stops_in => 'Дождь прекратится через {minutes} мин';
+	@override String get rain_changes_in => 'Через {minutes} мин {from} сменится на {to}';
+	@override String get rain_starts_now => 'Дождь начнётся сейчас';
+	@override String get rain_stops_now => 'Дождь прекратится сейчас';
+	@override String get rain_light => 'Небольшой дождь';
+	@override String get rain_moderate => 'Умеренный дождь';
+	@override String get rain_heavy => 'Сильный дождь';
+	@override String get rain_torrential => 'Ливень';
 }
 
 /// The flat map containing all translations for locale <ru-RU>.
@@ -691,6 +700,15 @@ extension on TranslationsRuRu {
 			'temperature24h_ago' => 'Температура 24 часа назад',
 			'vs_yesterday' => 'по сравнению со вчера',
 			'wind_level' => 'Уровень {n}',
+			'rain_starts_in' => 'Дождь начнётся через {minutes} мин',
+			'rain_stops_in' => 'Дождь прекратится через {minutes} мин',
+			'rain_changes_in' => 'Через {minutes} мин {from} сменится на {to}',
+			'rain_starts_now' => 'Дождь начнётся сейчас',
+			'rain_stops_now' => 'Дождь прекратится сейчас',
+			'rain_light' => 'Небольшой дождь',
+			'rain_moderate' => 'Умеренный дождь',
+			'rain_heavy' => 'Сильный дождь',
+			'rain_torrential' => 'Ливень',
 			_ => null,
 		};
 	}

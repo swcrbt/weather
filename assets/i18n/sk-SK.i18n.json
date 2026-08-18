@@ -319,5 +319,14 @@
   "currentTemperature": "Aktuálna teplota",
   "temperature24hAgo": "Teplota pred 24 hodinami",
   "vsYesterday": "v porovnaní so včerajškom",
-  "windLevel": "Úroveň {n}"
+  "windLevel": "Úroveň {n}",
+  "rainStartsIn": "Dážď začne o {minutes} min",
+  "rainStopsIn": "Dážď ustane o {minutes} min",
+  "rainChangesIn": "O {minutes} min sa {from} zmení na {to}",
+  "rainStartsNow": "Dážď začne teraz",
+  "rainStopsNow": "Dážď teraz ustane",
+  "rainLight": "Slabý dážď",
+  "rainModerate": "Mierny dážď",
+  "rainHeavy": "Silný dážď",
+  "rainTorrential": "Lejak"
 }

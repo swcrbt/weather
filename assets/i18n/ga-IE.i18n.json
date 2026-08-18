@@ -319,5 +319,14 @@
   "currentTemperature": "Teocht reatha",
   "temperature24hAgo": "Teocht 24 uair ó shin",
   "vsYesterday": "i gcomparáid leis an inné",
-  "windLevel": "Leibhéal {n}"
+  "windLevel": "Leibhéal {n}",
+  "rainStartsIn": "Tosaíonn an bháisteach i gceann {minutes} nóiméad",
+  "rainStopsIn": "Stopfaidh an bháisteach i gceann {minutes} nóiméad",
+  "rainChangesIn": "Athróidh {from} go {to} i gceann {minutes} nóiméad",
+  "rainStartsNow": "Tosaíonn an bháisteach anois",
+  "rainStopsNow": "Stopann an bháisteach anois",
+  "rainLight": "Báisteach éadrom",
+  "rainModerate": "Báisteach mheasartha",
+  "rainHeavy": "Báisteach throm",
+  "rainTorrential": "Báisteach thromchúiseach"
 }

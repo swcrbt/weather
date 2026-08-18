@@ -3,11 +3,13 @@ import 'dart:convert';
 import 'package:home_widget/home_widget.dart';
 import 'package:isar_community/isar.dart';
 import 'package:rain/core/config/widget_registry.dart';
+import 'package:rain/core/constants/app_constants.dart';
 import 'package:rain/core/i18n/locale_format_helper.dart';
 import 'package:rain/core/services/asset_cache_service.dart';
 import 'package:rain/core/services/widget_background_service.dart';
 import 'package:rain/core/utils/debug_log.dart';
 import 'package:rain/core/weather/aqi_helper.dart';
+import 'package:rain/core/weather/precipitation_alert_calculator.dart';
 import 'package:rain/core/weather/status_weather.dart';
 import 'package:rain/core/weather/time_index_helper.dart';
 import 'package:rain/core/weather/unit_converter.dart';
@@ -275,6 +277,20 @@ class HomeWidgetService {
     required Settings settings,
     required String languageCode,
   }) {
+    final minutelyTimes = cache.timeMinutely15;
+    final minutelyPrecipitation = cache.precipitationMinutely15;
+    if (minutelyTimes != null && minutelyPrecipitation != null) {
+      if (!_isFreshMinutelyForecast(cache.timestamp)) return null;
+      final alert = PrecipitationAlertCalculator.calculate(
+        times: minutelyTimes,
+        precipitation: minutelyPrecipitation,
+        rain: cache.rainMinutely15,
+        showers: cache.showersMinutely15,
+        now: wallNow,
+      );
+      if (alert != null) return _formatPrecipitationAlert(alert);
+    }
+
     final probabilities = cache.precipitationProbability;
     final times = cache.time;
     if (probabilities == null || times == null || probabilities.isEmpty) {
@@ -305,6 +321,50 @@ class HomeWidgetService {
       return '$label · ${'precipitationProbability'.tr} $probability%';
     }
     return null;
+  }
+
+  bool _isFreshMinutelyForecast(DateTime? fetchedAt) {
+    if (fetchedAt == null) return false;
+    final age = DateTime.now().difference(fetchedAt);
+    return age >= Duration.zero &&
+        age <= AppConstants.minutelyRainForecastFreshness;
+  }
+
+  String _formatPrecipitationAlert(PrecipitationAlert alert) {
+    if (alert.kind == PrecipitationAlertKind.starts) {
+      return alert.minutes == 0
+          ? 'rainStartsNow'.tr
+          : _replaceTranslation('rainStartsIn'.tr, {
+              'minutes': '${alert.minutes}',
+            });
+    }
+    if (alert.kind == PrecipitationAlertKind.stops) {
+      return alert.minutes == 0
+          ? 'rainStopsNow'.tr
+          : _replaceTranslation('rainStopsIn'.tr, {
+              'minutes': '${alert.minutes}',
+            });
+    }
+    return _replaceTranslation('rainChangesIn'.tr, {
+      'minutes': '${alert.minutes}',
+      'from': _rainIntensityLabel(alert.from!),
+      'to': _rainIntensityLabel(alert.to!),
+    });
+  }
+
+  String _rainIntensityLabel(RainIntensity intensity) => switch (intensity) {
+    RainIntensity.light => 'rainLight'.tr,
+    RainIntensity.moderate => 'rainModerate'.tr,
+    RainIntensity.heavy => 'rainHeavy'.tr,
+    RainIntensity.torrential => 'rainTorrential'.tr,
+  };
+
+  String _replaceTranslation(String value, Map<String, String> values) {
+    var result = value;
+    for (final entry in values.entries) {
+      result = result.replaceAll('{${entry.key}}', entry.value);
+    }
+    return result;
   }
 
   String _formatWidgetDate(DateTime date, String languageCode) =>

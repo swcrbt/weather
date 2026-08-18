@@ -360,6 +360,15 @@ class TranslationsTrTr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => '24 saat önceki sıcaklık';
 	@override String get vs_yesterday => 'düne göre';
 	@override String get wind_level => 'Seviye {n}';
+	@override String get rain_starts_in => 'Yağmur {minutes} dk sonra başlayacak';
+	@override String get rain_stops_in => 'Yağmur {minutes} dk sonra duracak';
+	@override String get rain_changes_in => '{minutes} dk sonra {from}, {to} olacak';
+	@override String get rain_starts_now => 'Yağmur şimdi başlayacak';
+	@override String get rain_stops_now => 'Yağmur şimdi duracak';
+	@override String get rain_light => 'Hafif yağmur';
+	@override String get rain_moderate => 'Orta şiddetli yağmur';
+	@override String get rain_heavy => 'Şiddetli yağmur';
+	@override String get rain_torrential => 'Sağanak yağmur';
 }
 
 /// The flat map containing all translations for locale <tr-TR>.
@@ -691,6 +700,15 @@ extension on TranslationsTrTr {
 			'temperature24h_ago' => '24 saat önceki sıcaklık',
 			'vs_yesterday' => 'düne göre',
 			'wind_level' => 'Seviye {n}',
+			'rain_starts_in' => 'Yağmur {minutes} dk sonra başlayacak',
+			'rain_stops_in' => 'Yağmur {minutes} dk sonra duracak',
+			'rain_changes_in' => '{minutes} dk sonra {from}, {to} olacak',
+			'rain_starts_now' => 'Yağmur şimdi başlayacak',
+			'rain_stops_now' => 'Yağmur şimdi duracak',
+			'rain_light' => 'Hafif yağmur',
+			'rain_moderate' => 'Orta şiddetli yağmur',
+			'rain_heavy' => 'Şiddetli yağmur',
+			'rain_torrential' => 'Sağanak yağmur',
 			_ => null,
 		};
 	}

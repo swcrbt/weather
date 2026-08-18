@@ -360,6 +360,15 @@ class TranslationsHeIl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => 'טמפרטורה לפני 24 שעות';
 	@override String get vs_yesterday => 'לעומת אתמול';
 	@override String get wind_level => 'רמה {n}';
+	@override String get rain_starts_in => 'הגשם יתחיל בעוד {minutes} דקות';
+	@override String get rain_stops_in => 'הגשם ייפסק בעוד {minutes} דקות';
+	@override String get rain_changes_in => 'בעוד {minutes} דקות {from} יהפוך ל־{to}';
+	@override String get rain_starts_now => 'הגשם מתחיל עכשיו';
+	@override String get rain_stops_now => 'הגשם נפסק עכשיו';
+	@override String get rain_light => 'גשם קל';
+	@override String get rain_moderate => 'גשם בינוני';
+	@override String get rain_heavy => 'גשם כבד';
+	@override String get rain_torrential => 'גשם שוטף';
 }
 
 /// The flat map containing all translations for locale <he-IL>.
@@ -691,6 +700,15 @@ extension on TranslationsHeIl {
 			'temperature24h_ago' => 'טמפרטורה לפני 24 שעות',
 			'vs_yesterday' => 'לעומת אתמול',
 			'wind_level' => 'רמה {n}',
+			'rain_starts_in' => 'הגשם יתחיל בעוד {minutes} דקות',
+			'rain_stops_in' => 'הגשם ייפסק בעוד {minutes} דקות',
+			'rain_changes_in' => 'בעוד {minutes} דקות {from} יהפוך ל־{to}',
+			'rain_starts_now' => 'הגשם מתחיל עכשיו',
+			'rain_stops_now' => 'הגשם נפסק עכשיו',
+			'rain_light' => 'גשם קל',
+			'rain_moderate' => 'גשם בינוני',
+			'rain_heavy' => 'גשם כבד',
+			'rain_torrential' => 'גשם שוטף',
 			_ => null,
 		};
 	}

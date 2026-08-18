@@ -319,5 +319,14 @@
   "currentTemperature": "Текущая температура",
   "temperature24hAgo": "Температура 24 часа назад",
   "vsYesterday": "по сравнению со вчера",
-  "windLevel": "Уровень {n}"
+  "windLevel": "Уровень {n}",
+  "rainStartsIn": "Дождь начнётся через {minutes} мин",
+  "rainStopsIn": "Дождь прекратится через {minutes} мин",
+  "rainChangesIn": "Через {minutes} мин {from} сменится на {to}",
+  "rainStartsNow": "Дождь начнётся сейчас",
+  "rainStopsNow": "Дождь прекратится сейчас",
+  "rainLight": "Небольшой дождь",
+  "rainModerate": "Умеренный дождь",
+  "rainHeavy": "Сильный дождь",
+  "rainTorrential": "Ливень"
 }

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$WeatherDataApi {
 
- Hourly get hourly; Daily get daily; String get timezone;@JsonKey(name: 'utc_offset_seconds') int get utcOffsetSeconds;
+ Hourly get hourly; Daily get daily;@JsonKey(name: 'minutely_15') Minutely15? get minutely15; String get timezone;@JsonKey(name: 'utc_offset_seconds') int get utcOffsetSeconds;
 /// Create a copy of WeatherDataApi
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $WeatherDataApiCopyWith<WeatherDataApi> get copyWith => _$WeatherDataApiCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is WeatherDataApi&&(identical(other.hourly, hourly) || other.hourly == hourly)&&(identical(other.daily, daily) || other.daily == daily)&&(identical(other.timezone, timezone) || other.timezone == timezone)&&(identical(other.utcOffsetSeconds, utcOffsetSeconds) || other.utcOffsetSeconds == utcOffsetSeconds));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is WeatherDataApi&&(identical(other.hourly, hourly) || other.hourly == hourly)&&(identical(other.daily, daily) || other.daily == daily)&&(identical(other.minutely15, minutely15) || other.minutely15 == minutely15)&&(identical(other.timezone, timezone) || other.timezone == timezone)&&(identical(other.utcOffsetSeconds, utcOffsetSeconds) || other.utcOffsetSeconds == utcOffsetSeconds));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,hourly,daily,timezone,utcOffsetSeconds);
+int get hashCode => Object.hash(runtimeType,hourly,daily,minutely15,timezone,utcOffsetSeconds);
 
 @override
 String toString() {
-  return 'WeatherDataApi(hourly: $hourly, daily: $daily, timezone: $timezone, utcOffsetSeconds: $utcOffsetSeconds)';
+  return 'WeatherDataApi(hourly: $hourly, daily: $daily, minutely15: $minutely15, timezone: $timezone, utcOffsetSeconds: $utcOffsetSeconds)';
 }
 
 
@@ -48,11 +48,11 @@ abstract mixin class $WeatherDataApiCopyWith<$Res>  {
   factory $WeatherDataApiCopyWith(WeatherDataApi value, $Res Function(WeatherDataApi) _then) = _$WeatherDataApiCopyWithImpl;
 @useResult
 $Res call({
- Hourly hourly, Daily daily, String timezone,@JsonKey(name: 'utc_offset_seconds') int utcOffsetSeconds
+ Hourly hourly, Daily daily,@JsonKey(name: 'minutely_15') Minutely15? minutely15, String timezone,@JsonKey(name: 'utc_offset_seconds') int utcOffsetSeconds
 });
 
 
-$HourlyCopyWith<$Res> get hourly;$DailyCopyWith<$Res> get daily;
+$HourlyCopyWith<$Res> get hourly;$DailyCopyWith<$Res> get daily;$Minutely15CopyWith<$Res>? get minutely15;
 
 }
 /// @nodoc
@@ -65,11 +65,12 @@ class _$WeatherDataApiCopyWithImpl<$Res>
 
 /// Create a copy of WeatherDataApi
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? hourly = null,Object? daily = null,Object? timezone = null,Object? utcOffsetSeconds = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? hourly = null,Object? daily = null,Object? minutely15 = freezed,Object? timezone = null,Object? utcOffsetSeconds = null,}) {
   return _then(_self.copyWith(
 hourly: null == hourly ? _self.hourly : hourly // ignore: cast_nullable_to_non_nullable
 as Hourly,daily: null == daily ? _self.daily : daily // ignore: cast_nullable_to_non_nullable
-as Daily,timezone: null == timezone ? _self.timezone : timezone // ignore: cast_nullable_to_non_nullable
+as Daily,minutely15: freezed == minutely15 ? _self.minutely15 : minutely15 // ignore: cast_nullable_to_non_nullable
+as Minutely15?,timezone: null == timezone ? _self.timezone : timezone // ignore: cast_nullable_to_non_nullable
 as String,utcOffsetSeconds: null == utcOffsetSeconds ? _self.utcOffsetSeconds : utcOffsetSeconds // ignore: cast_nullable_to_non_nullable
 as int,
   ));
@@ -91,6 +92,18 @@ $DailyCopyWith<$Res> get daily {
   
   return $DailyCopyWith<$Res>(_self.daily, (value) {
     return _then(_self.copyWith(daily: value));
+  });
+}/// Create a copy of WeatherDataApi
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$Minutely15CopyWith<$Res>? get minutely15 {
+    if (_self.minutely15 == null) {
+    return null;
+  }
+
+  return $Minutely15CopyWith<$Res>(_self.minutely15!, (value) {
+    return _then(_self.copyWith(minutely15: value));
   });
 }
 }
@@ -174,10 +187,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Hourly hourly,  Daily daily,  String timezone, @JsonKey(name: 'utc_offset_seconds')  int utcOffsetSeconds)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Hourly hourly,  Daily daily, @JsonKey(name: 'minutely_15')  Minutely15? minutely15,  String timezone, @JsonKey(name: 'utc_offset_seconds')  int utcOffsetSeconds)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _WeatherDataApi() when $default != null:
-return $default(_that.hourly,_that.daily,_that.timezone,_that.utcOffsetSeconds);case _:
+return $default(_that.hourly,_that.daily,_that.minutely15,_that.timezone,_that.utcOffsetSeconds);case _:
   return orElse();
 
 }
@@ -195,10 +208,10 @@ return $default(_that.hourly,_that.daily,_that.timezone,_that.utcOffsetSeconds);
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Hourly hourly,  Daily daily,  String timezone, @JsonKey(name: 'utc_offset_seconds')  int utcOffsetSeconds)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Hourly hourly,  Daily daily, @JsonKey(name: 'minutely_15')  Minutely15? minutely15,  String timezone, @JsonKey(name: 'utc_offset_seconds')  int utcOffsetSeconds)  $default,) {final _that = this;
 switch (_that) {
 case _WeatherDataApi():
-return $default(_that.hourly,_that.daily,_that.timezone,_that.utcOffsetSeconds);case _:
+return $default(_that.hourly,_that.daily,_that.minutely15,_that.timezone,_that.utcOffsetSeconds);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -215,10 +228,10 @@ return $default(_that.hourly,_that.daily,_that.timezone,_that.utcOffsetSeconds);
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Hourly hourly,  Daily daily,  String timezone, @JsonKey(name: 'utc_offset_seconds')  int utcOffsetSeconds)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Hourly hourly,  Daily daily, @JsonKey(name: 'minutely_15')  Minutely15? minutely15,  String timezone, @JsonKey(name: 'utc_offset_seconds')  int utcOffsetSeconds)?  $default,) {final _that = this;
 switch (_that) {
 case _WeatherDataApi() when $default != null:
-return $default(_that.hourly,_that.daily,_that.timezone,_that.utcOffsetSeconds);case _:
+return $default(_that.hourly,_that.daily,_that.minutely15,_that.timezone,_that.utcOffsetSeconds);case _:
   return null;
 
 }
@@ -230,11 +243,12 @@ return $default(_that.hourly,_that.daily,_that.timezone,_that.utcOffsetSeconds);
 @JsonSerializable()
 
 class _WeatherDataApi implements WeatherDataApi {
-  const _WeatherDataApi({required this.hourly, required this.daily, required this.timezone, @JsonKey(name: 'utc_offset_seconds') required this.utcOffsetSeconds});
+  const _WeatherDataApi({required this.hourly, required this.daily, @JsonKey(name: 'minutely_15') this.minutely15, required this.timezone, @JsonKey(name: 'utc_offset_seconds') required this.utcOffsetSeconds});
   factory _WeatherDataApi.fromJson(Map<String, dynamic> json) => _$WeatherDataApiFromJson(json);
 
 @override final  Hourly hourly;
 @override final  Daily daily;
+@override@JsonKey(name: 'minutely_15') final  Minutely15? minutely15;
 @override final  String timezone;
 @override@JsonKey(name: 'utc_offset_seconds') final  int utcOffsetSeconds;
 
@@ -251,16 +265,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WeatherDataApi&&(identical(other.hourly, hourly) || other.hourly == hourly)&&(identical(other.daily, daily) || other.daily == daily)&&(identical(other.timezone, timezone) || other.timezone == timezone)&&(identical(other.utcOffsetSeconds, utcOffsetSeconds) || other.utcOffsetSeconds == utcOffsetSeconds));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WeatherDataApi&&(identical(other.hourly, hourly) || other.hourly == hourly)&&(identical(other.daily, daily) || other.daily == daily)&&(identical(other.minutely15, minutely15) || other.minutely15 == minutely15)&&(identical(other.timezone, timezone) || other.timezone == timezone)&&(identical(other.utcOffsetSeconds, utcOffsetSeconds) || other.utcOffsetSeconds == utcOffsetSeconds));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,hourly,daily,timezone,utcOffsetSeconds);
+int get hashCode => Object.hash(runtimeType,hourly,daily,minutely15,timezone,utcOffsetSeconds);
 
 @override
 String toString() {
-  return 'WeatherDataApi(hourly: $hourly, daily: $daily, timezone: $timezone, utcOffsetSeconds: $utcOffsetSeconds)';
+  return 'WeatherDataApi(hourly: $hourly, daily: $daily, minutely15: $minutely15, timezone: $timezone, utcOffsetSeconds: $utcOffsetSeconds)';
 }
 
 
@@ -271,11 +285,11 @@ abstract mixin class _$WeatherDataApiCopyWith<$Res> implements $WeatherDataApiCo
   factory _$WeatherDataApiCopyWith(_WeatherDataApi value, $Res Function(_WeatherDataApi) _then) = __$WeatherDataApiCopyWithImpl;
 @override @useResult
 $Res call({
- Hourly hourly, Daily daily, String timezone,@JsonKey(name: 'utc_offset_seconds') int utcOffsetSeconds
+ Hourly hourly, Daily daily,@JsonKey(name: 'minutely_15') Minutely15? minutely15, String timezone,@JsonKey(name: 'utc_offset_seconds') int utcOffsetSeconds
 });
 
 
-@override $HourlyCopyWith<$Res> get hourly;@override $DailyCopyWith<$Res> get daily;
+@override $HourlyCopyWith<$Res> get hourly;@override $DailyCopyWith<$Res> get daily;@override $Minutely15CopyWith<$Res>? get minutely15;
 
 }
 /// @nodoc
@@ -288,11 +302,12 @@ class __$WeatherDataApiCopyWithImpl<$Res>
 
 /// Create a copy of WeatherDataApi
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? hourly = null,Object? daily = null,Object? timezone = null,Object? utcOffsetSeconds = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? hourly = null,Object? daily = null,Object? minutely15 = freezed,Object? timezone = null,Object? utcOffsetSeconds = null,}) {
   return _then(_WeatherDataApi(
 hourly: null == hourly ? _self.hourly : hourly // ignore: cast_nullable_to_non_nullable
 as Hourly,daily: null == daily ? _self.daily : daily // ignore: cast_nullable_to_non_nullable
-as Daily,timezone: null == timezone ? _self.timezone : timezone // ignore: cast_nullable_to_non_nullable
+as Daily,minutely15: freezed == minutely15 ? _self.minutely15 : minutely15 // ignore: cast_nullable_to_non_nullable
+as Minutely15?,timezone: null == timezone ? _self.timezone : timezone // ignore: cast_nullable_to_non_nullable
 as String,utcOffsetSeconds: null == utcOffsetSeconds ? _self.utcOffsetSeconds : utcOffsetSeconds // ignore: cast_nullable_to_non_nullable
 as int,
   ));
@@ -316,7 +331,334 @@ $DailyCopyWith<$Res> get daily {
   return $DailyCopyWith<$Res>(_self.daily, (value) {
     return _then(_self.copyWith(daily: value));
   });
+}/// Create a copy of WeatherDataApi
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$Minutely15CopyWith<$Res>? get minutely15 {
+    if (_self.minutely15 == null) {
+    return null;
+  }
+
+  return $Minutely15CopyWith<$Res>(_self.minutely15!, (value) {
+    return _then(_self.copyWith(minutely15: value));
+  });
 }
+}
+
+
+/// @nodoc
+mixin _$Minutely15 {
+
+ List<String>? get time; List<double?>? get precipitation; List<double?>? get rain; List<double?>? get showers;@JsonKey(name: 'precipitation_probability') List<int?>? get precipitationProbability;
+/// Create a copy of Minutely15
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$Minutely15CopyWith<Minutely15> get copyWith => _$Minutely15CopyWithImpl<Minutely15>(this as Minutely15, _$identity);
+
+  /// Serializes this Minutely15 to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Minutely15&&const DeepCollectionEquality().equals(other.time, time)&&const DeepCollectionEquality().equals(other.precipitation, precipitation)&&const DeepCollectionEquality().equals(other.rain, rain)&&const DeepCollectionEquality().equals(other.showers, showers)&&const DeepCollectionEquality().equals(other.precipitationProbability, precipitationProbability));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(time),const DeepCollectionEquality().hash(precipitation),const DeepCollectionEquality().hash(rain),const DeepCollectionEquality().hash(showers),const DeepCollectionEquality().hash(precipitationProbability));
+
+@override
+String toString() {
+  return 'Minutely15(time: $time, precipitation: $precipitation, rain: $rain, showers: $showers, precipitationProbability: $precipitationProbability)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $Minutely15CopyWith<$Res>  {
+  factory $Minutely15CopyWith(Minutely15 value, $Res Function(Minutely15) _then) = _$Minutely15CopyWithImpl;
+@useResult
+$Res call({
+ List<String>? time, List<double?>? precipitation, List<double?>? rain, List<double?>? showers,@JsonKey(name: 'precipitation_probability') List<int?>? precipitationProbability
+});
+
+
+
+
+}
+/// @nodoc
+class _$Minutely15CopyWithImpl<$Res>
+    implements $Minutely15CopyWith<$Res> {
+  _$Minutely15CopyWithImpl(this._self, this._then);
+
+  final Minutely15 _self;
+  final $Res Function(Minutely15) _then;
+
+/// Create a copy of Minutely15
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? time = freezed,Object? precipitation = freezed,Object? rain = freezed,Object? showers = freezed,Object? precipitationProbability = freezed,}) {
+  return _then(_self.copyWith(
+time: freezed == time ? _self.time : time // ignore: cast_nullable_to_non_nullable
+as List<String>?,precipitation: freezed == precipitation ? _self.precipitation : precipitation // ignore: cast_nullable_to_non_nullable
+as List<double?>?,rain: freezed == rain ? _self.rain : rain // ignore: cast_nullable_to_non_nullable
+as List<double?>?,showers: freezed == showers ? _self.showers : showers // ignore: cast_nullable_to_non_nullable
+as List<double?>?,precipitationProbability: freezed == precipitationProbability ? _self.precipitationProbability : precipitationProbability // ignore: cast_nullable_to_non_nullable
+as List<int?>?,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [Minutely15].
+extension Minutely15Patterns on Minutely15 {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Minutely15 value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Minutely15() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Minutely15 value)  $default,){
+final _that = this;
+switch (_that) {
+case _Minutely15():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Minutely15 value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Minutely15() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<String>? time,  List<double?>? precipitation,  List<double?>? rain,  List<double?>? showers, @JsonKey(name: 'precipitation_probability')  List<int?>? precipitationProbability)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Minutely15() when $default != null:
+return $default(_that.time,_that.precipitation,_that.rain,_that.showers,_that.precipitationProbability);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<String>? time,  List<double?>? precipitation,  List<double?>? rain,  List<double?>? showers, @JsonKey(name: 'precipitation_probability')  List<int?>? precipitationProbability)  $default,) {final _that = this;
+switch (_that) {
+case _Minutely15():
+return $default(_that.time,_that.precipitation,_that.rain,_that.showers,_that.precipitationProbability);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<String>? time,  List<double?>? precipitation,  List<double?>? rain,  List<double?>? showers, @JsonKey(name: 'precipitation_probability')  List<int?>? precipitationProbability)?  $default,) {final _that = this;
+switch (_that) {
+case _Minutely15() when $default != null:
+return $default(_that.time,_that.precipitation,_that.rain,_that.showers,_that.precipitationProbability);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _Minutely15 implements Minutely15 {
+  const _Minutely15({final  List<String>? time, final  List<double?>? precipitation, final  List<double?>? rain, final  List<double?>? showers, @JsonKey(name: 'precipitation_probability') final  List<int?>? precipitationProbability}): _time = time,_precipitation = precipitation,_rain = rain,_showers = showers,_precipitationProbability = precipitationProbability;
+  factory _Minutely15.fromJson(Map<String, dynamic> json) => _$Minutely15FromJson(json);
+
+ final  List<String>? _time;
+@override List<String>? get time {
+  final value = _time;
+  if (value == null) return null;
+  if (_time is EqualUnmodifiableListView) return _time;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
+ final  List<double?>? _precipitation;
+@override List<double?>? get precipitation {
+  final value = _precipitation;
+  if (value == null) return null;
+  if (_precipitation is EqualUnmodifiableListView) return _precipitation;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
+ final  List<double?>? _rain;
+@override List<double?>? get rain {
+  final value = _rain;
+  if (value == null) return null;
+  if (_rain is EqualUnmodifiableListView) return _rain;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
+ final  List<double?>? _showers;
+@override List<double?>? get showers {
+  final value = _showers;
+  if (value == null) return null;
+  if (_showers is EqualUnmodifiableListView) return _showers;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
+ final  List<int?>? _precipitationProbability;
+@override@JsonKey(name: 'precipitation_probability') List<int?>? get precipitationProbability {
+  final value = _precipitationProbability;
+  if (value == null) return null;
+  if (_precipitationProbability is EqualUnmodifiableListView) return _precipitationProbability;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
+
+/// Create a copy of Minutely15
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$Minutely15CopyWith<_Minutely15> get copyWith => __$Minutely15CopyWithImpl<_Minutely15>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$Minutely15ToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Minutely15&&const DeepCollectionEquality().equals(other._time, _time)&&const DeepCollectionEquality().equals(other._precipitation, _precipitation)&&const DeepCollectionEquality().equals(other._rain, _rain)&&const DeepCollectionEquality().equals(other._showers, _showers)&&const DeepCollectionEquality().equals(other._precipitationProbability, _precipitationProbability));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_time),const DeepCollectionEquality().hash(_precipitation),const DeepCollectionEquality().hash(_rain),const DeepCollectionEquality().hash(_showers),const DeepCollectionEquality().hash(_precipitationProbability));
+
+@override
+String toString() {
+  return 'Minutely15(time: $time, precipitation: $precipitation, rain: $rain, showers: $showers, precipitationProbability: $precipitationProbability)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$Minutely15CopyWith<$Res> implements $Minutely15CopyWith<$Res> {
+  factory _$Minutely15CopyWith(_Minutely15 value, $Res Function(_Minutely15) _then) = __$Minutely15CopyWithImpl;
+@override @useResult
+$Res call({
+ List<String>? time, List<double?>? precipitation, List<double?>? rain, List<double?>? showers,@JsonKey(name: 'precipitation_probability') List<int?>? precipitationProbability
+});
+
+
+
+
+}
+/// @nodoc
+class __$Minutely15CopyWithImpl<$Res>
+    implements _$Minutely15CopyWith<$Res> {
+  __$Minutely15CopyWithImpl(this._self, this._then);
+
+  final _Minutely15 _self;
+  final $Res Function(_Minutely15) _then;
+
+/// Create a copy of Minutely15
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? time = freezed,Object? precipitation = freezed,Object? rain = freezed,Object? showers = freezed,Object? precipitationProbability = freezed,}) {
+  return _then(_Minutely15(
+time: freezed == time ? _self._time : time // ignore: cast_nullable_to_non_nullable
+as List<String>?,precipitation: freezed == precipitation ? _self._precipitation : precipitation // ignore: cast_nullable_to_non_nullable
+as List<double?>?,rain: freezed == rain ? _self._rain : rain // ignore: cast_nullable_to_non_nullable
+as List<double?>?,showers: freezed == showers ? _self._showers : showers // ignore: cast_nullable_to_non_nullable
+as List<double?>?,precipitationProbability: freezed == precipitationProbability ? _self._precipitationProbability : precipitationProbability // ignore: cast_nullable_to_non_nullable
+as List<int?>?,
+  ));
+}
+
+
 }
 
 

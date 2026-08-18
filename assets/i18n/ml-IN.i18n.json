@@ -319,5 +319,14 @@
   "currentTemperature": "നിലവിലെ താപനില",
   "temperature24hAgo": "24 മണിക്കൂർ മുമ്പത്തെ താപനില",
   "vsYesterday": "ഇന്നലെയുമായി താരതമ്യം",
-  "windLevel": "നില {n}"
+  "windLevel": "നില {n}",
+  "rainStartsIn": "{minutes} മിനിറ്റിനുള്ളിൽ മഴ തുടങ്ങും",
+  "rainStopsIn": "{minutes} മിനിറ്റിനുള്ളിൽ മഴ നിൽക്കും",
+  "rainChangesIn": "{minutes} മിനിറ്റിനുള്ളിൽ {from} {to} ആയി മാറും",
+  "rainStartsNow": "ഇപ്പോൾ മഴ തുടങ്ങും",
+  "rainStopsNow": "ഇപ്പോൾ മഴ നിൽക്കും",
+  "rainLight": "നേരിയ മഴ",
+  "rainModerate": "മിതമായ മഴ",
+  "rainHeavy": "കനത്ത മഴ",
+  "rainTorrential": "കോരിച്ചൊരിയുന്ന മഴ"
 }

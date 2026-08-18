@@ -360,6 +360,15 @@ class TranslationsKnIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get temperature24h_ago => '24 ಗಂಟೆಗಳ ಹಿಂದಿನ ತಾಪಮಾನ';
 	@override String get vs_yesterday => 'ನಿನ್ನೆಗಿಂತ';
 	@override String get wind_level => 'ಮಟ್ಟ {n}';
+	@override String get rain_starts_in => '{minutes} ನಿಮಿಷಗಳಲ್ಲಿ ಮಳೆ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ';
+	@override String get rain_stops_in => '{minutes} ನಿಮಿಷಗಳಲ್ಲಿ ಮಳೆ ನಿಲ್ಲುತ್ತದೆ';
+	@override String get rain_changes_in => '{minutes} ನಿಮಿಷಗಳಲ್ಲಿ {from} {to} ಆಗುತ್ತದೆ';
+	@override String get rain_starts_now => 'ಈಗ ಮಳೆ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ';
+	@override String get rain_stops_now => 'ಈಗ ಮಳೆ ನಿಲ್ಲುತ್ತದೆ';
+	@override String get rain_light => 'ಲಘು ಮಳೆ';
+	@override String get rain_moderate => 'ಮಧ್ಯಮ ಮಳೆ';
+	@override String get rain_heavy => 'ಭಾರಿ ಮಳೆ';
+	@override String get rain_torrential => 'ಧಾರಾಕಾರ ಮಳೆ';
 }
 
 /// The flat map containing all translations for locale <kn-IN>.
@@ -691,6 +700,15 @@ extension on TranslationsKnIn {
 			'temperature24h_ago' => '24 ಗಂಟೆಗಳ ಹಿಂದಿನ ತಾಪಮಾನ',
 			'vs_yesterday' => 'ನಿನ್ನೆಗಿಂತ',
 			'wind_level' => 'ಮಟ್ಟ {n}',
+			'rain_starts_in' => '{minutes} ನಿಮಿಷಗಳಲ್ಲಿ ಮಳೆ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ',
+			'rain_stops_in' => '{minutes} ನಿಮಿಷಗಳಲ್ಲಿ ಮಳೆ ನಿಲ್ಲುತ್ತದೆ',
+			'rain_changes_in' => '{minutes} ನಿಮಿಷಗಳಲ್ಲಿ {from} {to} ಆಗುತ್ತದೆ',
+			'rain_starts_now' => 'ಈಗ ಮಳೆ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ',
+			'rain_stops_now' => 'ಈಗ ಮಳೆ ನಿಲ್ಲುತ್ತದೆ',
+			'rain_light' => 'ಲಘು ಮಳೆ',
+			'rain_moderate' => 'ಮಧ್ಯಮ ಮಳೆ',
+			'rain_heavy' => 'ಭಾರಿ ಮಳೆ',
+			'rain_torrential' => 'ಧಾರಾಕಾರ ಮಳೆ',
 			_ => null,
 		};
 	}
