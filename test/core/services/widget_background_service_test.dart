@@ -59,6 +59,28 @@ void main() {
       expect(internetChecked, isFalse);
     });
 
+    test('fresh legacy cache without minute data attempts refresh', () async {
+      final local = WeatherLocalDatasource(ctx.isar);
+      await local.saveMainWeather(
+        sampleMainWeatherCache()
+          ..timestamp = DateTime.now()
+          ..timeMinutely15 = null
+          ..precipitationMinutely15 = null,
+        sampleLocationCache(),
+      );
+
+      var internetChecked = false;
+      await refreshMainWeatherIfStale(
+        ctx.isar,
+        internetAccess: () async {
+          internetChecked = true;
+          return false;
+        },
+      );
+
+      expect(internetChecked, isTrue);
+    });
+
     test('force refresh bypasses a fresh widget cache', () async {
       final local = WeatherLocalDatasource(ctx.isar);
       await local.saveMainWeather(

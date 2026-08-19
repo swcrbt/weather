@@ -70,8 +70,12 @@ Future<void> refreshMainWeatherIfStale(
 
   if (!forceRefresh) {
     final cacheIsEmpty = await local.isMainWeatherEmpty();
+    final minutelyForecastMissing = await local
+        .isMainWeatherMissingMinutelyRainForecast();
     final staleAfter = AppConstants.widgetWeatherRefreshThreshold();
-    if (!cacheIsEmpty && !await local.isMainWeatherExpired(staleAfter)) {
+    if (!cacheIsEmpty &&
+        !minutelyForecastMissing &&
+        !await local.isMainWeatherExpired(staleAfter)) {
       return;
     }
   }

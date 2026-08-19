@@ -136,7 +136,8 @@ class MainWeatherNotifier extends Notifier<MainWeatherState> {
       await _readCacheImpl();
       return;
     }
-    if (await repo.isCacheExpired(_cacheExpiryThreshold)) {
+    if (await repo.isCacheExpired(_cacheExpiryThreshold) ||
+        await repo.isMinutelyRainForecastMissing()) {
       // Stale-while-revalidate: keep showing the last forecast instead of a
       // full-screen loader while the 12h refresh runs (or times out).
       await _readCacheImpl();
@@ -660,7 +661,8 @@ class MainWeatherNotifier extends Notifier<MainWeatherState> {
     final cached = await repo.readCache();
     if (cached.weather == null || cached.location == null) return;
 
-    if (await repo.isCacheExpired(_cacheExpiryThreshold)) {
+    if (await repo.isCacheExpired(_cacheExpiryThreshold) ||
+        await repo.isMinutelyRainForecastMissing()) {
       await _refreshIfStaleImpl();
       return;
     }
@@ -681,7 +683,8 @@ class MainWeatherNotifier extends Notifier<MainWeatherState> {
     final cached = await repo.readCache();
     if (cached.weather == null || cached.location == null) return;
 
-    if (!await repo.isCacheExpired(_cacheExpiryThreshold)) {
+    if (!await repo.isCacheExpired(_cacheExpiryThreshold) &&
+        !await repo.isMinutelyRainForecastMissing()) {
       syncCurrentTimeIndices();
       return;
     }

@@ -1,4 +1,5 @@
 import 'package:isar_community/isar.dart';
+import 'package:rain/core/weather/weather_cache_validator.dart';
 import 'package:rain/data/models/db.dart';
 
 /// Persists and reads the primary weather and location cache in Isar.
@@ -32,6 +33,13 @@ class WeatherLocalDatasource {
       await _isar.mainWeatherCaches.put(weather);
       await _isar.locationCaches.put(location);
     });
+  }
+
+  /// Returns true when the saved cache has no minute-level rain forecast.
+  Future<bool> isMainWeatherMissingMinutelyRainForecast() async {
+    final weather = await getMainWeather();
+    return weather == null ||
+        !WeatherCacheValidator.hasMinutelyRainForecast(weather);
   }
 
   /// Returns true if a cache row exists and its timestamp is missing or before [expiry]; false if absent.

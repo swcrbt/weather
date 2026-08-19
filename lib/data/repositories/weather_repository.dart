@@ -25,6 +25,10 @@ class WeatherRepository {
   Future<void> writeCache(MainWeatherCache weather, LocationCache location) =>
       _local.saveMainWeather(weather, location);
 
+  /// Returns true when the main cache does not contain the 15-minute forecast.
+  Future<bool> isMinutelyRainForecastMissing() =>
+      _local.isMainWeatherMissingMinutelyRainForecast();
+
   /// Returns true if a cache row exists and its timestamp is missing or before [expiry]; false if absent.
   Future<bool> isCacheExpired(DateTime expiry) =>
       _local.isMainWeatherExpired(expiry);

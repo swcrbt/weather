@@ -103,7 +103,7 @@ void main() {
       expect(bundle['dateEpochMillis'], isA<int>());
       expect(bundle['timeZoneId'], weather.timezone);
       expect(bundle['updateTime'], isNot('—'));
-      expect(bundle['precipitationAlert'], contains('70%'));
+      expect(bundle['precipitationAlert'], isNull);
       expect(aqi['value'], isA<int>());
       expect(aqi['level'], isNotEmpty);
       expect(aqi['severity'], inInclusiveRange(0, 5));
@@ -124,6 +124,28 @@ void main() {
           ),
         ),
       );
+    });
+
+    test('never falls back to hourly precipitation probability', () async {
+      final weather = sampleMainWeatherCache()
+        ..timestamp = DateTime.now()
+        ..timeMinutely15 = null
+        ..precipitationMinutely15 = null
+        ..rainMinutely15 = null
+        ..showersMinutely15 = null
+        ..precipitationProbability = [100, 100];
+      await seedMainWeatherCache(
+        ctx.isarContext.isar,
+        weather: weather,
+        location: sampleLocationCache(),
+      );
+
+      await service.updateFromIsar(ctx.isarContext.isar);
+
+      final bundle =
+          jsonDecode(savedWidgetData['widget_bundle']! as String)
+              as Map<String, dynamic>;
+      expect(bundle.containsKey('precipitationAlert'), isFalse);
     });
 
     test('uses 15-minute rain intensity changes in widget alerts', () async {

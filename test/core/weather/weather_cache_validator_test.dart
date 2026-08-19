@@ -26,6 +26,33 @@ void main() {
     });
   });
 
+  group('WeatherCacheValidator.hasMinutelyRainForecast', () {
+    test('requires non-empty aligned time and precipitation lists', () {
+      expect(
+        WeatherCacheValidator.hasMinutelyRainForecast(
+          MainWeatherCache(
+            timeMinutely15: ['2026-06-05T12:00'],
+            precipitationMinutely15: [0.2],
+          ),
+        ),
+        isTrue,
+      );
+      expect(
+        WeatherCacheValidator.hasMinutelyRainForecast(
+          MainWeatherCache(
+            timeMinutely15: ['2026-06-05T12:00'],
+            precipitationMinutely15: [],
+          ),
+        ),
+        isFalse,
+      );
+      expect(
+        WeatherCacheValidator.hasMinutelyRainForecast(MainWeatherCache()),
+        isFalse,
+      );
+    });
+  });
+
   group('WeatherCacheValidator.hasMainDisplayData', () {
     test('accepts cache with hourly and daily fields', () {
       expect(

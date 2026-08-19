@@ -4,6 +4,16 @@ import 'package:rain/data/models/db.dart';
 class WeatherCacheValidator {
   const WeatherCacheValidator._();
 
+  /// True when [cache] has aligned 15-minute precipitation rows.
+  static bool hasMinutelyRainForecast(MainWeatherCache cache) {
+    final times = cache.timeMinutely15;
+    final precipitation = cache.precipitationMinutely15;
+    return times != null &&
+        precipitation != null &&
+        times.isNotEmpty &&
+        times.length == precipitation.length;
+  }
+
   /// True when [time] has at least one hourly forecast timestamp.
   static bool hasHourlyTimestamps(List<String>? time) =>
       time != null && time.isNotEmpty;

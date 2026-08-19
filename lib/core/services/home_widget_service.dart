@@ -12,6 +12,7 @@ import 'package:rain/core/weather/aqi_helper.dart';
 import 'package:rain/core/weather/precipitation_alert_calculator.dart';
 import 'package:rain/core/weather/status_weather.dart';
 import 'package:rain/core/weather/time_index_helper.dart';
+import 'package:rain/core/weather/weather_cache_validator.dart';
 import 'package:rain/core/weather/unit_converter.dart';
 import 'package:rain/data/models/db.dart';
 import 'package:rain/i18n/tr.dart';
@@ -183,10 +184,7 @@ class HomeWidgetService {
 
     final precipitationAlert = _precipitationAlert(
       cache: cache,
-      currentHour: hour,
       wallNow: wallNow,
-      settings: settings,
-      languageCode: languageCode,
     );
     if (precipitationAlert != null) {
       bundle['precipitationAlert'] = precipitationAlert;
@@ -272,55 +270,21 @@ class HomeWidgetService {
 
   String? _precipitationAlert({
     required MainWeatherCache cache,
-    required int currentHour,
     required DateTime wallNow,
-    required Settings settings,
-    required String languageCode,
   }) {
-    final minutelyTimes = cache.timeMinutely15;
-    final minutelyPrecipitation = cache.precipitationMinutely15;
-    if (minutelyTimes != null && minutelyPrecipitation != null) {
-      if (!_isFreshMinutelyForecast(cache.timestamp)) return null;
-      final alert = PrecipitationAlertCalculator.calculate(
-        times: minutelyTimes,
-        precipitation: minutelyPrecipitation,
-        rain: cache.rainMinutely15,
-        showers: cache.showersMinutely15,
-        now: wallNow,
-      );
-      if (alert != null) return _formatPrecipitationAlert(alert);
-    }
-
-    final probabilities = cache.precipitationProbability;
-    final times = cache.time;
-    if (probabilities == null || times == null || probabilities.isEmpty) {
+    if (!WeatherCacheValidator.hasMinutelyRainForecast(cache) ||
+        !_isFreshMinutelyForecast(cache.timestamp)) {
       return null;
     }
 
-    final currentProbability = currentHour < probabilities.length
-        ? probabilities[currentHour]
-        : null;
-    if (currentProbability != null && currentProbability > 0) {
-      return '${'precipitationProbability'.tr} $currentProbability%';
-    }
-
-    final last = [
-      times.length,
-      probabilities.length,
-    ].reduce((a, b) => a < b ? a : b);
-    for (var index = currentHour + 1; index < last; index++) {
-      final probability = probabilities[index];
-      if (probability == null || probability < 30) continue;
-      final slot = TimeIndexHelper.parseForecastDateTime(times[index]);
-      final label = TimeIndexHelper.formatForecastSlotLabel(
-        notificationTime: slot,
-        wallNow: wallNow,
-        settings: settings,
-        languageCode: languageCode,
-      );
-      return '$label · ${'precipitationProbability'.tr} $probability%';
-    }
-    return null;
+    final alert = PrecipitationAlertCalculator.calculate(
+      times: cache.timeMinutely15!,
+      precipitation: cache.precipitationMinutely15!,
+      rain: cache.rainMinutely15,
+      showers: cache.showersMinutely15,
+      now: wallNow,
+    );
+    return alert == null ? null : _formatPrecipitationAlert(alert);
   }
 
   bool _isFreshMinutelyForecast(DateTime? fetchedAt) {

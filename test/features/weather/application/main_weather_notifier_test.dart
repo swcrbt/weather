@@ -154,6 +154,30 @@ void main() {
     });
 
     test(
+      'refreshIfStale replaces a fresh legacy cache without minute data',
+      () async {
+        await seedMainWeatherCache(
+          ctx.isarContext.isar,
+          weather: sampleMainWeatherCache()
+            ..timestamp = DateTime.now()
+            ..timeMinutely15 = null
+            ..precipitationMinutely15 = null,
+        );
+        final container = createContainer();
+        final notifier = container.read(mainWeatherNotifierProvider.notifier);
+
+        await notifier.readCache();
+        await notifier.refreshIfStale();
+
+        final cached = await container
+            .read(weatherRepositoryProvider)
+            .readCache();
+        expect(cached.weather?.timeMinutely15, isNotEmpty);
+        expect(cached.weather?.precipitationMinutely15, isNotEmpty);
+      },
+    );
+
+    test(
       'refreshIfStale uses GPS refresh when location mode is enabled',
       () async {
         final staleWeather = sampleMainWeatherCache()
