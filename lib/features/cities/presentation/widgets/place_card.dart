@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:rain/core/di/provider_refs.dart';
 import 'package:rain/core/utils/location_label.dart';
+import 'package:rain/core/weather/weather_alert_style.dart';
 import 'package:rain/data/models/db.dart';
 import 'package:rain/features/cities/domain/weather_card_validator.dart';
 import 'package:rain/i18n/tr.dart';
@@ -36,6 +37,12 @@ class PlaceCard extends ConsumerWidget {
     final timeDaily = card.timeDaily!;
     final currentTimeIndex = TimeIndexHelper.getTime(time, clock);
     final currentDayIndex = TimeIndexHelper.getDay(timeDaily, clock);
+    final activeAlerts = card.alerts == null
+        ? null
+        : WeatherAlertStyle.activeAlerts(card.alerts);
+    final alertColor = activeAlerts == null || activeAlerts.isEmpty
+        ? null
+        : WeatherAlertStyle.colorOf(activeAlerts.first);
 
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
@@ -69,6 +76,10 @@ class PlaceCard extends ConsumerWidget {
                               fontWeight: FontWeight.w400,
                             ),
                       ),
+                      if (alertColor != null) ...[
+                        const Gap(7),
+                        Icon(Icons.crisis_alert, color: alertColor, size: 18),
+                      ],
                     ],
                   ),
                   const Gap(10),

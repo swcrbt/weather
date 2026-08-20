@@ -369,6 +369,8 @@ class TranslationsGuIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'મધ્યમ વરસાદ';
 	@override String get rain_heavy => 'ભારે વરસાદ';
 	@override String get rain_torrential => 'મુશળધાર વરસાદ';
+	@override String get weather_alerts => 'હવામાન ચેતવણીઓ';
+	@override String get alert_more => 'વધુ {n}';
 }
 
 /// The flat map containing all translations for locale <gu-IN>.
@@ -709,6 +711,8 @@ extension on TranslationsGuIn {
 			'rain_moderate' => 'મધ્યમ વરસાદ',
 			'rain_heavy' => 'ભારે વરસાદ',
 			'rain_torrential' => 'મુશળધાર વરસાદ',
+			'weather_alerts' => 'હવામાન ચેતવણીઓ',
+			'alert_more' => 'વધુ {n}',
 			_ => null,
 		};
 	}

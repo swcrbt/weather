@@ -328,5 +328,7 @@
   "rainLight": "Chuva fraca",
   "rainModerate": "Chuva moderada",
   "rainHeavy": "Chuva forte",
-  "rainTorrential": "Chuva torrencial"
+  "rainTorrential": "Chuva torrencial",
+  "weatherAlerts": "Alertas meteorológicos",
+  "alertMore": "Mais {n}"
 }

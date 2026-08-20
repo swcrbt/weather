@@ -369,6 +369,8 @@ class TranslationsJaJp extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => '中程度の雨';
 	@override String get rain_heavy => '強い雨';
 	@override String get rain_torrential => '豪雨';
+	@override String get weather_alerts => '気象警報';
+	@override String get alert_more => 'ほか {n} 件';
 }
 
 /// The flat map containing all translations for locale <ja-JP>.
@@ -709,6 +711,8 @@ extension on TranslationsJaJp {
 			'rain_moderate' => '中程度の雨',
 			'rain_heavy' => '強い雨',
 			'rain_torrential' => '豪雨',
+			'weather_alerts' => '気象警報',
+			'alert_more' => 'ほか {n} 件',
 			_ => null,
 		};
 	}

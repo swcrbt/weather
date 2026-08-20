@@ -328,5 +328,7 @@
   "rainLight": "हलका पाऊस",
   "rainModerate": "मध्यम पाऊस",
   "rainHeavy": "जोरदार पाऊस",
-  "rainTorrential": "मुसळधार पाऊस"
+  "rainTorrential": "मुसळधार पाऊस",
+  "weatherAlerts": "हवामान इशारे",
+  "alertMore": "आणखी {n}"
 }

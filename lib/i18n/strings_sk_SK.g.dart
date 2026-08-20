@@ -369,6 +369,8 @@ class TranslationsSkSk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Mierny dážď';
 	@override String get rain_heavy => 'Silný dážď';
 	@override String get rain_torrential => 'Lejak';
+	@override String get weather_alerts => 'Výstrahy počasia';
+	@override String get alert_more => 'Ďalších {n}';
 }
 
 /// The flat map containing all translations for locale <sk-SK>.
@@ -709,6 +711,8 @@ extension on TranslationsSkSk {
 			'rain_moderate' => 'Mierny dážď',
 			'rain_heavy' => 'Silný dážď',
 			'rain_torrential' => 'Lejak',
+			'weather_alerts' => 'Výstrahy počasia',
+			'alert_more' => 'Ďalších {n}',
 			_ => null,
 		};
 	}

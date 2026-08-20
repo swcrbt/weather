@@ -369,6 +369,8 @@ class TranslationsZhCn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => '上次后台刷新';
 	@override String get last_background_refresh_never => '尚无后台刷新';
 	@override String get background_refresh_error => '上次后台错误';
+	@override String get weather_alerts => '天气预警';
+	@override String get alert_more => '另有 {n} 条';
 }
 
 /// The flat map containing all translations for locale <zh-CN>.
@@ -709,6 +711,8 @@ extension on TranslationsZhCn {
 			'last_background_refresh' => '上次后台刷新',
 			'last_background_refresh_never' => '尚无后台刷新',
 			'background_refresh_error' => '上次后台错误',
+			'weather_alerts' => '天气预警',
+			'alert_more' => '另有 {n} 条',
 			_ => null,
 		};
 	}

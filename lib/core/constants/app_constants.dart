@@ -86,7 +86,7 @@ class AppConstants {
   static const Duration minutelyRainForecastFreshness = Duration(hours: 1);
 
   /// Incremented when forecast cache schema changes; triggers a re-save migration.
-  static const int weatherCacheSchemaVersion = 5;
+  static const int weatherCacheSchemaVersion = 6;
 
   /// Bumped when Android forecast notification channels change (requires reschedule).
   static const int notificationChannelSchemaVersion = 1;

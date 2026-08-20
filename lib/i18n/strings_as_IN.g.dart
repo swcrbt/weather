@@ -369,6 +369,8 @@ class TranslationsAsIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'মধ্যমীয়া বৰষুণ';
 	@override String get rain_heavy => 'ভাৰী বৰষুণ';
 	@override String get rain_torrential => 'মূষলধাৰ বৰষুণ';
+	@override String get weather_alerts => 'বতৰ সতৰ্কবাণী';
+	@override String get alert_more => 'আৰু {n}টা';
 }
 
 /// The flat map containing all translations for locale <as-IN>.
@@ -709,6 +711,8 @@ extension on TranslationsAsIn {
 			'rain_moderate' => 'মধ্যমীয়া বৰষুণ',
 			'rain_heavy' => 'ভাৰী বৰষুণ',
 			'rain_torrential' => 'মূষলধাৰ বৰষুণ',
+			'weather_alerts' => 'বতৰ সতৰ্কবাণী',
+			'alert_more' => 'আৰু {n}টা',
 			_ => null,
 		};
 	}

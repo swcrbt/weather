@@ -328,5 +328,7 @@
   "rainLight": "Lekki deszcz",
   "rainModerate": "Umiarkowany deszcz",
   "rainHeavy": "Silny deszcz",
-  "rainTorrential": "Ulewa"
+  "rainTorrential": "Ulewa",
+  "weatherAlerts": "Ostrzeżenia pogodowe",
+  "alertMore": "Jeszcze {n}"
 }

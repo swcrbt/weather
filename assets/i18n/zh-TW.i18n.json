@@ -328,5 +328,7 @@
   "colorPaletteSand": "沙",
   "lastBackgroundRefresh": "上次背景更新",
   "lastBackgroundRefreshNever": "尚無背景更新",
-  "backgroundRefreshError": "上次背景錯誤"
+  "backgroundRefreshError": "上次背景錯誤",
+  "weatherAlerts": "天氣警報",
+  "alertMore": "另有 {n} 則"
 }

@@ -328,5 +328,7 @@
   "rainLight": "হালকা বৃষ্টি",
   "rainModerate": "মাঝারি বৃষ্টি",
   "rainHeavy": "ভারী বৃষ্টি",
-  "rainTorrential": "মুষলধারে বৃষ্টি"
+  "rainTorrential": "মুষলধারে বৃষ্টি",
+  "weatherAlerts": "আবহাওয়ার সতর্কতা",
+  "alertMore": "আরও {n}টি"
 }

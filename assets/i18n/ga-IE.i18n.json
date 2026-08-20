@@ -328,5 +328,7 @@
   "rainLight": "Báisteach éadrom",
   "rainModerate": "Báisteach mheasartha",
   "rainHeavy": "Báisteach throm",
-  "rainTorrential": "Báisteach thromchúiseach"
+  "rainTorrential": "Báisteach thromchúiseach",
+  "weatherAlerts": "Rabhaidh aimsire",
+  "alertMore": "{n} eile"
 }

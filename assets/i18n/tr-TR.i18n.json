@@ -328,5 +328,7 @@
   "rainLight": "Hafif yağmur",
   "rainModerate": "Orta şiddetli yağmur",
   "rainHeavy": "Şiddetli yağmur",
-  "rainTorrential": "Sağanak yağmur"
+  "rainTorrential": "Sağanak yağmur",
+  "weatherAlerts": "Hava durumu uyarıları",
+  "alertMore": "{n} tane daha"
 }

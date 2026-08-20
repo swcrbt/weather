@@ -369,6 +369,8 @@ class TranslationsHeIl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'גשם בינוני';
 	@override String get rain_heavy => 'גשם כבד';
 	@override String get rain_torrential => 'גשם שוטף';
+	@override String get weather_alerts => 'התראות מזג אוויר';
+	@override String get alert_more => '{n} נוספים';
 }
 
 /// The flat map containing all translations for locale <he-IL>.
@@ -709,6 +711,8 @@ extension on TranslationsHeIl {
 			'rain_moderate' => 'גשם בינוני',
 			'rain_heavy' => 'גשם כבד',
 			'rain_torrential' => 'גשם שוטף',
+			'weather_alerts' => 'התראות מזג אוויר',
+			'alert_more' => '{n} נוספים',
 			_ => null,
 		};
 	}

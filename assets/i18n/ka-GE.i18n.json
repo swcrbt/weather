@@ -328,5 +328,7 @@
   "rainLight": "მსუბუქი წვიმა",
   "rainModerate": "ზომიერი წვიმა",
   "rainHeavy": "ძლიერი წვიმა",
-  "rainTorrential": "კოკისპირული წვიმა"
+  "rainTorrential": "კოკისპირული წვიმა",
+  "weatherAlerts": "ამინდის გაფრთხილებები",
+  "alertMore": "კიდევ {n}"
 }

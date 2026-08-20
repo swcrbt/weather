@@ -328,5 +328,7 @@
   "rainLight": "弱い雨",
   "rainModerate": "中程度の雨",
   "rainHeavy": "強い雨",
-  "rainTorrential": "豪雨"
+  "rainTorrential": "豪雨",
+  "weatherAlerts": "気象警報",
+  "alertMore": "ほか {n} 件"
 }

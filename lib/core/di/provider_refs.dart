@@ -7,8 +7,13 @@ import 'package:rain/core/services/home_widget_service.dart';
 import 'package:rain/core/services/location_service.dart';
 import 'package:rain/core/services/notification_service.dart';
 import 'package:rain/core/services/widget_settings_service.dart';
+import 'package:rain/data/datasources/composite_weather_source.dart';
+import 'package:rain/data/datasources/geocoding_remote_datasource.dart';
+import 'package:rain/data/datasources/open_meteo_datasource.dart';
+import 'package:rain/data/datasources/qweather_regional_enhancer.dart';
+import 'package:rain/data/datasources/qweather_weather_source.dart';
 import 'package:rain/data/datasources/weather_local_datasource.dart';
-import 'package:rain/data/datasources/weather_remote_datasource.dart';
+import 'package:rain/data/datasources/weather_source.dart';
 import 'package:rain/data/models/db.dart';
 import 'package:rain/data/repositories/cities_repository.dart';
 import 'package:rain/core/di/settings_revision.dart';
@@ -92,9 +97,19 @@ final locationServiceProvider = Provider<LocationService>(
   (ref) => LocationService(),
 );
 
-/// Provides the remote weather API datasource.
-final weatherRemoteDatasourceProvider = Provider<WeatherRemoteDatasource>(
-  (ref) => WeatherRemoteDatasource(),
+/// Provides the Nominatim reverse-geocoding datasource (weather-provider independent).
+final geocodingDatasourceProvider = Provider<GeocodingRemoteDatasource>(
+  (ref) => GeocodingRemoteDatasource(),
+);
+
+/// Provides the composite weather source:
+/// Open-Meteo 主数据 + 和风中国区增强（实况/分钟降水/AQI/预警）+ CJK 搜索路由。
+final weatherSourceProvider = Provider<WeatherSource>(
+  (ref) => CompositeWeatherSource(
+    primary: OpenMeteoWeatherSource(),
+    secondarySearch: QWeatherWeatherSource(),
+    enhancers: [QWeatherRegionalEnhancer()],
+  ),
 );
 
 /// Provides the local Isar-backed weather cache datasource.
@@ -105,7 +120,7 @@ final weatherLocalDatasourceProvider = Provider<WeatherLocalDatasource>(
 /// Provides the weather repository combining remote and local sources.
 final weatherRepositoryProvider = Provider<WeatherRepository>((ref) {
   return WeatherRepository(
-    ref.watch(weatherRemoteDatasourceProvider),
+    ref.watch(weatherSourceProvider),
     ref.watch(weatherLocalDatasourceProvider),
   );
 });
@@ -114,7 +129,7 @@ final weatherRepositoryProvider = Provider<WeatherRepository>((ref) {
 final citiesRepositoryProvider = Provider<CitiesRepository>((ref) {
   return CitiesRepository(
     ref.watch(isarProvider),
-    ref.watch(weatherRemoteDatasourceProvider),
+    ref.watch(weatherSourceProvider),
   );
 });
 

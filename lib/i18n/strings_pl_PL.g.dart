@@ -369,6 +369,8 @@ class TranslationsPlPl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Umiarkowany deszcz';
 	@override String get rain_heavy => 'Silny deszcz';
 	@override String get rain_torrential => 'Ulewa';
+	@override String get weather_alerts => 'Ostrzeżenia pogodowe';
+	@override String get alert_more => 'Jeszcze {n}';
 }
 
 /// The flat map containing all translations for locale <pl-PL>.
@@ -709,6 +711,8 @@ extension on TranslationsPlPl {
 			'rain_moderate' => 'Umiarkowany deszcz',
 			'rain_heavy' => 'Silny deszcz',
 			'rain_torrential' => 'Ulewa',
+			'weather_alerts' => 'Ostrzeżenia pogodowe',
+			'alert_more' => 'Jeszcze {n}',
 			_ => null,
 		};
 	}

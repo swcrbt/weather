@@ -328,5 +328,7 @@
   "rainLight": "ہلکی بارش",
   "rainModerate": "درمیانی بارش",
   "rainHeavy": "تیز بارش",
-  "rainTorrential": "موسلا دھار بارش"
+  "rainTorrential": "موسلا دھار بارش",
+  "weatherAlerts": "موسم کی وارننگز",
+  "alertMore": "مزید {n}"
 }

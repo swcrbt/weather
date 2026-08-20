@@ -328,5 +328,7 @@
   "rainLight": "Lichte regen",
   "rainModerate": "Matige regen",
   "rainHeavy": "Zware regen",
-  "rainTorrential": "Stortregen"
+  "rainTorrential": "Stortregen",
+  "weatherAlerts": "Weerwaarschuwingen",
+  "alertMore": "Nog {n}"
 }

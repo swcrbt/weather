@@ -328,5 +328,7 @@
   "rainLight": "Let regn",
   "rainModerate": "Moderat regn",
   "rainHeavy": "Kraftig regn",
-  "rainTorrential": "Skybrud"
+  "rainTorrential": "Skybrud",
+  "weatherAlerts": "Vejrvarsler",
+  "alertMore": "{n} mere"
 }

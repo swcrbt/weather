@@ -369,6 +369,8 @@ class TranslationsMlIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'മിതമായ മഴ';
 	@override String get rain_heavy => 'കനത്ത മഴ';
 	@override String get rain_torrential => 'കോരിച്ചൊരിയുന്ന മഴ';
+	@override String get weather_alerts => 'കാലാവസ്ഥാ മുന്നറിയിപ്പ്';
+	@override String get alert_more => 'കൂടാതെ {n} എണ്ണം';
 }
 
 /// The flat map containing all translations for locale <ml-IN>.
@@ -709,6 +711,8 @@ extension on TranslationsMlIn {
 			'rain_moderate' => 'മിതമായ മഴ',
 			'rain_heavy' => 'കനത്ത മഴ',
 			'rain_torrential' => 'കോരിച്ചൊരിയുന്ന മഴ',
+			'weather_alerts' => 'കാലാവസ്ഥാ മുന്നറിയിപ്പ്',
+			'alert_more' => 'കൂടാതെ {n} എണ്ണം',
 			_ => null,
 		};
 	}

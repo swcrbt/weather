@@ -328,5 +328,7 @@
   "timeUnavailable": "--:--",
   "licenseAppSummary": "Built with open-source software. Tap a package to read its license.",
   "licenseDependencies": "Dependencies",
-  "licensePackages": "packages"
+  "licensePackages": "packages",
+  "weatherAlerts": "Weather alerts",
+  "alertMore": "{n} more"
 }

@@ -369,6 +369,8 @@ class TranslationsZhTw extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get last_background_refresh => '上次背景更新';
 	@override String get last_background_refresh_never => '尚無背景更新';
 	@override String get background_refresh_error => '上次背景錯誤';
+	@override String get weather_alerts => '天氣警報';
+	@override String get alert_more => '另有 {n} 則';
 }
 
 /// The flat map containing all translations for locale <zh-TW>.
@@ -709,6 +711,8 @@ extension on TranslationsZhTw {
 			'last_background_refresh' => '上次背景更新',
 			'last_background_refresh_never' => '尚無背景更新',
 			'background_refresh_error' => '上次背景錯誤',
+			'weather_alerts' => '天氣警報',
+			'alert_more' => '另有 {n} 則',
 			_ => null,
 		};
 	}

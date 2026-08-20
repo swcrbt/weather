@@ -43,7 +43,8 @@ app.*.symbols
 app.*.map.json
 
 # Security - Keys (both private and public)
-assets/keys/
+assets/keys/*
+!assets/keys/.gitkeep
 *.pem
 
 # Android Studio will place build artifacts here

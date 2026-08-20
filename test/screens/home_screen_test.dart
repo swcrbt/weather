@@ -33,8 +33,8 @@ void main() {
         notificationServiceProvider.overrideWithValue(
           FakeNotificationService(),
         ),
-        weatherRemoteDatasourceProvider.overrideWithValue(
-          createFakeWeatherRemoteDatasource(),
+        weatherSourceProvider.overrideWithValue(
+          createFakeWeatherSource(),
         ),
       ],
     );
@@ -94,8 +94,8 @@ void main() {
           notificationServiceProvider.overrideWithValue(
             FakeNotificationService(),
           ),
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
         ],
       );
@@ -122,8 +122,8 @@ void main() {
           notificationServiceProvider.overrideWithValue(
             FakeNotificationService(),
           ),
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
         ],
       );
@@ -153,8 +153,8 @@ void main() {
           notificationServiceProvider.overrideWithValue(
             FakeNotificationService(),
           ),
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
         ],
       );

@@ -369,6 +369,8 @@ class TranslationsNlNl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Matige regen';
 	@override String get rain_heavy => 'Zware regen';
 	@override String get rain_torrential => 'Stortregen';
+	@override String get weather_alerts => 'Weerwaarschuwingen';
+	@override String get alert_more => 'Nog {n}';
 }
 
 /// The flat map containing all translations for locale <nl-NL>.
@@ -709,6 +711,8 @@ extension on TranslationsNlNl {
 			'rain_moderate' => 'Matige regen',
 			'rain_heavy' => 'Zware regen',
 			'rain_torrential' => 'Stortregen',
+			'weather_alerts' => 'Weerwaarschuwingen',
+			'alert_more' => 'Nog {n}',
 			_ => null,
 		};
 	}

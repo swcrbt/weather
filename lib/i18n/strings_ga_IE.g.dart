@@ -369,6 +369,8 @@ class TranslationsGaIe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Báisteach mheasartha';
 	@override String get rain_heavy => 'Báisteach throm';
 	@override String get rain_torrential => 'Báisteach thromchúiseach';
+	@override String get weather_alerts => 'Rabhaidh aimsire';
+	@override String get alert_more => '{n} eile';
 }
 
 /// The flat map containing all translations for locale <ga-IE>.
@@ -709,6 +711,8 @@ extension on TranslationsGaIe {
 			'rain_moderate' => 'Báisteach mheasartha',
 			'rain_heavy' => 'Báisteach throm',
 			'rain_torrential' => 'Báisteach thromchúiseach',
+			'weather_alerts' => 'Rabhaidh aimsire',
+			'alert_more' => '{n} eile',
 			_ => null,
 		};
 	}

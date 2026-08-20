@@ -369,6 +369,8 @@ class TranslationsElGr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Μέτρια βροχή';
 	@override String get rain_heavy => 'Ισχυρή βροχή';
 	@override String get rain_torrential => 'Καταρρακτώδης βροχή';
+	@override String get weather_alerts => 'Προειδοποιήσεις καιρού';
+	@override String get alert_more => '{n} ακόμη';
 }
 
 /// The flat map containing all translations for locale <el-GR>.
@@ -709,6 +711,8 @@ extension on TranslationsElGr {
 			'rain_moderate' => 'Μέτρια βροχή',
 			'rain_heavy' => 'Ισχυρή βροχή',
 			'rain_torrential' => 'Καταρρακτώδης βροχή',
+			'weather_alerts' => 'Προειδοποιήσεις καιρού',
+			'alert_more' => '{n} ακόμη',
 			_ => null,
 		};
 	}

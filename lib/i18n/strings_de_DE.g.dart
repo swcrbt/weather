@@ -369,6 +369,8 @@ class TranslationsDeDe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Mäßiger Regen';
 	@override String get rain_heavy => 'Starker Regen';
 	@override String get rain_torrential => 'Starkregen';
+	@override String get weather_alerts => 'Wetterwarnungen';
+	@override String get alert_more => '{n} weitere';
 }
 
 /// The flat map containing all translations for locale <de-DE>.
@@ -709,6 +711,8 @@ extension on TranslationsDeDe {
 			'rain_moderate' => 'Mäßiger Regen',
 			'rain_heavy' => 'Starker Regen',
 			'rain_torrential' => 'Starkregen',
+			'weather_alerts' => 'Wetterwarnungen',
+			'alert_more' => '{n} weitere',
 			_ => null,
 		};
 	}

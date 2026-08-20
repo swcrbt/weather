@@ -369,6 +369,8 @@ class TranslationsTrTr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Orta şiddetli yağmur';
 	@override String get rain_heavy => 'Şiddetli yağmur';
 	@override String get rain_torrential => 'Sağanak yağmur';
+	@override String get weather_alerts => 'Hava durumu uyarıları';
+	@override String get alert_more => '{n} tane daha';
 }
 
 /// The flat map containing all translations for locale <tr-TR>.
@@ -709,6 +711,8 @@ extension on TranslationsTrTr {
 			'rain_moderate' => 'Orta şiddetli yağmur',
 			'rain_heavy' => 'Şiddetli yağmur',
 			'rain_torrential' => 'Sağanak yağmur',
+			'weather_alerts' => 'Hava durumu uyarıları',
+			'alert_more' => '{n} tane daha',
 			_ => null,
 		};
 	}

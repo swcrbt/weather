@@ -1030,6 +1030,12 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 
 	/// en-US: 'packages'
 	String get license_packages => 'packages';
+
+	/// en-US: 'Weather alerts'
+	String get weather_alerts => 'Weather alerts';
+
+	/// en-US: '{n} more'
+	String get alert_more => '{n} more';
 }
 
 /// The flat map containing all translations for locale <en-US>.
@@ -1370,6 +1376,8 @@ extension on Translations {
 			'license_app_summary' => 'Built with open-source software. Tap a package to read its license.',
 			'license_dependencies' => 'Dependencies',
 			'license_packages' => 'packages',
+			'weather_alerts' => 'Weather alerts',
+			'alert_more' => '{n} more',
 			_ => null,
 		};
 	}

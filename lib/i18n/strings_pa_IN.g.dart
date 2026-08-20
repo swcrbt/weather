@@ -369,6 +369,8 @@ class TranslationsPaIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'ਦਰਮਿਆਨਾ ਮੀਂਹ';
 	@override String get rain_heavy => 'ਤੇਜ਼ ਮੀਂਹ';
 	@override String get rain_torrential => 'ਮੋਹਲੇਧਾਰ ਮੀਂਹ';
+	@override String get weather_alerts => 'ਮੌਸਮ ਚੇਤਾਵਨੀਆਂ';
+	@override String get alert_more => 'ਹੋਰ {n}';
 }
 
 /// The flat map containing all translations for locale <pa-IN>.
@@ -709,6 +711,8 @@ extension on TranslationsPaIn {
 			'rain_moderate' => 'ਦਰਮਿਆਨਾ ਮੀਂਹ',
 			'rain_heavy' => 'ਤੇਜ਼ ਮੀਂਹ',
 			'rain_torrential' => 'ਮੋਹਲੇਧਾਰ ਮੀਂਹ',
+			'weather_alerts' => 'ਮੌਸਮ ਚੇਤਾਵਨੀਆਂ',
+			'alert_more' => 'ਹੋਰ {n}',
 			_ => null,
 		};
 	}

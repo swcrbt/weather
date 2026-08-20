@@ -32,42 +32,30 @@ jobs:
         flutter-version: '3.44.2'
         channel: 'stable'
     
-    # 创建密钥文件（从 GitHub Secrets 读取）
+    # 创建密钥文件（从 GitHub Secrets 读取）——缺失即失败（强校验）
     - name: Setup QWeather Credentials
       run: |
         mkdir -p assets/keys
-        
-        # 配置私钥
-        if [ -n "${{ secrets.QWEATHER_PRIVATE_KEY }}" ]; then
-          echo "${{ secrets.QWEATHER_PRIVATE_KEY }}" > assets/keys/private_key.pem
-          echo "✅ 和风天气私钥已配置"
-        else
-          echo "⚠️ 未配置和风天气私钥"
+        if [ -z "${{ secrets.QWEATHER_PRIVATE_KEY }}" ]; then
+          echo "::error::缺少 GitHub Secret: QWEATHER_PRIVATE_KEY"
+          exit 1
         fi
-        
-        # 配置凭据 ID
-        if [ -n "${{ secrets.QWEATHER_CREDENTIAL_ID }}" ]; then
-          echo "QWEATHER_CREDENTIAL_ID=${{ secrets.QWEATHER_CREDENTIAL_ID }}" >> $GITHUB_ENV
-          echo "✅ 和风天气凭据 ID 已配置"
-        else
-          echo "⚠️ 未配置和风天气凭据 ID"
-        fi
-        
-        # 配置项目 ID
-        if [ -n "${{ secrets.QWEATHER_PROJECT_ID }}" ]; then
-          echo "QWEATHER_PROJECT_ID=${{ secrets.QWEATHER_PROJECT_ID }}" >> $GITHUB_ENV
-          echo "✅ 和风天气项目 ID 已配置"
-        else
-          echo "⚠️ 未配置和风天气项目 ID"
-        fi
-        
-        # 配置 API Host
-        if [ -n "${{ secrets.QWEATHER_API_HOST }}" ]; then
-          echo "QWEATHER_API_HOST=${{ secrets.QWEATHER_API_HOST }}" >> $GITHUB_ENV
-          echo "✅ 和风天气 API Host 已配置"
-        else
-          echo "⚠️ 未配置和风天气 API Host"
-        fi
+        echo "${{ secrets.QWEATHER_PRIVATE_KEY }}" > assets/keys/private_key.pem
+        chmod 600 assets/keys/private_key.pem
+        echo "✅ 和风天气私钥已配置"
+
+    # 凭据强校验：缺少任一凭据或私钥不可用则构建失败
+    - name: Verify QWeather Credentials
+      run: |
+        bash tool/verify_qweather_keys.sh \
+          "${{ secrets.QWEATHER_CREDENTIAL_ID }}" \
+          "${{ secrets.QWEATHER_PROJECT_ID }}" \
+          "${{ secrets.QWEATHER_API_HOST }}"
+        {
+          echo "QWEATHER_CREDENTIAL_ID=${{ secrets.QWEATHER_CREDENTIAL_ID }}"
+          echo "QWEATHER_PROJECT_ID=${{ secrets.QWEATHER_PROJECT_ID }}"
+          echo "QWEATHER_API_HOST=${{ secrets.QWEATHER_API_HOST }}"
+        } >> "$GITHUB_ENV"
     
     # 配置固定 Android release 签名
     - name: Setup Android signing
@@ -146,9 +134,13 @@ jobs:
         dart run slang || true
         dart run build_runner build --delete-conflicting-outputs || true
     
-    # 构建 GMS flavor release APK
+    # 构建 GMS flavor release APK（编译期注入和风凭据）
     - name: Build APK
-      run: flutter build apk --release --flavor gms --verbose
+      run: |
+        flutter build apk --release --flavor gms --verbose \
+          --dart-define=QWEATHER_CREDENTIAL_ID="$QWEATHER_CREDENTIAL_ID" \
+          --dart-define=QWEATHER_PROJECT_ID="$QWEATHER_PROJECT_ID" \
+          --dart-define=QWEATHER_API_HOST="$QWEATHER_API_HOST"
       timeout-minutes: 45
     
     # 上传 APK

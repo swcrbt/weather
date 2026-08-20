@@ -29,8 +29,8 @@ Future<void> _enterGeolocationField(
 
 List geolocationTestOverrides() => [
   locationServiceProvider.overrideWithValue(FakeLocationService()),
-  weatherRemoteDatasourceProvider.overrideWithValue(
-    createFakeWeatherRemoteDatasource(),
+  weatherSourceProvider.overrideWithValue(
+    createFakeWeatherSource(),
   ),
   notificationServiceProvider.overrideWithValue(FakeNotificationService()),
   homeWidgetServiceProvider.overrideWithValue(FakeHomeWidgetService()),
@@ -56,8 +56,8 @@ void main() {
         bootstrap: ctx.bootstrap,
         overrides: [
           locationServiceProvider.overrideWithValue(FakeLocationService()),
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
         ],
       );
@@ -73,8 +73,8 @@ void main() {
         bootstrap: ctx.bootstrap,
         overrides: [
           locationServiceProvider.overrideWithValue(FakeLocationService()),
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
         ],
       );
@@ -90,8 +90,8 @@ void main() {
         bootstrap: ctx.bootstrap,
         overrides: [
           locationServiceProvider.overrideWithValue(FakeLocationService()),
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
         ],
       );
@@ -108,8 +108,8 @@ void main() {
         bootstrap: ctx.bootstrap,
         overrides: [
           locationServiceProvider.overrideWithValue(FakeLocationService()),
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
         ],
       );
@@ -136,8 +136,8 @@ void main() {
         bootstrap: ctx.bootstrap,
         overrides: [
           locationServiceProvider.overrideWithValue(FakeLocationService()),
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
         ],
       );
@@ -161,8 +161,8 @@ void main() {
         bootstrap: ctx.bootstrap,
         overrides: [
           locationServiceProvider.overrideWithValue(FakeLocationService()),
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
         ],
       );

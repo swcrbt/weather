@@ -1,5 +1,5 @@
 import 'package:isar_community/isar.dart';
-import 'package:rain/data/datasources/weather_remote_datasource.dart';
+import 'package:rain/data/datasources/weather_source.dart';
 import 'package:rain/data/mappers/weather_mapper.dart';
 import 'package:rain/data/models/db.dart';
 import 'package:rain/features/cities/domain/weather_card_validator.dart';
@@ -9,7 +9,7 @@ class CitiesRepository {
   CitiesRepository(this._isar, this._remote);
 
   final Isar _isar;
-  final WeatherRemoteDatasource _remote;
+  final WeatherSource _remote;
 
   /// Returns all weather cards sorted by display index, repairing gaps first.
   Future<List<WeatherCard>> getAllSorted() async {

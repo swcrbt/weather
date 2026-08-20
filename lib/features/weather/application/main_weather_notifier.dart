@@ -278,7 +278,7 @@ class MainWeatherNotifier extends Notifier<MainWeatherState> {
   ) async {
     final languageCode = ref.read(localeProvider).languageCode;
     return ref
-        .read(weatherRemoteDatasourceProvider)
+        .read(geocodingDatasourceProvider)
         .reverseGeocode(lat, lon, languageCode: languageCode);
   }
 

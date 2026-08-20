@@ -369,6 +369,8 @@ class TranslationsOrIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'ମଧ୍ୟମ ବର୍ଷା';
 	@override String get rain_heavy => 'ପ୍ରବଳ ବର୍ଷା';
 	@override String get rain_torrential => 'ମୂଷଳଧାରା ବର୍ଷା';
+	@override String get weather_alerts => 'ପାଣିପାଗ ଚେତାବନୀ';
+	@override String get alert_more => 'ଆଉ {n}ଟି';
 }
 
 /// The flat map containing all translations for locale <or-IN>.
@@ -709,6 +711,8 @@ extension on TranslationsOrIn {
 			'rain_moderate' => 'ମଧ୍ୟମ ବର୍ଷା',
 			'rain_heavy' => 'ପ୍ରବଳ ବର୍ଷା',
 			'rain_torrential' => 'ମୂଷଳଧାରା ବର୍ଷା',
+			'weather_alerts' => 'ପାଣିପାଗ ଚେତାବନୀ',
+			'alert_more' => 'ଆଉ {n}ଟି',
 			_ => null,
 		};
 	}

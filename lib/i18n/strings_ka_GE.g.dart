@@ -369,6 +369,8 @@ class TranslationsKaGe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'ზომიერი წვიმა';
 	@override String get rain_heavy => 'ძლიერი წვიმა';
 	@override String get rain_torrential => 'კოკისპირული წვიმა';
+	@override String get weather_alerts => 'ამინდის გაფრთხილებები';
+	@override String get alert_more => 'კიდევ {n}';
 }
 
 /// The flat map containing all translations for locale <ka-GE>.
@@ -709,6 +711,8 @@ extension on TranslationsKaGe {
 			'rain_moderate' => 'ზომიერი წვიმა',
 			'rain_heavy' => 'ძლიერი წვიმა',
 			'rain_torrential' => 'კოკისპირული წვიმა',
+			'weather_alerts' => 'ამინდის გაფრთხილებები',
+			'alert_more' => 'კიდევ {n}',
 			_ => null,
 		};
 	}

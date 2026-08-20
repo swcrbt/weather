@@ -328,5 +328,7 @@
   "rainLight": "हल्की बारिश",
   "rainModerate": "मध्यम बारिश",
   "rainHeavy": "तेज़ बारिश",
-  "rainTorrential": "मूसलाधार बारिश"
+  "rainTorrential": "मूसलाधार बारिश",
+  "weatherAlerts": "मौसम की चेतावनी",
+  "alertMore": "{n} और"
 }

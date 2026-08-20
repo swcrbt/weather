@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:rain/core/constants/app_constants.dart';
 import 'package:rain/core/di/provider_refs.dart';
-import 'package:rain/data/datasources/weather_remote_datasource.dart';
+import 'package:rain/data/datasources/weather_source.dart';
 import 'package:rain/core/widgets/city_search_field.dart';
 
 void main() {
@@ -34,8 +34,8 @@ void main() {
       CitySearchField(onSelected: (_) {}, labelText: 'Search city'),
       bootstrap: ctx.bootstrap,
       overrides: [
-        weatherRemoteDatasourceProvider.overrideWithValue(
-          createFakeWeatherRemoteDatasource(),
+        weatherSourceProvider.overrideWithValue(
+          createFakeWeatherSource(),
         ),
       ],
     );
@@ -63,8 +63,8 @@ void main() {
       ),
       bootstrap: ctx.bootstrap,
       overrides: [
-        weatherRemoteDatasourceProvider.overrideWithValue(
-          createFakeWeatherRemoteDatasource(),
+        weatherSourceProvider.overrideWithValue(
+          createFakeWeatherSource(),
         ),
       ],
     );
@@ -91,8 +91,8 @@ void main() {
       ),
       bootstrap: ctx.bootstrap,
       overrides: [
-        weatherRemoteDatasourceProvider.overrideWithValue(
-          createFakeWeatherRemoteDatasource(),
+        weatherSourceProvider.overrideWithValue(
+          createFakeWeatherSource(),
         ),
       ],
     );

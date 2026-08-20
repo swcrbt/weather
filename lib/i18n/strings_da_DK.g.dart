@@ -369,6 +369,8 @@ class TranslationsDaDk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Moderat regn';
 	@override String get rain_heavy => 'Kraftig regn';
 	@override String get rain_torrential => 'Skybrud';
+	@override String get weather_alerts => 'Vejrvarsler';
+	@override String get alert_more => '{n} mere';
 }
 
 /// The flat map containing all translations for locale <da-DK>.
@@ -709,6 +711,8 @@ extension on TranslationsDaDk {
 			'rain_moderate' => 'Moderat regn',
 			'rain_heavy' => 'Kraftig regn',
 			'rain_torrential' => 'Skybrud',
+			'weather_alerts' => 'Vejrvarsler',
+			'alert_more' => '{n} mere',
 			_ => null,
 		};
 	}

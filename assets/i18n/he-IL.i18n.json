@@ -328,5 +328,7 @@
   "rainLight": "גשם קל",
   "rainModerate": "גשם בינוני",
   "rainHeavy": "גשם כבד",
-  "rainTorrential": "גשם שוטף"
+  "rainTorrential": "גשם שוטף",
+  "weatherAlerts": "התראות מזג אוויר",
+  "alertMore": "{n} נוספים"
 }

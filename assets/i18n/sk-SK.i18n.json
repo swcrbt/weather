@@ -328,5 +328,7 @@
   "rainLight": "Slabý dážď",
   "rainModerate": "Mierny dážď",
   "rainHeavy": "Silný dážď",
-  "rainTorrential": "Lejak"
+  "rainTorrential": "Lejak",
+  "weatherAlerts": "Výstrahy počasia",
+  "alertMore": "Ďalších {n}"
 }

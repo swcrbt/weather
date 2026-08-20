@@ -328,5 +328,7 @@
   "rainLight": "باران سبک",
   "rainModerate": "باران متوسط",
   "rainHeavy": "باران شدید",
-  "rainTorrential": "باران سیل‌آسا"
+  "rainTorrential": "باران سیل‌آسا",
+  "weatherAlerts": "هشدارهای آب‌وهوا",
+  "alertMore": "{n} مورد دیگر"
 }

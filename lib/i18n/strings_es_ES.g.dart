@@ -369,6 +369,8 @@ class TranslationsEsEs extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Lluvia moderada';
 	@override String get rain_heavy => 'Lluvia intensa';
 	@override String get rain_torrential => 'Lluvia torrencial';
+	@override String get weather_alerts => 'Alertas meteorológicas';
+	@override String get alert_more => '{n} más';
 }
 
 /// The flat map containing all translations for locale <es-ES>.
@@ -709,6 +711,8 @@ extension on TranslationsEsEs {
 			'rain_moderate' => 'Lluvia moderada',
 			'rain_heavy' => 'Lluvia intensa',
 			'rain_torrential' => 'Lluvia torrencial',
+			'weather_alerts' => 'Alertas meteorológicas',
+			'alert_more' => '{n} más',
 			_ => null,
 		};
 	}

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:rain/core/constants/app_constants.dart';
 import 'package:rain/core/di/providers.dart';
-import 'package:rain/data/datasources/weather_remote_datasource.dart';
+import 'package:rain/data/datasources/weather_source.dart';
 import 'package:rain/core/widgets/text_form.dart';
 import 'package:rain/i18n/tr.dart';
 
@@ -26,7 +26,7 @@ enum CitySearchOptionsStyle {
 String citySearchResultLabel(CitySearchResult option) =>
     '${option.name}, ${option.admin1}';
 
-/// Shared [RawAutocomplete] for Open-Meteo city search.
+/// Shared [RawAutocomplete] for city search backed by the composite weather source.
 class CitySearchAutocomplete extends ConsumerStatefulWidget {
   const CitySearchAutocomplete({
     super.key,
@@ -91,7 +91,7 @@ class _CitySearchAutocompleteState
       final locale = ref.read(localeProvider);
       try {
         return await ref
-            .read(weatherRemoteDatasourceProvider)
+            .read(weatherSourceProvider)
             .searchCities(query, locale.languageCode);
       } catch (_) {
         return const Iterable<CitySearchResult>.empty();

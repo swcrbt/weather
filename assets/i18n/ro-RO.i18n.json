@@ -328,5 +328,7 @@
   "rainLight": "Ploaie ușoară",
   "rainModerate": "Ploaie moderată",
   "rainHeavy": "Ploaie puternică",
-  "rainTorrential": "Ploaie torențială"
+  "rainTorrential": "Ploaie torențială",
+  "weatherAlerts": "Avertizări meteo",
+  "alertMore": "Încă {n}"
 }

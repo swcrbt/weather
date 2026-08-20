@@ -2,7 +2,7 @@ import '../../helpers/fixtures.dart';
 import '../../helpers/isar_test_helper.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:rain/data/datasources/weather_local_datasource.dart';
-import 'package:rain/data/datasources/weather_remote_datasource.dart';
+import 'package:rain/data/datasources/open_meteo_datasource.dart';
 
 void main() {
   late TestIsarContext ctx;
@@ -22,7 +22,7 @@ void main() {
   });
 
   test('fetched weather time survives Isar round-trip', () async {
-    final remote = WeatherRemoteDatasource(dio: createFakeWeatherDio());
+    final remote = OpenMeteoWeatherSource(dio: createFakeWeatherDio());
     final cache = await remote.fetchWeather(55.75, 37.62);
 
     expect(cache.time, isNotEmpty);

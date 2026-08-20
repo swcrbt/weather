@@ -369,6 +369,8 @@ class TranslationsKoKr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => '보통 비';
 	@override String get rain_heavy => '강한 비';
 	@override String get rain_torrential => '폭우';
+	@override String get weather_alerts => '기상특보';
+	@override String get alert_more => '외 {n}건';
 }
 
 /// The flat map containing all translations for locale <ko-KR>.
@@ -709,6 +711,8 @@ extension on TranslationsKoKr {
 			'rain_moderate' => '보통 비',
 			'rain_heavy' => '강한 비',
 			'rain_torrential' => '폭우',
+			'weather_alerts' => '기상특보',
+			'alert_more' => '외 {n}건',
 			_ => null,
 		};
 	}

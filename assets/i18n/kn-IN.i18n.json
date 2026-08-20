@@ -328,5 +328,7 @@
   "rainLight": "ಲಘು ಮಳೆ",
   "rainModerate": "ಮಧ್ಯಮ ಮಳೆ",
   "rainHeavy": "ಭಾರಿ ಮಳೆ",
-  "rainTorrential": "ಧಾರಾಕಾರ ಮಳೆ"
+  "rainTorrential": "ಧಾರಾಕಾರ ಮಳೆ",
+  "weatherAlerts": "ಹವಾಮಾನ ಎಚ್ಚರಿಕೆಗಳು",
+  "alertMore": "ಇನ್ನೂ {n}"
 }

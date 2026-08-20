@@ -28,8 +28,8 @@ void main() {
       final container = createTestContainer(
         bootstrap: ctx.bootstrap,
         overrides: [
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
           ...overrides,
         ],
@@ -49,7 +49,7 @@ void main() {
         final gate = Completer<void>();
         final delayedRepo = _DelayedCitiesRepository(
           ctx.isarContext.isar,
-          createFakeWeatherRemoteDatasource(),
+          createFakeWeatherSource(),
           gate,
         );
 
@@ -134,7 +134,7 @@ void main() {
 
         final throwingRepo = ThrowingCitiesRepository(
           ctx.isarContext.isar,
-          createFakeWeatherRemoteDatasource(),
+          createFakeWeatherSource(),
         );
 
         final container = createContainer(
@@ -169,7 +169,7 @@ void main() {
 
         final throwingRepo = ThrowingCitiesRepository(
           ctx.isarContext.isar,
-          createFakeWeatherRemoteDatasource(),
+          createFakeWeatherSource(),
         );
 
         final container = createContainer(

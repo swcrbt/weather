@@ -369,6 +369,8 @@ class TranslationsCsCz extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Mírný déšť';
 	@override String get rain_heavy => 'Silný déšť';
 	@override String get rain_torrential => 'Přívalový déšť';
+	@override String get weather_alerts => 'Výstrahy počasí';
+	@override String get alert_more => 'Dalších {n}';
 }
 
 /// The flat map containing all translations for locale <cs-CZ>.
@@ -709,6 +711,8 @@ extension on TranslationsCsCz {
 			'rain_moderate' => 'Mírný déšť',
 			'rain_heavy' => 'Silný déšť',
 			'rain_torrential' => 'Přívalový déšť',
+			'weather_alerts' => 'Výstrahy počasí',
+			'alert_more' => 'Dalších {n}',
 			_ => null,
 		};
 	}

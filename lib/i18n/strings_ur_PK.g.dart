@@ -369,6 +369,8 @@ class TranslationsUrPk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'درمیانی بارش';
 	@override String get rain_heavy => 'تیز بارش';
 	@override String get rain_torrential => 'موسلا دھار بارش';
+	@override String get weather_alerts => 'موسم کی وارننگز';
+	@override String get alert_more => 'مزید {n}';
 }
 
 /// The flat map containing all translations for locale <ur-PK>.
@@ -709,6 +711,8 @@ extension on TranslationsUrPk {
 			'rain_moderate' => 'درمیانی بارش',
 			'rain_heavy' => 'تیز بارش',
 			'rain_torrential' => 'موسلا دھار بارش',
+			'weather_alerts' => 'موسم کی وارننگز',
+			'alert_more' => 'مزید {n}',
 			_ => null,
 		};
 	}

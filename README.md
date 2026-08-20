@@ -32,9 +32,9 @@
 - **点击交互** — 点击打开应用
 
 ### 🌏 多数据源支持
-- **Open-Meteo** — 全球天气数据（默认）
-- **和风天气** — 国内天气数据（JWT认证）
-- **智能切换** — 根据位置自动选择最优数据源
+- **Open-Meteo** — 全球天气主数据源（免 key）
+- **和风天气** — 中国区数据增强（JWT认证）：台站实况、分钟级降水、监测站 AQI、天气预警
+- **智能增强** — 中国区自动叠加和风实测与预警，海外透明走 Open-Meteo
 
 ### 📅 特色功能
 - **农历显示** — 小部件显示农历日期
@@ -96,22 +96,32 @@ lib/
 flutter pub get
 ```
 
-### 配置和风天气（可选）
+### 配置和风天气（发布构建必需）
 
-1. 注册和风天气开发者账号：https://dev.qweather.com/
-2. 创建项目并获取凭据 ID 和项目 ID
-3. 在控制台添加 JWT 公钥
-4. 更新 `lib/data/datasources/qweather_datasource.dart` 中的配置：
+1. 注册和风天气开发者账号并创建项目：https://dev.qweather.com/
+2. 在控制台添加 JWT 公钥，获取凭据 ID（kid）、项目 ID（sub）和 API Host
+3. 私钥放入 `assets/keys/private_key.pem`（已 gitignore，勿提交）
+4. 构建时通过 `--dart-define` 注入凭据：
 
-```dart
-static const String _credentialId = 'YOUR_CREDENTIAL_ID';
-static const String _projectId = 'YOUR_PROJECT_ID';
+```bash
+flutter build apk --release \
+  --dart-define=QWEATHER_CREDENTIAL_ID=your-kid \
+  --dart-define=QWEATHER_PROJECT_ID=your-sub \
+  --dart-define=QWEATHER_API_HOST=your-host.qweatherapi.com
 ```
+
+5. 构建前强校验：
+
+```bash
+bash tool/verify_qweather_keys.sh your-kid your-sub your-host.qweatherapi.com
+```
+
+CI（release 构建）对凭据的缺失是**硬失败**：私钥、凭据 ID、项目 ID、API Host 任一缺失即构建失败。
 
 ### 运行应用
 
 ```bash
-# 开发模式
+# 开发模式（无需和风凭据：中国区分钟降水/预警等增强静默跳过）
 flutter run
 
 # 发布模式
@@ -137,17 +147,12 @@ openssl pkey -in assets/keys/private_key.pem -pubout -out assets/keys/public_key
 
 #### 2. 配置凭据
 
-在 `lib/data/datasources/qweather_datasource.dart` 中配置：
+凭据在构建期通过 `--dart-define`（环境变量方式亦被支持但移动端运行时不可见）：
 
-```dart
-// 凭据 ID（kid）
-static const String _credentialId = 'YOUR_CREDENTIAL_ID';
-
-// 项目 ID（sub）
-static const String _projectId = 'YOUR_PROJECT_ID';
-
-// API Host
-static const String _apiHost = 'your-host.qweatherapi.com';
+```bash
+--dart-define=QWEATHER_CREDENTIAL_ID=凭据ID(kid)
+--dart-define=QWEATHER_PROJECT_ID=项目ID(sub)
+--dart-define=QWEATHER_API_HOST=your-host.qweatherapi.com
 ```
 
 #### 3. 安全注意事项
@@ -160,31 +165,29 @@ static const String _apiHost = 'your-host.qweatherapi.com';
 
 ## 📚 API 文档
 
-### 和风天气数据源
-
-#### 获取实时天气
+### 数据源架构
 
 ```dart
-final qweather = QWeatherDataSource();
-final weather = await qweather.getCurrentWeather('101010100');
+// 业务层只依赖抽象接口，不感知具体数据源
+abstract class WeatherSource {
+  Future<MainWeatherCache> fetchWeather(double lat, double lon);
+  Future<WeatherCard> fetchWeatherCard(double lat, double lon, String city, String district);
+  Future<Iterable<CitySearchResult>> searchCities(String query, String? languageCode);
+}
 ```
 
-#### 获取7天预报
+对外统一使用 `CompositeWeatherSource`（组合数据源）：
+
+- **主源 Open-Meteo**：全球 12 天预报、逐小时与分钟降水；
+- **和风中国区增强**（`QWeatherRegionalEnhancer`）：官方台站实况、分钟级降水（雷达）、监测站 AQI、天气预警；
+- **搜索路由**：CJK 查询词路由到和风 GeoAPI，其余走 Open-Meteo。
 
 ```dart
-final forecast = await qweather.get7DayForecast('101010100');
-```
-
-#### 获取分钟级降水
-
-```dart
-final precipitation = await qweather.getMinutePrecipitation(39.9042, 116.4074);
-```
-
-#### 获取空气质量
-
-```dart
-final aqi = await qweather.getAirQuality('101010100');
+final source = CompositeWeatherSource(
+  primary: OpenMeteoWeatherSource(),
+  secondarySearch: QWeatherWeatherSource(),
+  enhancers: [QWeatherRegionalEnhancer()],
+);
 ```
 
 ### 小部件服务

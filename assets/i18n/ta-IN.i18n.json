@@ -328,5 +328,7 @@
   "rainLight": "லேசான மழை",
   "rainModerate": "மிதமான மழை",
   "rainHeavy": "கனமழை",
-  "rainTorrential": "பலத்த மழை"
+  "rainTorrential": "பலத்த மழை",
+  "weatherAlerts": "வானிலை எச்சரிக்கைகள்",
+  "alertMore": "மேலும் {n}"
 }

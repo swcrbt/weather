@@ -369,6 +369,8 @@ class TranslationsKnIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'ಮಧ್ಯಮ ಮಳೆ';
 	@override String get rain_heavy => 'ಭಾರಿ ಮಳೆ';
 	@override String get rain_torrential => 'ಧಾರಾಕಾರ ಮಳೆ';
+	@override String get weather_alerts => 'ಹವಾಮಾನ ಎಚ್ಚರಿಕೆಗಳು';
+	@override String get alert_more => 'ಇನ್ನೂ {n}';
 }
 
 /// The flat map containing all translations for locale <kn-IN>.
@@ -709,6 +711,8 @@ extension on TranslationsKnIn {
 			'rain_moderate' => 'ಮಧ್ಯಮ ಮಳೆ',
 			'rain_heavy' => 'ಭಾರಿ ಮಳೆ',
 			'rain_torrential' => 'ಧಾರಾಕಾರ ಮಳೆ',
+			'weather_alerts' => 'ಹವಾಮಾನ ಎಚ್ಚರಿಕೆಗಳು',
+			'alert_more' => 'ಇನ್ನೂ {n}',
 			_ => null,
 		};
 	}

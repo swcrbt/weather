@@ -10,8 +10,12 @@ import 'package:rain/core/services/background_refresh_log.dart';
 import 'package:rain/core/services/notification_service.dart';
 import 'package:rain/i18n/locale_utils.dart';
 import 'package:rain/i18n/strings.g.dart';
+import 'package:rain/data/datasources/composite_weather_source.dart';
+import 'package:rain/data/datasources/geocoding_remote_datasource.dart';
+import 'package:rain/data/datasources/open_meteo_datasource.dart';
+import 'package:rain/data/datasources/qweather_regional_enhancer.dart';
+import 'package:rain/data/datasources/qweather_weather_source.dart';
 import 'package:rain/data/datasources/weather_local_datasource.dart';
-import 'package:rain/data/datasources/weather_remote_datasource.dart';
 import 'package:rain/data/models/db.dart';
 import 'package:rain/data/repositories/weather_repository.dart';
 import 'package:workmanager/workmanager.dart';
@@ -82,10 +86,15 @@ Future<void> refreshMainWeatherIfStale(
   if (!await (internetAccess ?? hasBackgroundInternetAccess)()) return;
 
   final resolvedLocation = location!;
-  final remote = WeatherRemoteDatasource();
+  final source = CompositeWeatherSource(
+    primary: OpenMeteoWeatherSource(),
+    secondarySearch: QWeatherWeatherSource(),
+    enhancers: [QWeatherRegionalEnhancer()],
+  );
+  final geocoding = GeocodingRemoteDatasource();
   if (resolvedLocation.address?.trim().isEmpty ?? true) {
     try {
-      final details = await remote
+      final details = await geocoding
           .reverseGeocode(
             resolvedLocation.lat!,
             resolvedLocation.lon!,
@@ -106,7 +115,7 @@ Future<void> refreshMainWeatherIfStale(
     }
   }
 
-  final repo = WeatherRepository(remote, local);
+  final repo = WeatherRepository(source, local);
   final weather = await repo.fetchWeather(
     resolvedLocation.lat!,
     resolvedLocation.lon!,

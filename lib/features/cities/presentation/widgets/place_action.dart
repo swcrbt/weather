@@ -4,7 +4,7 @@ import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:rain/core/utils/place_form_helpers.dart';
 import 'package:rain/core/widgets/place_form_fields.dart';
 import 'package:rain/core/widgets/city_search_field.dart';
-import 'package:rain/data/datasources/weather_remote_datasource.dart';
+import 'package:rain/data/datasources/weather_source.dart';
 import 'package:rain/core/constants/app_constants.dart';
 import 'package:rain/core/di/providers.dart';
 import 'package:rain/i18n/tr.dart';

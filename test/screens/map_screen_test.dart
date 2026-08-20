@@ -39,8 +39,8 @@ void main() {
       overrides: [
         mainWeatherNotifierProvider.overrideWith(LoadedMainWeatherNotifier.new),
         citiesNotifierProvider.overrideWith(IdleCitiesNotifier.new),
-        weatherRemoteDatasourceProvider.overrideWithValue(
-          createFakeWeatherRemoteDatasource(),
+        weatherSourceProvider.overrideWithValue(
+          createFakeWeatherSource(),
         ),
         radarTimelineProvider.overrideWith(
           (ref) => throw StateError('radar should load only after opt-in'),
@@ -66,8 +66,8 @@ void main() {
         citiesNotifierProvider.overrideWith(
           () => CitiesWithCardsNotifier([completeWeatherCard()]),
         ),
-        weatherRemoteDatasourceProvider.overrideWithValue(
-          createFakeWeatherRemoteDatasource(),
+        weatherSourceProvider.overrideWithValue(
+          createFakeWeatherSource(),
         ),
         radarTimelineProvider.overrideWith((ref) async => radarTimeline),
       ],
@@ -96,8 +96,8 @@ void main() {
       overrides: [
         mainWeatherNotifierProvider.overrideWith(LoadedMainWeatherNotifier.new),
         citiesNotifierProvider.overrideWith(IdleCitiesNotifier.new),
-        weatherRemoteDatasourceProvider.overrideWithValue(
-          createFakeWeatherRemoteDatasource(),
+        weatherSourceProvider.overrideWithValue(
+          createFakeWeatherSource(),
         ),
         radarTimelineProvider.overrideWith(
           (ref) => Future<RadarTimeline>.error(Exception('offline')),
@@ -126,8 +126,8 @@ void main() {
       overrides: [
         mainWeatherNotifierProvider.overrideWith(LoadedMainWeatherNotifier.new),
         citiesNotifierProvider.overrideWith(IdleCitiesNotifier.new),
-        weatherRemoteDatasourceProvider.overrideWithValue(
-          createFakeWeatherRemoteDatasource(),
+        weatherSourceProvider.overrideWithValue(
+          createFakeWeatherSource(),
         ),
         radarTimelineProvider.overrideWith((ref) {
           requests++;
@@ -161,8 +161,8 @@ void main() {
         citiesNotifierProvider.overrideWith(
           () => CitiesWithCardsNotifier([completeWeatherCard()]),
         ),
-        weatherRemoteDatasourceProvider.overrideWithValue(
-          createFakeWeatherRemoteDatasource(),
+        weatherSourceProvider.overrideWithValue(
+          createFakeWeatherSource(),
         ),
         radarTimelineProvider.overrideWith((ref) async => radarTimeline),
       ],

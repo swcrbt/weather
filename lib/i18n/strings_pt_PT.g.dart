@@ -369,6 +369,8 @@ class TranslationsPtPt extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Chuva moderada';
 	@override String get rain_heavy => 'Chuva forte';
 	@override String get rain_torrential => 'Chuva torrencial';
+	@override String get weather_alerts => 'Alertas meteorológicos';
+	@override String get alert_more => 'Mais {n}';
 }
 
 /// The flat map containing all translations for locale <pt-PT>.
@@ -709,6 +711,8 @@ extension on TranslationsPtPt {
 			'rain_moderate' => 'Chuva moderada',
 			'rain_heavy' => 'Chuva forte',
 			'rain_torrential' => 'Chuva torrencial',
+			'weather_alerts' => 'Alertas meteorológicos',
+			'alert_more' => 'Mais {n}',
 			_ => null,
 		};
 	}

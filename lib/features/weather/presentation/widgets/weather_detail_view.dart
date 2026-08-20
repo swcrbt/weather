@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rain/data/models/db.dart';
 import 'package:rain/core/weather/time_index_helper.dart';
+import 'package:rain/features/weather/presentation/widgets/alerts/weather_alert_banner.dart';
 import 'package:rain/features/weather/presentation/widgets/daily/daily_container.dart';
 import 'package:rain/features/weather/presentation/widgets/weather_hourly_sections.dart';
 import 'package:rain/features/weather/presentation/widgets/hourly.dart';
@@ -55,6 +56,10 @@ class WeatherDetailView extends StatelessWidget {
 
     return ListView(
       children: [
+        WeatherAlertBanner(
+          alerts: weatherCard.alerts ?? const [],
+          utcOffsetSeconds: weatherCard.utcOffsetSeconds,
+        ),
         Now(
           time: time,
           weather: weather,

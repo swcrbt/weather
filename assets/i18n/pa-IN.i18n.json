@@ -328,5 +328,7 @@
   "rainLight": "ਹਲਕਾ ਮੀਂਹ",
   "rainModerate": "ਦਰਮਿਆਨਾ ਮੀਂਹ",
   "rainHeavy": "ਤੇਜ਼ ਮੀਂਹ",
-  "rainTorrential": "ਮੋਹਲੇਧਾਰ ਮੀਂਹ"
+  "rainTorrential": "ਮੋਹਲੇਧਾਰ ਮੀਂਹ",
+  "weatherAlerts": "ਮੌਸਮ ਚੇਤਾਵਨੀਆਂ",
+  "alertMore": "ਹੋਰ {n}"
 }

@@ -328,5 +328,7 @@
   "rainLight": "Pioggia leggera",
   "rainModerate": "Pioggia moderata",
   "rainHeavy": "Pioggia intensa",
-  "rainTorrential": "Pioggia torrenziale"
+  "rainTorrential": "Pioggia torrenziale",
+  "weatherAlerts": "Allerte meteo",
+  "alertMore": "{n} in più"
 }

@@ -328,5 +328,7 @@
   "rainLight": "Pluie légère",
   "rainModerate": "Pluie modérée",
   "rainHeavy": "Forte pluie",
-  "rainTorrential": "Pluie torrentielle"
+  "rainTorrential": "Pluie torrentielle",
+  "weatherAlerts": "Alertes météo",
+  "alertMore": "{n} de plus"
 }

@@ -369,6 +369,8 @@ class TranslationsRoRo extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Ploaie moderată';
 	@override String get rain_heavy => 'Ploaie puternică';
 	@override String get rain_torrential => 'Ploaie torențială';
+	@override String get weather_alerts => 'Avertizări meteo';
+	@override String get alert_more => 'Încă {n}';
 }
 
 /// The flat map containing all translations for locale <ro-RO>.
@@ -709,6 +711,8 @@ extension on TranslationsRoRo {
 			'rain_moderate' => 'Ploaie moderată',
 			'rain_heavy' => 'Ploaie puternică',
 			'rain_torrential' => 'Ploaie torențială',
+			'weather_alerts' => 'Avertizări meteo',
+			'alert_more' => 'Încă {n}',
 			_ => null,
 		};
 	}

@@ -328,5 +328,7 @@
   "rainLight": "Ελαφριά βροχή",
   "rainModerate": "Μέτρια βροχή",
   "rainHeavy": "Ισχυρή βροχή",
-  "rainTorrential": "Καταρρακτώδης βροχή"
+  "rainTorrential": "Καταρρακτώδης βροχή",
+  "weatherAlerts": "Προειδοποιήσεις καιρού",
+  "alertMore": "{n} ακόμη"
 }

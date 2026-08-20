@@ -369,6 +369,8 @@ class TranslationsMrIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'मध्यम पाऊस';
 	@override String get rain_heavy => 'जोरदार पाऊस';
 	@override String get rain_torrential => 'मुसळधार पाऊस';
+	@override String get weather_alerts => 'हवामान इशारे';
+	@override String get alert_more => 'आणखी {n}';
 }
 
 /// The flat map containing all translations for locale <mr-IN>.
@@ -709,6 +711,8 @@ extension on TranslationsMrIn {
 			'rain_moderate' => 'मध्यम पाऊस',
 			'rain_heavy' => 'जोरदार पाऊस',
 			'rain_torrential' => 'मुसळधार पाऊस',
+			'weather_alerts' => 'हवामान इशारे',
+			'alert_more' => 'आणखी {n}',
 			_ => null,
 		};
 	}

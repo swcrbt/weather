@@ -328,5 +328,7 @@
   "rainLight": "తేలికపాటి వర్షం",
   "rainModerate": "మోస్తరు వర్షం",
   "rainHeavy": "భారీ వర్షం",
-  "rainTorrential": "కుండపోత వర్షం"
+  "rainTorrential": "కుండపోత వర్షం",
+  "weatherAlerts": "వాతావరణ హెచ్చరికలు",
+  "alertMore": "మరో {n}"
 }

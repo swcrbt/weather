@@ -328,5 +328,7 @@
   "rainLight": "পাতল বৰষুণ",
   "rainModerate": "মধ্যমীয়া বৰষুণ",
   "rainHeavy": "ভাৰী বৰষুণ",
-  "rainTorrential": "মূষলধাৰ বৰষুণ"
+  "rainTorrential": "মূষলধাৰ বৰষুণ",
+  "weatherAlerts": "বতৰ সতৰ্কবাণী",
+  "alertMore": "আৰু {n}টা"
 }

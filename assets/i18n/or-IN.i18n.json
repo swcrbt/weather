@@ -328,5 +328,7 @@
   "rainLight": "ହାଲୁକା ବର୍ଷା",
   "rainModerate": "ମଧ୍ୟମ ବର୍ଷା",
   "rainHeavy": "ପ୍ରବଳ ବର୍ଷା",
-  "rainTorrential": "ମୂଷଳଧାରା ବର୍ଷା"
+  "rainTorrential": "ମୂଷଳଧାରା ବର୍ଷା",
+  "weatherAlerts": "ପାଣିପାଗ ଚେତାବନୀ",
+  "alertMore": "ଆଉ {n}ଟି"
 }

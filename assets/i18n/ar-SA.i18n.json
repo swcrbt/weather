@@ -328,5 +328,7 @@
   "rainLight": "مطر خفيف",
   "rainModerate": "مطر متوسط",
   "rainHeavy": "مطر غزير",
-  "rainTorrential": "أمطار غزيرة جدًا"
+  "rainTorrential": "أمطار غزيرة جدًا",
+  "weatherAlerts": "تنبيهات الطقس",
+  "alertMore": "{n} إضافية"
 }

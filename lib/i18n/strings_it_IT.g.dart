@@ -369,6 +369,8 @@ class TranslationsItIt extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Pioggia moderata';
 	@override String get rain_heavy => 'Pioggia intensa';
 	@override String get rain_torrential => 'Pioggia torrenziale';
+	@override String get weather_alerts => 'Allerte meteo';
+	@override String get alert_more => '{n} in più';
 }
 
 /// The flat map containing all translations for locale <it-IT>.
@@ -709,6 +711,8 @@ extension on TranslationsItIt {
 			'rain_moderate' => 'Pioggia moderata',
 			'rain_heavy' => 'Pioggia intensa',
 			'rain_torrential' => 'Pioggia torrenziale',
+			'weather_alerts' => 'Allerte meteo',
+			'alert_more' => '{n} in più',
 			_ => null,
 		};
 	}

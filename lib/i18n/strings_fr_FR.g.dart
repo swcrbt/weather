@@ -369,6 +369,8 @@ class TranslationsFrFr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Pluie modérée';
 	@override String get rain_heavy => 'Forte pluie';
 	@override String get rain_torrential => 'Pluie torrentielle';
+	@override String get weather_alerts => 'Alertes météo';
+	@override String get alert_more => '{n} de plus';
 }
 
 /// The flat map containing all translations for locale <fr-FR>.
@@ -709,6 +711,8 @@ extension on TranslationsFrFr {
 			'rain_moderate' => 'Pluie modérée',
 			'rain_heavy' => 'Forte pluie',
 			'rain_torrential' => 'Pluie torrentielle',
+			'weather_alerts' => 'Alertes météo',
+			'alert_more' => '{n} de plus',
 			_ => null,
 		};
 	}

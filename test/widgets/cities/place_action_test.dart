@@ -38,8 +38,8 @@ void main() {
         Scaffold(body: PlaceAction(edit: true, card: card)),
         bootstrap: ctx.bootstrap,
         overrides: [
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
         ],
       );
@@ -59,8 +59,8 @@ void main() {
         ),
         bootstrap: ctx.bootstrap,
         overrides: [
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
         ],
       );
@@ -85,8 +85,8 @@ void main() {
         const Scaffold(body: PlaceAction(edit: false)),
         bootstrap: ctx.bootstrap,
         overrides: [
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
         ],
       );
@@ -117,8 +117,8 @@ void main() {
         ),
         bootstrap: ctx.bootstrap,
         overrides: [
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
         ],
       );
@@ -140,8 +140,8 @@ void main() {
         ),
         bootstrap: ctx.bootstrap,
         overrides: [
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
         ],
       );

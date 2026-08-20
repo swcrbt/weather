@@ -369,6 +369,8 @@ class TranslationsRuRu extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Умеренный дождь';
 	@override String get rain_heavy => 'Сильный дождь';
 	@override String get rain_torrential => 'Ливень';
+	@override String get weather_alerts => 'Погодные предупреждения';
+	@override String get alert_more => 'Ещё {n}';
 }
 
 /// The flat map containing all translations for locale <ru-RU>.
@@ -709,6 +711,8 @@ extension on TranslationsRuRu {
 			'rain_moderate' => 'Умеренный дождь',
 			'rain_heavy' => 'Сильный дождь',
 			'rain_torrential' => 'Ливень',
+			'weather_alerts' => 'Погодные предупреждения',
+			'alert_more' => 'Ещё {n}',
 			_ => null,
 		};
 	}

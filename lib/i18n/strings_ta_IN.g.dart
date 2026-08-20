@@ -369,6 +369,8 @@ class TranslationsTaIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'மிதமான மழை';
 	@override String get rain_heavy => 'கனமழை';
 	@override String get rain_torrential => 'பலத்த மழை';
+	@override String get weather_alerts => 'வானிலை எச்சரிக்கைகள்';
+	@override String get alert_more => 'மேலும் {n}';
 }
 
 /// The flat map containing all translations for locale <ta-IN>.
@@ -709,6 +711,8 @@ extension on TranslationsTaIn {
 			'rain_moderate' => 'மிதமான மழை',
 			'rain_heavy' => 'கனமழை',
 			'rain_torrential' => 'பலத்த மழை',
+			'weather_alerts' => 'வானிலை எச்சரிக்கைகள்',
+			'alert_more' => 'மேலும் {n}',
 			_ => null,
 		};
 	}

@@ -369,6 +369,8 @@ class TranslationsFaIr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'باران متوسط';
 	@override String get rain_heavy => 'باران شدید';
 	@override String get rain_torrential => 'باران سیل‌آسا';
+	@override String get weather_alerts => 'هشدارهای آب‌وهوا';
+	@override String get alert_more => '{n} مورد دیگر';
 }
 
 /// The flat map containing all translations for locale <fa-IR>.
@@ -709,6 +711,8 @@ extension on TranslationsFaIr {
 			'rain_moderate' => 'باران متوسط',
 			'rain_heavy' => 'باران شدید',
 			'rain_torrential' => 'باران سیل‌آسا',
+			'weather_alerts' => 'هشدارهای آب‌وهوا',
+			'alert_more' => '{n} مورد دیگر',
 			_ => null,
 		};
 	}

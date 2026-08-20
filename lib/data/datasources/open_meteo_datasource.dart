@@ -1,10 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'package:rain/core/constants/app_constants.dart';
 import 'package:rain/core/utils/debug_log.dart';
 import 'package:rain/core/utils/http_date_parser.dart';
-import 'package:rain/core/utils/location_label.dart';
 import 'package:rain/data/datasources/air_quality_remote_datasource.dart';
+import 'package:rain/data/datasources/weather_source.dart';
 import 'package:rain/data/mappers/air_quality_mapper.dart';
 import 'package:rain/data/models/air_quality_api.dart';
 import 'package:rain/data/models/city_api.dart';
@@ -14,10 +12,10 @@ import 'package:rain/data/mappers/weather_mapper.dart';
 import 'package:rain/core/weather/weather_cache_validator.dart';
 
 /// Fetches forecast data from Open-Meteo and city suggestions from its geocoding API.
-class WeatherRemoteDatasource {
+class OpenMeteoWeatherSource implements WeatherSource {
   /// When [dioLocation] is omitted, geocoding reuses [dio] so tests can stub both APIs
   /// with a single fake client instead of hitting the network.
-  WeatherRemoteDatasource({
+  OpenMeteoWeatherSource({
     Dio? dio,
     Dio? dioLocation,
     AirQualityRemoteDatasource? airQuality,
@@ -68,7 +66,7 @@ class WeatherRemoteDatasource {
     );
   }
 
-  /// Fetches a 12-day forecast and maps it to a main weather cache model.
+  @override
   Future<MainWeatherCache> fetchWeather(double lat, double lon) async {
     try {
       final (weatherData, aqData, skew) = await _fetchWeatherAndAq(
@@ -89,12 +87,12 @@ class WeatherRemoteDatasource {
       }
       return cache;
     } on DioException catch (e, stackTrace) {
-      debugLogError('WeatherRemoteDatasource.fetchWeather', e, stackTrace);
+      debugLogError('OpenMeteoWeatherSource.fetchWeather', e, stackTrace);
       rethrow;
     }
   }
 
-  /// Fetches a forecast and maps it to a city weather card with location metadata.
+  @override
   Future<WeatherCard> fetchWeatherCard(
     double lat,
     double lon,
@@ -124,12 +122,13 @@ class WeatherRemoteDatasource {
       }
       return card;
     } on DioException catch (e, stackTrace) {
-      debugLogError('WeatherRemoteDatasource.fetchWeatherCard', e, stackTrace);
+      debugLogError('OpenMeteoWeatherSource.fetchWeatherCard', e, stackTrace);
       rethrow;
     }
   }
 
   /// Searches Open-Meteo geocoding for up to five matching cities.
+  @override
   Future<Iterable<CitySearchResult>> searchCities(
     String query,
     String? languageCode,
@@ -151,132 +150,8 @@ class WeatherRemoteDatasource {
       }
       throw Exception('Failed to load suggestions');
     } on DioException catch (e, stackTrace) {
-      debugLogError('WeatherRemoteDatasource.searchCities', e, stackTrace);
+      debugLogError('OpenMeteoWeatherSource.searchCities', e, stackTrace);
       rethrow;
     }
   }
-
-  /// Reverse-geocodes coordinates via Nominatim for detailed location labels.
-  Future<({String city, String district, String address})?> reverseGeocode(
-    double lat,
-    double lon, {
-    String? languageCode,
-  }) async {
-    final languageParam = languageCode != null && languageCode.isNotEmpty
-        ? '&accept-language=$languageCode'
-        : '';
-    final url =
-        '${AppConstants.nominatimReverseUrl}?lat=$lat&lon=$lon&format=json&addressdetails=1$languageParam';
-    try {
-      final response = await _dioLocation.get(
-        url,
-        options: Options(
-          headers: {'User-Agent': AppConstants.nominatimUserAgent},
-        ),
-      );
-      if (response.statusCode != 200) return null;
-      return _parseNominatimLabels(response.data);
-    } on DioException catch (e, stackTrace) {
-      debugLogError('WeatherRemoteDatasource.reverseGeocode', e, stackTrace);
-      return null;
-    }
-  }
-
-  /// Maps a Nominatim reverse-geocoding payload to location labels.
-  @visibleForTesting
-  static ({String city, String district, String address})? parseNominatimLabels(
-    dynamic data,
-  ) {
-    if (data is! Map) return null;
-    final address = data['address'];
-    if (address is! Map) return null;
-
-    final city = firstNonEmptyLocationLabel([
-      _stringField(address, 'city'),
-      _stringField(address, 'town'),
-      _stringField(address, 'village'),
-      _stringField(address, 'municipality'),
-      _stringField(address, 'hamlet'),
-      _stringField(address, 'city_district'),
-      _stringField(address, 'suburb'),
-      _stringField(address, 'county'),
-    ]);
-    final district = firstNonEmptyLocationLabel([
-      _stringField(address, 'state'),
-      _stringField(address, 'region'),
-      _stringField(address, 'state_district'),
-      _stringField(address, 'country'),
-    ]);
-
-    final displayName = data['display_name'] is String
-        ? (data['display_name'] as String).trim()
-        : '';
-    final structuredAddress = _joinNominatimAddress(address);
-    final hasStreetDetail = [
-      _stringField(address, 'road'),
-      _stringField(address, 'house_number'),
-      _stringField(address, 'building'),
-      _stringField(address, 'residential'),
-      _stringField(address, 'amenity'),
-    ].any(hasNonEmptyLocationText);
-    final String addressText;
-    if (hasStreetDetail && structuredAddress.isNotEmpty) {
-      addressText = structuredAddress;
-    } else if (displayName.isNotEmpty) {
-      addressText = displayName;
-    } else {
-      addressText = structuredAddress;
-    }
-
-    if (city.isEmpty && district.isEmpty && addressText.isEmpty) return null;
-    return (city: city, district: district, address: addressText);
-  }
-
-  static String _joinNominatimAddress(Map address) {
-    final parts = <String>[
-      _stringField(address, 'city_district') ?? '',
-      _stringField(address, 'suburb') ?? '',
-      _stringField(address, 'neighbourhood') ?? '',
-      _stringField(address, 'county') ?? '',
-      _stringField(address, 'state') ?? '',
-      _stringField(address, 'city') ?? '',
-      _stringField(address, 'town') ?? '',
-      _stringField(address, 'building') ?? '',
-      _stringField(address, 'residential') ?? '',
-      _stringField(address, 'amenity') ?? '',
-      _stringField(address, 'road') ?? '',
-      _stringField(address, 'house_number') ?? '',
-    ];
-    final unique = <String>[];
-    for (final part in parts) {
-      final value = part.trim();
-      if (value.isEmpty || unique.contains(value)) continue;
-      unique.add(value);
-    }
-    return unique.join(' ');
-  }
-
-  static String? _stringField(Map data, String key) {
-    final value = data[key];
-    return value is String ? value : null;
-  }
-
-  ({String city, String district, String address})? _parseNominatimLabels(
-    dynamic data,
-  ) => parseNominatimLabels(data);
-}
-
-/// A normalized city match returned from geocoding search.
-class CitySearchResult {
-  const CitySearchResult({
-    required this.admin1,
-    required this.name,
-    required this.latitude,
-    required this.longitude,
-  });
-
-  final String? admin1;
-  final String? name;
-  final double? latitude;
-  final double? longitude;
 }

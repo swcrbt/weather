@@ -328,5 +328,7 @@
   "rainLight": "Небольшой дождь",
   "rainModerate": "Умеренный дождь",
   "rainHeavy": "Сильный дождь",
-  "rainTorrential": "Ливень"
+  "rainTorrential": "Ливень",
+  "weatherAlerts": "Погодные предупреждения",
+  "alertMore": "Ещё {n}"
 }

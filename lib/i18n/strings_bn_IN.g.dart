@@ -369,6 +369,8 @@ class TranslationsBnIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'মাঝারি বৃষ্টি';
 	@override String get rain_heavy => 'ভারী বৃষ্টি';
 	@override String get rain_torrential => 'মুষলধারে বৃষ্টি';
+	@override String get weather_alerts => 'আবহাওয়ার সতর্কতা';
+	@override String get alert_more => 'আরও {n}টি';
 }
 
 /// The flat map containing all translations for locale <bn-IN>.
@@ -709,6 +711,8 @@ extension on TranslationsBnIn {
 			'rain_moderate' => 'মাঝারি বৃষ্টি',
 			'rain_heavy' => 'ভারী বৃষ্টি',
 			'rain_torrential' => 'মুষলধারে বৃষ্টি',
+			'weather_alerts' => 'আবহাওয়ার সতর্কতা',
+			'alert_more' => 'আরও {n}টি',
 			_ => null,
 		};
 	}

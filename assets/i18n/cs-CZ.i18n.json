@@ -328,5 +328,7 @@
   "rainLight": "Slabý déšť",
   "rainModerate": "Mírný déšť",
   "rainHeavy": "Silný déšť",
-  "rainTorrential": "Přívalový déšť"
+  "rainTorrential": "Přívalový déšť",
+  "weatherAlerts": "Výstrahy počasí",
+  "alertMore": "Dalších {n}"
 }

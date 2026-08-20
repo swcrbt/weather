@@ -328,5 +328,7 @@
   "rainLight": "હળવો વરસાદ",
   "rainModerate": "મધ્યમ વરસાદ",
   "rainHeavy": "ભારે વરસાદ",
-  "rainTorrential": "મુશળધાર વરસાદ"
+  "rainTorrential": "મુશળધાર વરસાદ",
+  "weatherAlerts": "હવામાન ચેતવણીઓ",
+  "alertMore": "વધુ {n}"
 }

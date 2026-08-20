@@ -369,6 +369,8 @@ class TranslationsTeIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'మోస్తరు వర్షం';
 	@override String get rain_heavy => 'భారీ వర్షం';
 	@override String get rain_torrential => 'కుండపోత వర్షం';
+	@override String get weather_alerts => 'వాతావరణ హెచ్చరికలు';
+	@override String get alert_more => 'మరో {n}';
 }
 
 /// The flat map containing all translations for locale <te-IN>.
@@ -709,6 +711,8 @@ extension on TranslationsTeIn {
 			'rain_moderate' => 'మోస్తరు వర్షం',
 			'rain_heavy' => 'భారీ వర్షం',
 			'rain_torrential' => 'కుండపోత వర్షం',
+			'weather_alerts' => 'వాతావరణ హెచ్చరికలు',
+			'alert_more' => 'మరో {n}',
 			_ => null,
 		};
 	}

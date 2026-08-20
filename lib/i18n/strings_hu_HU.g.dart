@@ -369,6 +369,8 @@ class TranslationsHuHu extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'Mérsékelt eső';
 	@override String get rain_heavy => 'Erős eső';
 	@override String get rain_torrential => 'Zuhogó eső';
+	@override String get weather_alerts => 'Időjárási figyelmeztetések';
+	@override String get alert_more => 'További {n}';
 }
 
 /// The flat map containing all translations for locale <hu-HU>.
@@ -709,6 +711,8 @@ extension on TranslationsHuHu {
 			'rain_moderate' => 'Mérsékelt eső',
 			'rain_heavy' => 'Erős eső',
 			'rain_torrential' => 'Zuhogó eső',
+			'weather_alerts' => 'Időjárási figyelmeztetések',
+			'alert_more' => 'További {n}',
 			_ => null,
 		};
 	}

@@ -33,8 +33,8 @@ void main() {
             homeWidgetServiceProvider.overrideWithValue(
               FakeHomeWidgetService(),
             ),
-            weatherRemoteDatasourceProvider.overrideWithValue(
-              createFakeWeatherRemoteDatasource(),
+            weatherSourceProvider.overrideWithValue(
+              createFakeWeatherSource(),
             ),
           ],
           child: Consumer(
@@ -89,8 +89,8 @@ void main() {
             homeWidgetServiceProvider.overrideWithValue(
               FakeHomeWidgetService(),
             ),
-            weatherRemoteDatasourceProvider.overrideWithValue(
-              createFakeWeatherRemoteDatasource(),
+            weatherSourceProvider.overrideWithValue(
+              createFakeWeatherSource(),
             ),
           ],
           child: WeatherApp(bootstrap: ctx.bootstrap),

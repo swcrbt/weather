@@ -258,6 +258,7 @@ class WeatherMapper {
       ..timezone = updated.timezone
       ..utcOffsetSeconds = updated.utcOffsetSeconds
       ..clockSkewSeconds = updated.clockSkewSeconds
+      ..alerts = updated.alerts
       ..timestamp = DateTime.now();
   }
 }

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:rain/data/datasources/weather_remote_datasource.dart';
+import 'package:rain/data/datasources/open_meteo_datasource.dart';
 import 'package:rain/data/models/db.dart';
 import 'package:rain/data/models/weather_api.dart';
 
@@ -382,11 +382,11 @@ Settings onboardedSettings({
   ..theme = 'system'
   ..language = 'en';
 
-/// Creates a [WeatherRemoteDatasource] with fake weather and geocoding responses.
+/// Creates an [OpenMeteoWeatherSource] with fake weather and geocoding responses.
 ///
-/// Always use this in tests instead of [WeatherRemoteDatasource] with a single Dio:
+/// Always use this in tests instead of [OpenMeteoWeatherSource] with a single Dio:
 /// production uses separate clients for forecast and geocoding.
-WeatherRemoteDatasource createFakeWeatherRemoteDatasource({
+OpenMeteoWeatherSource createFakeWeatherSource({
   Map<String, dynamic>? weatherJson,
   Map<String, dynamic>? cityJson,
   Map<String, dynamic>? airQualityJson,
@@ -396,7 +396,7 @@ WeatherRemoteDatasource createFakeWeatherRemoteDatasource({
     cityJson: cityJson,
     airQualityJson: airQualityJson,
   );
-  return WeatherRemoteDatasource(dio: dio, dioLocation: dio);
+  return OpenMeteoWeatherSource(dio: dio, dioLocation: dio);
 }
 
 /// Creates a [Dio] instance that returns fixture JSON for weather and geocoding.

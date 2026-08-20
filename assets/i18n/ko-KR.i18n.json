@@ -328,5 +328,7 @@
   "rainLight": "약한 비",
   "rainModerate": "보통 비",
   "rainHeavy": "강한 비",
-  "rainTorrential": "폭우"
+  "rainTorrential": "폭우",
+  "weatherAlerts": "기상특보",
+  "alertMore": "외 {n}건"
 }

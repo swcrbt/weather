@@ -328,5 +328,7 @@
   "rainLight": "Gyenge eső",
   "rainModerate": "Mérsékelt eső",
   "rainHeavy": "Erős eső",
-  "rainTorrential": "Zuhogó eső"
+  "rainTorrential": "Zuhogó eső",
+  "weatherAlerts": "Időjárási figyelmeztetések",
+  "alertMore": "További {n}"
 }

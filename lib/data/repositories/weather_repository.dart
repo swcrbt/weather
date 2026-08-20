@@ -1,12 +1,12 @@
 import 'package:rain/data/datasources/weather_local_datasource.dart';
-import 'package:rain/data/datasources/weather_remote_datasource.dart';
+import 'package:rain/data/datasources/weather_source.dart';
 import 'package:rain/data/models/db.dart';
 
 /// Coordinates remote weather fetches with local main-weather cache persistence.
 class WeatherRepository {
   WeatherRepository(this._remote, this._local);
 
-  final WeatherRemoteDatasource _remote;
+  final WeatherSource _remote;
   final WeatherLocalDatasource _local;
 
   /// Fetches a fresh main weather forecast for the given coordinates.

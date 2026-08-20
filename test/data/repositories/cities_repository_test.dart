@@ -9,7 +9,7 @@ void main() {
 
   setUp(() async {
     ctx = await openTestIsar();
-    final remote = createFakeWeatherRemoteDatasource();
+    final remote = createFakeWeatherSource();
     repository = CitiesRepository(ctx.isar, remote);
   });
 

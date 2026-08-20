@@ -32,8 +32,8 @@ void main() {
           mainWeatherNotifierProvider.overrideWith(
             _TestMainWeatherNotifier.new,
           ),
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
           notificationServiceProvider.overrideWithValue(
             FakeNotificationService(),
@@ -352,8 +352,8 @@ void main() {
             mainWeatherNotifierProvider.overrideWith(
               _TestMainWeatherNotifier.new,
             ),
-            weatherRemoteDatasourceProvider.overrideWithValue(
-              createFakeWeatherRemoteDatasource(),
+            weatherSourceProvider.overrideWithValue(
+              createFakeWeatherSource(),
             ),
             notificationServiceProvider.overrideWithValue(fakeNotifications),
             homeWidgetServiceProvider.overrideWithValue(
@@ -382,8 +382,8 @@ void main() {
           mainWeatherNotifierProvider.overrideWith(
             _TestMainWeatherNotifier.new,
           ),
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
           notificationServiceProvider.overrideWithValue(fakeNotifications),
           homeWidgetServiceProvider.overrideWithValue(FakeHomeWidgetService()),
@@ -422,8 +422,8 @@ void main() {
         bootstrap: ctx.bootstrap,
         overrides: [
           notificationServiceProvider.overrideWithValue(fakeNotifications),
-          weatherRemoteDatasourceProvider.overrideWithValue(
-            createFakeWeatherRemoteDatasource(),
+          weatherSourceProvider.overrideWithValue(
+            createFakeWeatherSource(),
           ),
           locationServiceProvider.overrideWithValue(FakeLocationService()),
           homeWidgetServiceProvider.overrideWithValue(FakeHomeWidgetService()),

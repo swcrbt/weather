@@ -48,6 +48,86 @@ class Settings {
   int clockSkewSeconds = 0;
 }
 
+/// A severe-weather warning issued by a weather authority (e.g. QWeather).
+@embedded
+class WeatherAlert {
+  String? id;
+
+  /// Full issue title provided by the authority.
+  String? title;
+
+  /// Warning category such as gale, rainstorm, or typhoon.
+  String? typeName;
+
+  /// Local severity label (e.g. blue/yellow/orange/red in China); may be empty.
+  String? level;
+
+  /// CAP severity: Minor/Moderate/Severe/Extreme/Unknown.
+  String? severity;
+
+  /// Authority-provided color name, may be empty.
+  String? severityColor;
+
+  /// Issuing authority.
+  String? sender;
+
+  /// Full warning text with defensive measures.
+  String? text;
+  DateTime? pubTime;
+  DateTime? startTime;
+  DateTime? endTime;
+
+  /// Only `active` warnings are displayed.
+  String? status;
+
+  WeatherAlert({
+    this.id,
+    this.title,
+    this.typeName,
+    this.level,
+    this.severity,
+    this.severityColor,
+    this.sender,
+    this.text,
+    this.pubTime,
+    this.startTime,
+    this.endTime,
+    this.status,
+  });
+
+  /// Serializes alert fields to a JSON map.
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'title': title,
+    'typeName': typeName,
+    'level': level,
+    'severity': severity,
+    'severityColor': severityColor,
+    'sender': sender,
+    'text': text,
+    'pubTime': pubTime,
+    'startTime': startTime,
+    'endTime': endTime,
+    'status': status,
+  };
+
+  /// Deserializes an alert from a JSON map.
+  factory WeatherAlert.fromJson(Map<String, dynamic> json) => WeatherAlert(
+    id: json['id'] as String?,
+    title: json['title'] as String?,
+    typeName: json['typeName'] as String?,
+    level: json['level'] as String?,
+    severity: json['severity'] as String?,
+    severityColor: json['severityColor'] as String?,
+    sender: json['sender'] as String?,
+    text: json['text'] as String?,
+    pubTime: json['pubTime'] as DateTime?,
+    startTime: json['startTime'] as DateTime?,
+    endTime: json['endTime'] as DateTime?,
+    status: json['status'] as String?,
+  );
+}
+
 /// Cached forecast for the primary home-screen location.
 @collection
 class MainWeatherCache {
@@ -113,6 +193,9 @@ class MainWeatherCache {
   int? clockSkewSeconds;
   DateTime? timestamp;
 
+  /// Active severe-weather warnings for the location, when the source provides them.
+  List<WeatherAlert>? alerts;
+
   /// Creates a [MainWeatherCache] with optional hourly, daily, and metadata fields.
   MainWeatherCache({
     this.time,
@@ -167,6 +250,7 @@ class MainWeatherCache {
     this.utcOffsetSeconds,
     this.clockSkewSeconds,
     this.timestamp,
+    this.alerts,
   });
 
   /// Serializes hourly, daily, and metadata fields to a JSON map.
@@ -224,6 +308,7 @@ class MainWeatherCache {
     'utcOffsetSeconds': utcOffsetSeconds,
     'clockSkewSeconds': clockSkewSeconds,
     'timestamp': timestamp,
+    'alerts': alerts?.map((alert) => alert.toJson()).toList(),
   };
 }
 
@@ -329,6 +414,9 @@ class WeatherCard {
   DateTime? timestamp;
   int? index;
 
+  /// Active severe-weather warnings for the city, when the source provides them.
+  List<WeatherAlert>? alerts;
+
   /// Creates a weather card with optional forecast, location, and sort fields.
   WeatherCard({
     this.time,
@@ -383,6 +471,7 @@ class WeatherCard {
     this.clockSkewSeconds,
     this.timestamp,
     this.index,
+    this.alerts,
   });
 
   /// Serializes forecast, location, and metadata fields to a JSON map.
@@ -440,6 +529,7 @@ class WeatherCard {
     'city': city,
     'district': district,
     'index': index,
+    'alerts': alerts?.map((alert) => alert.toJson()).toList(),
   };
 
   /// Builds a card from main weather cache fields, optionally with location metadata.
@@ -497,6 +587,7 @@ class WeatherCard {
     utcOffsetSeconds: cache.utcOffsetSeconds,
     clockSkewSeconds: cache.clockSkewSeconds,
     timestamp: cache.timestamp,
+    alerts: cache.alerts,
     lat: lat,
     lon: lon,
     city: city,
@@ -582,6 +673,13 @@ class WeatherCard {
       clockSkewSeconds: json['clockSkewSeconds'],
       timestamp: json['timestamp'],
       index: json['index'],
+      alerts: json['alerts'] == null
+          ? null
+          : List<WeatherAlert>.from(
+              (json['alerts'] as List<dynamic>).map(
+                (x) => WeatherAlert.fromJson(x as Map<String, dynamic>),
+              ),
+            ),
     );
   }
 }

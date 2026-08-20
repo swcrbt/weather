@@ -328,5 +328,7 @@
   "rainLight": "നേരിയ മഴ",
   "rainModerate": "മിതമായ മഴ",
   "rainHeavy": "കനത്ത മഴ",
-  "rainTorrential": "കോരിച്ചൊരിയുന്ന മഴ"
+  "rainTorrential": "കോരിച്ചൊരിയുന്ന മഴ",
+  "weatherAlerts": "കാലാവസ്ഥാ മുന്നറിയിപ്പ്",
+  "alertMore": "കൂടാതെ {n} എണ്ണം"
 }

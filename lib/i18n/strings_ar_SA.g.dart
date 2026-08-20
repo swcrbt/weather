@@ -369,6 +369,8 @@ class TranslationsArSa extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'مطر متوسط';
 	@override String get rain_heavy => 'مطر غزير';
 	@override String get rain_torrential => 'أمطار غزيرة جدًا';
+	@override String get weather_alerts => 'تنبيهات الطقس';
+	@override String get alert_more => '{n} إضافية';
 }
 
 /// The flat map containing all translations for locale <ar-SA>.
@@ -709,6 +711,8 @@ extension on TranslationsArSa {
 			'rain_moderate' => 'مطر متوسط',
 			'rain_heavy' => 'مطر غزير',
 			'rain_torrential' => 'أمطار غزيرة جدًا',
+			'weather_alerts' => 'تنبيهات الطقس',
+			'alert_more' => '{n} إضافية',
 			_ => null,
 		};
 	}

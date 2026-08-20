@@ -369,6 +369,8 @@ class TranslationsHiIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_moderate => 'मध्यम बारिश';
 	@override String get rain_heavy => 'तेज़ बारिश';
 	@override String get rain_torrential => 'मूसलाधार बारिश';
+	@override String get weather_alerts => 'मौसम की चेतावनी';
+	@override String get alert_more => '{n} और';
 }
 
 /// The flat map containing all translations for locale <hi-IN>.
@@ -709,6 +711,8 @@ extension on TranslationsHiIn {
 			'rain_moderate' => 'मध्यम बारिश',
 			'rain_heavy' => 'तेज़ बारिश',
 			'rain_torrential' => 'मूसलाधार बारिश',
+			'weather_alerts' => 'मौसम की चेतावनी',
+			'alert_more' => '{n} और',
 			_ => null,
 		};
 	}
