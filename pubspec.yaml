@@ -3,7 +3,7 @@ description: Weather application
 
 publish_to: "none"
 
-version: 1.2.1+9
+version: 1.2.2+10
 
 environment:
   sdk: ">=3.12.2 <4.0.0"
@@ -120,4 +120,5 @@ flutter:
   assets:
     - assets/
     - assets/icons/
+    - assets/keys/
     - assets/weather_icons/classic/
