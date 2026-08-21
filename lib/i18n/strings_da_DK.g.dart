@@ -371,6 +371,11 @@ class TranslationsDaDk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'Skybrud';
 	@override String get weather_alerts => 'Vejrvarsler';
 	@override String get alert_more => '{n} mere';
+	@override String get aqi_station_map => 'AQI-stationskort';
+	@override String get aqi_station_nearest => 'Nærmeste station';
+	@override String get aqi_station_measured => 'Realtids AQI for station (US EPA)';
+	@override String get aqi_station_data_source => 'Stationsdata: QWeather';
+	@override String get aqi_trend_title => 'Luftkvalitetstendens';
 }
 
 /// The flat map containing all translations for locale <da-DK>.
@@ -713,6 +718,11 @@ extension on TranslationsDaDk {
 			'rain_torrential' => 'Skybrud',
 			'weather_alerts' => 'Vejrvarsler',
 			'alert_more' => '{n} mere',
+			'aqi_station_map' => 'AQI-stationskort',
+			'aqi_station_nearest' => 'Nærmeste station',
+			'aqi_station_measured' => 'Realtids AQI for station (US EPA)',
+			'aqi_station_data_source' => 'Stationsdata: QWeather',
+			'aqi_trend_title' => 'Luftkvalitetstendens',
 			_ => null,
 		};
 	}

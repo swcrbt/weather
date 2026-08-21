@@ -371,6 +371,11 @@ class TranslationsZhTw extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get background_refresh_error => '上次背景錯誤';
 	@override String get weather_alerts => '天氣警報';
 	@override String get alert_more => '另有 {n} 則';
+	@override String get aqi_station_map => 'AQI 測站地圖';
+	@override String get aqi_station_nearest => '最近的測站';
+	@override String get aqi_station_measured => '即時測站 AQI（美標）';
+	@override String get aqi_station_data_source => '測站資料：和風天氣';
+	@override String get aqi_trend_title => '空氣品質趨勢';
 }
 
 /// The flat map containing all translations for locale <zh-TW>.
@@ -713,6 +718,11 @@ extension on TranslationsZhTw {
 			'background_refresh_error' => '上次背景錯誤',
 			'weather_alerts' => '天氣警報',
 			'alert_more' => '另有 {n} 則',
+			'aqi_station_map' => 'AQI 測站地圖',
+			'aqi_station_nearest' => '最近的測站',
+			'aqi_station_measured' => '即時測站 AQI（美標）',
+			'aqi_station_data_source' => '測站資料：和風天氣',
+			'aqi_trend_title' => '空氣品質趨勢',
 			_ => null,
 		};
 	}

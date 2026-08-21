@@ -371,6 +371,11 @@ class TranslationsGaIe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'Báisteach thromchúiseach';
 	@override String get weather_alerts => 'Rabhaidh aimsire';
 	@override String get alert_more => '{n} eile';
+	@override String get aqi_station_map => 'Léarscáil stáisiún AQI';
+	@override String get aqi_station_nearest => 'An stáisiún is gaire';
+	@override String get aqi_station_measured => 'AQI stáisiúin fíor-ama (US EPA)';
+	@override String get aqi_station_data_source => 'Sonraí stáisiún: QWeather';
+	@override String get aqi_trend_title => 'Treocht cáilíochta aeir';
 }
 
 /// The flat map containing all translations for locale <ga-IE>.
@@ -713,6 +718,11 @@ extension on TranslationsGaIe {
 			'rain_torrential' => 'Báisteach thromchúiseach',
 			'weather_alerts' => 'Rabhaidh aimsire',
 			'alert_more' => '{n} eile',
+			'aqi_station_map' => 'Léarscáil stáisiún AQI',
+			'aqi_station_nearest' => 'An stáisiún is gaire',
+			'aqi_station_measured' => 'AQI stáisiúin fíor-ama (US EPA)',
+			'aqi_station_data_source' => 'Sonraí stáisiún: QWeather',
+			'aqi_trend_title' => 'Treocht cáilíochta aeir',
 			_ => null,
 		};
 	}

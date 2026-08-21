@@ -330,5 +330,10 @@
   "rainHeavy": "גשם כבד",
   "rainTorrential": "גשם שוטף",
   "weatherAlerts": "התראות מזג אוויר",
-  "alertMore": "{n} נוספים"
+  "alertMore": "{n} נוספים",
+  "aqiStationMap": "מפת תחנות AQI",
+  "aqiStationNearest": "התחנה הקרובה ביותר",
+  "aqiStationMeasured": "AQI תחנה בזמן אמת (US EPA)",
+  "aqiStationDataSource": "נתוני תחנות: QWeather",
+  "aqiTrendTitle": "מגמת איכות האוויר"
 }

@@ -330,5 +330,10 @@
   "rainHeavy": "مطر غزير",
   "rainTorrential": "أمطار غزيرة جدًا",
   "weatherAlerts": "تنبيهات الطقس",
-  "alertMore": "{n} إضافية"
+  "alertMore": "{n} إضافية",
+  "aqiStationMap": "خريطة محطات جودة الهواء",
+  "aqiStationNearest": "أقرب محطة",
+  "aqiStationMeasured": "مؤشر AQI الفوري للمحطة (US EPA)",
+  "aqiStationDataSource": "بيانات المحطات: QWeather",
+  "aqiTrendTitle": "اتجاه جودة الهواء"
 }

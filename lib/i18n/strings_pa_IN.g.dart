@@ -371,6 +371,11 @@ class TranslationsPaIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'ਮੋਹਲੇਧਾਰ ਮੀਂਹ';
 	@override String get weather_alerts => 'ਮੌਸਮ ਚੇਤਾਵਨੀਆਂ';
 	@override String get alert_more => 'ਹੋਰ {n}';
+	@override String get aqi_station_map => 'AQI ਸਟੇਸ਼ਨ ਨਕਸ਼ਾ';
+	@override String get aqi_station_nearest => 'ਸਭ ਤੋਂ ਨੇੜਲਾ ਸਟੇਸ਼ਨ';
+	@override String get aqi_station_measured => 'ਰੀਅਲ-ਟਾਈਮ ਸਟੇਸ਼ਨ AQI (US EPA)';
+	@override String get aqi_station_data_source => 'ਸਟੇਸ਼ਨ ਡੇਟਾ: QWeather';
+	@override String get aqi_trend_title => 'ਹਵਾ ਗੁਣਵੱਤਾ ਰੁਝਾਨ';
 }
 
 /// The flat map containing all translations for locale <pa-IN>.
@@ -713,6 +718,11 @@ extension on TranslationsPaIn {
 			'rain_torrential' => 'ਮੋਹਲੇਧਾਰ ਮੀਂਹ',
 			'weather_alerts' => 'ਮੌਸਮ ਚੇਤਾਵਨੀਆਂ',
 			'alert_more' => 'ਹੋਰ {n}',
+			'aqi_station_map' => 'AQI ਸਟੇਸ਼ਨ ਨਕਸ਼ਾ',
+			'aqi_station_nearest' => 'ਸਭ ਤੋਂ ਨੇੜਲਾ ਸਟੇਸ਼ਨ',
+			'aqi_station_measured' => 'ਰੀਅਲ-ਟਾਈਮ ਸਟੇਸ਼ਨ AQI (US EPA)',
+			'aqi_station_data_source' => 'ਸਟੇਸ਼ਨ ਡੇਟਾ: QWeather',
+			'aqi_trend_title' => 'ਹਵਾ ਗੁਣਵੱਤਾ ਰੁਝਾਨ',
 			_ => null,
 		};
 	}

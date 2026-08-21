@@ -371,6 +371,11 @@ class TranslationsBnIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'মুষলধারে বৃষ্টি';
 	@override String get weather_alerts => 'আবহাওয়ার সতর্কতা';
 	@override String get alert_more => 'আরও {n}টি';
+	@override String get aqi_station_map => 'AQI স্টেশন মানচিত্র';
+	@override String get aqi_station_nearest => 'নিকটতম স্টেশন';
+	@override String get aqi_station_measured => 'রিয়েল-টাইম স্টেশন AQI (US EPA)';
+	@override String get aqi_station_data_source => 'স্টেশন ডেটা: QWeather';
+	@override String get aqi_trend_title => 'বায়ুর মানের প্রবণতা';
 }
 
 /// The flat map containing all translations for locale <bn-IN>.
@@ -713,6 +718,11 @@ extension on TranslationsBnIn {
 			'rain_torrential' => 'মুষলধারে বৃষ্টি',
 			'weather_alerts' => 'আবহাওয়ার সতর্কতা',
 			'alert_more' => 'আরও {n}টি',
+			'aqi_station_map' => 'AQI স্টেশন মানচিত্র',
+			'aqi_station_nearest' => 'নিকটতম স্টেশন',
+			'aqi_station_measured' => 'রিয়েল-টাইম স্টেশন AQI (US EPA)',
+			'aqi_station_data_source' => 'স্টেশন ডেটা: QWeather',
+			'aqi_trend_title' => 'বায়ুর মানের প্রবণতা',
 			_ => null,
 		};
 	}

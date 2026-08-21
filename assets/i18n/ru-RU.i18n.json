@@ -330,5 +330,10 @@
   "rainHeavy": "Сильный дождь",
   "rainTorrential": "Ливень",
   "weatherAlerts": "Погодные предупреждения",
-  "alertMore": "Ещё {n}"
+  "alertMore": "Ещё {n}",
+  "aqiStationMap": "Карта станций AQI",
+  "aqiStationNearest": "Ближайшая станция",
+  "aqiStationMeasured": "AQI станции в реальном времени (US EPA)",
+  "aqiStationDataSource": "Данные станций: QWeather",
+  "aqiTrendTitle": "Тренд качества воздуха"
 }

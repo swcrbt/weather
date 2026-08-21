@@ -371,6 +371,11 @@ class TranslationsKnIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'ಧಾರಾಕಾರ ಮಳೆ';
 	@override String get weather_alerts => 'ಹವಾಮಾನ ಎಚ್ಚರಿಕೆಗಳು';
 	@override String get alert_more => 'ಇನ್ನೂ {n}';
+	@override String get aqi_station_map => 'AQI ನಿಲ್ದಾಣ ನಕ್ಷೆ';
+	@override String get aqi_station_nearest => 'ಹತ್ತಿರದ ನಿಲ್ದಾಣ';
+	@override String get aqi_station_measured => 'ನೈಜ-ಸಮಯ ನಿಲ್ದಾಣ AQI (US EPA)';
+	@override String get aqi_station_data_source => 'ನಿಲ್ದಾಣ ಡೇಟಾ: QWeather';
+	@override String get aqi_trend_title => 'ವಾಯು ಗುಣಮಟ್ಟ ಪ್ರವೃತ್ತಿ';
 }
 
 /// The flat map containing all translations for locale <kn-IN>.
@@ -713,6 +718,11 @@ extension on TranslationsKnIn {
 			'rain_torrential' => 'ಧಾರಾಕಾರ ಮಳೆ',
 			'weather_alerts' => 'ಹವಾಮಾನ ಎಚ್ಚರಿಕೆಗಳು',
 			'alert_more' => 'ಇನ್ನೂ {n}',
+			'aqi_station_map' => 'AQI ನಿಲ್ದಾಣ ನಕ್ಷೆ',
+			'aqi_station_nearest' => 'ಹತ್ತಿರದ ನಿಲ್ದಾಣ',
+			'aqi_station_measured' => 'ನೈಜ-ಸಮಯ ನಿಲ್ದಾಣ AQI (US EPA)',
+			'aqi_station_data_source' => 'ನಿಲ್ದಾಣ ಡೇಟಾ: QWeather',
+			'aqi_trend_title' => 'ವಾಯು ಗುಣಮಟ್ಟ ಪ್ರವೃತ್ತಿ',
 			_ => null,
 		};
 	}

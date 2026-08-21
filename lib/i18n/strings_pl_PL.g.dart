@@ -371,6 +371,11 @@ class TranslationsPlPl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'Ulewa';
 	@override String get weather_alerts => 'Ostrzeżenia pogodowe';
 	@override String get alert_more => 'Jeszcze {n}';
+	@override String get aqi_station_map => 'Mapa stacji AQI';
+	@override String get aqi_station_nearest => 'Najbliższa stacja';
+	@override String get aqi_station_measured => 'AQI stacji w czasie rzeczywistym (US EPA)';
+	@override String get aqi_station_data_source => 'Dane stacji: QWeather';
+	@override String get aqi_trend_title => 'Trend jakości powietrza';
 }
 
 /// The flat map containing all translations for locale <pl-PL>.
@@ -713,6 +718,11 @@ extension on TranslationsPlPl {
 			'rain_torrential' => 'Ulewa',
 			'weather_alerts' => 'Ostrzeżenia pogodowe',
 			'alert_more' => 'Jeszcze {n}',
+			'aqi_station_map' => 'Mapa stacji AQI',
+			'aqi_station_nearest' => 'Najbliższa stacja',
+			'aqi_station_measured' => 'AQI stacji w czasie rzeczywistym (US EPA)',
+			'aqi_station_data_source' => 'Dane stacji: QWeather',
+			'aqi_trend_title' => 'Trend jakości powietrza',
 			_ => null,
 		};
 	}

@@ -371,6 +371,11 @@ class TranslationsGuIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'મુશળધાર વરસાદ';
 	@override String get weather_alerts => 'હવામાન ચેતવણીઓ';
 	@override String get alert_more => 'વધુ {n}';
+	@override String get aqi_station_map => 'AQI સ્ટેશન નકશો';
+	@override String get aqi_station_nearest => 'સૌથી નજીકનું સ્ટેશન';
+	@override String get aqi_station_measured => 'રીઅલ-ટાઇમ સ્ટેશન AQI (US EPA)';
+	@override String get aqi_station_data_source => 'સ્ટેશન ડેટા: QWeather';
+	@override String get aqi_trend_title => 'હવાની ગુણવત્તા વલણ';
 }
 
 /// The flat map containing all translations for locale <gu-IN>.
@@ -713,6 +718,11 @@ extension on TranslationsGuIn {
 			'rain_torrential' => 'મુશળધાર વરસાદ',
 			'weather_alerts' => 'હવામાન ચેતવણીઓ',
 			'alert_more' => 'વધુ {n}',
+			'aqi_station_map' => 'AQI સ્ટેશન નકશો',
+			'aqi_station_nearest' => 'સૌથી નજીકનું સ્ટેશન',
+			'aqi_station_measured' => 'રીઅલ-ટાઇમ સ્ટેશન AQI (US EPA)',
+			'aqi_station_data_source' => 'સ્ટેશન ડેટા: QWeather',
+			'aqi_trend_title' => 'હવાની ગુણવત્તા વલણ',
 			_ => null,
 		};
 	}

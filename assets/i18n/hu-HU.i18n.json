@@ -330,5 +330,10 @@
   "rainHeavy": "Erős eső",
   "rainTorrential": "Zuhogó eső",
   "weatherAlerts": "Időjárási figyelmeztetések",
-  "alertMore": "További {n}"
+  "alertMore": "További {n}",
+  "aqiStationMap": "AQI-mérőállomás térkép",
+  "aqiStationNearest": "Legközelebbi állomás",
+  "aqiStationMeasured": "Valós idejű állomás-AQI (US EPA)",
+  "aqiStationDataSource": "Állomásadatok: QWeather",
+  "aqiTrendTitle": "Levegőminőségi trend"
 }

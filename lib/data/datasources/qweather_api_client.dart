@@ -251,6 +251,42 @@ class QWeatherApiClient {
     return decode(response, 'airquality/v1/hourly');
   }
 
+  /// 实时空气质量（新 AQI API，响应含关联监测站 stations[id,name]）。
+  Future<Map<String, dynamic>> airCurrent(
+    double lat,
+    double lon, {
+    String? languageCode,
+  }) async {
+    final lang = langFor(languageCode);
+    final response = await _dio.get(
+      'airquality/v1/current/${lat.toStringAsFixed(2)}/${lon.toStringAsFixed(2)}',
+      queryParameters: {'lang': lang},
+    );
+    return decode(response, 'airquality/v1/current');
+  }
+
+  /// 按 LocationID 反查坐标（用于把监测站投到地图上）。
+  ///
+  /// 注意：和风文档只说明监测站 LocationID「可通过 GeoAPI 获取」，
+  /// 用 city/lookup 反查站点的行为未经真实凭据实测，调用方需容忍失败。
+  Future<Map<String, dynamic>?> geoLookupById(
+    String locationId, {
+    String? languageCode,
+  }) async {
+    final lang = langFor(languageCode);
+    final response = await _geoDio.get(
+      'v2/city/lookup',
+      queryParameters: {'location': locationId, 'lang': lang},
+    );
+    final payload = Map<String, dynamic>.from(
+      decode(response, 'geoapi/v2/city/lookup?id=$locationId'),
+    );
+    final locations = payload['location'];
+    if (locations is! List || locations.isEmpty) return null;
+    final first = locations.first;
+    return first is Map ? Map<String, dynamic>.from(first) : null;
+  }
+
   /// 城市搜索（geoapi，中日韩查询词体验优于 Open-Meteo）。
   Future<List<Map<String, dynamic>>> searchCities(
     String query, {

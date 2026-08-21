@@ -330,5 +330,10 @@
   "rainHeavy": "ভারী বৃষ্টি",
   "rainTorrential": "মুষলধারে বৃষ্টি",
   "weatherAlerts": "আবহাওয়ার সতর্কতা",
-  "alertMore": "আরও {n}টি"
+  "alertMore": "আরও {n}টি",
+  "aqiStationMap": "AQI স্টেশন মানচিত্র",
+  "aqiStationNearest": "নিকটতম স্টেশন",
+  "aqiStationMeasured": "রিয়েল-টাইম স্টেশন AQI (US EPA)",
+  "aqiStationDataSource": "স্টেশন ডেটা: QWeather",
+  "aqiTrendTitle": "বায়ুর মানের প্রবণতা"
 }

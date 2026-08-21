@@ -330,5 +330,10 @@
   "licenseDependencies": "Dependencies",
   "licensePackages": "packages",
   "weatherAlerts": "Weather alerts",
-  "alertMore": "{n} more"
+  "alertMore": "{n} more",
+  "aqiStationMap": "AQI station map",
+  "aqiStationNearest": "Nearest station",
+  "aqiStationMeasured": "Real-time station AQI (US EPA)",
+  "aqiStationDataSource": "Station data: QWeather",
+  "aqiTrendTitle": "Air quality trend"
 }

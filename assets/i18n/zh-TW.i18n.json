@@ -330,5 +330,10 @@
   "lastBackgroundRefreshNever": "尚無背景更新",
   "backgroundRefreshError": "上次背景錯誤",
   "weatherAlerts": "天氣警報",
-  "alertMore": "另有 {n} 則"
+  "alertMore": "另有 {n} 則",
+  "aqiStationMap": "AQI 測站地圖",
+  "aqiStationNearest": "最近的測站",
+  "aqiStationMeasured": "即時測站 AQI（美標）",
+  "aqiStationDataSource": "測站資料：和風天氣",
+  "aqiTrendTitle": "空氣品質趨勢"
 }

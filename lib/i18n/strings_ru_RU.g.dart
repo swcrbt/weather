@@ -371,6 +371,11 @@ class TranslationsRuRu extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'Ливень';
 	@override String get weather_alerts => 'Погодные предупреждения';
 	@override String get alert_more => 'Ещё {n}';
+	@override String get aqi_station_map => 'Карта станций AQI';
+	@override String get aqi_station_nearest => 'Ближайшая станция';
+	@override String get aqi_station_measured => 'AQI станции в реальном времени (US EPA)';
+	@override String get aqi_station_data_source => 'Данные станций: QWeather';
+	@override String get aqi_trend_title => 'Тренд качества воздуха';
 }
 
 /// The flat map containing all translations for locale <ru-RU>.
@@ -713,6 +718,11 @@ extension on TranslationsRuRu {
 			'rain_torrential' => 'Ливень',
 			'weather_alerts' => 'Погодные предупреждения',
 			'alert_more' => 'Ещё {n}',
+			'aqi_station_map' => 'Карта станций AQI',
+			'aqi_station_nearest' => 'Ближайшая станция',
+			'aqi_station_measured' => 'AQI станции в реальном времени (US EPA)',
+			'aqi_station_data_source' => 'Данные станций: QWeather',
+			'aqi_trend_title' => 'Тренд качества воздуха',
 			_ => null,
 		};
 	}

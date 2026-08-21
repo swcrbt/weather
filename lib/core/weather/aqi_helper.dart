@@ -131,6 +131,56 @@ class AqiHelper {
   static int severityIndex(String standard, double aqi) =>
       _bandIndex(_aqiThresholds(standard), aqi);
 
+  /// US EPA 24h PM2.5 breakpoints: (concentration low, high, AQI low, high).
+  static const _epaPm25Breakpoints = [
+    (0.0, 12.0, 0.0, 50.0),
+    (12.1, 35.4, 51.0, 100.0),
+    (35.5, 55.4, 101.0, 150.0),
+    (55.5, 150.4, 151.0, 200.0),
+    (150.5, 250.4, 201.0, 300.0),
+    (250.5, 350.4, 301.0, 400.0),
+    (350.5, 500.4, 401.0, 500.0),
+  ];
+
+  /// US EPA 24h PM10 breakpoints, same tuple shape as PM2.5.
+  static const _epaPm10Breakpoints = [
+    (0.0, 54.0, 0.0, 50.0),
+    (55.0, 154.0, 51.0, 100.0),
+    (155.0, 254.0, 101.0, 150.0),
+    (255.0, 354.0, 151.0, 200.0),
+    (355.0, 424.0, 201.0, 300.0),
+    (425.0, 504.0, 301.0, 400.0),
+    (505.0, 604.0, 401.0, 500.0),
+  ];
+
+  static double? _epaSubIndex(
+    double? concentration,
+    List<(double, double, double, double)> breakpoints,
+  ) {
+    if (concentration == null || concentration < 0) return null;
+    final c = concentration.clamp(0.0, breakpoints.last.$2);
+    for (final (bpLo, bpHi, aqiLo, aqiHi) in breakpoints) {
+      if (c <= bpHi) {
+        return (aqiHi - aqiLo) / (bpHi - bpLo) * (c - bpLo) + aqiLo;
+      }
+    }
+    return breakpoints.last.$4;
+  }
+
+  /// Computes US EPA AQI from measured PM2.5/PM10 concentrations (µg/m³).
+  ///
+  /// Used for monitoring-station bubbles where the provider returns raw
+  /// concentrations but no consolidated index. Returns null when both
+  /// pollutants are missing.
+  static double? usEpaAqiFromParticulates({double? pm25, double? pm10}) {
+    final candidates = [
+      _epaSubIndex(pm25, _epaPm25Breakpoints),
+      _epaSubIndex(pm10, _epaPm10Breakpoints),
+    ].whereType<double>();
+    if (candidates.isEmpty) return null;
+    return candidates.reduce((a, b) => a > b ? a : b);
+  }
+
   /// Zero-based EEA severity band for a [pollutantKey] concentration.
   static int pollutantBandIndex(String pollutantKey, double value) =>
       _bandIndex(_pollutantThresholdsFor(pollutantKey), value);
@@ -226,6 +276,30 @@ class AqiHelper {
   /// Accent color for badges, markers, and severity text.
   static Color severityColor(String standard, double aqi) =>
       _aqiColors(standard)[severityIndex(standard, aqi)];
+
+  /// Continuous heatmap color for [aqi] under [standard].
+  ///
+  /// 在相邻等级色之间线性插值，并在最高档之后按末档斜率延展，
+  /// 供 AQI 热力图生成平滑色带。alpha 由调用方控制。
+  static Color heatmapColor(String standard, double aqi) {
+    final colors = _aqiColors(standard);
+    final thresholds = _aqiThresholds(standard);
+    if (aqi <= 0) return colors.first;
+
+    // edges[i] → colors[i]：0 与五个阈值构成六档锚点。
+    final edges = [0.0, ...thresholds];
+    for (var i = 1; i < edges.length; i++) {
+      if (aqi <= edges[i]) {
+        final t = (aqi - edges[i - 1]) / (edges[i] - edges[i - 1]);
+        return Color.lerp(colors[i - 1], colors[i], t)!;
+      }
+    }
+    // 超出最高阈值：在末两档之间外推，封顶为末档色。
+    final lastEdge = edges.last;
+    final prevEdge = edges[edges.length - 2];
+    final t = ((aqi - lastEdge) / (lastEdge - prevEdge)).clamp(0.0, 1.0);
+    return Color.lerp(colors[colors.length - 2], colors.last, t)!;
+  }
 
   /// Colors for the five scale-bar segments, good to very poor.
   static List<Color> scaleColors(String standard) =>

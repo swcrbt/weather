@@ -371,6 +371,11 @@ class TranslationsKaGe extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'კოკისპირული წვიმა';
 	@override String get weather_alerts => 'ამინდის გაფრთხილებები';
 	@override String get alert_more => 'კიდევ {n}';
+	@override String get aqi_station_map => 'AQI სადგურების რუკა';
+	@override String get aqi_station_nearest => 'უახლოესი სადგური';
+	@override String get aqi_station_measured => 'სადგურის რეალურ დროში AQI (US EPA)';
+	@override String get aqi_station_data_source => 'სადგურის მონაცემები: QWeather';
+	@override String get aqi_trend_title => 'ჰაერის ხარისხის ტენდენცია';
 }
 
 /// The flat map containing all translations for locale <ka-GE>.
@@ -713,6 +718,11 @@ extension on TranslationsKaGe {
 			'rain_torrential' => 'კოკისპირული წვიმა',
 			'weather_alerts' => 'ამინდის გაფრთხილებები',
 			'alert_more' => 'კიდევ {n}',
+			'aqi_station_map' => 'AQI სადგურების რუკა',
+			'aqi_station_nearest' => 'უახლოესი სადგური',
+			'aqi_station_measured' => 'სადგურის რეალურ დროში AQI (US EPA)',
+			'aqi_station_data_source' => 'სადგურის მონაცემები: QWeather',
+			'aqi_trend_title' => 'ჰაერის ხარისხის ტენდენცია',
 			_ => null,
 		};
 	}

@@ -330,5 +330,10 @@
   "rainHeavy": "तेज़ बारिश",
   "rainTorrential": "मूसलाधार बारिश",
   "weatherAlerts": "मौसम की चेतावनी",
-  "alertMore": "{n} और"
+  "alertMore": "{n} और",
+  "aqiStationMap": "AQI स्टेशन मानचित्र",
+  "aqiStationNearest": "निकटतम स्टेशन",
+  "aqiStationMeasured": "रीयल-टाइम स्टेशन AQI (US EPA)",
+  "aqiStationDataSource": "स्टेशन डेटा: QWeather",
+  "aqiTrendTitle": "वायु गुणवत्ता रुझान"
 }

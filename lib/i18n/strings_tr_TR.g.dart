@@ -371,6 +371,11 @@ class TranslationsTrTr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'Sağanak yağmur';
 	@override String get weather_alerts => 'Hava durumu uyarıları';
 	@override String get alert_more => '{n} tane daha';
+	@override String get aqi_station_map => 'AQI istasyon haritası';
+	@override String get aqi_station_nearest => 'En yakın istasyon';
+	@override String get aqi_station_measured => 'Gerçek zamanlı istasyon AQI (US EPA)';
+	@override String get aqi_station_data_source => 'İstasyon verileri: QWeather';
+	@override String get aqi_trend_title => 'Hava kalitesi eğilimi';
 }
 
 /// The flat map containing all translations for locale <tr-TR>.
@@ -713,6 +718,11 @@ extension on TranslationsTrTr {
 			'rain_torrential' => 'Sağanak yağmur',
 			'weather_alerts' => 'Hava durumu uyarıları',
 			'alert_more' => '{n} tane daha',
+			'aqi_station_map' => 'AQI istasyon haritası',
+			'aqi_station_nearest' => 'En yakın istasyon',
+			'aqi_station_measured' => 'Gerçek zamanlı istasyon AQI (US EPA)',
+			'aqi_station_data_source' => 'İstasyon verileri: QWeather',
+			'aqi_trend_title' => 'Hava kalitesi eğilimi',
 			_ => null,
 		};
 	}

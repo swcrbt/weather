@@ -330,5 +330,10 @@
   "rainHeavy": "ପ୍ରବଳ ବର୍ଷା",
   "rainTorrential": "ମୂଷଳଧାରା ବର୍ଷା",
   "weatherAlerts": "ପାଣିପାଗ ଚେତାବନୀ",
-  "alertMore": "ଆଉ {n}ଟି"
+  "alertMore": "ଆଉ {n}ଟି",
+  "aqiStationMap": "AQI ଷ୍ଟେସନ୍ ମ୍ୟାପ୍",
+  "aqiStationNearest": "ନିକଟତମ ଷ୍ଟେସନ୍",
+  "aqiStationMeasured": "ରିଅଲ-ଟାଇମ୍ ଷ୍ଟେସନ୍ AQI (US EPA)",
+  "aqiStationDataSource": "ଷ୍ଟେସନ୍ ତଥ୍ୟ: QWeather",
+  "aqiTrendTitle": "ବାୟୁ ଗୁଣବତ୍ତା ପ୍ରବଣତା"
 }

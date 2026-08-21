@@ -371,6 +371,11 @@ class TranslationsCsCz extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'Přívalový déšť';
 	@override String get weather_alerts => 'Výstrahy počasí';
 	@override String get alert_more => 'Dalších {n}';
+	@override String get aqi_station_map => 'Mapa stanic AQI';
+	@override String get aqi_station_nearest => 'Nejbližší stanice';
+	@override String get aqi_station_measured => 'Aktuální AQI stanice (US EPA)';
+	@override String get aqi_station_data_source => 'Data stanic: QWeather';
+	@override String get aqi_trend_title => 'Trend kvality ovzduší';
 }
 
 /// The flat map containing all translations for locale <cs-CZ>.
@@ -713,6 +718,11 @@ extension on TranslationsCsCz {
 			'rain_torrential' => 'Přívalový déšť',
 			'weather_alerts' => 'Výstrahy počasí',
 			'alert_more' => 'Dalších {n}',
+			'aqi_station_map' => 'Mapa stanic AQI',
+			'aqi_station_nearest' => 'Nejbližší stanice',
+			'aqi_station_measured' => 'Aktuální AQI stanice (US EPA)',
+			'aqi_station_data_source' => 'Data stanic: QWeather',
+			'aqi_trend_title' => 'Trend kvality ovzduší',
 			_ => null,
 		};
 	}

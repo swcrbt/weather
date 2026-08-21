@@ -330,5 +330,10 @@
   "rainHeavy": "ਤੇਜ਼ ਮੀਂਹ",
   "rainTorrential": "ਮੋਹਲੇਧਾਰ ਮੀਂਹ",
   "weatherAlerts": "ਮੌਸਮ ਚੇਤਾਵਨੀਆਂ",
-  "alertMore": "ਹੋਰ {n}"
+  "alertMore": "ਹੋਰ {n}",
+  "aqiStationMap": "AQI ਸਟੇਸ਼ਨ ਨਕਸ਼ਾ",
+  "aqiStationNearest": "ਸਭ ਤੋਂ ਨੇੜਲਾ ਸਟੇਸ਼ਨ",
+  "aqiStationMeasured": "ਰੀਅਲ-ਟਾਈਮ ਸਟੇਸ਼ਨ AQI (US EPA)",
+  "aqiStationDataSource": "ਸਟੇਸ਼ਨ ਡੇਟਾ: QWeather",
+  "aqiTrendTitle": "ਹਵਾ ਗੁਣਵੱਤਾ ਰੁਝਾਨ"
 }

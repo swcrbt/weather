@@ -371,6 +371,11 @@ class TranslationsElGr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'Καταρρακτώδης βροχή';
 	@override String get weather_alerts => 'Προειδοποιήσεις καιρού';
 	@override String get alert_more => '{n} ακόμη';
+	@override String get aqi_station_map => 'Χάρτης σταθμών AQI';
+	@override String get aqi_station_nearest => 'Κοντινότερος σταθμός';
+	@override String get aqi_station_measured => 'AQI σταθμού σε πραγματικό χρόνο (US EPA)';
+	@override String get aqi_station_data_source => 'Δεδομένα σταθμών: QWeather';
+	@override String get aqi_trend_title => 'Τάση ποιότητας αέρα';
 }
 
 /// The flat map containing all translations for locale <el-GR>.
@@ -713,6 +718,11 @@ extension on TranslationsElGr {
 			'rain_torrential' => 'Καταρρακτώδης βροχή',
 			'weather_alerts' => 'Προειδοποιήσεις καιρού',
 			'alert_more' => '{n} ακόμη',
+			'aqi_station_map' => 'Χάρτης σταθμών AQI',
+			'aqi_station_nearest' => 'Κοντινότερος σταθμός',
+			'aqi_station_measured' => 'AQI σταθμού σε πραγματικό χρόνο (US EPA)',
+			'aqi_station_data_source' => 'Δεδομένα σταθμών: QWeather',
+			'aqi_trend_title' => 'Τάση ποιότητας αέρα',
 			_ => null,
 		};
 	}

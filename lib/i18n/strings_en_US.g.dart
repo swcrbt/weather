@@ -1036,6 +1036,21 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 
 	/// en-US: '{n} more'
 	String get alert_more => '{n} more';
+
+	/// en-US: 'AQI station map'
+	String get aqi_station_map => 'AQI station map';
+
+	/// en-US: 'Nearest station'
+	String get aqi_station_nearest => 'Nearest station';
+
+	/// en-US: 'Real-time station AQI (US EPA)'
+	String get aqi_station_measured => 'Real-time station AQI (US EPA)';
+
+	/// en-US: 'Station data: QWeather'
+	String get aqi_station_data_source => 'Station data: QWeather';
+
+	/// en-US: 'Air quality trend'
+	String get aqi_trend_title => 'Air quality trend';
 }
 
 /// The flat map containing all translations for locale <en-US>.
@@ -1378,6 +1393,11 @@ extension on Translations {
 			'license_packages' => 'packages',
 			'weather_alerts' => 'Weather alerts',
 			'alert_more' => '{n} more',
+			'aqi_station_map' => 'AQI station map',
+			'aqi_station_nearest' => 'Nearest station',
+			'aqi_station_measured' => 'Real-time station AQI (US EPA)',
+			'aqi_station_data_source' => 'Station data: QWeather',
+			'aqi_trend_title' => 'Air quality trend',
 			_ => null,
 		};
 	}

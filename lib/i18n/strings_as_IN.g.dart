@@ -371,6 +371,11 @@ class TranslationsAsIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'মূষলধাৰ বৰষুণ';
 	@override String get weather_alerts => 'বতৰ সতৰ্কবাণী';
 	@override String get alert_more => 'আৰু {n}টা';
+	@override String get aqi_station_map => 'AQI ষ্টেচন মানচিত্ৰ';
+	@override String get aqi_station_nearest => 'ওচৰৰ ষ্টেচন';
+	@override String get aqi_station_measured => 'ৰিয়েল-টাইম ষ্টেচন AQI (US EPA)';
+	@override String get aqi_station_data_source => 'ষ্টেচন তথ্য: QWeather';
+	@override String get aqi_trend_title => 'বায়ু মানদণ্ডৰ ধাৰা';
 }
 
 /// The flat map containing all translations for locale <as-IN>.
@@ -713,6 +718,11 @@ extension on TranslationsAsIn {
 			'rain_torrential' => 'মূষলধাৰ বৰষুণ',
 			'weather_alerts' => 'বতৰ সতৰ্কবাণী',
 			'alert_more' => 'আৰু {n}টা',
+			'aqi_station_map' => 'AQI ষ্টেচন মানচিত্ৰ',
+			'aqi_station_nearest' => 'ওচৰৰ ষ্টেচন',
+			'aqi_station_measured' => 'ৰিয়েল-টাইম ষ্টেচন AQI (US EPA)',
+			'aqi_station_data_source' => 'ষ্টেচন তথ্য: QWeather',
+			'aqi_trend_title' => 'বায়ু মানদণ্ডৰ ধাৰা',
 			_ => null,
 		};
 	}

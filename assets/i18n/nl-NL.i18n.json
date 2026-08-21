@@ -330,5 +330,10 @@
   "rainHeavy": "Zware regen",
   "rainTorrential": "Stortregen",
   "weatherAlerts": "Weerwaarschuwingen",
-  "alertMore": "Nog {n}"
+  "alertMore": "Nog {n}",
+  "aqiStationMap": "AQI-stationskaart",
+  "aqiStationNearest": "Dichtstbijzijnde station",
+  "aqiStationMeasured": "Realtime AQI van station (US EPA)",
+  "aqiStationDataSource": "Stationsgegevens: QWeather",
+  "aqiTrendTitle": "Luchtkwaliteitstrend"
 }

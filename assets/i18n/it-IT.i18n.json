@@ -330,5 +330,10 @@
   "rainHeavy": "Pioggia intensa",
   "rainTorrential": "Pioggia torrenziale",
   "weatherAlerts": "Allerte meteo",
-  "alertMore": "{n} in più"
+  "alertMore": "{n} in più",
+  "aqiStationMap": "Mappa stazioni AQI",
+  "aqiStationNearest": "Stazione più vicina",
+  "aqiStationMeasured": "AQI della stazione in tempo reale (US EPA)",
+  "aqiStationDataSource": "Dati stazioni: QWeather",
+  "aqiTrendTitle": "Andamento qualità dell'aria"
 }

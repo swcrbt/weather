@@ -330,5 +330,10 @@
   "rainHeavy": "ভাৰী বৰষুণ",
   "rainTorrential": "মূষলধাৰ বৰষুণ",
   "weatherAlerts": "বতৰ সতৰ্কবাণী",
-  "alertMore": "আৰু {n}টা"
+  "alertMore": "আৰু {n}টা",
+  "aqiStationMap": "AQI ষ্টেচন মানচিত্ৰ",
+  "aqiStationNearest": "ওচৰৰ ষ্টেচন",
+  "aqiStationMeasured": "ৰিয়েল-টাইম ষ্টেচন AQI (US EPA)",
+  "aqiStationDataSource": "ষ্টেচন তথ্য: QWeather",
+  "aqiTrendTitle": "বায়ু মানদণ্ডৰ ধাৰা"
 }

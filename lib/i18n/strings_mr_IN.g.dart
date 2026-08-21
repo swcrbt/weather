@@ -371,6 +371,11 @@ class TranslationsMrIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'मुसळधार पाऊस';
 	@override String get weather_alerts => 'हवामान इशारे';
 	@override String get alert_more => 'आणखी {n}';
+	@override String get aqi_station_map => 'AQI स्टेशन नकाशा';
+	@override String get aqi_station_nearest => 'जवळचे स्टेशन';
+	@override String get aqi_station_measured => 'रिअल-टाइम स्टेशन AQI (US EPA)';
+	@override String get aqi_station_data_source => 'स्टेशन डेटा: QWeather';
+	@override String get aqi_trend_title => 'हवा गुणवत्ता कल';
 }
 
 /// The flat map containing all translations for locale <mr-IN>.
@@ -713,6 +718,11 @@ extension on TranslationsMrIn {
 			'rain_torrential' => 'मुसळधार पाऊस',
 			'weather_alerts' => 'हवामान इशारे',
 			'alert_more' => 'आणखी {n}',
+			'aqi_station_map' => 'AQI स्टेशन नकाशा',
+			'aqi_station_nearest' => 'जवळचे स्टेशन',
+			'aqi_station_measured' => 'रिअल-टाइम स्टेशन AQI (US EPA)',
+			'aqi_station_data_source' => 'स्टेशन डेटा: QWeather',
+			'aqi_trend_title' => 'हवा गुणवत्ता कल',
 			_ => null,
 		};
 	}

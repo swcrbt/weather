@@ -371,6 +371,11 @@ class TranslationsFaIr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'باران سیل‌آسا';
 	@override String get weather_alerts => 'هشدارهای آب‌وهوا';
 	@override String get alert_more => '{n} مورد دیگر';
+	@override String get aqi_station_map => 'نقشه ایستگاه‌های AQI';
+	@override String get aqi_station_nearest => 'نزدیک‌ترین ایستگاه';
+	@override String get aqi_station_measured => 'AQI لحظه‌ای ایستگاه (US EPA)';
+	@override String get aqi_station_data_source => 'داده ایستگاه‌ها: QWeather';
+	@override String get aqi_trend_title => 'روند کیفیت هوا';
 }
 
 /// The flat map containing all translations for locale <fa-IR>.
@@ -713,6 +718,11 @@ extension on TranslationsFaIr {
 			'rain_torrential' => 'باران سیل‌آسا',
 			'weather_alerts' => 'هشدارهای آب‌وهوا',
 			'alert_more' => '{n} مورد دیگر',
+			'aqi_station_map' => 'نقشه ایستگاه‌های AQI',
+			'aqi_station_nearest' => 'نزدیک‌ترین ایستگاه',
+			'aqi_station_measured' => 'AQI لحظه‌ای ایستگاه (US EPA)',
+			'aqi_station_data_source' => 'داده ایستگاه‌ها: QWeather',
+			'aqi_trend_title' => 'روند کیفیت هوا',
 			_ => null,
 		};
 	}

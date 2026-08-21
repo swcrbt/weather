@@ -371,6 +371,11 @@ class TranslationsTeIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'కుండపోత వర్షం';
 	@override String get weather_alerts => 'వాతావరణ హెచ్చరికలు';
 	@override String get alert_more => 'మరో {n}';
+	@override String get aqi_station_map => 'AQI స్టేషన్ మ్యాప్';
+	@override String get aqi_station_nearest => 'దగ్గరి స్టేషన్';
+	@override String get aqi_station_measured => 'రియల్-టైమ్ స్టేషన్ AQI (US EPA)';
+	@override String get aqi_station_data_source => 'స్టేషన్ డేటా: QWeather';
+	@override String get aqi_trend_title => 'గాలి నాణ్యత ధోరణి';
 }
 
 /// The flat map containing all translations for locale <te-IN>.
@@ -713,6 +718,11 @@ extension on TranslationsTeIn {
 			'rain_torrential' => 'కుండపోత వర్షం',
 			'weather_alerts' => 'వాతావరణ హెచ్చరికలు',
 			'alert_more' => 'మరో {n}',
+			'aqi_station_map' => 'AQI స్టేషన్ మ్యాప్',
+			'aqi_station_nearest' => 'దగ్గరి స్టేషన్',
+			'aqi_station_measured' => 'రియల్-టైమ్ స్టేషన్ AQI (US EPA)',
+			'aqi_station_data_source' => 'స్టేషన్ డేటా: QWeather',
+			'aqi_trend_title' => 'గాలి నాణ్యత ధోరణి',
 			_ => null,
 		};
 	}

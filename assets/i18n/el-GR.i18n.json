@@ -330,5 +330,10 @@
   "rainHeavy": "Ισχυρή βροχή",
   "rainTorrential": "Καταρρακτώδης βροχή",
   "weatherAlerts": "Προειδοποιήσεις καιρού",
-  "alertMore": "{n} ακόμη"
+  "alertMore": "{n} ακόμη",
+  "aqiStationMap": "Χάρτης σταθμών AQI",
+  "aqiStationNearest": "Κοντινότερος σταθμός",
+  "aqiStationMeasured": "AQI σταθμού σε πραγματικό χρόνο (US EPA)",
+  "aqiStationDataSource": "Δεδομένα σταθμών: QWeather",
+  "aqiTrendTitle": "Τάση ποιότητας αέρα"
 }

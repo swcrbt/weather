@@ -330,5 +330,10 @@
   "rainHeavy": "強い雨",
   "rainTorrential": "豪雨",
   "weatherAlerts": "気象警報",
-  "alertMore": "ほか {n} 件"
+  "alertMore": "ほか {n} 件",
+  "aqiStationMap": "AQI 観測所マップ",
+  "aqiStationNearest": "最寄りの観測所",
+  "aqiStationMeasured": "観測所のリアルタイム AQI（米 EPA）",
+  "aqiStationDataSource": "観測所データ: QWeather",
+  "aqiTrendTitle": "空気質の推移"
 }

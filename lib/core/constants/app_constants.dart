@@ -167,13 +167,16 @@ class AppConstants {
       'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
   static const String openStreetMapCopyrightUrl =
       'https://openstreetmap.org/copyright';
+
+  /// 和风要求监测站数据与归因信息共同展示。
+  static const String qweatherAttributionUrl =
+      'https://developer.qweather.com/attribution.html';
   static const String mapUserAgentPackageName = 'com.swcrbt.weather';
 
   /// Nominatim reverse geocoding (OpenStreetMap); requires a descriptive User-Agent.
   static const String nominatimReverseUrl =
       'https://nominatim.openstreetmap.org/reverse';
-  static const String nominatimUserAgent =
-      'Weather App (com.swcrbt.weather)';
+  static const String nominatimUserAgent = 'Weather App (com.swcrbt.weather)';
 
   // --- Map dark-mode color matrix ---
 

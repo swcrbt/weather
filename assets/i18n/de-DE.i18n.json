@@ -330,5 +330,10 @@
   "rainHeavy": "Starker Regen",
   "rainTorrential": "Starkregen",
   "weatherAlerts": "Wetterwarnungen",
-  "alertMore": "{n} weitere"
+  "alertMore": "{n} weitere",
+  "aqiStationMap": "AQI-Messstationenkarte",
+  "aqiStationNearest": "Nächste Station",
+  "aqiStationMeasured": "Echtzeit-AQI der Station (US EPA)",
+  "aqiStationDataSource": "Stationsdaten: QWeather",
+  "aqiTrendTitle": "Luftqualitätstrend"
 }

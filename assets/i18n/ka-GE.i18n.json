@@ -330,5 +330,10 @@
   "rainHeavy": "ძლიერი წვიმა",
   "rainTorrential": "კოკისპირული წვიმა",
   "weatherAlerts": "ამინდის გაფრთხილებები",
-  "alertMore": "კიდევ {n}"
+  "alertMore": "კიდევ {n}",
+  "aqiStationMap": "AQI სადგურების რუკა",
+  "aqiStationNearest": "უახლოესი სადგური",
+  "aqiStationMeasured": "სადგურის რეალურ დროში AQI (US EPA)",
+  "aqiStationDataSource": "სადგურის მონაცემები: QWeather",
+  "aqiTrendTitle": "ჰაერის ხარისხის ტენდენცია"
 }

@@ -120,5 +120,41 @@ void main() {
       expect(help, contains('Open-Meteo'));
       expect(help, contains('Highest pollutant level: O₃'));
     });
+
+    test('usEpaAqiFromParticulates follows EPA breakpoints', () {
+      // 边界锚点：断点低值必须映射到对应 AQI 档下限。
+      expect(AqiHelper.usEpaAqiFromParticulates(pm25: 0)?.round(), 0);
+      expect(AqiHelper.usEpaAqiFromParticulates(pm25: 12.0)!.round(), 50);
+      expect(AqiHelper.usEpaAqiFromParticulates(pm25: 35.4)!.round(), 100);
+      expect(AqiHelper.usEpaAqiFromParticulates(pm10: 54)!.round(), 50);
+      expect(AqiHelper.usEpaAqiFromParticulates(pm10: 154)!.round(), 100);
+    });
+
+    test('usEpaAqiFromParticulates takes the worst pollutant', () {
+      // pm25=5 → ~40，pm10=200 → 125，取较大者。
+      expect(
+        AqiHelper.usEpaAqiFromParticulates(pm25: 5, pm10: 200)!.round(),
+        125,
+      );
+      expect(AqiHelper.usEpaAqiFromParticulates(), isNull);
+    });
+
+    test('heatmapColor interpolates across severity bands', () {
+      expect(
+        AqiHelper.heatmapColor(AqiHelper.european, 0),
+        AqiHelper.severityColor(AqiHelper.european, 0),
+      );
+      // 档中点的颜色应位于相邻锚点色之间。
+      final mid = AqiHelper.heatmapColor(AqiHelper.european, 30);
+      final a = AqiHelper.severityColor(AqiHelper.european, 0);
+      final b = AqiHelper.severityColor(AqiHelper.european, 40);
+      expect(mid, isNot(a));
+      expect(mid, isNot(b));
+      // 超出最高阈值后收敛为末档色，不溢出。
+      expect(
+        AqiHelper.heatmapColor(AqiHelper.american, 9999),
+        AqiHelper.severityColor(AqiHelper.american, 301),
+      );
+    });
   });
 }

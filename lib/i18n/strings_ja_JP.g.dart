@@ -371,6 +371,11 @@ class TranslationsJaJp extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => '豪雨';
 	@override String get weather_alerts => '気象警報';
 	@override String get alert_more => 'ほか {n} 件';
+	@override String get aqi_station_map => 'AQI 観測所マップ';
+	@override String get aqi_station_nearest => '最寄りの観測所';
+	@override String get aqi_station_measured => '観測所のリアルタイム AQI（米 EPA）';
+	@override String get aqi_station_data_source => '観測所データ: QWeather';
+	@override String get aqi_trend_title => '空気質の推移';
 }
 
 /// The flat map containing all translations for locale <ja-JP>.
@@ -713,6 +718,11 @@ extension on TranslationsJaJp {
 			'rain_torrential' => '豪雨',
 			'weather_alerts' => '気象警報',
 			'alert_more' => 'ほか {n} 件',
+			'aqi_station_map' => 'AQI 観測所マップ',
+			'aqi_station_nearest' => '最寄りの観測所',
+			'aqi_station_measured' => '観測所のリアルタイム AQI（米 EPA）',
+			'aqi_station_data_source' => '観測所データ: QWeather',
+			'aqi_trend_title' => '空気質の推移',
 			_ => null,
 		};
 	}

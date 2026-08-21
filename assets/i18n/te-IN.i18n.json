@@ -330,5 +330,10 @@
   "rainHeavy": "భారీ వర్షం",
   "rainTorrential": "కుండపోత వర్షం",
   "weatherAlerts": "వాతావరణ హెచ్చరికలు",
-  "alertMore": "మరో {n}"
+  "alertMore": "మరో {n}",
+  "aqiStationMap": "AQI స్టేషన్ మ్యాప్",
+  "aqiStationNearest": "దగ్గరి స్టేషన్",
+  "aqiStationMeasured": "రియల్-టైమ్ స్టేషన్ AQI (US EPA)",
+  "aqiStationDataSource": "స్టేషన్ డేటా: QWeather",
+  "aqiTrendTitle": "గాలి నాణ్యత ధోరణి"
 }

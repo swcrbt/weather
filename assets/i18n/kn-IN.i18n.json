@@ -330,5 +330,10 @@
   "rainHeavy": "ಭಾರಿ ಮಳೆ",
   "rainTorrential": "ಧಾರಾಕಾರ ಮಳೆ",
   "weatherAlerts": "ಹವಾಮಾನ ಎಚ್ಚರಿಕೆಗಳು",
-  "alertMore": "ಇನ್ನೂ {n}"
+  "alertMore": "ಇನ್ನೂ {n}",
+  "aqiStationMap": "AQI ನಿಲ್ದಾಣ ನಕ್ಷೆ",
+  "aqiStationNearest": "ಹತ್ತಿರದ ನಿಲ್ದಾಣ",
+  "aqiStationMeasured": "ನೈಜ-ಸಮಯ ನಿಲ್ದಾಣ AQI (US EPA)",
+  "aqiStationDataSource": "ನಿಲ್ದಾಣ ಡೇಟಾ: QWeather",
+  "aqiTrendTitle": "ವಾಯು ಗುಣಮಟ್ಟ ಪ್ರವೃತ್ತಿ"
 }

@@ -15,6 +15,12 @@ import 'package:rain/core/weather/time_index_helper.dart';
 import 'package:rain/core/widgets/city_search_field.dart';
 import 'package:rain/core/widgets/map_tiles.dart';
 import 'package:rain/data/models/db.dart';
+import 'package:rain/features/aqimap/application/aqi_map_providers.dart';
+import 'package:rain/features/aqimap/data/aqi_station_remote_datasource.dart';
+import 'package:rain/features/aqimap/domain/aqi_grid.dart';
+import 'package:rain/features/aqimap/presentation/aqi_heatmap_layer.dart';
+import 'package:rain/features/aqimap/presentation/aqi_map_controls.dart';
+import 'package:rain/features/aqimap/presentation/aqi_station_layer.dart';
 import 'package:rain/features/cities/presentation/view/place_info.dart';
 import 'package:rain/features/cities/presentation/widgets/place_action.dart';
 import 'package:rain/features/cities/presentation/widgets/weather_card_tile.dart';
@@ -68,6 +74,17 @@ class _MapPageState extends ConsumerState<MapPage>
   int? _selectedRadarTime;
   RadarTimeline? _lastRadarTimeline;
 
+  /// AQI 图层与热力图时间轴状态。
+  bool _showAqi = false;
+  bool _aqiStationsEnabled = true;
+  bool _isAqiPlaying = false;
+  int? _selectedAqiTimeIndex;
+  AqiGrid? _lastAqiGrid;
+  AqiGridQuery? _aqiGridQuery;
+  AqiStationQuery? _aqiStationQuery;
+  Timer? _aqiPlaybackTimer;
+  Timer? _aqiViewportDebounce;
+
   /// Initializes slide animation for the selected weather card overlay.
   @override
   void initState() {
@@ -89,8 +106,11 @@ class _MapPageState extends ConsumerState<MapPage>
           ),
         );
     _radarRefreshTimer = Timer.periodic(const Duration(minutes: 10), (_) {
-      if (mounted && widget.active && _appResumed && _showRadar) {
-        ref.invalidate(radarTimelineProvider);
+      if (!mounted || !widget.active || !_appResumed) return;
+      if (_showRadar) ref.invalidate(radarTimelineProvider);
+      final aqiQuery = _aqiGridQuery;
+      if (_showAqi && aqiQuery != null) {
+        ref.invalidate(aqiGridProvider(aqiQuery));
       }
     });
   }
@@ -102,13 +122,17 @@ class _MapPageState extends ConsumerState<MapPage>
       _radarPlaybackTimer?.cancel();
       _radarPlaybackTimer = null;
       _isRadarPlaying = false;
+      _stopAqiPlayback();
     }
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     _appResumed = state == AppLifecycleState.resumed;
-    if (!_appResumed) _stopRadarPlayback();
+    if (!_appResumed) {
+      _stopRadarPlayback();
+      _stopAqiPlayback();
+    }
   }
 
   /// Disposes map, search, and animation controllers.
@@ -117,6 +141,8 @@ class _MapPageState extends ConsumerState<MapPage>
     WidgetsBinding.instance.removeObserver(this);
     _radarPlaybackTimer?.cancel();
     _radarRefreshTimer?.cancel();
+    _aqiPlaybackTimer?.cancel();
+    _aqiViewportDebounce?.cancel();
     _animatedMapController.dispose();
     _controllerSearch.dispose();
     _focusNode.dispose();
@@ -193,6 +219,99 @@ class _MapPageState extends ConsumerState<MapPage>
       if (_showRadar) {
         _isCardVisible = false;
         _selectedWeatherCard = null;
+        _stopAqiPlayback();
+        _showAqi = false;
+      }
+    });
+  }
+
+  // --- AQI 图层 ---
+
+  void _stopAqiPlayback() {
+    _aqiPlaybackTimer?.cancel();
+    _aqiPlaybackTimer = null;
+    if (_isAqiPlaying && mounted) {
+      setState(() => _isAqiPlaying = false);
+    }
+  }
+
+  void _toggleAqiPlayback(AqiGrid grid) {
+    if (_isAqiPlaying) {
+      _stopAqiPlayback();
+      return;
+    }
+    if (grid.frameCount < 2) return;
+
+    setState(() => _isAqiPlaying = true);
+    _aqiPlaybackTimer = Timer.periodic(const Duration(milliseconds: 500), (_) {
+      if (!mounted || !widget.active || !_appResumed || !_showAqi) {
+        _stopAqiPlayback();
+        return;
+      }
+      final latestGrid = _lastAqiGrid;
+      if (latestGrid == null || latestGrid.frameCount < 2) {
+        _stopAqiPlayback();
+        return;
+      }
+      final current = _selectedAqiIndex(latestGrid);
+      final next = (current + 1) % latestGrid.frameCount;
+      setState(() => _selectedAqiTimeIndex = next);
+    });
+  }
+
+  int _selectedAqiIndex(AqiGrid grid) {
+    final index = _selectedAqiTimeIndex;
+    if (index == null || index >= grid.frameCount) {
+      return grid.frameIndexFor(DateTime.now());
+    }
+    return index;
+  }
+
+  void _selectAqiFrame(int index) {
+    _stopAqiPlayback();
+    setState(() => _selectedAqiTimeIndex = index);
+  }
+
+  /// 把视野向外扩 20%，避免平移初期热力图边缘露白。
+  LatLngBounds _paddedBounds(LatLngBounds bounds) {
+    final latPad = (bounds.north - bounds.south) * 0.2;
+    final lonPad = (bounds.east - bounds.west) * 0.2;
+    return LatLngBounds(
+      LatLng(bounds.south - latPad, bounds.west - lonPad),
+      LatLng(bounds.north + latPad, bounds.east + lonPad),
+    );
+  }
+
+  void _syncAqiViewport(MapCamera camera) {
+    final padded = _paddedBounds(camera.visibleBounds);
+    _aqiGridQuery = AqiGridQuery.fromBounds(padded);
+    _aqiStationQuery = AqiStationQuery.fromBounds(
+      camera.visibleBounds,
+      camera.zoom,
+    );
+  }
+
+  void _onMapPositionChanged(MapCamera camera, bool hasGesture) {
+    if (!_showAqi) return;
+    _aqiViewportDebounce?.cancel();
+    _aqiViewportDebounce = Timer(const Duration(milliseconds: 700), () {
+      if (!mounted || !_showAqi) return;
+      setState(() => _syncAqiViewport(camera));
+    });
+  }
+
+  void _toggleAqiLayer() {
+    _stopAqiPlayback();
+    setState(() {
+      _showAqi = !_showAqi;
+      if (_showAqi) {
+        _isCardVisible = false;
+        _selectedWeatherCard = null;
+        _showRadar = false;
+        _isRadarPlaying = false;
+        _radarPlaybackTimer?.cancel();
+        _selectedAqiTimeIndex = null;
+        _syncAqiViewport(_animatedMapController.mapController.camera);
       }
     });
   }
@@ -417,6 +536,7 @@ class _MapPageState extends ConsumerState<MapPage>
           ),
         );
     final settings = ref.watch(settingsProvider);
+    final mainLocation = location;
     final radarState = _showRadar ? ref.watch(radarTimelineProvider) : null;
     final freshRadarTimeline = radarState?.asData?.value;
     if (freshRadarTimeline != null) _lastRadarTimeline = freshRadarTimeline;
@@ -427,8 +547,43 @@ class _MapPageState extends ConsumerState<MapPage>
     final radarIndex = radarTimeline == null
         ? 0
         : _selectedRadarIndex(radarTimeline);
+
+    final aqiGridQuery = _showAqi ? _aqiGridQuery : null;
+    final aqiGridState = aqiGridQuery == null
+        ? null
+        : ref.watch(aqiGridProvider(aqiGridQuery));
+    final freshAqiGrid = aqiGridState?.asData?.value;
+    if (freshAqiGrid != null) _lastAqiGrid = freshAqiGrid;
+    final aqiGrid = _showAqi ? freshAqiGrid ?? _lastAqiGrid : null;
+    final aqiGridError = aqiGridState?.hasError == true
+        ? aqiGridState?.error
+        : null;
+    final aqiIndex = aqiGrid == null ? 0 : _selectedAqiIndex(aqiGrid);
+
+    final aqiStationQuery = _showAqi && _aqiStationsEnabled
+        ? _aqiStationQuery
+        : null;
+    final aqiStationsState = aqiStationQuery == null
+        ? null
+        : ref.watch(aqiStationsProvider(aqiStationQuery));
+    final aqiStations = aqiStationsState?.asData?.value ?? const [];
+    String? nearestStationId;
+    if (aqiStations.isNotEmpty &&
+        mainLocation.lat != null &&
+        mainLocation.lon != null) {
+      double bestDistance = double.infinity;
+      for (final station in aqiStations) {
+        final dLat = station.position.latitude - mainLocation.lat!;
+        final dLon = station.position.longitude - mainLocation.lon!;
+        final distance = dLat * dLat + dLon * dLon;
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          nearestStationId = station.id;
+        }
+      }
+    }
+    final aqiStandard = settings.aqiStandard;
     final statusData = StatusData(settings: settings);
-    final mainLocation = location;
 
     if (isLoading || mainLocation.lat == null || mainLocation.lon == null) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
@@ -470,6 +625,7 @@ class _MapPageState extends ConsumerState<MapPage>
                     ),
                   ),
                   onTap: (_, _) => _hideCard(),
+                  onPositionChanged: _onMapPositionChanged,
                   onLongPress: (tapPosition, point) => showModalBottomSheet(
                     context: context,
                     isScrollControlled: true,
@@ -494,8 +650,16 @@ class _MapPageState extends ConsumerState<MapPage>
                       timeline: radarTimeline,
                       frame: radarTimeline.frames[radarIndex],
                     ),
+                  if (widget.renderTileLayers && _showAqi && aqiGrid != null)
+                    AqiHeatmapLayer(
+                      grid: aqiGrid,
+                      timeIndex: aqiIndex,
+                      standard: aqiStandard,
+                    ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: _showRadar ? 136 : 0),
+                    padding: EdgeInsets.only(
+                      bottom: _showRadar || _showAqi ? 136 : 0,
+                    ),
                     child: RichAttributionWidget(
                       animationConfig: const ScaleRAWA(),
                       alignment: AttributionAlignment.bottomLeft,
@@ -512,10 +676,23 @@ class _MapPageState extends ConsumerState<MapPage>
                               'https://www.rainviewer.com/api/weather-maps-api.html',
                             ),
                           ),
+                        if (_showAqi)
+                          TextSourceAttribution(
+                            'Open-Meteo CAMS',
+                            onTap: () => openUrl(
+                              'https://open-meteo.com/en/docs/air-quality-api',
+                            ),
+                          ),
+                        if (_showAqi && _aqiStationsEnabled)
+                          TextSourceAttribution(
+                            'QWeather',
+                            onTap: () =>
+                                openUrl(AppConstants.qweatherAttributionUrl),
+                          ),
                       ],
                     ),
                   ),
-                  if (_showRadar)
+                  if (_showRadar || _showAqi)
                     MarkerLayer(
                       markers: [_buildRadarLocationMarker(LatLng(lat, lon))],
                     )
@@ -548,7 +725,12 @@ class _MapPageState extends ConsumerState<MapPage>
                         );
                       },
                     ),
-                  if (_showRadar)
+                  if (_showAqi && _aqiStationsEnabled)
+                    AqiStationLayer(
+                      stations: aqiStations,
+                      nearestStationId: nearestStationId,
+                    ),
+                  if (_showRadar || _showAqi)
                     Positioned(
                       right: 16,
                       bottom: 148,
@@ -600,7 +782,7 @@ class _MapPageState extends ConsumerState<MapPage>
                         ),
                       ],
                     ),
-                  if (!_showRadar)
+                  if (!_showRadar && !_showAqi)
                     Positioned(
                       left: 0,
                       right: 0,
@@ -613,14 +795,43 @@ class _MapPageState extends ConsumerState<MapPage>
               Positioned(
                 top: 72,
                 right: 12,
-                child: RadarLayerButton(
-                  enabled: _showRadar,
-                  loading: _showRadar && (radarState?.isLoading ?? false),
-                  onPressed: _toggleRadarLayer,
+                child: Column(
+                  children: [
+                    RadarLayerButton(
+                      enabled: _showRadar,
+                      loading: _showRadar && (radarState?.isLoading ?? false),
+                      onPressed: _toggleRadarLayer,
+                    ),
+                    const SizedBox(height: 8),
+                    AqiLayerButton(
+                      enabled: _showAqi,
+                      loading:
+                          _showAqi &&
+                          aqiGrid == null &&
+                          (aqiGridState?.isLoading ?? false),
+                      onPressed: _toggleAqiLayer,
+                    ),
+                  ],
                 ),
               ),
               if (_showRadar)
                 const Positioned(top: 72, left: 12, child: RadarLegend()),
+              if (_showAqi)
+                Positioned(
+                  top: 72,
+                  left: 12,
+                  child: AqiLegend(standard: aqiStandard),
+                ),
+              if (_showAqi)
+                Positioned(
+                  left: 12,
+                  bottom: 148,
+                  child: AqiStationToggleCard(
+                    enabled: _aqiStationsEnabled,
+                    onChanged: (value) =>
+                        setState(() => _aqiStationsEnabled = value),
+                  ),
+                ),
               if (_showRadar)
                 Positioned(
                   left: 12,
@@ -639,6 +850,29 @@ class _MapPageState extends ConsumerState<MapPage>
                         ? (_) {}
                         : (index) => _selectRadarFrame(radarTimeline, index),
                     onRetry: () => ref.invalidate(radarTimelineProvider),
+                  ),
+                ),
+              if (_showAqi)
+                Positioned(
+                  left: 12,
+                  right: 12,
+                  bottom: 12,
+                  child: AqiTimelinePanel(
+                    grid: aqiGrid,
+                    error: aqiGridError,
+                    loading: aqiGridState?.isLoading ?? false,
+                    selectedIndex: aqiIndex,
+                    playing: _isAqiPlaying,
+                    onPlayPause: aqiGrid == null
+                        ? () {}
+                        : () => _toggleAqiPlayback(aqiGrid),
+                    onFrameSelected: aqiGrid == null ? (_) {} : _selectAqiFrame,
+                    onRetry: () {
+                      final query = _aqiGridQuery;
+                      if (query != null) {
+                        ref.invalidate(aqiGridProvider(query));
+                      }
+                    },
                   ),
                 ),
             ],

@@ -330,5 +330,10 @@
   "rainHeavy": "Báisteach throm",
   "rainTorrential": "Báisteach thromchúiseach",
   "weatherAlerts": "Rabhaidh aimsire",
-  "alertMore": "{n} eile"
+  "alertMore": "{n} eile",
+  "aqiStationMap": "Léarscáil stáisiún AQI",
+  "aqiStationNearest": "An stáisiún is gaire",
+  "aqiStationMeasured": "AQI stáisiúin fíor-ama (US EPA)",
+  "aqiStationDataSource": "Sonraí stáisiún: QWeather",
+  "aqiTrendTitle": "Treocht cáilíochta aeir"
 }

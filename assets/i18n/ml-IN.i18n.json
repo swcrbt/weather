@@ -330,5 +330,10 @@
   "rainHeavy": "കനത്ത മഴ",
   "rainTorrential": "കോരിച്ചൊരിയുന്ന മഴ",
   "weatherAlerts": "കാലാവസ്ഥാ മുന്നറിയിപ്പ്",
-  "alertMore": "കൂടാതെ {n} എണ്ണം"
+  "alertMore": "കൂടാതെ {n} എണ്ണം",
+  "aqiStationMap": "AQI സ്റ്റേഷൻ മാപ്പ്",
+  "aqiStationNearest": "ഏറ്റവും അടുത്ത സ്റ്റേഷൻ",
+  "aqiStationMeasured": "തത്സമയ സ്റ്റേഷൻ AQI (US EPA)",
+  "aqiStationDataSource": "സ്റ്റേഷൻ ഡാറ്റ: QWeather",
+  "aqiTrendTitle": "വായു ഗുണനിലവാര ട്രെൻഡ്"
 }

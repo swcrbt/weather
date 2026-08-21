@@ -330,5 +330,10 @@
   "lastBackgroundRefreshNever": "尚无后台刷新",
   "backgroundRefreshError": "上次后台错误",
   "weatherAlerts": "天气预警",
-  "alertMore": "另有 {n} 条"
+  "alertMore": "另有 {n} 条",
+  "aqiStationMap": "AQI 站点地图",
+  "aqiStationNearest": "最近的站点",
+  "aqiStationMeasured": "实时站点 AQI（美标）",
+  "aqiStationDataSource": "站点数据：和风天气",
+  "aqiTrendTitle": "空气质量趋势"
 }

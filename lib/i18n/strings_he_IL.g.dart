@@ -371,6 +371,11 @@ class TranslationsHeIl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'גשם שוטף';
 	@override String get weather_alerts => 'התראות מזג אוויר';
 	@override String get alert_more => '{n} נוספים';
+	@override String get aqi_station_map => 'מפת תחנות AQI';
+	@override String get aqi_station_nearest => 'התחנה הקרובה ביותר';
+	@override String get aqi_station_measured => 'AQI תחנה בזמן אמת (US EPA)';
+	@override String get aqi_station_data_source => 'נתוני תחנות: QWeather';
+	@override String get aqi_trend_title => 'מגמת איכות האוויר';
 }
 
 /// The flat map containing all translations for locale <he-IL>.
@@ -713,6 +718,11 @@ extension on TranslationsHeIl {
 			'rain_torrential' => 'גשם שוטף',
 			'weather_alerts' => 'התראות מזג אוויר',
 			'alert_more' => '{n} נוספים',
+			'aqi_station_map' => 'מפת תחנות AQI',
+			'aqi_station_nearest' => 'התחנה הקרובה ביותר',
+			'aqi_station_measured' => 'AQI תחנה בזמן אמת (US EPA)',
+			'aqi_station_data_source' => 'נתוני תחנות: QWeather',
+			'aqi_trend_title' => 'מגמת איכות האוויר',
 			_ => null,
 		};
 	}

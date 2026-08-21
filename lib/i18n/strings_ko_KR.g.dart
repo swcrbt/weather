@@ -371,6 +371,11 @@ class TranslationsKoKr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => '폭우';
 	@override String get weather_alerts => '기상특보';
 	@override String get alert_more => '외 {n}건';
+	@override String get aqi_station_map => 'AQI 측정소 지도';
+	@override String get aqi_station_nearest => '가장 가까운 측정소';
+	@override String get aqi_station_measured => '측정소 실시간 AQI(미 EPA)';
+	@override String get aqi_station_data_source => '측정소 데이터: QWeather';
+	@override String get aqi_trend_title => '대기질 추세';
 }
 
 /// The flat map containing all translations for locale <ko-KR>.
@@ -713,6 +718,11 @@ extension on TranslationsKoKr {
 			'rain_torrential' => '폭우',
 			'weather_alerts' => '기상특보',
 			'alert_more' => '외 {n}건',
+			'aqi_station_map' => 'AQI 측정소 지도',
+			'aqi_station_nearest' => '가장 가까운 측정소',
+			'aqi_station_measured' => '측정소 실시간 AQI(미 EPA)',
+			'aqi_station_data_source' => '측정소 데이터: QWeather',
+			'aqi_trend_title' => '대기질 추세',
 			_ => null,
 		};
 	}

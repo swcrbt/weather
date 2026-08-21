@@ -330,5 +330,10 @@
   "rainHeavy": "باران شدید",
   "rainTorrential": "باران سیل‌آسا",
   "weatherAlerts": "هشدارهای آب‌وهوا",
-  "alertMore": "{n} مورد دیگر"
+  "alertMore": "{n} مورد دیگر",
+  "aqiStationMap": "نقشه ایستگاه‌های AQI",
+  "aqiStationNearest": "نزدیک‌ترین ایستگاه",
+  "aqiStationMeasured": "AQI لحظه‌ای ایستگاه (US EPA)",
+  "aqiStationDataSource": "داده ایستگاه‌ها: QWeather",
+  "aqiTrendTitle": "روند کیفیت هوا"
 }

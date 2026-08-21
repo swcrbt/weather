@@ -371,6 +371,11 @@ class TranslationsUrPk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'موسلا دھار بارش';
 	@override String get weather_alerts => 'موسم کی وارننگز';
 	@override String get alert_more => 'مزید {n}';
+	@override String get aqi_station_map => 'AQI اسٹیشن نقشہ';
+	@override String get aqi_station_nearest => 'قریب ترین اسٹیشن';
+	@override String get aqi_station_measured => 'اسٹیشن کا حقیقی وقت AQI (US EPA)';
+	@override String get aqi_station_data_source => 'اسٹیشن ڈیٹا: QWeather';
+	@override String get aqi_trend_title => 'معیارِ ہوا کا رجحان';
 }
 
 /// The flat map containing all translations for locale <ur-PK>.
@@ -713,6 +718,11 @@ extension on TranslationsUrPk {
 			'rain_torrential' => 'موسلا دھار بارش',
 			'weather_alerts' => 'موسم کی وارننگز',
 			'alert_more' => 'مزید {n}',
+			'aqi_station_map' => 'AQI اسٹیشن نقشہ',
+			'aqi_station_nearest' => 'قریب ترین اسٹیشن',
+			'aqi_station_measured' => 'اسٹیشن کا حقیقی وقت AQI (US EPA)',
+			'aqi_station_data_source' => 'اسٹیشن ڈیٹا: QWeather',
+			'aqi_trend_title' => 'معیارِ ہوا کا رجحان',
 			_ => null,
 		};
 	}

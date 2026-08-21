@@ -371,6 +371,11 @@ class TranslationsNlNl extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'Stortregen';
 	@override String get weather_alerts => 'Weerwaarschuwingen';
 	@override String get alert_more => 'Nog {n}';
+	@override String get aqi_station_map => 'AQI-stationskaart';
+	@override String get aqi_station_nearest => 'Dichtstbijzijnde station';
+	@override String get aqi_station_measured => 'Realtime AQI van station (US EPA)';
+	@override String get aqi_station_data_source => 'Stationsgegevens: QWeather';
+	@override String get aqi_trend_title => 'Luchtkwaliteitstrend';
 }
 
 /// The flat map containing all translations for locale <nl-NL>.
@@ -713,6 +718,11 @@ extension on TranslationsNlNl {
 			'rain_torrential' => 'Stortregen',
 			'weather_alerts' => 'Weerwaarschuwingen',
 			'alert_more' => 'Nog {n}',
+			'aqi_station_map' => 'AQI-stationskaart',
+			'aqi_station_nearest' => 'Dichtstbijzijnde station',
+			'aqi_station_measured' => 'Realtime AQI van station (US EPA)',
+			'aqi_station_data_source' => 'Stationsgegevens: QWeather',
+			'aqi_trend_title' => 'Luchtkwaliteitstrend',
 			_ => null,
 		};
 	}

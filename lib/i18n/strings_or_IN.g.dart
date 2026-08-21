@@ -371,6 +371,11 @@ class TranslationsOrIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'ମୂଷଳଧାରା ବର୍ଷା';
 	@override String get weather_alerts => 'ପାଣିପାଗ ଚେତାବନୀ';
 	@override String get alert_more => 'ଆଉ {n}ଟି';
+	@override String get aqi_station_map => 'AQI ଷ୍ଟେସନ୍ ମ୍ୟାପ୍';
+	@override String get aqi_station_nearest => 'ନିକଟତମ ଷ୍ଟେସନ୍';
+	@override String get aqi_station_measured => 'ରିଅଲ-ଟାଇମ୍ ଷ୍ଟେସନ୍ AQI (US EPA)';
+	@override String get aqi_station_data_source => 'ଷ୍ଟେସନ୍ ତଥ୍ୟ: QWeather';
+	@override String get aqi_trend_title => 'ବାୟୁ ଗୁଣବତ୍ତା ପ୍ରବଣତା';
 }
 
 /// The flat map containing all translations for locale <or-IN>.
@@ -713,6 +718,11 @@ extension on TranslationsOrIn {
 			'rain_torrential' => 'ମୂଷଳଧାରା ବର୍ଷା',
 			'weather_alerts' => 'ପାଣିପାଗ ଚେତାବନୀ',
 			'alert_more' => 'ଆଉ {n}ଟି',
+			'aqi_station_map' => 'AQI ଷ୍ଟେସନ୍ ମ୍ୟାପ୍',
+			'aqi_station_nearest' => 'ନିକଟତମ ଷ୍ଟେସନ୍',
+			'aqi_station_measured' => 'ରିଅଲ-ଟାଇମ୍ ଷ୍ଟେସନ୍ AQI (US EPA)',
+			'aqi_station_data_source' => 'ଷ୍ଟେସନ୍ ତଥ୍ୟ: QWeather',
+			'aqi_trend_title' => 'ବାୟୁ ଗୁଣବତ୍ତା ପ୍ରବଣତା',
 			_ => null,
 		};
 	}

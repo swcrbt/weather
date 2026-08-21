@@ -330,5 +330,10 @@
   "rainHeavy": "Ploaie puternică",
   "rainTorrential": "Ploaie torențială",
   "weatherAlerts": "Avertizări meteo",
-  "alertMore": "Încă {n}"
+  "alertMore": "Încă {n}",
+  "aqiStationMap": "Harta stațiilor AQI",
+  "aqiStationNearest": "Cea mai apropiată stație",
+  "aqiStationMeasured": "AQI stație în timp real (US EPA)",
+  "aqiStationDataSource": "Date stații: QWeather",
+  "aqiTrendTitle": "Tendința calității aerului"
 }

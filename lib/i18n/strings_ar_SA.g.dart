@@ -371,6 +371,11 @@ class TranslationsArSa extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'أمطار غزيرة جدًا';
 	@override String get weather_alerts => 'تنبيهات الطقس';
 	@override String get alert_more => '{n} إضافية';
+	@override String get aqi_station_map => 'خريطة محطات جودة الهواء';
+	@override String get aqi_station_nearest => 'أقرب محطة';
+	@override String get aqi_station_measured => 'مؤشر AQI الفوري للمحطة (US EPA)';
+	@override String get aqi_station_data_source => 'بيانات المحطات: QWeather';
+	@override String get aqi_trend_title => 'اتجاه جودة الهواء';
 }
 
 /// The flat map containing all translations for locale <ar-SA>.
@@ -713,6 +718,11 @@ extension on TranslationsArSa {
 			'rain_torrential' => 'أمطار غزيرة جدًا',
 			'weather_alerts' => 'تنبيهات الطقس',
 			'alert_more' => '{n} إضافية',
+			'aqi_station_map' => 'خريطة محطات جودة الهواء',
+			'aqi_station_nearest' => 'أقرب محطة',
+			'aqi_station_measured' => 'مؤشر AQI الفوري للمحطة (US EPA)',
+			'aqi_station_data_source' => 'بيانات المحطات: QWeather',
+			'aqi_trend_title' => 'اتجاه جودة الهواء',
 			_ => null,
 		};
 	}

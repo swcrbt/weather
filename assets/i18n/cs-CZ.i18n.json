@@ -330,5 +330,10 @@
   "rainHeavy": "Silný déšť",
   "rainTorrential": "Přívalový déšť",
   "weatherAlerts": "Výstrahy počasí",
-  "alertMore": "Dalších {n}"
+  "alertMore": "Dalších {n}",
+  "aqiStationMap": "Mapa stanic AQI",
+  "aqiStationNearest": "Nejbližší stanice",
+  "aqiStationMeasured": "Aktuální AQI stanice (US EPA)",
+  "aqiStationDataSource": "Data stanic: QWeather",
+  "aqiTrendTitle": "Trend kvality ovzduší"
 }

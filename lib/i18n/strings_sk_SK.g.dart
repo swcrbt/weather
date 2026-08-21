@@ -371,6 +371,11 @@ class TranslationsSkSk extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'Lejak';
 	@override String get weather_alerts => 'Výstrahy počasia';
 	@override String get alert_more => 'Ďalších {n}';
+	@override String get aqi_station_map => 'Mapa staníc AQI';
+	@override String get aqi_station_nearest => 'Najbližšia stanica';
+	@override String get aqi_station_measured => 'Aktuálne AQI stanice (US EPA)';
+	@override String get aqi_station_data_source => 'Dáta staníc: QWeather';
+	@override String get aqi_trend_title => 'Trend kvality ovzdušia';
 }
 
 /// The flat map containing all translations for locale <sk-SK>.
@@ -713,6 +718,11 @@ extension on TranslationsSkSk {
 			'rain_torrential' => 'Lejak',
 			'weather_alerts' => 'Výstrahy počasia',
 			'alert_more' => 'Ďalších {n}',
+			'aqi_station_map' => 'Mapa staníc AQI',
+			'aqi_station_nearest' => 'Najbližšia stanica',
+			'aqi_station_measured' => 'Aktuálne AQI stanice (US EPA)',
+			'aqi_station_data_source' => 'Dáta staníc: QWeather',
+			'aqi_trend_title' => 'Trend kvality ovzdušia',
 			_ => null,
 		};
 	}

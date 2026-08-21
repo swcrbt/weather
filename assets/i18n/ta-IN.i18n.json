@@ -330,5 +330,10 @@
   "rainHeavy": "கனமழை",
   "rainTorrential": "பலத்த மழை",
   "weatherAlerts": "வானிலை எச்சரிக்கைகள்",
-  "alertMore": "மேலும் {n}"
+  "alertMore": "மேலும் {n}",
+  "aqiStationMap": "AQI நிலைய வரைபடம்",
+  "aqiStationNearest": "அருகிலுள்ள நிலையம்",
+  "aqiStationMeasured": "நிகழ்நேர நிலைய AQI (US EPA)",
+  "aqiStationDataSource": "நிலைய தரவு: QWeather",
+  "aqiTrendTitle": "காற்று தரப் போக்கு"
 }

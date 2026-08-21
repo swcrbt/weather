@@ -371,6 +371,11 @@ class TranslationsZhCn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get background_refresh_error => '上次后台错误';
 	@override String get weather_alerts => '天气预警';
 	@override String get alert_more => '另有 {n} 条';
+	@override String get aqi_station_map => 'AQI 站点地图';
+	@override String get aqi_station_nearest => '最近的站点';
+	@override String get aqi_station_measured => '实时站点 AQI（美标）';
+	@override String get aqi_station_data_source => '站点数据：和风天气';
+	@override String get aqi_trend_title => '空气质量趋势';
 }
 
 /// The flat map containing all translations for locale <zh-CN>.
@@ -713,6 +718,11 @@ extension on TranslationsZhCn {
 			'background_refresh_error' => '上次后台错误',
 			'weather_alerts' => '天气预警',
 			'alert_more' => '另有 {n} 条',
+			'aqi_station_map' => 'AQI 站点地图',
+			'aqi_station_nearest' => '最近的站点',
+			'aqi_station_measured' => '实时站点 AQI（美标）',
+			'aqi_station_data_source' => '站点数据：和风天气',
+			'aqi_trend_title' => '空气质量趋势',
 			_ => null,
 		};
 	}

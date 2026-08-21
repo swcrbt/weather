@@ -371,6 +371,11 @@ class TranslationsTaIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'பலத்த மழை';
 	@override String get weather_alerts => 'வானிலை எச்சரிக்கைகள்';
 	@override String get alert_more => 'மேலும் {n}';
+	@override String get aqi_station_map => 'AQI நிலைய வரைபடம்';
+	@override String get aqi_station_nearest => 'அருகிலுள்ள நிலையம்';
+	@override String get aqi_station_measured => 'நிகழ்நேர நிலைய AQI (US EPA)';
+	@override String get aqi_station_data_source => 'நிலைய தரவு: QWeather';
+	@override String get aqi_trend_title => 'காற்று தரப் போக்கு';
 }
 
 /// The flat map containing all translations for locale <ta-IN>.
@@ -713,6 +718,11 @@ extension on TranslationsTaIn {
 			'rain_torrential' => 'பலத்த மழை',
 			'weather_alerts' => 'வானிலை எச்சரிக்கைகள்',
 			'alert_more' => 'மேலும் {n}',
+			'aqi_station_map' => 'AQI நிலைய வரைபடம்',
+			'aqi_station_nearest' => 'அருகிலுள்ள நிலையம்',
+			'aqi_station_measured' => 'நிகழ்நேர நிலைய AQI (US EPA)',
+			'aqi_station_data_source' => 'நிலைய தரவு: QWeather',
+			'aqi_trend_title' => 'காற்று தரப் போக்கு',
 			_ => null,
 		};
 	}

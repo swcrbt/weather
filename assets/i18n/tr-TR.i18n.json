@@ -330,5 +330,10 @@
   "rainHeavy": "Şiddetli yağmur",
   "rainTorrential": "Sağanak yağmur",
   "weatherAlerts": "Hava durumu uyarıları",
-  "alertMore": "{n} tane daha"
+  "alertMore": "{n} tane daha",
+  "aqiStationMap": "AQI istasyon haritası",
+  "aqiStationNearest": "En yakın istasyon",
+  "aqiStationMeasured": "Gerçek zamanlı istasyon AQI (US EPA)",
+  "aqiStationDataSource": "İstasyon verileri: QWeather",
+  "aqiTrendTitle": "Hava kalitesi eğilimi"
 }

@@ -371,6 +371,11 @@ class TranslationsMlIn extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'കോരിച്ചൊരിയുന്ന മഴ';
 	@override String get weather_alerts => 'കാലാവസ്ഥാ മുന്നറിയിപ്പ്';
 	@override String get alert_more => 'കൂടാതെ {n} എണ്ണം';
+	@override String get aqi_station_map => 'AQI സ്റ്റേഷൻ മാപ്പ്';
+	@override String get aqi_station_nearest => 'ഏറ്റവും അടുത്ത സ്റ്റേഷൻ';
+	@override String get aqi_station_measured => 'തത്സമയ സ്റ്റേഷൻ AQI (US EPA)';
+	@override String get aqi_station_data_source => 'സ്റ്റേഷൻ ഡാറ്റ: QWeather';
+	@override String get aqi_trend_title => 'വായു ഗുണനിലവാര ട്രെൻഡ്';
 }
 
 /// The flat map containing all translations for locale <ml-IN>.
@@ -713,6 +718,11 @@ extension on TranslationsMlIn {
 			'rain_torrential' => 'കോരിച്ചൊരിയുന്ന മഴ',
 			'weather_alerts' => 'കാലാവസ്ഥാ മുന്നറിയിപ്പ്',
 			'alert_more' => 'കൂടാതെ {n} എണ്ണം',
+			'aqi_station_map' => 'AQI സ്റ്റേഷൻ മാപ്പ്',
+			'aqi_station_nearest' => 'ഏറ്റവും അടുത്ത സ്റ്റേഷൻ',
+			'aqi_station_measured' => 'തത്സമയ സ്റ്റേഷൻ AQI (US EPA)',
+			'aqi_station_data_source' => 'സ്റ്റേഷൻ ഡാറ്റ: QWeather',
+			'aqi_trend_title' => 'വായു ഗുണനിലവാര ട്രെൻഡ്',
 			_ => null,
 		};
 	}

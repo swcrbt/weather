@@ -330,5 +330,10 @@
   "rainHeavy": "जोरदार पाऊस",
   "rainTorrential": "मुसळधार पाऊस",
   "weatherAlerts": "हवामान इशारे",
-  "alertMore": "आणखी {n}"
+  "alertMore": "आणखी {n}",
+  "aqiStationMap": "AQI स्टेशन नकाशा",
+  "aqiStationNearest": "जवळचे स्टेशन",
+  "aqiStationMeasured": "रिअल-टाइम स्टेशन AQI (US EPA)",
+  "aqiStationDataSource": "स्टेशन डेटा: QWeather",
+  "aqiTrendTitle": "हवा गुणवत्ता कल"
 }

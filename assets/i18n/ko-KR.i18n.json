@@ -330,5 +330,10 @@
   "rainHeavy": "강한 비",
   "rainTorrential": "폭우",
   "weatherAlerts": "기상특보",
-  "alertMore": "외 {n}건"
+  "alertMore": "외 {n}건",
+  "aqiStationMap": "AQI 측정소 지도",
+  "aqiStationNearest": "가장 가까운 측정소",
+  "aqiStationMeasured": "측정소 실시간 AQI(미 EPA)",
+  "aqiStationDataSource": "측정소 데이터: QWeather",
+  "aqiTrendTitle": "대기질 추세"
 }

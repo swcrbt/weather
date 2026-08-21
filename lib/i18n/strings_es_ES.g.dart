@@ -371,6 +371,11 @@ class TranslationsEsEs extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'Lluvia torrencial';
 	@override String get weather_alerts => 'Alertas meteorológicas';
 	@override String get alert_more => '{n} más';
+	@override String get aqi_station_map => 'Mapa de estaciones AQI';
+	@override String get aqi_station_nearest => 'Estación más cercana';
+	@override String get aqi_station_measured => 'ICA de estación en tiempo real (US EPA)';
+	@override String get aqi_station_data_source => 'Datos de estaciones: QWeather';
+	@override String get aqi_trend_title => 'Tendencia de calidad del aire';
 }
 
 /// The flat map containing all translations for locale <es-ES>.
@@ -713,6 +718,11 @@ extension on TranslationsEsEs {
 			'rain_torrential' => 'Lluvia torrencial',
 			'weather_alerts' => 'Alertas meteorológicas',
 			'alert_more' => '{n} más',
+			'aqi_station_map' => 'Mapa de estaciones AQI',
+			'aqi_station_nearest' => 'Estación más cercana',
+			'aqi_station_measured' => 'ICA de estación en tiempo real (US EPA)',
+			'aqi_station_data_source' => 'Datos de estaciones: QWeather',
+			'aqi_trend_title' => 'Tendencia de calidad del aire',
 			_ => null,
 		};
 	}

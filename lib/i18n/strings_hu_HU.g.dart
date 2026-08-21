@@ -371,6 +371,11 @@ class TranslationsHuHu extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'Zuhogó eső';
 	@override String get weather_alerts => 'Időjárási figyelmeztetések';
 	@override String get alert_more => 'További {n}';
+	@override String get aqi_station_map => 'AQI-mérőállomás térkép';
+	@override String get aqi_station_nearest => 'Legközelebbi állomás';
+	@override String get aqi_station_measured => 'Valós idejű állomás-AQI (US EPA)';
+	@override String get aqi_station_data_source => 'Állomásadatok: QWeather';
+	@override String get aqi_trend_title => 'Levegőminőségi trend';
 }
 
 /// The flat map containing all translations for locale <hu-HU>.
@@ -713,6 +718,11 @@ extension on TranslationsHuHu {
 			'rain_torrential' => 'Zuhogó eső',
 			'weather_alerts' => 'Időjárási figyelmeztetések',
 			'alert_more' => 'További {n}',
+			'aqi_station_map' => 'AQI-mérőállomás térkép',
+			'aqi_station_nearest' => 'Legközelebbi állomás',
+			'aqi_station_measured' => 'Valós idejű állomás-AQI (US EPA)',
+			'aqi_station_data_source' => 'Állomásadatok: QWeather',
+			'aqi_trend_title' => 'Levegőminőségi trend',
 			_ => null,
 		};
 	}

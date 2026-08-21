@@ -371,6 +371,11 @@ class TranslationsFrFr extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'Pluie torrentielle';
 	@override String get weather_alerts => 'Alertes météo';
 	@override String get alert_more => '{n} de plus';
+	@override String get aqi_station_map => 'Carte des stations AQI';
+	@override String get aqi_station_nearest => 'Station la plus proche';
+	@override String get aqi_station_measured => 'AQI de la station en temps réel (US EPA)';
+	@override String get aqi_station_data_source => 'Données des stations : QWeather';
+	@override String get aqi_trend_title => 'Tendance de la qualité de l\'air';
 }
 
 /// The flat map containing all translations for locale <fr-FR>.
@@ -713,6 +718,11 @@ extension on TranslationsFrFr {
 			'rain_torrential' => 'Pluie torrentielle',
 			'weather_alerts' => 'Alertes météo',
 			'alert_more' => '{n} de plus',
+			'aqi_station_map' => 'Carte des stations AQI',
+			'aqi_station_nearest' => 'Station la plus proche',
+			'aqi_station_measured' => 'AQI de la station en temps réel (US EPA)',
+			'aqi_station_data_source' => 'Données des stations : QWeather',
+			'aqi_trend_title' => 'Tendance de la qualité de l\'air',
 			_ => null,
 		};
 	}

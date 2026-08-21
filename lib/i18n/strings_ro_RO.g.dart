@@ -371,6 +371,11 @@ class TranslationsRoRo extends Translations with BaseTranslations<AppLocale, Tra
 	@override String get rain_torrential => 'Ploaie torențială';
 	@override String get weather_alerts => 'Avertizări meteo';
 	@override String get alert_more => 'Încă {n}';
+	@override String get aqi_station_map => 'Harta stațiilor AQI';
+	@override String get aqi_station_nearest => 'Cea mai apropiată stație';
+	@override String get aqi_station_measured => 'AQI stație în timp real (US EPA)';
+	@override String get aqi_station_data_source => 'Date stații: QWeather';
+	@override String get aqi_trend_title => 'Tendința calității aerului';
 }
 
 /// The flat map containing all translations for locale <ro-RO>.
@@ -713,6 +718,11 @@ extension on TranslationsRoRo {
 			'rain_torrential' => 'Ploaie torențială',
 			'weather_alerts' => 'Avertizări meteo',
 			'alert_more' => 'Încă {n}',
+			'aqi_station_map' => 'Harta stațiilor AQI',
+			'aqi_station_nearest' => 'Cea mai apropiată stație',
+			'aqi_station_measured' => 'AQI stație în timp real (US EPA)',
+			'aqi_station_data_source' => 'Date stații: QWeather',
+			'aqi_trend_title' => 'Tendința calității aerului',
 			_ => null,
 		};
 	}

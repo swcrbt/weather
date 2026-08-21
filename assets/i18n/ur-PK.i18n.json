@@ -330,5 +330,10 @@
   "rainHeavy": "تیز بارش",
   "rainTorrential": "موسلا دھار بارش",
   "weatherAlerts": "موسم کی وارننگز",
-  "alertMore": "مزید {n}"
+  "alertMore": "مزید {n}",
+  "aqiStationMap": "AQI اسٹیشن نقشہ",
+  "aqiStationNearest": "قریب ترین اسٹیشن",
+  "aqiStationMeasured": "اسٹیشن کا حقیقی وقت AQI (US EPA)",
+  "aqiStationDataSource": "اسٹیشن ڈیٹا: QWeather",
+  "aqiTrendTitle": "معیارِ ہوا کا رجحان"
 }
